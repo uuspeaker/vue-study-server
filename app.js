@@ -32,6 +32,11 @@ app.use(async (ctx, next) => {
   console.log(`${ctx.method} ${ctx.url} - ${ms}ms`)
 })
 
+app.use(async (ctx, next) => {
+  ctx.set('Access-Control-Allow-Origin', '*');
+  await next();
+ });
+
 // routes
 app.use(index.routes(), index.allowedMethods())
 app.use(users.routes(), users.allowedMethods())
