@@ -8,9 +8,24 @@ const logger = require('koa-logger')
 
 const index = require('./routes/index')
 const users = require('./routes/users')
+//const cors = require('koa2-cors');
 
 // error handler
 onerror(app)
+
+// app.use(cors({
+//     origin: function (ctx) {
+//         if (ctx.url === '/test') {
+//             return "*"; // 允许来自所有域名请求
+//         }
+//         return 'http://localhost:8080'; / 这样就能只允许 http://localhost:8080 这个域名的请求了
+//     },
+//     exposeHeaders: ['WWW-Authenticate', 'Server-Authorization'],
+//     maxAge: 5,
+//     credentials: true,
+//     allowMethods: ['GET', 'POST','PUT', 'DELETE'],
+//     allowHeaders: ['Content-Type', 'Authorization', 'Accept'],
+// }))
 
 // middlewares
 app.use(bodyparser({
