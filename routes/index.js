@@ -1,6 +1,6 @@
 const router = require('koa-router')()
 var MongoClient = require('mongodb').MongoClient;
-var url = 'mongodb://admin:123456@129.211.21.250:27017';
+var url = 'mongodb://study:123456@129.211.21.250:27017';
 
 
 router.get('/', async (ctx, next) => {

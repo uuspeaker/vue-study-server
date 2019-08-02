@@ -1,7 +1,7 @@
 const router = require('koa-router')()
 const mongoose = require('mongoose')
 // 连接数据库：[ip/域名]:[端口号(默认27017)]/[数据库(db)]
-mongoose.connect('mongodb://admin:123456@129.211.21.250:27017/test',{"useNewUrlParser":true})
+mongoose.connect('mongodb://study:123456@129.211.21.250:27017/test',{"useNewUrlParser":true})
 // 定义模型
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
