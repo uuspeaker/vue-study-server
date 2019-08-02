@@ -1,13 +1,7 @@
 const router = require('koa-router')()
 const mongoose = require('mongoose')
 // 连接数据库：[ip/域名]:[端口号(默认27017)]/[数据库(db)]
-mongoose.connect('mongodb://study:123456@129.211.21.250:27017/test',{"useNewUrlParser":true})
-// 定义模型
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function() {
-  // we're connected!
-});
+
 
 router.prefix('/users')
 
@@ -16,6 +10,13 @@ router.get('/', function (ctx, next) {
 })
 
 router.post('/', async (ctx, next) => {
+  mongoose.connect('mongodb://study:123456@129.211.21.250:27017/admin',{"useNewUrlParser":true})
+  // 定义模型
+  var db = mongoose.connection;
+  db.on('error', console.error.bind(console, 'connection error:'));
+  db.once('open', function() {
+    // we're connected!
+  });
   var userSchema = new mongoose.Schema({
   name: String,
 })

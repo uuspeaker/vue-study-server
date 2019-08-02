@@ -1,6 +1,6 @@
 const router = require('koa-router')()
 var MongoClient = require('mongodb').MongoClient;
-var url = 'mongodb://study:123456@129.211.21.250:27017';
+var url = 'mongodb://study:123456@129.211.21.250:27017/admin';
 
 
 router.get('/', async (ctx, next) => {
@@ -10,9 +10,9 @@ router.get('/', async (ctx, next) => {
 })
 
 router.get('/string', async (ctx, next) => {
-  MongoClient.connect(url, { useNewUrlParser: true }, function(err, db) {
+  await MongoClient.connect(url, { useNewUrlParser: true }, function(err, db) {
     if (err) throw err;
-    var dbo = db.db("test");
+    var dbo = db.db("admin");
     var myobj = { name: "菜鸟教程", url: "www.runoob" };
     dbo.collection("site").insertOne(myobj, function(err, res) {
         if (err) throw err;
