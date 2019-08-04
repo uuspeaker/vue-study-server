@@ -1,6 +1,6 @@
 const router = require('koa-router')()
 var mysql      = require('mysql2');
-var config      = require('./../config/default.js');
+var config      = require('../config.js');
 
 router.prefix('/test')
 
