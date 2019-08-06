@@ -15,6 +15,25 @@ const config = {
  },
  kafka: {
    host: '129.211.21.250:27017:9092',
+ },
+ cos: {
+   secretId: 'AKIDNZXUCrbYXHnbZLwBGAp33oHWXlmaeZhc',
+   secretKey: 'rcHjwymfM9nFSRAi28zdKm8FveQkfR4W',
+   bucket : 'vue-study-1255824916',
+   region : 'ap-shenzhen-fsi'
+ },
+ upload: {
+   destination: 'upload',
+   secretKey: 'rcHjwymfM9nFSRAi28zdKm8FveQkfR4W',
+   bucket : 'vue-study-1255824916',
+   region : 'ap-shenzhen-fsi'
+ },
+ ocr: {
+   secretId: 'AKIDNZXUCrbYXHnbZLwBGAp33oHWXlmaeZhc',
+   secretKey: 'rcHjwymfM9nFSRAi28zdKm8FveQkfR4W',
+   host: "ocr.tencentcloudapi.com",
+   zone: "ap-guangzhou"
  }
+
 }
 module.exports = config;

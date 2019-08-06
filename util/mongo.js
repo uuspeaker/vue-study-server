@@ -1,5 +1,5 @@
 const config = require('../config/db.js');
-const log = require('../util/log.js');
+const log = require('../util/log.js').getLogger("mongo.js");
 const mongoose = require('mongoose');
 
 const URL = config.mongo.host;

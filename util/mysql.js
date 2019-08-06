@@ -1,5 +1,5 @@
 const mysql = require('mysql2');
-const log = require('../util/log.js');
+const log = require('../util/log.js').getLogger("mysql.js");
 const config = require('../config/db.js')
 
 const pool = mysql.createPool({

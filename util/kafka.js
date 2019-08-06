@@ -1,6 +1,6 @@
 var kafka = require('kafka-node');
 const config = require('../config/db.js');
-const log = require('../util/log.js');
+const log = require('../util/log.js').getLogger("kafka.js");
 
   Producer = kafka.Producer,
   client = new kafka.KafkaClient({

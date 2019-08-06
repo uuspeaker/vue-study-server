@@ -1,9 +1,10 @@
 const router = require('koa-router')()
-const stringify = require('node-stringify');
-const log      = require('../util/log.js');
+const log = require('../util/log.js').getLogger("index.js");
 const mongo = require('../util/mongo.js');
 const mysql = require('../util/mysql.js');
 const kafka = require('../util/kafka.js');
+const ocr = require('../util/ocr.js');
+const cos = require('../util/cos.js');
 
 
 router.get('/', async (ctx, next) => {
@@ -40,7 +41,23 @@ router.get('/kafka', async (ctx, next) => {
     title: `Hello kafka`
   }
 })
- 
+
+router.get('/cos', async (ctx, next) => {
+  await cos.putObject("config.js", function(res) {
+  })
+  ctx.body = {
+    title: `Hello cos`
+  }
+})
+
+router.get('/ocr', async (ctx, next) => {
+  await ocr.scanImageUrl("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1565072083218&di=ed2f5d1953192575bf938babeb2a7e03&imgtype=0&src=http%3A%2F%2Ftxt6.book118.com%2F2017%2F0104%2Fbook79189%2F79188616.png",(response) => {
+    ctx.body = {
+      result: response
+    }
+  })
+})
+
 router.get('/json', async (ctx, next) => {
   ctx.body = {
     title: 'koa2 json'
