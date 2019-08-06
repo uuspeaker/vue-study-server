@@ -1,6 +1,8 @@
 var COS = require('cos-nodejs-sdk-v5');
 const log = require('../util/log.js').getLogger("cos.js");
 const uuid = require('node-uuid');
+const fs = require('fs');
+const path = require('path');
 const config = require('../config/db.js')
 
 var cos = new COS({
@@ -25,23 +27,25 @@ module.exports.getObjectUrl = (key) => {
     return url
 }
 
-module.exports.putObject = (body, callback) => {
-  var key = uuid.v1()
-  cos.putObject({
+module.exports.putObject = (location, callback) => {
+  log.info("cos.putObject begin location is ", location);
+  var key = uuid.v1() + path.extname(location)
+  cos.sliceUploadFile({
     Bucket: config.cos.bucket,
     Region: config.cos.region,
-    Key: "config.js",
+    Key: key,
     //Body: "hello", // 这
-    Body: body, // 这
+    FilePath: location,
+    //Body: fs.createReadStream(path), // 这
     onProgress: function(progressData) {
       log.info(JSON.stringify(progressData));
     }
   }, function (err, data) {
     if (err) {
-      log.error(`cos put object fail ${err}`)
+      log.error("cos put object fail",err)
       throw err
     }
-    log.info("putObject success",data);
+    log.info("putObject success, result is ",data);
     callback(data)
   });
 }

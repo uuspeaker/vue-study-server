@@ -16,12 +16,14 @@ router.get('/', async (ctx, next) => {
 router.get('/mysql', async (ctx, next) => {
   let sql = "select * from user";
   let data = {};
+  var result = {}
   await mysql.execute(sql,data, function(res) {
-
+    result = res
   })
   ctx.body = {
-    title: `Hello mysql`
+    "result": result
   }
+
 })
 
 router.get('/mongo', async (ctx, next) => {

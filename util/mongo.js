@@ -5,9 +5,9 @@ const mongoose = require('mongoose');
 const URL = config.mongo.host;
 const DB = config.mongo.database;
 
-function _connectDB (callback) {
+const connectDB = async (callback) => {
   // { useNewUrlParser: true } 是为了向前兼容
-  mongoose.connect(URL, { useNewUrlParser: true }, function(err, db) {
+  await mongoose.connect(URL, { useNewUrlParser: true }, function(err, db) {
     if (err) {
       log.error(`database connect fail ${err}`)
       throw err
@@ -20,13 +20,13 @@ function _connectDB (callback) {
 // 插入一个文档数据
 module.exports.insertOne = function (collection, data, callback) {
   log.info(`mongo.insertOne: collecton is ${collection}, data is ${JSON.stringify(data)}`)
-  _connectDB(function (db) {
+  connectDB(function (db) {
     db.collection(collection).insertOne(data, function (err, result) {
       if (err) {
         log.error(`mongo insert fail ${err}`)
         throw err
       }
-      log.info(`mongo insert success, resutl is ${result}`)
+      log.info(`mongo insertOne success, resutl is ${result}`)
       callback(result)
       db.close()
     })
@@ -34,7 +34,7 @@ module.exports.insertOne = function (collection, data, callback) {
 }
 // 插入多个文档数据，传入的data必须为数组
 module.exports.insert = function (collection, data, callback) {
-    _connectDB(function (err, db) {
+    connectDB(function (err, db) {
         if (err) throw err
         let database = db.db(DB)
         if (!(data instanceof Array)) {
@@ -51,7 +51,7 @@ module.exports.insert = function (collection, data, callback) {
 }
 // 删除单个数据
 module.exports.deleteOne = function (collection, condition, callback) {
-    _connectDB(function (err, db) {
+    connectDB(function (err, db) {
         if (err) throw err
         let database = db.db(DB)
         database.collection(collection).deleteOne(condition, function (err, result) {
@@ -62,7 +62,7 @@ module.exports.deleteOne = function (collection, condition, callback) {
 }
 // 删除多个数据
 module.exports.delete = function (collection, condition, callback) {
-    _connectDB(function (err, db) {
+    connectDB(function (err, db) {
         if (err) throw err
         let database = db.db(DB)
         database.collection(collection).deleteMany(condition, function (err, result) {
@@ -72,13 +72,18 @@ module.exports.delete = function (collection, condition, callback) {
     })
 }
 // 查询数据，condition为{}时可以查询该集合下的所有文档
-module.exports.find = function (collection, condition, callback) {
-    _connectDB(function (err, db) {
-        if (err) throw err
-        let database = db.db(DB)
-        database.collection(collection).find(condition).toArray(function (err, result) {
-            callback(err, result)
-            db.close()
-        })
+module.exports.find = async (collection, condition, callback) => {
+  log.info(`mongo.find: collecton is ${collection}, condition is`, condition)
+  await connectDB(function (db) {
+    db.collection(collection).find(condition).toArray(function (err, result) {
+      if (err) {
+        log.error("mongo query fail",err)
+        db.close()
+        throw err
+      }
+      log.info("mongo query result",result)
+      callback(result)
+      db.close()
     })
+  })
 }
