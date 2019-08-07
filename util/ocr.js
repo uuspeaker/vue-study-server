@@ -16,19 +16,23 @@ let clientProfile = new ClientProfile();
 clientProfile.httpProfile = httpProfile;
 const client = new OcrClient(cred,  config.ocr.zone, clientProfile);
 
-module.exports.scanImageUrl =  (imageUrl, callback) => {
+module.exports.scanImageUrl =  (imageUrl) => {
   log.info(`ocr.scanImageUrl.input: imageUrl is ${imageUrl}`)
   let req = new models.GeneralBasicOCRRequest();
   let params = {ImageUrl:imageUrl}
   req.from_json_string(JSON.stringify(params));
   log.info(`ocr.scanImageUrl: params is ${JSON.stringify(params)}`)
-  client.GeneralBasicOCR(req, function(errMsg, response) {
-      if (errMsg) {
-          log.error(errMsg);
-          return;
-      }
-      log.info(`ocr.scanImageUrl.output: response is ${JSON.stringify(response)}`)
-      callback(response)
-  });
+  return new Promise(( resolve, reject ) => {
+    client.GeneralBasicOCR(req, function(errMsg, response) {
+        if (errMsg) {
+            log.error(errMsg);
+            reject(err)
+        }else{
+          log.info(`ocr.scanImageUrl.output: response is ${JSON.stringify(response)}`)
+          resolve(response)
+        }
+
+    });
+  })
 
 }

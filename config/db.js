@@ -34,7 +34,31 @@ const config = {
    secretKey: 'rcHjwymfM9nFSRAi28zdKm8FveQkfR4W',
    host: "ocr.tencentcloudapi.com",
    zone: "ap-guangzhou"
- }
+ },
+ mongodb: {
+    "user": "study",
+    "pass": "123456",
+    "host": "localhost",
+    "port": "27017",
+    "replicaSet": {
+      "name": "",
+      "members": [
+        // {
+        //   "host": "localhost",
+        //   "port": "27017"
+        // },
+        // {
+        //   "host": "localhost",
+        //   "port": "27027"
+        // },
+        // {
+        //   "host": "localhost",
+        //   "port": "27037"
+        // }
+      ]
+    },
+    "db": "study"
+  }
 
 }
 module.exports = config;

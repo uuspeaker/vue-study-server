@@ -27,33 +27,35 @@ module.exports.getObjectUrl = (key) => {
     return url
 }
 
-module.exports.putObject = async (location, callback) => {
+module.exports.putObject = (location) => {
   log.debug("上传文件开始,locaton", location);
   var key = uuid.v1() + path.extname(location)
-  var result = 1
-  await cos.sliceUploadFile({
-    Bucket: config.cos.bucket,
-    Region: config.cos.region,
-    Key: key,
-    //Body: "hello", // 这
-    FilePath: location,
-    //Body: fs.createReadStream(path), // 这
-    onProgress: (progressData) => {
-      log.info(JSON.stringify(progressData));
-    }
-  }, (err, data) => {
-    if (err) {
-      log.error("上传文件异常",err)
-      throw err
-    }
-    log.debug("上传文件结束,data", data);
-    callback(data)
-  });
+  return new Promise(( resolve, reject ) => {
+    cos.sliceUploadFile({
+      Bucket: config.cos.bucket,
+      Region: config.cos.region,
+      Key: key,
+      //Body: "hello", // 这
+      FilePath: location,
+      //Body: fs.createReadStream(path), // 这
+      onProgress: (progressData) => {
+        log.info(JSON.stringify(progressData));
+      }
+    }, (err, data) => {
+      if (err) {
+        log.error("上传文件异常",err)
+        reject(err)
+      }
+      log.debug("上传文件结束,data", data);
+      resolve(data)
+    });
+  })
 }
 
-module.exports.getObjectList = async (conditon, callback) => {
+module.exports.getObjectList = async (conditon) => {
   log.debug("查询文件开始,conditon", conditon);
-  await cos.getBucket({
+  return new Promise(( resolve, reject ) => {
+  cos.getBucket({
     Bucket: config.cos.bucket,
     Region: config.cos.region,
     Prefix: conditon, // 这里传入列出的文件前缀
@@ -61,11 +63,13 @@ module.exports.getObjectList = async (conditon, callback) => {
   }, (err, data) => {
     if (err) {
       log.error("查询文件异常",err)
-      throw err
+      reject(err)
+    }else {
+      log.debug("查询文件结束,data", data);
+      resolve(data.Contents)
     }
-    log.debug("查询文件结束,data", data);
-    callback(data.Contents)
   });
+})
 }
 
 module.exports.deleteObject = (key) => {

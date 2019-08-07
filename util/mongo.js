@@ -20,15 +20,19 @@ const connectDB = async (callback) => {
 // 插入一个文档数据
 module.exports.insertOne = function (collection, data, callback) {
   log.info(`mongo.insertOne: collecton is ${collection}, data is ${JSON.stringify(data)}`)
-  connectDB(function (db) {
-    db.collection(collection).insertOne(data, function (err, result) {
-      if (err) {
-        log.error(`mongo insert fail ${err}`)
-        throw err
-      }
-      log.info(`mongo insertOne success, resutl is ${result}`)
-      callback(result)
-      db.close()
+  return new Promise(( resolve, reject ) => {
+    connectDB(function (db) {
+      db.collection(collection).insertOne(data, function (err, result) {
+        if (err) {
+          log.error(`mongo insert fail ${err}`)
+          reject(err)
+        }else{
+          log.info(`mongo insertOne success, resutl is ${result}`)
+          resolve(result)
+          db.close()
+        }
+
+      })
     })
   })
 }
@@ -74,6 +78,21 @@ module.exports.delete = function (collection, condition, callback) {
 // 查询数据，condition为{}时可以查询该集合下的所有文档
 module.exports.find = async (collection, condition, callback) => {
   log.info(`mongo.find: collecton is ${collection}, condition is`, condition)
+  await connectDB(function (db) {
+    db.collection(collection).find(condition).toArray(function (err, result) {
+      if (err) {
+        log.error("mongo query fail",err)
+        db.close()
+        throw err
+      }
+      log.info("mongo query result",result)
+      callback(result)
+      db.close()
+    })
+  })
+}
+module.exports.find2 = async (collection, condition) => {
+  log.info(`开始查询: collecton is ${collection}, condition is`, condition)
   await connectDB(function (db) {
     db.collection(collection).find(condition).toArray(function (err, result) {
       if (err) {

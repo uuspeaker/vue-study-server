@@ -4,7 +4,7 @@ var config      = require('../config.js');
 
 router.prefix('/test')
 
-router.get('/', function (ctx, next) {
+router.get('/mongoos', function (ctx, next) {
   var connection = mysql.createConnection({
     // host     : config.db.host,
     // user     : config.db.user,
