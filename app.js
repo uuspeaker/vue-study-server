@@ -5,6 +5,7 @@ const json = require('koa-json')
 const onerror = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
+const log = require('./util/log.js').getLogger("app.js");
 
 const index = require('./routes/index')
 const users = require('./routes/users')
@@ -46,11 +47,11 @@ app.use(async (ctx, next) => {
   const start = new Date()
   await next()
   const ms = new Date() - start
-  console.log(`${ctx.method} ${ctx.url} - ${ms}ms`)
+  log.info(`${ctx.method} ${ctx.url} - ${ms}ms`)
 })
 
 app.use(async (ctx, next) => {
-  ctx.set('Access-Control-Allow-Origin', '*');
+  ctx.set('Access-Control-Allow-Origin', 'http://localhost');
   await next();
  });
 
@@ -62,7 +63,7 @@ app.use(upload.routes(), upload.allowedMethods())
 
 // error-handling
 app.on('error', (err, ctx) => {
-  console.error('server error', err, ctx)
+  log.error('server error', err, ctx)
 });
 
 module.exports = app

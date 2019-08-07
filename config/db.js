@@ -20,7 +20,8 @@ const config = {
    secretId: 'AKIDNZXUCrbYXHnbZLwBGAp33oHWXlmaeZhc',
    secretKey: 'rcHjwymfM9nFSRAi28zdKm8FveQkfR4W',
    bucket : 'vue-study-1255824916',
-   region : 'ap-shenzhen-fsi'
+   region : 'ap-shenzhen-fsi',
+   maxKeys : 5
  },
  upload: {
    destination: 'upload',

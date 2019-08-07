@@ -27,36 +27,44 @@ module.exports.getObjectUrl = (key) => {
     return url
 }
 
-module.exports.putObject = (location, callback) => {
-  log.info("cos.putObject begin location is ", location);
+module.exports.putObject = async (location, callback) => {
+  log.debug("上传文件开始,locaton", location);
   var key = uuid.v1() + path.extname(location)
-  cos.sliceUploadFile({
+  var result = 1
+  await cos.sliceUploadFile({
     Bucket: config.cos.bucket,
     Region: config.cos.region,
     Key: key,
     //Body: "hello", // 这
     FilePath: location,
     //Body: fs.createReadStream(path), // 这
-    onProgress: function(progressData) {
+    onProgress: (progressData) => {
       log.info(JSON.stringify(progressData));
     }
-  }, function (err, data) {
+  }, (err, data) => {
     if (err) {
-      log.error("cos put object fail",err)
+      log.error("上传文件异常",err)
       throw err
     }
-    log.info("putObject success, result is ",data);
+    log.debug("上传文件结束,data", data);
     callback(data)
   });
 }
 
-module.exports.getObjectList = () => {
-  cos.getBucket({
+module.exports.getObjectList = async (conditon, callback) => {
+  log.debug("查询文件开始,conditon", conditon);
+  await cos.getBucket({
     Bucket: config.cos.bucket,
     Region: config.cos.region,
-    Prefix: '/', // 这里传入列出的文件前缀
-  }, function (err, data) {
-      console.log(err || data.Contents);
+    Prefix: conditon, // 这里传入列出的文件前缀
+    MaxKeys: config.cos.maxKeys,
+  }, (err, data) => {
+    if (err) {
+      log.error("查询文件异常",err)
+      throw err
+    }
+    log.debug("查询文件结束,data", data);
+    callback(data.Contents)
   });
 }
 
