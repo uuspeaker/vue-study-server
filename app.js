@@ -11,6 +11,7 @@ const index = require('./routes/index')
 const users = require('./routes/users')
 const test = require('./routes/test')
 const upload = require('./routes/upload')
+const data = require('./routes/data')
 //const cors = require('koa2-cors');
 
 // error handler
@@ -60,6 +61,7 @@ app.use(index.routes(), index.allowedMethods())
 app.use(users.routes(), users.allowedMethods())
 app.use(test.routes(), users.allowedMethods())
 app.use(upload.routes(), upload.allowedMethods())
+app.use(data.routes(), data.allowedMethods())
 
 // error-handling
 app.on('error', (err, ctx) => {

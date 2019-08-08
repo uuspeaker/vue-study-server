@@ -1,11 +1,12 @@
 const router = require('koa-router')()
-const log = require('../util/log.js').getLogger("upload.js");
+const log = require('../util/log').getLogger("upload");
 const multer = require('koa-multer');
 const path = require('path');
 const fs = require('fs');
-const config = require('../config/db.js');
-const cos = require('../util/cos.js');
-const mongo = require('../util/mongo.js');
+const config = require('../config/db');
+const data = require('../config/data');
+const cos = require('../util/cos');
+const mongo = require('../util/mongo');
 
 let storage = multer.diskStorage({
     destination: path.resolve(config.upload.destination),
@@ -79,6 +80,10 @@ router.get('/exercise', async (ctx, next) => {
     log.debug('/exercise',result)
     ctx.body = {"result": result};
   })
+  //ctx.body = 'exercise query success';
+});
+router.get('/data', async (ctx, next) => {
+  ctx.body = data.result
   //ctx.body = 'exercise query success';
 });
 

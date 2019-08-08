@@ -3,12 +3,14 @@ const log = require('../util/log.js').getLogger("cos.js");
 const uuid = require('node-uuid');
 const fs = require('fs');
 const path = require('path');
+const util = require('util');
 const config = require('../config/db.js')
 
 var cos = new COS({
     SecretId: config.cos.secretId,
     SecretKey: config.cos.secretKey
 });
+cos.getBucketPromisify = util.promisify(cos.getBucket);
 
 module.exports.getObjectUrl = (key) => {
     var url = cos.getObjectUrl({
@@ -54,22 +56,15 @@ module.exports.putObject = (location) => {
 
 module.exports.getObjectList = async (conditon) => {
   log.debug("查询文件开始,conditon", conditon);
-  return new Promise(( resolve, reject ) => {
-  cos.getBucket({
+  const data = await cos.getBucketPromisify({
     Bucket: config.cos.bucket,
     Region: config.cos.region,
     Prefix: conditon, // 这里传入列出的文件前缀
     MaxKeys: config.cos.maxKeys,
-  }, (err, data) => {
-    if (err) {
-      log.error("查询文件异常",err)
-      reject(err)
-    }else {
-      log.debug("查询文件结束,data", data);
-      resolve(data.Contents)
-    }
   });
-})
+  log.debug("查询文件结束,conditon", data);
+  return data
+
 }
 
 module.exports.deleteObject = (key) => {
