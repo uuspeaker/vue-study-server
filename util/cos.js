@@ -1,6 +1,6 @@
 var COS = require('cos-nodejs-sdk-v5');
 const log = require('../util/log.js').getLogger("cos.js");
-const uuid = require('node-uuid');
+const uuid = require('uuid');
 const fs = require('fs');
 const path = require('path');
 const util = require('util');

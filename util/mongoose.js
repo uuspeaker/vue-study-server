@@ -1,96 +1,61 @@
-let mongoose = require('mongoose');
-let mongodbConfig = require('../config/db.js').get('mongodb');
+const util = require('util')
+const mongoose = require('mongoose')
+const config = require('../config/db.js');
 
-    /**
-     * debug 模式
-     */
-    // mongoose.set('debug', true);
+class Mongo {
+    constructor() {
+        this.m = mongoose
+        this.m.connect = util.promisify(this.m.connect)
 
-    /**
-     * 使用 Node 自带 Promise 代替 mongoose 的 Promise
-     */
-    mongoose.Promise = global.Promise;
-
-    // 配置 plugin。此处配置 plugin 的话是全局配置，推荐在 每个 Model 内 自己定义
-    // mongoose.plugin(require('./plugin').updatedAt);
-
-
-    /**
-     * 配置 MongoDb options
-     */
-    function getMongoOptions() {
-        let options = {
-            useMongoClient: true,
-            poolSize: 5, // 连接池中维护的连接数
-            reconnectTries: Number.MAX_VALUE,
-            keepAlive: 120,
-        };
-
-        if (mongodbConfig.get('user')) options.user = mongodbConfig.get('user');
-        if (mongodbConfig.get('pass')) options.pass = mongodbConfig.get('pass');
-        if (mongodbConfig.get('replicaSet').get('name')) options.replicaSet = mongodbConfig.get('replicaSet').get('name');
-        return options;
+        this.model = null
     }
 
-
-    /**
-     * 拼接 MongoDb Uri
-     *
-     * @returns {string}
-     */
-    function getMongoUri() {
-        let mongoUri = 'mongodb://';
-        let dbName = mongodbConfig.get('db');
-        let replicaSet = mongodbConfig.get('replicaSet');
-        if (replicaSet.get('name')) { // 如果配置了 replicaSet 的名字 则使用 replicaSet
-            let members = replicaSet.get('members');
-            for (let member of members) {
-                mongoUri += `${member.host}:${member.port},`;
-            }
-            mongoUri = mongoUri.slice(0, -1); // 去掉末尾逗号
-        } else {
-            mongoUri += `${mongodbConfig.get('host')}:${mongodbConfig.get('port')}`;
-        }
-        mongoUri += `/${dbName}`;
-
-        return mongoUri;
+    disconnect() {
+        this.m.disconnect()
     }
 
-
-    /**
-     * 创建 Mongo 连接，内部维护了一个连接池，全局共享
-     */
-    let mongoClient = mongoose.createConnection(getMongoUri(), getMongoOptions());
-
-    /**
-     * Mongo 连接成功回调
-     */
-    mongoClient.on('connected', function () {
-        console.log('Mongoose connected to ' + getMongoUri());
-    });
-    /**
-     * Mongo 连接失败回调
-     */
-    mongoClient.on('error', function (err) {
-        console.log('Mongoose connection error: ' + err);
-    });
-    /**
-     * Mongo 关闭连接回调
-     */
-    mongoClient.on('disconnected', function () {
-        console.log('Mongoose disconnected');
-    });
-
-
-    /**
-     * 关闭 Mongo 连接
-     */
-    function close() {
-        mongoClient.close();
+    async connect() {
+        return await this.m.connect(config.mongo.host, {
+            useNewUrlParser: true
+        })
     }
 
+    createModel(collection, enumObj, timestamps = false) {
+        const schema = this.m.Schema(enumObj, {
+            timestamps,
+            collection
+        })
+        this.model = this.m.model(collection, schema)
 
-    module.exports = {
-        mongoClient: mongoClient,
-        close: close,
-    };
+        const promisifyList = ['create', 'insertMany', 'update', 'remove', 'find', 'count']
+        promisifyList.forEach(i=>{
+            this.model[i]=util.promisify(this.model[i])
+        })
+    }
+
+    async insert(...arg) {
+        return await this.model.create(...arg)
+    }
+
+    async insertMany(...arg) {
+        return await this.model.insertMany(...arg)
+    }
+
+    async update(condition, updateObj, multi = false) {
+        return await this.model.update(condition, updateObj, { multi })
+    }
+
+    async remove(condition){
+        return await this.model.remove(condition)
+    }
+
+    async find(...arg) {
+        return await this.model.find(...arg)
+    }
+
+    async count(...arg) {
+        return await this.model.count(...arg)
+    }
+}
+
+module.exports = new Mongo()

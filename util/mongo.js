@@ -36,45 +36,7 @@ module.exports.insertOne = function (collection, data, callback) {
     })
   })
 }
-// 插入多个文档数据，传入的data必须为数组
-module.exports.insert = function (collection, data, callback) {
-    connectDB(function (err, db) {
-        if (err) throw err
-        let database = db.db(DB)
-        if (!(data instanceof Array)) {
-            throw new Error('请使用数组传入多个数据，或者调用Insert添加单个数据')
-        }
-        if (data.length === 0) {
-            throw new Error('禁止插入空数组')
-        }
-        database.collection(collection).insertMany(data, function(err, result) {
-            callback(err, result)
-            db.close()
-        })
-    })
-}
-// 删除单个数据
-module.exports.deleteOne = function (collection, condition, callback) {
-    connectDB(function (err, db) {
-        if (err) throw err
-        let database = db.db(DB)
-        database.collection(collection).deleteOne(condition, function (err, result) {
-            callback(err, result)
-            db.close()
-        })
-    })
-}
-// 删除多个数据
-module.exports.delete = function (collection, condition, callback) {
-    connectDB(function (err, db) {
-        if (err) throw err
-        let database = db.db(DB)
-        database.collection(collection).deleteMany(condition, function (err, result) {
-            callback(err, result)
-            db.close()
-        })
-    })
-}
+
 // 查询数据，condition为{}时可以查询该集合下的所有文档
 module.exports.find = async (collection, condition, callback) => {
   log.info(`mongo.find: collecton is ${collection}, condition is`, condition)
