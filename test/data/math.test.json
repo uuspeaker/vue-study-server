@@ -1,0 +1,2032 @@
+{
+  "result": {
+  "TextDetections": [
+    {
+      "DetectedText": "D.61和∠2是内错角",
+      "Confidence": 89,
+      "Polygon": [
+        {
+          "X": 1676,
+          "Y": 74
+        },
+        {
+          "X": 1957,
+          "Y": 74
+        },
+        {
+          "X": 1957,
+          "Y": 108
+        },
+        {
+          "X": 1676,
+          "Y": 108
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":1}}"
+    },
+    {
+      "DetectedText": "2013-2014学年度第二学期阶段性质量检测",
+      "Confidence": 99,
+      "Polygon": [
+        {
+          "X": 360,
+          "Y": 134
+        },
+        {
+          "X": 1199,
+          "Y": 134
+        },
+        {
+          "X": 1199,
+          "Y": 174
+        },
+        {
+          "X": 360,
+          "Y": 174
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":2}}"
+    },
+    {
+      "DetectedText": "6.有下列语句:①两条直线被第二条直线所截,同位角相等;②若∠! +∠2 +∠3=",
+      "Confidence": 92,
+      "Polygon": [
+        {
+          "X": 1645,
+          "Y": 144
+        },
+        {
+          "X": 2734,
+          "Y": 144
+        },
+        {
+          "X": 2734,
+          "Y": 175
+        },
+        {
+          "X": 1645,
+          "Y": 175
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":3}}"
+    },
+    {
+      "DetectedText": "180° ,则∠1、∠2及∠3三个角互为补角;③自变量与因变量都是变量;④相等的角是",
+      "Confidence": 95,
+      "Polygon": [
+        {
+          "X": 1677,
+          "Y": 213
+        },
+        {
+          "X": 2733,
+          "Y": 213
+        },
+        {
+          "X": 2733,
+          "Y": 247
+        },
+        {
+          "X": 1677,
+          "Y": 247
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":4}}"
+    },
+    {
+      "DetectedText": "初一数学试题",
+      "Confidence": 95,
+      "Polygon": [
+        {
+          "X": 611,
+          "Y": 253
+        },
+        {
+          "X": 954,
+          "Y": 253
+        },
+        {
+          "X": 954,
+          "Y": 314
+        },
+        {
+          "X": 611,
+          "Y": 314
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":5}}"
+    },
+    {
+      "DetectedText": "对顶角;⑤同角或等角的补角相等其中正确的个数是",
+      "Confidence": 99,
+      "Polygon": [
+        {
+          "X": 1675,
+          "Y": 281
+        },
+        {
+          "X": 2350,
+          "Y": 281
+        },
+        {
+          "X": 2350,
+          "Y": 318
+        },
+        {
+          "X": 1675,
+          "Y": 318
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":6}}"
+    },
+    {
+      "DetectedText": "[]",
+      "Confidence": 96,
+      "Polygon": [
+        {
+          "X": 2638,
+          "Y": 281
+        },
+        {
+          "X": 2735,
+          "Y": 281
+        },
+        {
+          "X": 2735,
+          "Y": 318
+        },
+        {
+          "X": 2638,
+          "Y": 318
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":7}}"
+    },
+    {
+      "DetectedText": "A.2个",
+      "Confidence": 99,
+      "Polygon": [
+        {
+          "X": 1673,
+          "Y": 352
+        },
+        {
+          "X": 1760,
+          "Y": 352
+        },
+        {
+          "X": 1760,
+          "Y": 386
+        },
+        {
+          "X": 1673,
+          "Y": 386
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":8}}"
+    },
+    {
+      "DetectedText": "B.3个",
+      "Confidence": 99,
+      "Polygon": [
+        {
+          "X": 1927,
+          "Y": 352
+        },
+        {
+          "X": 2014,
+          "Y": 352
+        },
+        {
+          "X": 2014,
+          "Y": 386
+        },
+        {
+          "X": 1927,
+          "Y": 386
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":9}}"
+    },
+    {
+      "DetectedText": "C.4个",
+      "Confidence": 99,
+      "Polygon": [
+        {
+          "X": 2169,
+          "Y": 350
+        },
+        {
+          "X": 2253,
+          "Y": 350
+        },
+        {
+          "X": 2253,
+          "Y": 386
+        },
+        {
+          "X": 2169,
+          "Y": 386
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":10}}"
+    },
+    {
+      "DetectedText": "D.5个",
+      "Confidence": 99,
+      "Polygon": [
+        {
+          "X": 2390,
+          "Y": 349
+        },
+        {
+          "X": 2478,
+          "Y": 349
+        },
+        {
+          "X": 2478,
+          "Y": 386
+        },
+        {
+          "X": 2390,
+          "Y": 386
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":11}}"
+    },
+    {
+      "DetectedText": "三",
+      "Confidence": 97,
+      "Polygon": [
+        {
+          "X": 833,
+          "Y": 387
+        },
+        {
+          "X": 871,
+          "Y": 387
+        },
+        {
+          "X": 871,
+          "Y": 426
+        },
+        {
+          "X": 833,
+          "Y": 426
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":13}}"
+    },
+    {
+      "DetectedText": "题号",
+      "Confidence": 99,
+      "Polygon": [
+        {
+          "X": 246,
+          "Y": 414
+        },
+        {
+          "X": 344,
+          "Y": 414
+        },
+        {
+          "X": 344,
+          "Y": 443
+        },
+        {
+          "X": 246,
+          "Y": 443
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":12}}"
+    },
+    {
+      "DetectedText": "一",
+      "Confidence": 92,
+      "Polygon": [
+        {
+          "X": 429,
+          "Y": 417
+        },
+        {
+          "X": 461,
+          "Y": 417
+        },
+        {
+          "X": 461,
+          "Y": 446
+        },
+        {
+          "X": 429,
+          "Y": 446
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":12}}"
+    },
+    {
+      "DetectedText": "=",
+      "Confidence": 85,
+      "Polygon": [
+        {
+          "X": 515,
+          "Y": 419
+        },
+        {
+          "X": 553,
+          "Y": 419
+        },
+        {
+          "X": 553,
+          "Y": 454
+        },
+        {
+          "X": 515,
+          "Y": 454
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":12}}"
+    },
+    {
+      "DetectedText": "9| 20| 21",
+      "Confidence": 72,
+      "Polygon": [
+        {
+          "X": 607,
+          "Y": 436
+        },
+        {
+          "X": 779,
+          "Y": 436
+        },
+        {
+          "X": 779,
+          "Y": 467
+        },
+        {
+          "X": 607,
+          "Y": 467
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":14}}"
+    },
+    {
+      "DetectedText": "22",
+      "Confidence": 95,
+      "Polygon": [
+        {
+          "X": 833,
+          "Y": 435
+        },
+        {
+          "X": 868,
+          "Y": 435
+        },
+        {
+          "X": 868,
+          "Y": 466
+        },
+        {
+          "X": 833,
+          "Y": 466
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":14}}"
+    },
+    {
+      "DetectedText": "24| 25",
+      "Confidence": 78,
+      "Polygon": [
+        {
+          "X": 1047,
+          "Y": 432
+        },
+        {
+          "X": 1171,
+          "Y": 432
+        },
+        {
+          "X": 1171,
+          "Y": 466
+        },
+        {
+          "X": 1047,
+          "Y": 466
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":15}}"
+    },
+    {
+      "DetectedText": "总分",
+      "Confidence": 99,
+      "Polygon": [
+        {
+          "X": 1211,
+          "Y": 413
+        },
+        {
+          "X": 1294,
+          "Y": 413
+        },
+        {
+          "X": 1294,
+          "Y": 447
+        },
+        {
+          "X": 1211,
+          "Y": 447
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":15}}"
+    },
+    {
+      "DetectedText": "7.已知a+b=m,ab= -4,化简(a +2)(b-2)的结果是",
+      "Confidence": 93,
+      "Polygon": [
+        {
+          "X": 1643,
+          "Y": 422
+        },
+        {
+          "X": 2345,
+          "Y": 422
+        },
+        {
+          "X": 2345,
+          "Y": 454
+        },
+        {
+          "X": 1643,
+          "Y": 454
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":23}}"
+    },
+    {
+      "DetectedText": "[]",
+      "Confidence": 99,
+      "Polygon": [
+        {
+          "X": 2637,
+          "Y": 422
+        },
+        {
+          "X": 2733,
+          "Y": 422
+        },
+        {
+          "X": 2733,
+          "Y": 460
+        },
+        {
+          "X": 2637,
+          "Y": 460
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":24}}"
+    },
+    {
+      "DetectedText": "得分",
+      "Confidence": 99,
+      "Polygon": [
+        {
+          "X": 262,
+          "Y": 485
+        },
+        {
+          "X": 354,
+          "Y": 485
+        },
+        {
+          "X": 354,
+          "Y": 519
+        },
+        {
+          "X": 262,
+          "Y": 519
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":16}}"
+    },
+    {
+      "DetectedText": "A.6",
+      "Confidence": 99,
+      "Polygon": [
+        {
+          "X": 1678,
+          "Y": 493
+        },
+        {
+          "X": 1723,
+          "Y": 493
+        },
+        {
+          "X": 1723,
+          "Y": 524
+        },
+        {
+          "X": 1678,
+          "Y": 524
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":26}}"
+    },
+    {
+      "DetectedText": "B.2m-8",
+      "Confidence": 95,
+      "Polygon": [
+        {
+          "X": 1926,
+          "Y": 492
+        },
+        {
+          "X": 2045,
+          "Y": 492
+        },
+        {
+          "X": 2045,
+          "Y": 526
+        },
+        {
+          "X": 1926,
+          "Y": 526
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":25}}"
+    },
+    {
+      "DetectedText": "C. 2mz^",
+      "Confidence": 69,
+      "Polygon": [
+        {
+          "X": 2165,
+          "Y": 495
+        },
+        {
+          "X": 2241,
+          "Y": 495
+        },
+        {
+          "X": 2241,
+          "Y": 525
+        },
+        {
+          "X": 2165,
+          "Y": 525
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":27}}"
+    },
+    {
+      "DetectedText": "D. -2m",
+      "Confidence": 83,
+      "Polygon": [
+        {
+          "X": 2390,
+          "Y": 493
+        },
+        {
+          "X": 2494,
+          "Y": 493
+        },
+        {
+          "X": 2494,
+          "Y": 524
+        },
+        {
+          "X": 2390,
+          "Y": 524
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":28}}"
+    },
+    {
+      "DetectedText": "裁",
+      "Confidence": 70,
+      "Polygon": [
+        {
+          "X": 56,
+          "Y": 581
+        },
+        {
+          "X": 90,
+          "Y": 581
+        },
+        {
+          "X": 90,
+          "Y": 615
+        },
+        {
+          "X": 56,
+          "Y": 615
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":17}}"
+    },
+    {
+      "DetectedText": "一、选择题:(每题3分,共36分)",
+      "Confidence": 97,
+      "Polygon": [
+        {
+          "X": 203,
+          "Y": 568
+        },
+        {
+          "X": 620,
+          "Y": 568
+        },
+        {
+          "X": 620,
+          "Y": 605
+        },
+        {
+          "X": 203,
+          "Y": 605
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":17}}"
+    },
+    {
+      "DetectedText": ".8.如图所示:直线AB ,CD交于点0,射线0M平分∠AOC,若∠B0D=76°,则LAOM等",
+      "Confidence": 90,
+      "Polygon": [
+        {
+          "X": 1642,
+          "Y": 560
+        },
+        {
+          "X": 2732,
+          "Y": 560
+        },
+        {
+          "X": 2732,
+          "Y": 594
+        },
+        {
+          "X": 1642,
+          "Y": 594
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":29}}"
+    },
+    {
+      "DetectedText": "1.计算:( -2)-1",
+      "Confidence": 89,
+      "Polygon": [
+        {
+          "X": 264,
+          "Y": 638
+        },
+        {
+          "X": 461,
+          "Y": 638
+        },
+        {
+          "X": 461,
+          "Y": 674
+        },
+        {
+          "X": 264,
+          "Y": 674
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":18}}"
+    },
+    {
+      "DetectedText": "[]",
+      "Confidence": 95,
+      "Polygon": [
+        {
+          "X": 1263,
+          "Y": 635
+        },
+        {
+          "X": 1354,
+          "Y": 635
+        },
+        {
+          "X": 1354,
+          "Y": 674
+        },
+        {
+          "X": 1263,
+          "Y": 674
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":22}}"
+    },
+    {
+      "DetectedText": "A.38°",
+      "Confidence": 99,
+      "Polygon": [
+        {
+          "X": 1673,
+          "Y": 700
+        },
+        {
+          "X": 1749,
+          "Y": 700
+        },
+        {
+          "X": 1749,
+          "Y": 730
+        },
+        {
+          "X": 1673,
+          "Y": 730
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":30}}"
+    },
+    {
+      "DetectedText": "B, 36°",
+      "Confidence": 78,
+      "Polygon": [
+        {
+          "X": 1928,
+          "Y": 700
+        },
+        {
+          "X": 2002,
+          "Y": 700
+        },
+        {
+          "X": 2002,
+          "Y": 728
+        },
+        {
+          "X": 1928,
+          "Y": 728
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":31}}"
+    },
+    {
+      "DetectedText": "C.28°",
+      "Confidence": 95,
+      "Polygon": [
+        {
+          "X": 2166,
+          "Y": 699
+        },
+        {
+          "X": 2241,
+          "Y": 699
+        },
+        {
+          "X": 2241,
+          "Y": 731
+        },
+        {
+          "X": 2166,
+          "Y": 731
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":32}}"
+    },
+    {
+      "DetectedText": "D. 24°",
+      "Confidence": 79,
+      "Polygon": [
+        {
+          "X": 2389,
+          "Y": 700
+        },
+        {
+          "X": 2466,
+          "Y": 700
+        },
+        {
+          "X": 2466,
+          "Y": 731
+        },
+        {
+          "X": 2389,
+          "Y": 731
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":33}}"
+    },
+    {
+      "DetectedText": "B.一",
+      "Confidence": 93,
+      "Polygon": [
+        {
+          "X": 558,
+          "Y": 724
+        },
+        {
+          "X": 611,
+          "Y": 724
+        },
+        {
+          "X": 611,
+          "Y": 764
+        },
+        {
+          "X": 558,
+          "Y": 764
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":19}}"
+    },
+    {
+      "DetectedText": "C.0",
+      "Confidence": 99,
+      "Polygon": [
+        {
+          "X": 771,
+          "Y": 723
+        },
+        {
+          "X": 838,
+          "Y": 723
+        },
+        {
+          "X": 838,
+          "Y": 756
+        },
+        {
+          "X": 771,
+          "Y": 756
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":20}}"
+    },
+    {
+      "DetectedText": "D.-方",
+      "Confidence": 80,
+      "Polygon": [
+        {
+          "X": 1028,
+          "Y": 724
+        },
+        {
+          "X": 1100,
+          "Y": 724
+        },
+        {
+          "X": 1100,
+          "Y": 767
+        },
+        {
+          "X": 1028,
+          "Y": 767
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":21}}"
+    },
+    {
+      "DetectedText": "2.下列计算正确的是",
+      "Confidence": 99,
+      "Polygon": [
+        {
+          "X": 260,
+          "Y": 814
+        },
+        {
+          "X": 529,
+          "Y": 814
+        },
+        {
+          "X": 529,
+          "Y": 849
+        },
+        {
+          "X": 260,
+          "Y": 849
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":34}}"
+    },
+    {
+      "DetectedText": "[}",
+      "Confidence": 93,
+      "Polygon": [
+        {
+          "X": 1267,
+          "Y": 809
+        },
+        {
+          "X": 1355,
+          "Y": 809
+        },
+        {
+          "X": 1355,
+          "Y": 849
+        },
+        {
+          "X": 1267,
+          "Y": 849
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":43}}"
+    },
+    {
+      "DetectedText": "M.",
+      "Confidence": 86,
+      "Polygon": [
+        {
+          "X": 1821,
+          "Y": 816
+        },
+        {
+          "X": 1856,
+          "Y": 816
+        },
+        {
+          "X": 1856,
+          "Y": 840
+        },
+        {
+          "X": 1821,
+          "Y": 840
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":60}}"
+    },
+    {
+      "DetectedText": "B.(x2)3 =x'",
+      "Confidence": 82,
+      "Polygon": [
+        {
+          "X": 786,
+          "Y": 880
+        },
+        {
+          "X": 946,
+          "Y": 880
+        },
+        {
+          "X": 946,
+          "Y": 915
+        },
+        {
+          "X": 786,
+          "Y": 915
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":35}}"
+    },
+    {
+      "DetectedText": "0",
+      "Confidence": 75,
+      "Polygon": [
+        {
+          "X": 1883,
+          "Y": 900
+        },
+        {
+          "X": 1918,
+          "Y": 900
+        },
+        {
+          "X": 1918,
+          "Y": 926
+        },
+        {
+          "X": 1883,
+          "Y": 926
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":61}}"
+    },
+    {
+      "DetectedText": "C.",
+      "Confidence": 72,
+      "Polygon": [
+        {
+          "X": 2214,
+          "Y": 936
+        },
+        {
+          "X": 2251,
+          "Y": 936
+        },
+        {
+          "X": 2251,
+          "Y": 967
+        },
+        {
+          "X": 2214,
+          "Y": 967
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":62}}"
+    },
+    {
+      "DetectedText": "3.p",
+      "Confidence": 75,
+      "Polygon": [
+        {
+          "X": 2373,
+          "Y": 937
+        },
+        {
+          "X": 2405,
+          "Y": 937
+        },
+        {
+          "X": 2405,
+          "Y": 967
+        },
+        {
+          "X": 2373,
+          "Y": 967
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":63}}"
+    },
+    {
+      "DetectedText": "C. (2x)2=2x2",
+      "Confidence": 87,
+      "Polygon": [
+        {
+          "X": 290,
+          "Y": 953
+        },
+        {
+          "X": 469,
+          "Y": 953
+        },
+        {
+          "X": 469,
+          "Y": 986
+        },
+        {
+          "X": 290,
+          "Y": 986
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":36}}"
+    },
+    {
+      "DetectedText": "D.x° +x =x3",
+      "Confidence": 69,
+      "Polygon": [
+        {
+          "X": 788,
+          "Y": 952
+        },
+        {
+          "X": 956,
+          "Y": 952
+        },
+        {
+          "X": 956,
+          "Y": 986
+        },
+        {
+          "X": 788,
+          "Y": 986
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":37}}"
+    },
+    {
+      "DetectedText": "3.科学家测得肥皂泡的厚度约为0.000007米，用科学记数法表示为",
+      "Confidence": 97,
+      "Polygon": [
+        {
+          "X": 260,
+          "Y": 1023
+        },
+        {
+          "X": 1132,
+          "Y": 1023
+        },
+        {
+          "X": 1132,
+          "Y": 1056
+        },
+        {
+          "X": 260,
+          "Y": 1056
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":38}}"
+    },
+    {
+      "DetectedText": "[]",
+      "Confidence": 97,
+      "Polygon": [
+        {
+          "X": 1263,
+          "Y": 1021
+        },
+        {
+          "X": 1353,
+          "Y": 1021
+        },
+        {
+          "X": 1353,
+          "Y": 1058
+        },
+        {
+          "X": 1263,
+          "Y": 1058
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":44}}"
+    },
+    {
+      "DetectedText": "8题图",
+      "Confidence": 99,
+      "Polygon": [
+        {
+          "X": 1893,
+          "Y": 1016
+        },
+        {
+          "X": 1961,
+          "Y": 1016
+        },
+        {
+          "X": 1961,
+          "Y": 1048
+        },
+        {
+          "X": 1893,
+          "Y": 1048
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":64}}"
+    },
+    {
+      "DetectedText": "9题图",
+      "Confidence": 99,
+      "Polygon": [
+        {
+          "X": 2306,
+          "Y": 1015
+        },
+        {
+          "X": 2375,
+          "Y": 1015
+        },
+        {
+          "X": 2375,
+          "Y": 1049
+        },
+        {
+          "X": 2306,
+          "Y": 1049
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":65}}"
+    },
+    {
+      "DetectedText": "A.0.7x10 -°米",
+      "Confidence": 86,
+      "Polygon": [
+        {
+          "X": 291,
+          "Y": 1091
+        },
+        {
+          "X": 489,
+          "Y": 1091
+        },
+        {
+          "X": 489,
+          "Y": 1127
+        },
+        {
+          "X": 291,
+          "Y": 1127
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":39}}"
+    },
+    {
+      "DetectedText": "B.0.7 x10-7米",
+      "Confidence": 88,
+      "Polygon": [
+        {
+          "X": 786,
+          "Y": 1093
+        },
+        {
+          "X": 981,
+          "Y": 1093
+        },
+        {
+          "X": 981,
+          "Y": 1124
+        },
+        {
+          "X": 786,
+          "Y": 1124
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":40}}"
+    },
+    {
+      "DetectedText": "9.如图, -把直尺沿直线断开并错位,点E、D、B、F在同-条直线上,若∠ADE = 125°,",
+      "Confidence": 89,
+      "Polygon": [
+        {
+          "X": 1636,
+          "Y": 1115
+        },
+        {
+          "X": 2724,
+          "Y": 1115
+        },
+        {
+          "X": 2724,
+          "Y": 1151
+        },
+        {
+          "X": 1636,
+          "Y": 1151
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":66}}"
+    },
+    {
+      "DetectedText": "C.7x10-7米",
+      "Confidence": 96,
+      "Polygon": [
+        {
+          "X": 289,
+          "Y": 1160
+        },
+        {
+          "X": 457,
+          "Y": 1160
+        },
+        {
+          "X": 457,
+          "Y": 1196
+        },
+        {
+          "X": 289,
+          "Y": 1196
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":41}}"
+    },
+    {
+      "DetectedText": "D.7x10~°米",
+      "Confidence": 95,
+      "Polygon": [
+        {
+          "X": 784,
+          "Y": 1160
+        },
+        {
+          "X": 953,
+          "Y": 1160
+        },
+        {
+          "X": 953,
+          "Y": 1195
+        },
+        {
+          "X": 784,
+          "Y": 1195
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":42}}"
+    },
+    {
+      "DetectedText": "则C DBC的度数为",
+      "Confidence": 85,
+      "Polygon": [
+        {
+          "X": 1671,
+          "Y": 1185
+        },
+        {
+          "X": 1908,
+          "Y": 1185
+        },
+        {
+          "X": 1908,
+          "Y": 1221
+        },
+        {
+          "X": 1671,
+          "Y": 1221
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":67}}"
+    },
+    {
+      "DetectedText": "{]",
+      "Confidence": 97,
+      "Polygon": [
+        {
+          "X": 2633,
+          "Y": 1183
+        },
+        {
+          "X": 2730,
+          "Y": 1183
+        },
+        {
+          "X": 2730,
+          "Y": 1218
+        },
+        {
+          "X": 2633,
+          "Y": 1218
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":68}}"
+    },
+    {
+      "DetectedText": "4.生活中太阳能热水器已进人千家万户,你知道吗,在利用太阳能热水器米加热水的过",
+      "Confidence": 99,
+      "Polygon": [
+        {
+          "X": 261,
+          "Y": 1233
+        },
+        {
+          "X": 1349,
+          "Y": 1233
+        },
+        {
+          "X": 1349,
+          "Y": 1267
+        },
+        {
+          "X": 261,
+          "Y": 1267
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":45}}"
+    },
+    {
+      "DetectedText": "A.55",
+      "Confidence": 99,
+      "Polygon": [
+        {
+          "X": 1669,
+          "Y": 1253
+        },
+        {
+          "X": 1740,
+          "Y": 1253
+        },
+        {
+          "X": 1740,
+          "Y": 1287
+        },
+        {
+          "X": 1669,
+          "Y": 1287
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":69}}"
+    },
+    {
+      "DetectedText": "B. 65",
+      "Confidence": 79,
+      "Polygon": [
+        {
+          "X": 1922,
+          "Y": 1253
+        },
+        {
+          "X": 1984,
+          "Y": 1253
+        },
+        {
+          "X": 1984,
+          "Y": 1287
+        },
+        {
+          "X": 1922,
+          "Y": 1287
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":70}}"
+    },
+    {
+      "DetectedText": "D.125°",
+      "Confidence": 94,
+      "Polygon": [
+        {
+          "X": 2385,
+          "Y": 1253
+        },
+        {
+          "X": 2471,
+          "Y": 1253
+        },
+        {
+          "X": 2471,
+          "Y": 1288
+        },
+        {
+          "X": 2385,
+          "Y": 1288
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":71}}"
+    },
+    {
+      "DetectedText": "程中,热水器里的水温随所晒时间的长短而变化,这个问题中因变量是",
+      "Confidence": 99,
+      "Polygon": [
+        {
+          "X": 291,
+          "Y": 1302
+        },
+        {
+          "X": 1175,
+          "Y": 1302
+        },
+        {
+          "X": 1175,
+          "Y": 1337
+        },
+        {
+          "X": 291,
+          "Y": 1337
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":46}}"
+    },
+    {
+      "DetectedText": "[]",
+      "Confidence": 94,
+      "Polygon": [
+        {
+          "X": 1256,
+          "Y": 1302
+        },
+        {
+          "X": 1351,
+          "Y": 1302
+        },
+        {
+          "X": 1351,
+          "Y": 1338
+        },
+        {
+          "X": 1256,
+          "Y": 1338
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":58}}"
+    },
+    {
+      "DetectedText": "10. - -辆汽车以平均速度60千米/时的速度在路程为100千米的公路上行驶,则它离终",
+      "Confidence": 93,
+      "Polygon": [
+        {
+          "X": 1641,
+          "Y": 1327
+        },
+        {
+          "X": 2728,
+          "Y": 1327
+        },
+        {
+          "X": 2728,
+          "Y": 1361
+        },
+        {
+          "X": 1641,
+          "Y": 1361
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":72}}"
+    },
+    {
+      "DetectedText": "A.水的温度",
+      "Confidence": 99,
+      "Polygon": [
+        {
+          "X": 290,
+          "Y": 1372
+        },
+        {
+          "X": 442,
+          "Y": 1372
+        },
+        {
+          "X": 442,
+          "Y": 1407
+        },
+        {
+          "X": 290,
+          "Y": 1407
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":47}}"
+    },
+    {
+      "DetectedText": "B.太阳光强弱",
+      "Confidence": 99,
+      "Polygon": [
+        {
+          "X": 784,
+          "Y": 1371
+        },
+        {
+          "X": 966,
+          "Y": 1371
+        },
+        {
+          "X": 966,
+          "Y": 1406
+        },
+        {
+          "X": 784,
+          "Y": 1406
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":48}}"
+    },
+    {
+      "DetectedText": "点的路程s(千米)与所用的时间t(时)的关系表达式为(",
+      "Confidence": 99,
+      "Polygon": [
+        {
+          "X": 1684,
+          "Y": 1395
+        },
+        {
+          "X": 2389,
+          "Y": 1395
+        },
+        {
+          "X": 2389,
+          "Y": 1430
+        },
+        {
+          "X": 1684,
+          "Y": 1430
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":72}}"
+    },
+    {
+      "DetectedText": "C.所晒时间",
+      "Confidence": 99,
+      "Polygon": [
+        {
+          "X": 289,
+          "Y": 1439
+        },
+        {
+          "X": 440,
+          "Y": 1439
+        },
+        {
+          "X": 440,
+          "Y": 1474
+        },
+        {
+          "X": 289,
+          "Y": 1474
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":49}}"
+    },
+    {
+      "DetectedText": "D.热水器",
+      "Confidence": 99,
+      "Polygon": [
+        {
+          "X": 784,
+          "Y": 1439
+        },
+        {
+          "X": 907,
+          "Y": 1439
+        },
+        {
+          "X": 907,
+          "Y": 1471
+        },
+        {
+          "X": 784,
+          "Y": 1471
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":50}}"
+    },
+    {
+      "DetectedText": "A.s =60t",
+      "Confidence": 86,
+      "Polygon": [
+        {
+          "X": 1681,
+          "Y": 1483
+        },
+        {
+          "X": 1795,
+          "Y": 1483
+        },
+        {
+          "X": 1795,
+          "Y": 1515
+        },
+        {
+          "X": 1681,
+          "Y": 1515
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":73}}"
+    },
+    {
+      "DetectedText": "B. s=60",
+      "Confidence": 72,
+      "Polygon": [
+        {
+          "X": 1923,
+          "Y": 1477
+        },
+        {
+          "X": 2025,
+          "Y": 1477
+        },
+        {
+          "X": 2025,
+          "Y": 1510
+        },
+        {
+          "X": 1923,
+          "Y": 1510
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":74}}"
+    },
+    {
+      "DetectedText": "C.",
+      "Confidence": 97,
+      "Polygon": [
+        {
+          "X": 2159,
+          "Y": 1485
+        },
+        {
+          "X": 2225,
+          "Y": 1485
+        },
+        {
+          "X": 2225,
+          "Y": 1523
+        },
+        {
+          "X": 2159,
+          "Y": 1523
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":75}}"
+    },
+    {
+      "DetectedText": "D. s= 100 -60t",
+      "Confidence": 77,
+      "Polygon": [
+        {
+          "X": 2385,
+          "Y": 1482
+        },
+        {
+          "X": 2571,
+          "Y": 1482
+        },
+        {
+          "X": 2571,
+          "Y": 1515
+        },
+        {
+          "X": 2385,
+          "Y": 1515
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":76}}"
+    },
+    {
+      "DetectedText": "5.如图所示，下列各组判断错误的是",
+      "Confidence": 99,
+      "Polygon": [
+        {
+          "X": 260,
+          "Y": 1511
+        },
+        {
+          "X": 717,
+          "Y": 1511
+        },
+        {
+          "X": 717,
+          "Y": 1545
+        },
+        {
+          "X": 260,
+          "Y": 1545
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":51}}"
+    },
+    {
+      "DetectedText": "[]",
+      "Confidence": 97,
+      "Polygon": [
+        {
+          "X": 1260,
+          "Y": 1508
+        },
+        {
+          "X": 1349,
+          "Y": 1508
+        },
+        {
+          "X": 1349,
+          "Y": 1548
+        },
+        {
+          "X": 1260,
+          "Y": 1548
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":59}}"
+    },
+    {
+      "DetectedText": "A.∠1和∠4是对顶角",
+      "Confidence": 99,
+      "Polygon": [
+        {
+          "X": 289,
+          "Y": 1580
+        },
+        {
+          "X": 574,
+          "Y": 1580
+        },
+        {
+          "X": 574,
+          "Y": 1613
+        },
+        {
+          "X": 289,
+          "Y": 1613
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":52}}"
+    },
+    {
+      "DetectedText": "11.图①是-一个长为2a,宽为2b(a >b)的长方形,用剪刀沿图",
+      "Confidence": 94,
+      "Polygon": [
+        {
+          "X": 1638,
+          "Y": 1570
+        },
+        {
+          "X": 2421,
+          "Y": 1570
+        },
+        {
+          "X": 2421,
+          "Y": 1605
+        },
+        {
+          "X": 1638,
+          "Y": 1605
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":77}}"
+    },
+    {
+      "DetectedText": "B.∠2和∠3是同位角",
+      "Confidence": 97,
+      "Polygon": [
+        {
+          "X": 288,
+          "Y": 1650
+        },
+        {
+          "X": 572,
+          "Y": 1650
+        },
+        {
+          "X": 572,
+          "Y": 1685
+        },
+        {
+          "X": 288,
+          "Y": 1685
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":53}}"
+    },
+    {
+      "DetectedText": "中虚线(对称轴)剪开,把它分成四块形状和大小都一样的",
+      "Confidence": 97,
+      "Polygon": [
+        {
+          "X": 1682,
+          "Y": 1641
+        },
+        {
+          "X": 2420,
+          "Y": 1641
+        },
+        {
+          "X": 2420,
+          "Y": 1674
+        },
+        {
+          "X": 1682,
+          "Y": 1674
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":78}}"
+    },
+    {
+      "DetectedText": "C.∠2和∠4是同旁内角.",
+      "Confidence": 95,
+      "Polygon": [
+        {
+          "X": 287,
+          "Y": 1718
+        },
+        {
+          "X": 603,
+          "Y": 1718
+        },
+        {
+          "X": 603,
+          "Y": 1755
+        },
+        {
+          "X": 287,
+          "Y": 1755
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":54}}"
+    },
+    {
+      "DetectedText": "1",
+      "Confidence": 99,
+      "Polygon": [
+        {
+          "X": 1080,
+          "Y": 1696
+        },
+        {
+          "X": 1116,
+          "Y": 1696
+        },
+        {
+          "X": 1116,
+          "Y": 1728
+        },
+        {
+          "X": 1080,
+          "Y": 1728
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":55}}"
+    },
+    {
+      "DetectedText": "小长方形,然后按图②那样拼成一个正方形,则中间空的部",
+      "Confidence": 98,
+      "Polygon": [
+        {
+          "X": 1683,
+          "Y": 1710
+        },
+        {
+          "X": 2423,
+          "Y": 1710
+        },
+        {
+          "X": 2423,
+          "Y": 1744
+        },
+        {
+          "X": 1683,
+          "Y": 1744
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":79}}"
+    },
+    {
+      "DetectedText": "0.",
+      "Confidence": 67,
+      "Polygon": [
+        {
+          "X": 2485,
+          "Y": 1699
+        },
+        {
+          "X": 2529,
+          "Y": 1699
+        },
+        {
+          "X": 2529,
+          "Y": 1734
+        },
+        {
+          "X": 2485,
+          "Y": 1734
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":79}}"
+    },
+    {
+      "DetectedText": "11题图.",
+      "Confidence": 86,
+      "Polygon": [
+        {
+          "X": 2532,
+          "Y": 1710
+        },
+        {
+          "X": 2618,
+          "Y": 1710
+        },
+        {
+          "X": 2618,
+          "Y": 1742
+        },
+        {
+          "X": 2532,
+          "Y": 1742
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":79}}"
+    },
+    {
+      "DetectedText": "初-数学试题第1页(共8.页)",
+      "Confidence": 98,
+      "Polygon": [
+        {
+          "X": 578,
+          "Y": 1763
+        },
+        {
+          "X": 956,
+          "Y": 1763
+        },
+        {
+          "X": 956,
+          "Y": 1799
+        },
+        {
+          "X": 578,
+          "Y": 1799
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":56}}"
+    },
+    {
+      "DetectedText": "5题图",
+      "Confidence": 99,
+      "Polygon": [
+        {
+          "X": 1140,
+          "Y": 1790
+        },
+        {
+          "X": 1213,
+          "Y": 1790
+        },
+        {
+          "X": 1213,
+          "Y": 1823
+        },
+        {
+          "X": 1140,
+          "Y": 1823
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":57}}"
+    },
+    {
+      "DetectedText": "初-数学试题第2页(共8页)",
+      "Confidence": 98,
+      "Polygon": [
+        {
+          "X": 1954,
+          "Y": 1777
+        },
+        {
+          "X": 2331,
+          "Y": 1777
+        },
+        {
+          "X": 2331,
+          "Y": 1813
+        },
+        {
+          "X": 1954,
+          "Y": 1813
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":80}}"
+    }
+  ],
+  "Language": "zh",
+  "RequestId": "3aefdf83-3d74-443f-af05-629dc72e185f"
+}
+}
