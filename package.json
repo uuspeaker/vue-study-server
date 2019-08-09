@@ -5,6 +5,7 @@
   "scripts": {
     "start": "supervisor bin/www",
     "dev": "./node_modules/.bin/nodemon bin/www",
+    "test": "mocha ./test/*.js",
     "prd": "pm2 start bin/www"
   },
   "dependencies": {
@@ -37,6 +38,7 @@
     "uuid": "^3.3.2"
   },
   "devDependencies": {
+    "mocha": "^6.2.0",
     "nodemon": "^1.19.1"
   }
 }
