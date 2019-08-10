@@ -5,7 +5,7 @@
   "scripts": {
     "start": "supervisor bin/www",
     "dev": "./node_modules/.bin/nodemon bin/www",
-    "test": "mocha ./test/*.js",
+    "test": "mocha ./test/service/*.js",
     "prd": "pm2 start bin/www"
   },
   "dependencies": {
