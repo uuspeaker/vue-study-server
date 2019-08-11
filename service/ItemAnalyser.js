@@ -136,6 +136,9 @@ class ItemAnalyser{
       var sortedData = this.validItems.sort((a,b) => {
         return a.itemNo - b.itemNo
       })
+      for (var i = 0; i < sortedData.length; i++) {
+        sortedData[i].orderNo = i
+      }
       log.debug("排序结束",sortedData)
       this.validItems = sortedData
       return sortedData
