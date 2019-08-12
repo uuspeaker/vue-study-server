@@ -29,20 +29,20 @@ let fileFilter = (ctx, file ,cb)=>{
 let upload = multer({ storage: storage, fileFilter: fileFilter });
 
 router.post('/upload', upload.single('file'), async (ctx, next) => {
-  log.debug("处理开始")
   var file = ctx.req.file
-  ctx.body = {"result": 1};
-  var result =1
   if (file){
     var result = await cos.putObject(file.path)
+    log.debug("上传文件开始，临时文件保存在：file.path",file.path)
     var ocrResult = await ocr.scanImageUrl("https://" + result.Location)
     log.debug("文件ocr扫描结果为",ocrResult)
-    var testPaper = new TestPaper(result.Location,ocrResult)
-    testPaper.printSubjects()
-    ctx.body.result = testPaper.getSubjects()
-
-    var data = {userId: 11,fileName:file.filename, location: result.Location, createDate: new Date(), status: 1}
-    //mongo.insertOne("exercise", data)
+    var testPaper = new TestPaper(file.path,ocrResult)
+    await testPaper.init()
+    var testPaperInfo = {
+      userId: 123,
+      subjects: testPaper.getSubjectInfos()
+    }
+    mongo.insertOne("TestPaper", testPaperInfo)
+    ctx.body = testPaperInfo
 
   } else {
       ctx.body = 'upload error';
@@ -77,14 +77,13 @@ router.get('/upload2', async (ctx, next) => {
   });
 });
 
-router.get('/exercise', async (ctx, next) => {
+router.get('/testPaper', async (ctx, next) => {
   var data = {}
-  await mongo.find("exercise",{}, async (result) => {
-    log.debug('/exercise',result)
-    ctx.body = {"result": result};
-  })
+  ctx.body = await mongo.find("TestPaper",{})
+
   //ctx.body = 'exercise query success';
 });
+
 router.get('/data', async (ctx, next) => {
   ctx.body = data.result
   //ctx.body = 'exercise query success';

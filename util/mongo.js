@@ -38,19 +38,21 @@ module.exports.insertOne = function (collection, data, callback) {
 }
 
 // 查询数据，condition为{}时可以查询该集合下的所有文档
-module.exports.find = async (collection, condition, callback) => {
+module.exports.find = async (collection, condition) => {
   log.info(`mongo.find: collecton is ${collection}, condition is`, condition)
-  await connectDB(function (db) {
+  return new Promise(( resolve, reject ) => {
+  connectDB(function (db) {
     db.collection(collection).find(condition).toArray(function (err, result) {
       if (err) {
         log.error("mongo query fail",err)
         db.close()
-        throw err
+        reject(err)
       }
       log.info("mongo query result",result)
-      callback(result)
       db.close()
+      resolve(result)
     })
+  })
   })
 }
 module.exports.find2 = async (collection, condition) => {

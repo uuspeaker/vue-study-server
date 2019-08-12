@@ -1,10 +1,12 @@
 const log = require('../../util/log').getLogger("TestPaper");
 const path = require('path')
+const uuid = require('uuid')
 const Subject = require('./Subject')
 
 class TestPaper{
     constructor(sourceUrl,sourceData){
       //log.debug("试卷原始数据",sourceData)
+      this.paperName = uuid.v1()
       //原始图片地址
       this.sourceUrl = sourceUrl;
       //原始数据
@@ -13,12 +15,10 @@ class TestPaper{
       this.possibleSubjects = []
       //以数字开头的,X坐标对齐且数值正常的数据
       this.validSubjects = []
-      //封装好的题目
-      this.constructedSubjects = []
       //题目截图区域
       this.subjectPolygons = []
       //每道题完整内容
-      this.subjectContents = []
+      this.subjectInfos = []
       //试卷的起始坐标
       this.paperPolygon = {
         minX:999999,
@@ -29,27 +29,29 @@ class TestPaper{
       //题目的最大宽度
       this.maxSubjectWidth = 0
 
+
+    }
+
+    async init(){
       this.calculatePaperStructure()
       this.extractPosibleSubject()
       this.extractValidSubject()
       this.initMaxSubjectLength()
       this.sortSubjects()
-      this.constructSubjects()
-      //this.analyseSubjectPolygons()
-      //this.analyseSubjectContents()
+      await this.constructSubjects()
     }
 
+    getName(){return this.paperName}
     getSourceUrl(){return this.sourceUrl}
     getMinX(){return this.paperPolygon.minX}
     getMaxX(){return this.paperPolygon.maxX}
     getMinY(){return this.paperPolygon.minY}
     getMaxY(){return this.paperPolygon.maxY}
-    getSubjects(){return this.constructedSubjects}
     getLine(lineNo){return this.sourceData[lineNo]}
     getSubjectCount(){return this.validSubjects.length}
     getDataCount(){return this.sourceData.length}
     getSubjectPolygons(){return this.subjectPolygons}
-    getSubjectContentss(){return this.subjectContents}
+    getSubjectInfos(){return this.subjectInfos}
     getPaperPolygon(){return this.paperPolygon}
     getMaxSubjectWidth(){return this.maxSubjectWidth}
 
@@ -58,14 +60,6 @@ class TestPaper{
         return this.validSubjects[sortNo-1]
       }else{
         log.error(`编号输入错误，请输入1-${this.validSubjects.length}范围内的编号，实际输入${sortNo}`)
-      }
-    }
-
-    getSubject(sortNo){
-      if(sortNo && sortNo >= 1 && sortNo <= this.constructedSubjects.length){
-        return this.constructedSubjects[sortNo-1]
-      }else{
-        log.error(`编号输入错误，请输入1-${this.constructedSubjects.length}范围内的编号，实际输入${sortNo}`)
       }
     }
 
@@ -191,25 +185,13 @@ class TestPaper{
       return sortedData
     }
 
-    constructSubjects(){
+    async constructSubjects(){
       log.debug("开始组装题目数据")
       var length = this.validSubjects.length
       for (var i = 0; i < length; i++) {
         var subject = new Subject(this.validSubjects[i], this)
-        this.constructedSubjects.push(subject)
-      }
-    }
-
-    drawSubjects(targetDir){
-      var length = this.constructedSubjects.length
-      for (var i = 0; i < length; i++) {
-        this.constructedSubjects[i].draw(targetDir)
-      }
-    }
-    printSubjects(){
-      var length = this.constructedSubjects.length
-      for (var i = 0; i < length; i++) {
-        this.constructedSubjects[i].print()
+        await subject.init()
+        this.subjectInfos.push(subject.getInfo())
       }
     }
 

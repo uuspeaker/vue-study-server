@@ -52,7 +52,7 @@ app.use(async (ctx, next) => {
 })
 
 app.use(async (ctx, next) => {
-  ctx.set('Access-Control-Allow-Origin', 'http://localhost');
+  ctx.set('Access-Control-Allow-Origin', '*');
   await next();
  });
 

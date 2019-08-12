@@ -1,27 +1,42 @@
 const log = require('../../util/log').getLogger("Subject");
-var fs = require('fs');
-var path = require('path');
+const fs = require('fs');
+const cos = require('../../util/cos.js')
+const path = require('path');
 const graphic = require('../../util/graphic')
 
 //绘图时的坐偏移
 const leftMargin = 10
 //绘图时的右偏移移
 const rightMargin = 10
-var testPaper
 
 class Subject{
   constructor(subjectData, myTestPaper){
     this.subjectData = subjectData
-    testPaper = myTestPaper
+    this.testPaper = myTestPaper
+    this.imageUrl = ''
     this.area = []
     //this.content = []
-    this.contentStr = []
+    this.content = []
+    this.targetDir = `./test/tmp/${myTestPaper.getName()}`
   }
 
   getMinX(){return this.subjectData.Polygon[0].X}
   getMinY(){return this.subjectData.Polygon[0].Y}
   getTitle(){return this.subjectData.DetectedText}
-  getTestPaper(){return testPaper}
+  getTestPaper(){return this.testPaper}
+
+  async init(){
+    this.calculateArea()
+    await this.cutImage()
+    this.calculateContent()
+  }
+
+  getInfo(){
+    return {
+      imageUrl: this.imageUrl,
+      content: this.content
+    }
+  }
 
   isLastSubject(){
     if(this.subjectData.sortNo == this.getTestPaper().getSubjectCount()){
@@ -115,57 +130,64 @@ class Subject{
     ]
   }
 
-  draw(targetDir){
-    this.calculateArea()
+  async cutImage(){
     log.debug("开始切图")
     var areaType = this.getAreaType()
     if(areaType == 1){//正常区域
-      this.drawNormal(targetDir)
+      await this.drawNormal()
     }else if(areaType == 2){//翻页题目
-      this.drawFlipOver(targetDir)
+      await this.drawFlipOver()
     }else if(areaType == 3){//最后一题
-      this.drawLast(targetDir)
+      await this.drawLast()
     }
   }
 
-  mkdir(targetDir){
-    fs.mkdir(targetDir,(result,err)=>{
+  mkdir(){
+    fs.mkdir(this.targetDir,(result,err)=>{
       if(err){
-        log.error('创建目录失败',targetDir,err)
+        log.error('创建目录失败',this.targetDir,err)
       }
     })
   }
 
-  drawNormal(targetDir){
-    this.mkdir(targetDir)
+  async drawNormal(){
+    this.mkdir()
     var sourceUrl = this.getTestPaper().getSourceUrl()
     var extname = path.extname(sourceUrl)
-    var targetUrl = `${targetDir}/${this.subjectData.sortNo}${extname}`
+    var targetUrl = `${this.targetDir}/${this.subjectData.sortNo}${extname}`
     log.debug(`绘制题目`,targetUrl,this.area)
-    graphic.cut(sourceUrl, targetUrl, this.area[0].width + leftMargin + rightMargin, this.area[0].height, this.area[0].X - leftMargin, this.area[0].Y)
+    await graphic.cut(sourceUrl, targetUrl, this.area[0].width + leftMargin + rightMargin, this.area[0].height, this.area[0].X - leftMargin, this.area[0].Y)
+    var cosObject = await cos.putObject(targetUrl)
+    this.imageUrl = cosObject.Location
   }
 
-  async drawFlipOver(targetDir){
-    this.mkdir(targetDir)
+  async drawFlipOver(){
+    this.mkdir()
     var sourceUrl = this.getTestPaper().getSourceUrl()
     var extname = path.extname(sourceUrl)
-    var targetUrl = `${targetDir}/${this.subjectData.sortNo}${extname}`
+    var targetUrl = `${this.targetDir}/${this.subjectData.sortNo}${extname}`
     var tmpUrls = []
     for (var i = 0; i < this.area.length; i++) {
-      var tmpTargetUrl = `${targetDir}/${this.subjectData.sortNo}-${i}${extname}`
+      var tmpTargetUrl = `${this.targetDir}/${this.subjectData.sortNo}-${i}${extname}`
       tmpUrls.push(tmpTargetUrl)
       log.debug(`绘制题目`,tmpTargetUrl,this.area[i])
       await graphic.cut(sourceUrl, tmpTargetUrl, this.area[i].width + leftMargin + rightMargin, this.area[i].height, this.area[i].X - leftMargin, this.area[i].Y)
     }
     //合并图片，并将原来多余的图片删除
-    graphic.combine(tmpUrls[0], tmpUrls[1], targetUrl)
+    await graphic.combine(tmpUrls[0], tmpUrls[1], targetUrl)
+    var cosObject = await cos.putObject(targetUrl)
+    this.imageUrl = cosObject.Location
   }
 
-  drawLast(targetDir){
-    this.drawNormal(targetDir)
+  savePicture(targetUrl){
+
   }
 
-  extractContent(){
+  drawLast(){
+    this.drawNormal()
+  }
+
+  calculateContent(){
     this.calculateArea()
     log.debug(`开始提取sortNo${this.subjectData.sortNo}的内容`)
     for (var i = 0; i < this.area.length; i++) {
@@ -180,19 +202,11 @@ class Subject{
         //log.debug('比较lineData',lineData, 'inX', inX, 'inY', inY)
         if(inX && inY){
           //this.content.push(lineObject)
-          this.contentStr.push(lineObject.getTitle())
+          this.content.push(lineObject.getTitle())
         }
       }
     }
   }
-
-  print(){
-    if(this.contentStr.length == 0){
-      this.extractContent()
-    }
-    log.debug('题目内容为',this.contentStr)
-  }
-
 
 }
 
