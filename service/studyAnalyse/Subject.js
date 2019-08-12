@@ -7,28 +7,21 @@ const graphic = require('../../util/graphic')
 const leftMargin = 10
 //绘图时的右偏移移
 const rightMargin = 10
+var testPaper
 
 class Subject{
-  constructor(subjectData, testPaper){
+  constructor(subjectData, myTestPaper){
     this.subjectData = subjectData
-    this.testPaper = testPaper
-    this.area = {}
+    testPaper = myTestPaper
+    this.area = []
+    //this.content = []
+    this.contentStr = []
   }
 
   getMinX(){return this.subjectData.Polygon[0].X}
   getMinY(){return this.subjectData.Polygon[0].Y}
   getTitle(){return this.subjectData.DetectedText}
-  getTestPaper(){return this.testPaper}
-
-  getContent(){
-
-  }
-
-  getImage(){
-
-  }
-
-
+  getTestPaper(){return testPaper}
 
   isLastSubject(){
     if(this.subjectData.sortNo == this.getTestPaper().getSubjectCount()){
@@ -67,6 +60,10 @@ class Subject{
   }
 
   calculateArea(){
+    if(this.area.length > 0){
+      //log.info('已经计算过题目区域，不再重复计算')
+      return
+    }
     var areaType = this.getAreaType()
     if(areaType == 1){//正常区域
       this.calculateNormalArea()
@@ -77,7 +74,7 @@ class Subject{
     }else{
       log.error('未知的题目区域类型，无法计算',areaType)
     }
-    log.debug("计算题目坐标区域",areaType)
+    log.debug("计算题目坐标区域完成")
   }
 
   //计算正常题目坐标
@@ -168,8 +165,32 @@ class Subject{
     this.drawNormal(targetDir)
   }
 
-  calculateContent(){
+  extractContent(){
+    this.calculateArea()
+    log.debug(`开始提取sortNo${this.subjectData.sortNo}的内容`)
+    for (var i = 0; i < this.area.length; i++) {
+      var testPaperLength = this.getTestPaper().getDataCount()
+      for (var j = 0; j < testPaperLength; j++) {
+        var lineData = this.getTestPaper().getLine(j)
+        var lineObject = new Subject(lineData, this.getTestPaper())
+        var offsetX = lineObject.getMinX() - this.area[i].X
+        var inX = (offsetX >= 0 && offsetX <= this.area[i].width)
+        var offsetY = lineObject.getMinY() - this.area[i].Y
+        var inY = (offsetY >= 0 && offsetY < this.area[i].height)
+        //log.debug('比较lineData',lineData, 'inX', inX, 'inY', inY)
+        if(inX && inY){
+          //this.content.push(lineObject)
+          this.contentStr.push(lineObject.getTitle())
+        }
+      }
+    }
+  }
 
+  print(){
+    if(this.contentStr.length == 0){
+      this.extractContent()
+    }
+    log.debug('题目内容为',this.contentStr)
   }
 
 

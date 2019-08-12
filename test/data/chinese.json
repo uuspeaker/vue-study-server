@@ -1,1802 +1,2007 @@
 {
-  "result": {
   "TextDetections": [
     {
-      "DetectedText": "扬州中学教育集团树人学校九年级第二次模拟考试",
-      "Confidence": 99,
+      "DetectedText": "2014年春期_ -年级期中调研试卷",
+      "Confidence": 89,
       "Polygon": [
         {
-          "X": 206,
-          "Y": 36
+          "X": 332,
+          "Y": 59
         },
         {
-          "X": 1110,
-          "Y": 36
+          "X": 959,
+          "Y": 59
         },
         {
-          "X": 1110,
-          "Y": 83
+          "X": 959,
+          "Y": 106
         },
         {
-          "X": 206,
-          "Y": 83
-        }
-      ],
-      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":1}}"
-    },
-    {
-      "DetectedText": "英语试卷",
-      "Confidence": 99,
-      "Polygon": [
-        {
-          "X": 561,
-          "Y": 124
-        },
-        {
-          "X": 721,
-          "Y": 124
-        },
-        {
-          "X": 721,
-          "Y": 170
-        },
-        {
-          "X": 561,
-          "Y": 170
-        }
-      ],
-      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":2}}"
-    },
-    {
-      "DetectedText": "2014.5",
-      "Confidence": 94,
-      "Polygon": [
-        {
-          "X": 848,
-          "Y": 140
-        },
-        {
-          "X": 923,
-          "Y": 140
-        },
-        {
-          "X": 923,
-          "Y": 165
-        },
-        {
-          "X": 848,
-          "Y": 165
+          "X": 332,
+          "Y": 106
         }
       ],
       "AdvancedInfo": "{\"Parag\":{\"ParagNo\":3}}"
     },
     {
-      "DetectedText": "说明:",
-      "Confidence": 99,
+      "DetectedText": "例: ( 沉甸甸)的水桶",
+      "Confidence": 82,
       "Polygon": [
         {
-          "X": 46,
-          "Y": 196
+          "X": 1193,
+          "Y": 57
         },
         {
-          "X": 112,
-          "Y": 196
+          "X": 1478,
+          "Y": 57
         },
         {
-          "X": 112,
-          "Y": 226
+          "X": 1478,
+          "Y": 88
         },
         {
-          "X": 46,
-          "Y": 226
-        }
-      ],
-      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":4}}"
-    },
-    {
-      "DetectedText": "1本试卷共8页,包含选择题(第1题~第45题，共0分)、非选择题(第46题~第81题，共60分)两部分。",
-      "Confidence": 97,
-      "Polygon": [
-        {
-          "X": 45,
-          "Y": 241
-        },
-        {
-          "X": 1223,
-          "Y": 241
-        },
-        {
-          "X": 1223,
-          "Y": 274
-        },
-        {
-          "X": 45,
-          "Y": 274
-        }
-      ],
-      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":5}}"
-    },
-    {
-      "DetectedText": "满分120分，考试时间为100分钟。考试结束后，请将本试卷和答题卡一并交回。",
-      "Confidence": 97,
-      "Polygon": [
-        {
-          "X": 80,
-          "Y": 279
-        },
-        {
-          "X": 952,
-          "Y": 279
-        },
-        {
-          "X": 952,
-          "Y": 310
-        },
-        {
-          "X": 80,
-          "Y": 310
-        }
-      ],
-      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":5}}"
-    },
-    {
-      "DetectedText": "2.答题前，考生务必将本人的姓名、准考证号填写在答题卡相应的位置上,同时务必在试眷的装订线内将本人的",
-      "Confidence": 96,
-      "Polygon": [
-        {
-          "X": 42,
-          "Y": 321
-        },
-        {
-          "X": 1231,
-          "Y": 321
-        },
-        {
-          "X": 1231,
-          "Y": 352
-        },
-        {
-          "X": 42,
-          "Y": 352
-        }
-      ],
-      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":6}}"
-    },
-    {
-      "DetectedText": "姓名、推考证号、毕业学校填写好，:在试眷第4页的右下角填写好座位号。",
-      "Confidence": 94,
-      "Polygon": [
-        {
-          "X": 81,
-          "Y": 358
-        },
-        {
-          "X": 877,
-          "Y": 358
-        },
-        {
-          "X": 877,
-          "Y": 388
-        },
-        {
-          "X": 81,
-          "Y": 388
-        }
-      ],
-      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":6}}"
-    },
-    {
-      "DetectedText": "3.所有的试题都必须在专用的“答题卡”上作答，选择题用2B铅笔作答、非选择题在指定位置用0.5毫米黑色水",
-      "Confidence": 97,
-      "Polygon": [
-        {
-          "X": 44,
-          "Y": 396
-        },
-        {
-          "X": 1231,
-          "Y": 396
-        },
-        {
-          "X": 1231,
-          "Y": 430
-        },
-        {
-          "X": 44,
-          "Y": 430
-        }
-      ],
-      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":7}}"
-    },
-    {
-      "DetectedText": "笔作答。在试卷或草稿纸上答题无效。",
-      "Confidence": 97,
-      "Polygon": [
-        {
-          "X": 82,
-          "Y": 436
-        },
-        {
-          "X": 483,
-          "Y": 436
-        },
-        {
-          "X": 483,
-          "Y": 464
-        },
-        {
-          "X": 82,
-          "Y": 464
-        }
-      ],
-      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":7}}"
-    },
-    {
-      "DetectedText": "单项选择(共15小题;每小题|分;计15分)",
-      "Confidence": 95,
-      "Polygon": [
-        {
-          "X": 102,
-          "Y": 508
-        },
-        {
-          "X": 681,
-          "Y": 508
-        },
-        {
-          "X": 681,
-          "Y": 541
-        },
-        {
-          "X": 102,
-          "Y": 541
-        }
-      ],
-      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":8}}"
-    },
-    {
-      "DetectedText": "在下列各题A、B、C、D四个选项中选择一一个能 填入题干空白处的最佳答案。",
-      "Confidence": 94,
-      "Polygon": [
-        {
-          "X": 101,
-          "Y": 548
-        },
-        {
-          "X": 1043,
-          "Y": 548
-        },
-        {
-          "X": 1043,
-          "Y": 581
-        },
-        {
-          "X": 101,
-          "Y": 581
-        }
-      ],
-      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":9}}"
-    },
-    {
-      "DetectedText": "1. Throughout",
-      "Confidence": 89,
-      "Polygon": [
-        {
-          "X": 46,
-          "Y": 590
-        },
-        {
-          "X": 203,
-          "Y": 590
-        },
-        {
-          "X": 203,
-          "Y": 619
-        },
-        {
-          "X": 46,
-          "Y": 619
-        }
-      ],
-      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":10}}"
-    },
-    {
-      "DetectedText": "history,",
-      "Confidence": 99,
-      "Polygon": [
-        {
-          "X": 326,
-          "Y": 591
-        },
-        {
-          "X": 409,
-          "Y": 591
-        },
-        {
-          "X": 409,
-          "Y": 618
-        },
-        {
-          "X": 326,
-          "Y": 618
-        }
-      ],
-      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":11}}"
-    },
-    {
-      "DetectedText": "English language has gone through many changes.",
-      "Confidence": 86,
-      "Polygon": [
-        {
-          "X": 541,
-          "Y": 592
-        },
-        {
-          "X": 1115,
-          "Y": 592
-        },
-        {
-          "X": 1115,
-          "Y": 625
-        },
-        {
-          "X": 541,
-          "Y": 625
-        }
-      ],
-      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":12}}"
-    },
-    {
-      "DetectedText": "A./;/.",
-      "Confidence": 85,
-      "Polygon": [
-        {
-          "X": 98,
-          "Y": 629
-        },
-        {
-          "X": 168,
-          "Y": 629
-        },
-        {
-          "X": 168,
-          "Y": 661
-        },
-        {
-          "X": 98,
-          "Y": 661
-        }
-      ],
-      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":13}}"
-    },
-    {
-      "DetectedText": "B. the; the",
-      "Confidence": 81,
-      "Polygon": [
-        {
-          "X": 385,
-          "Y": 633
-        },
-        {
-          "X": 504,
-          "Y": 633
-        },
-        {
-          "X": 504,
-          "Y": 662
-        },
-        {
-          "X": 385,
-          "Y": 662
-        }
-      ],
-      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":14}}"
-    },
-    {
-      "DetectedText": "C. the; an",
-      "Confidence": 79,
-      "Polygon": [
-        {
-          "X": 670,
-          "Y": 636
-        },
-        {
-          "X": 782,
-          "Y": 636
-        },
-        {
-          "X": 782,
-          "Y": 665
-        },
-        {
-          "X": 670,
-          "Y": 665
-        }
-      ],
-      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":15}}"
-    },
-    {
-      "DetectedText": "D./; the",
-      "Confidence": 85,
-      "Polygon": [
-        {
-          "X": 956,
-          "Y": 636
-        },
-        {
-          "X": 1050,
-          "Y": 636
-        },
-        {
-          "X": 1050,
-          "Y": 666
-        },
-        {
-          "X": 956,
-          "Y": 666
-        }
-      ],
-      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":16}}"
-    },
-    {
-      "DetectedText": "2, - What would y0u like to drink, tea or juice?",
-      "Confidence": 75,
-      "Polygon": [
-        {
-          "X": 43,
-          "Y": 677
-        },
-        {
-          "X": 599,
-          "Y": 677
-        },
-        {
-          "X": 599,
-          "Y": 704
-        },
-        {
-          "X": 43,
-          "Y": 704
-        }
-      ],
-      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":17}}"
-    },
-    {
-      "DetectedText": "is OK. They are both my favourite.",
-      "Confidence": 81,
-      "Polygon": [
-        {
-          "X": 204,
-          "Y": 721
-        },
-        {
-          "X": 604,
-          "Y": 721
-        },
-        {
-          "X": 604,
-          "Y": 750
-        },
-        {
-          "X": 204,
-          "Y": 750
-        }
-      ],
-      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":18}}"
-    },
-    {
-      "DetectedText": "A. Both",
-      "Confidence": 85,
-      "Polygon": [
-        {
-          "X": 70,
-          "Y": 762
-        },
-        {
-          "X": 159,
-          "Y": 762
-        },
-        {
-          "X": 159,
-          "Y": 790
-        },
-        {
-          "X": 70,
-          "Y": 790
-        }
-      ],
-      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":19}}"
-    },
-    {
-      "DetectedText": "B, All，",
-      "Confidence": 63,
-      "Polygon": [
-        {
-          "X": 385,
-          "Y": 763
-        },
-        {
-          "X": 454,
-          "Y": 763
-        },
-        {
-          "X": 454,
-          "Y": 791
-        },
-        {
-          "X": 385,
-          "Y": 791
-        }
-      ],
-      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":20}}"
-    },
-    {
-      "DetectedText": "C. Either",
-      "Confidence": 88,
-      "Polygon": [
-        {
-          "X": 670,
-          "Y": 766
-        },
-        {
-          "X": 772,
-          "Y": 766
-        },
-        {
-          "X": 772,
-          "Y": 793
-        },
-        {
-          "X": 670,
-          "Y": 793
-        }
-      ],
-      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":21}}"
-    },
-    {
-      "DetectedText": "D. None",
-      "Confidence": 85,
-      "Polygon": [
-        {
-          "X": 956,
-          "Y": 770
-        },
-        {
-          "X": 1054,
-          "Y": 770
-        },
-        {
-          "X": 1054,
-          "Y": 797
-        },
-        {
-          "X": 956,
-          "Y": 797
-        }
-      ],
-      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":22}}"
-    },
-    {
-      "DetectedText": "3.一Did you hear that John lost his job?",
-      "Confidence": 80,
-      "Polygon": [
-        {
-          "X": 42,
-          "Y": 808
-        },
-        {
-          "X": 511,
-          "Y": 808
-        },
-        {
-          "X": 511,
-          "Y": 834
-        },
-        {
-          "X": 42,
-          "Y": 834
-        }
-      ],
-      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":23}}"
-    },
-    {
-      "DetectedText": "-- it_ that he had made some serious mistakes in his work.",
-      "Confidence": 78,
-      "Polygon": [
-        {
-          "X": 74,
-          "Y": 853
-        },
-        {
-          "X": 805,
-          "Y": 853
-        },
-        {
-          "X": 805,
-          "Y": 881
-        },
-        {
-          "X": 74,
-          "Y": 881
-        }
-      ],
-      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":24}}"
-    },
-    {
-      "DetectedText": "A. felt",
-      "Confidence": 85,
-      "Polygon": [
-        {
-          "X": 69,
-          "Y": 892
-        },
-        {
-          "X": 143,
-          "Y": 892
-        },
-        {
-          "X": 143,
-          "Y": 922
-        },
-        {
-          "X": 69,
-          "Y": 922
-        }
-      ],
-      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":25}}"
-    },
-    {
-      "DetectedText": "B. smelt",
-      "Confidence": 86,
-      "Polygon": [
-        {
-          "X": 384,
-          "Y": 896
-        },
-        {
-          "X": 481,
-          "Y": 896
-        },
-        {
-          "X": 481,
-          "Y": 923
-        },
-        {
-          "X": 384,
-          "Y": 923
-        }
-      ],
-      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":26}}"
-    },
-    {
-      "DetectedText": "C. seemed",
-      "Confidence": 88,
-      "Polygon": [
-        {
-          "X": 669,
-          "Y": 898
-        },
-        {
-          "X": 786,
-          "Y": 898
-        },
-        {
-          "X": 786,
-          "Y": 924
-        },
-        {
-          "X": 669,
-          "Y": 924
-        }
-      ],
-      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":27}}"
-    },
-    {
-      "DetectedText": "D. looked :",
-      "Confidence": 74,
-      "Polygon": [
-        {
-          "X": 955,
-          "Y": 899
-        },
-        {
-          "X": 1070,
-          "Y": 899
-        },
-        {
-          "X": 1070,
-          "Y": 928
-        },
-        {
-          "X": 955,
-          "Y": 928
-        }
-      ],
-      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":28}}"
-    },
-    {
-      "DetectedText": "4. Thank you for the",
-      "Confidence": 77,
-      "Polygon": [
-        {
-          "X": 41,
-          "Y": 938
-        },
-        {
-          "X": 272,
-          "Y": 938
-        },
-        {
-          "X": 272,
-          "Y": 966
-        },
-        {
-          "X": 41,
-          "Y": 966
-        }
-      ],
-      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":29}}"
-    },
-    {
-      "DetectedText": "that you gave me wnen I felt English too difficult to learn,",
-      "Confidence": 79,
-      "Polygon": [
-        {
-          "X": 388,
-          "Y": 941
-        },
-        {
-          "X": 1051,
-          "Y": 941
-        },
-        {
-          "X": 1051,
-          "Y": 971
-        },
-        {
-          "X": 388,
-          "Y": 971
-        }
-      ],
-      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":30}}"
-    },
-    {
-      "DetectedText": "A. praise",
-      "Confidence": 88,
-      "Polygon": [
-        {
-          "X": 67,
-          "Y": 984
-        },
-        {
-          "X": 172,
-          "Y": 984
-        },
-        {
-          "X": 172,
-          "Y": 1009
-        },
-        {
-          "X": 67,
-          "Y": 1009
+          "X": 1193,
+          "Y": 88
         }
       ],
       "AdvancedInfo": "{\"Parag\":{\"ParagNo\":31}}"
     },
     {
-      "DetectedText": "B. encouragement",
-      "Confidence": 88,
+      "DetectedText": "()的歌声",
+      "Confidence": 99,
       "Polygon": [
         {
-          "X": 384,
-          "Y": 986
+          "X": 1253,
+          "Y": 104
         },
         {
-          "X": 593,
-          "Y": 986
+          "X": 1460,
+          "Y": 104
         },
         {
-          "X": 593,
-          "Y": 1010
+          "X": 1460,
+          "Y": 135
         },
         {
-          "X": 384,
-          "Y": 1010
+          "X": 1253,
+          "Y": 135
         }
       ],
       "AdvancedInfo": "{\"Parag\":{\"ParagNo\":32}}"
     },
     {
-      "DetectedText": "C. prize",
-      "Confidence": 83,
+      "DetectedText": "()的房间",
+      "Confidence": 99,
       "Polygon": [
         {
-          "X": 668,
-          "Y": 985
+          "X": 1652,
+          "Y": 104
         },
         {
-          "X": 760,
-          "Y": 985
+          "X": 1854,
+          "Y": 104
         },
         {
-          "X": 760,
-          "Y": 1013
+          "X": 1854,
+          "Y": 135
         },
         {
-          "X": 668,
-          "Y": 1013
-        }
-      ],
-      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":32}}"
-    },
-    {
-      "DetectedText": "D. award",
-      "Confidence": 87,
-      "Polygon": [
-        {
-          "X": 955,
-          "Y": 987
-        },
-        {
-          "X": 1059,
-          "Y": 987
-        },
-        {
-          "X": 1059,
-          "Y": 1015
-        },
-        {
-          "X": 955,
-          "Y": 1015
+          "X": 1652,
+          "Y": 135
         }
       ],
       "AdvancedInfo": "{\"Parag\":{\"ParagNo\":33}}"
     },
     {
-      "DetectedText": "5. The patient's progress was encouraging, as he could",
-      "Confidence": 83,
+      "DetectedText": "语文",
+      "Confidence": 99,
       "Polygon": [
         {
-          "X": 41,
-          "Y": 1026
+          "X": 583,
+          "Y": 118
         },
         {
-          "X": 664,
-          "Y": 1026
+          "X": 711,
+          "Y": 118
         },
         {
-          "X": 664,
-          "Y": 1056
+          "X": 711,
+          "Y": 163
         },
         {
-          "X": 41,
-          "Y": 1056
+          "X": 583,
+          "Y": 163
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":5}}"
+    },
+    {
+      "DetectedText": "注意事项:",
+      "Confidence": 99,
+      "Polygon": [
+        {
+          "X": 219,
+          "Y": 163
+        },
+        {
+          "X": 345,
+          "Y": 163
+        },
+        {
+          "X": 345,
+          "Y": 200
+        },
+        {
+          "X": 219,
+          "Y": 200
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":4}}"
+    },
+    {
+      "DetectedText": "()地背书",
+      "Confidence": 99,
+      "Polygon": [
+        {
+          "X": 1253,
+          "Y": 152
+        },
+        {
+          "X": 1461,
+          "Y": 152
+        },
+        {
+          "X": 1461,
+          "Y": 186
+        },
+        {
+          "X": 1253,
+          "Y": 186
         }
       ],
       "AdvancedInfo": "{\"Parag\":{\"ParagNo\":34}}"
     },
     {
-      "DetectedText": "get oUt of bed without help",
-      "Confidence": 75,
+      "DetectedText": "()地听讲",
+      "Confidence": 99,
       "Polygon": [
         {
-          "X": 758,
-          "Y": 1031
+          "X": 1650,
+          "Y": 150
         },
         {
-          "X": 1070,
-          "Y": 1031
+          "X": 1855,
+          "Y": 150
         },
         {
-          "X": 1070,
-          "Y": 1058
+          "X": 1855,
+          "Y": 185
         },
         {
-          "X": 758,
-          "Y": 1058
-        }
-      ],
-      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":34}}"
-    },
-    {
-      "DetectedText": "A. nearly",
-      "Confidence": 88,
-      "Polygon": [
-        {
-          "X": 69,
-          "Y": 1069
-        },
-        {
-          "X": 175,
-          "Y": 1069
-        },
-        {
-          "X": 175,
-          "Y": 1096
-        },
-        {
-          "X": 69,
-          "Y": 1096
+          "X": 1650,
+          "Y": 185
         }
       ],
       "AdvancedInfo": "{\"Parag\":{\"ParagNo\":35}}"
     },
     {
-      "DetectedText": "B. only",
-      "Confidence": 78,
+      "DetectedText": "3.给“青”字加上合适的部首填在()里。(6分)",
+      "Confidence": 96,
       "Polygon": [
         {
-          "X": 386,
-          "Y": 1068
+          "X": 1191,
+          "Y": 197
         },
         {
-          "X": 467,
-          "Y": 1068
+          "X": 1894,
+          "Y": 197
         },
         {
-          "X": 467,
-          "Y": 1099
+          "X": 1894,
+          "Y": 229
         },
         {
-          "X": 386,
-          "Y": 1099
+          "X": 1191,
+          "Y": 229
         }
       ],
       "AdvancedInfo": "{\"Parag\":{\"ParagNo\":36}}"
     },
     {
-      "DetectedText": "C. hardly",
-      "Confidence": 88,
+      "DetectedText": "1.本试卷成绩为100 分，测评时间为80分钟。",
+      "Confidence": 92,
       "Polygon": [
         {
-          "X": 670,
-          "Y": 1069
+          "X": 278,
+          "Y": 209
         },
         {
-          "X": 774,
-          "Y": 1069
+          "X": 883,
+          "Y": 209
         },
         {
-          "X": 774,
-          "Y": 1099
+          "X": 883,
+          "Y": 243
         },
         {
-          "X": 670,
-          "Y": 1099
+          "X": 278,
+          "Y": 243
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":6}}"
+    },
+    {
+      "DetectedText": "in",
+      "Confidence": 75,
+      "Polygon": [
+        {
+          "X": 85,
+          "Y": 268
+        },
+        {
+          "X": 114,
+          "Y": 268
+        },
+        {
+          "X": 114,
+          "Y": 297
+        },
+        {
+          "X": 85,
+          "Y": 297
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":1}}"
+    },
+    {
+      "DetectedText": "2.请你按要求答题，认真书写，保持卷面整洁。写话时不会写的",
+      "Confidence": 98,
+      "Polygon": [
+        {
+          "X": 275,
+          "Y": 252
+        },
+        {
+          "X": 1071,
+          "Y": 252
+        },
+        {
+          "X": 1071,
+          "Y": 289
+        },
+        {
+          "X": 275,
+          "Y": 289
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":7}}"
+    },
+    {
+      "DetectedText": "日虫",
+      "Confidence": 86,
+      "Polygon": [
+        {
+          "X": 1421,
+          "Y": 245
+        },
+        {
+          "X": 1505,
+          "Y": 245
+        },
+        {
+          "X": 1505,
+          "Y": 274
+        },
+        {
+          "X": 1421,
+          "Y": 274
         }
       ],
       "AdvancedInfo": "{\"Parag\":{\"ParagNo\":37}}"
     },
     {
-      "DetectedText": "D. badly",
-      "Confidence": 82,
+      "DetectedText": "争目",
+      "Confidence": 96,
       "Polygon": [
         {
-          "X": 955,
-          "Y": 1072
+          "X": 1574,
+          "Y": 244
         },
         {
-          "X": 1050,
-          "Y": 1072
+          "X": 1670,
+          "Y": 244
         },
         {
-          "X": 1050,
-          "Y": 1103
+          "X": 1670,
+          "Y": 275
         },
         {
-          "X": 955,
-          "Y": 1103
+          "X": 1574,
+          "Y": 275
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":37}}"
+    },
+    {
+      "DetectedText": "积",
+      "Confidence": 74,
+      "Polygon": [
+        {
+          "X": 156,
+          "Y": 311
+        },
+        {
+          "X": 184,
+          "Y": 311
+        },
+        {
+          "X": 184,
+          "Y": 342
+        },
+        {
+          "X": 156,
+          "Y": 342
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":8}}"
+    },
+    {
+      "DetectedText": "字可以用拼音代替。",
+      "Confidence": 99,
+      "Polygon": [
+        {
+          "X": 219,
+          "Y": 295
+        },
+        {
+          "X": 453,
+          "Y": 295
+        },
+        {
+          "X": 453,
+          "Y": 328
+        },
+        {
+          "X": 219,
+          "Y": 328
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":7}}"
+    },
+    {
+      "DetectedText": "小青蛙，大眼(),()水塘里叫呱呱。大雨过后天",
+      "Confidence": 97,
+      "Polygon": [
+        {
+          "X": 1250,
+          "Y": 288
+        },
+        {
+          "X": 2044,
+          "Y": 288
+        },
+        {
+          "X": 2044,
+          "Y": 319
+        },
+        {
+          "X": 1250,
+          "Y": 319
         }
       ],
       "AdvancedInfo": "{\"Parag\":{\"ParagNo\":38}}"
     },
     {
-      "DetectedText": "6. --- Look! Someone",
+      "DetectedText": "放(",
+      "Confidence": 99,
+      "Polygon": [
+        {
+          "X": 1197,
+          "Y": 334
+        },
+        {
+          "X": 1245,
+          "Y": 334
+        },
+        {
+          "X": 1245,
+          "Y": 363
+        },
+        {
+          "X": 1197,
+          "Y": 363
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":38}}"
+    },
+    {
+      "DetectedText": ")，湖面飞来小()蜓。它也做了好事()，",
+      "Confidence": 99,
+      "Polygon": [
+        {
+          "X": 1328,
+          "Y": 334
+        },
+        {
+          "X": 2042,
+          "Y": 334
+        },
+        {
+          "X": 2042,
+          "Y": 366
+        },
+        {
+          "X": 1328,
+          "Y": 366
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":38}}"
+    },
+    {
+      "DetectedText": "内容",
+      "Confidence": 99,
+      "Polygon": [
+        {
+          "X": 262,
+          "Y": 351
+        },
+        {
+          "X": 314,
+          "Y": 351
+        },
+        {
+          "X": 314,
+          "Y": 377
+        },
+        {
+          "X": 262,
+          "Y": 377
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":9}}"
+    },
+    {
+      "DetectedText": "基础知识",
+      "Confidence": 99,
+      "Polygon": [
+        {
+          "X": 410,
+          "Y": 354
+        },
+        {
+          "X": 512,
+          "Y": 354
+        },
+        {
+          "X": 512,
+          "Y": 379
+        },
+        {
+          "X": 410,
+          "Y": 379
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":13}}"
+    },
+    {
+      "DetectedText": "阅读理解",
+      "Confidence": 99,
+      "Polygon": [
+        {
+          "X": 638,
+          "Y": 354
+        },
+        {
+          "X": 739,
+          "Y": 354
+        },
+        {
+          "X": 739,
+          "Y": 379
+        },
+        {
+          "X": 638,
+          "Y": 379
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":14}}"
+    },
+    {
+      "DetectedText": "表达习作",
+      "Confidence": 99,
+      "Polygon": [
+        {
+          "X": 830,
+          "Y": 352
+        },
+        {
+          "X": 928,
+          "Y": 352
+        },
+        {
+          "X": 928,
+          "Y": 382
+        },
+        {
+          "X": 830,
+          "Y": 382
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":19}}"
+    },
+    {
+      "DetectedText": "成绩",
+      "Confidence": 96,
+      "Polygon": [
+        {
+          "X": 981,
+          "Y": 353
+        },
+        {
+          "X": 1034,
+          "Y": 353
+        },
+        {
+          "X": 1034,
+          "Y": 382
+        },
+        {
+          "X": 981,
+          "Y": 382
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":19}}"
+    },
+    {
+      "DetectedText": "安( ) 飞去不吱声。",
       "Confidence": 81,
       "Polygon": [
         {
-          "X": 41,
-          "Y": 1112
+          "X": 1194,
+          "Y": 380
         },
         {
-          "X": 285,
-          "Y": 1112
+          "X": 1518,
+          "Y": 380
         },
         {
-          "X": 285,
-          "Y": 1138
+          "X": 1518,
+          "Y": 410
         },
         {
-          "X": 41,
-          "Y": 1138
+          "X": 1194,
+          "Y": 410
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":38}}"
+    },
+    {
+      "DetectedText": "大题号",
+      "Confidence": 99,
+      "Polygon": [
+        {
+          "X": 250,
+          "Y": 392
+        },
+        {
+          "X": 321,
+          "Y": 392
+        },
+        {
+          "X": 321,
+          "Y": 422
+        },
+        {
+          "X": 250,
+          "Y": 422
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":10}}"
+    },
+    {
+      "DetectedText": "四",
+      "Confidence": 99,
+      "Polygon": [
+        {
+          "X": 691,
+          "Y": 397
+        },
+        {
+          "X": 718,
+          "Y": 397
+        },
+        {
+          "X": 718,
+          "Y": 421
+        },
+        {
+          "X": 691,
+          "Y": 421
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":15}}"
+    },
+    {
+      "DetectedText": "王",
+      "Confidence": 82,
+      "Polygon": [
+        {
+          "X": 743,
+          "Y": 398
+        },
+        {
+          "X": 773,
+          "Y": 398
+        },
+        {
+          "X": 773,
+          "Y": 420
+        },
+        {
+          "X": 743,
+          "Y": 420
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":15}}"
+    },
+    {
+      "DetectedText": "六|七 |等级",
+      "Confidence": 75,
+      "Polygon": [
+        {
+          "X": 833,
+          "Y": 393
+        },
+        {
+          "X": 1002,
+          "Y": 393
+        },
+        {
+          "X": 1002,
+          "Y": 424
+        },
+        {
+          "X": 833,
+          "Y": 424
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":19}}"
+    },
+    {
+      "DetectedText": "得分.",
+      "Confidence": 80,
+      "Polygon": [
+        {
+          "X": 259,
+          "Y": 434
+        },
+        {
+          "X": 312,
+          "Y": 434
+        },
+        {
+          "X": 312,
+          "Y": 463
+        },
+        {
+          "X": 259,
+          "Y": 463
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":11}}"
+    },
+    {
+      "DetectedText": "总分",
+      "Confidence": 99,
+      "Polygon": [
+        {
+          "X": 952,
+          "Y": 438
+        },
+        {
+          "X": 994,
+          "Y": 438
+        },
+        {
+          "X": 994,
+          "Y": 467
+        },
+        {
+          "X": 952,
+          "Y": 467
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":20}}"
+    },
+    {
+      "DetectedText": "4.仿照课文《妈妈的爱》自己再写一节。(5分)",
+      "Confidence": 99,
+      "Polygon": [
+        {
+          "X": 1193,
+          "Y": 423
+        },
+        {
+          "X": 1806,
+          "Y": 423
+        },
+        {
+          "X": 1806,
+          "Y": 456
+        },
+        {
+          "X": 1193,
+          "Y": 456
         }
       ],
       "AdvancedInfo": "{\"Parag\":{\"ParagNo\":39}}"
     },
     {
-      "DetectedText": "the floor. It's clean.",
-      "Confidence": 81,
+      "DetectedText": "◆有一个很凉很凉的雨天，，◆_",
+      "Confidence": 93,
       "Polygon": [
         {
-          "X": 390,
-          "Y": 1114
+          "X": 1221,
+          "Y": 471
         },
         {
-          "X": 607,
-          "Y": 1114
+          "X": 1622,
+          "Y": 471
         },
         {
-          "X": 607,
-          "Y": 1141
+          "X": 1622,
+          "Y": 505
         },
         {
-          "X": 390,
-          "Y": 1141
+          "X": 1221,
+          "Y": 505
         }
       ],
       "AdvancedInfo": "{\"Parag\":{\"ParagNo\":40}}"
     },
     {
-      "DetectedText": "- Well, it wasn't me. I went shopping just now.",
-      "Confidence": 76,
+      "DetectedText": ">0",
+      "Confidence": 85,
       "Polygon": [
         {
-          "X": 66,
-          "Y": 1154
+          "X": 84,
+          "Y": 494
         },
         {
-          "X": 621,
-          "Y": 1154
+          "X": 114,
+          "Y": 494
         },
         {
-          "X": 621,
-          "Y": 1185
+          "X": 114,
+          "Y": 520
         },
         {
-          "X": 66,
-          "Y": 1185
+          "X": 84,
+          "Y": 520
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":2}}"
+    },
+    {
+      "DetectedText": "基础知识35 分",
+      "Confidence": 87,
+      "Polygon": [
+        {
+          "X": 217,
+          "Y": 492
+        },
+        {
+          "X": 429,
+          "Y": 492
+        },
+        {
+          "X": 429,
+          "Y": 520
+        },
+        {
+          "X": 217,
+          "Y": 520
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":12}}"
+    },
+    {
+      "DetectedText": "获",
+      "Confidence": 94,
+      "Polygon": [
+        {
+          "X": 84,
+          "Y": 520
+        },
+        {
+          "X": 114,
+          "Y": 520
+        },
+        {
+          "X": 114,
+          "Y": 552
+        },
+        {
+          "X": 84,
+          "Y": 552
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":2}}"
+    },
+    {
+      "DetectedText": "妈妈到学校接我,",
+      "Confidence": 98,
+      "Polygon": [
+        {
+          "X": 1250,
+          "Y": 520
+        },
+        {
+          "X": 1468,
+          "Y": 520
+        },
+        {
+          "X": 1468,
+          "Y": 552
+        },
+        {
+          "X": 1250,
+          "Y": 552
         }
       ],
       "AdvancedInfo": "{\"Parag\":{\"ParagNo\":41}}"
     },
     {
-      "DetectedText": "A. is sweeping",
-      "Confidence": 85,
+      "DetectedText": "得分",
+      "Confidence": 99,
       "Polygon": [
         {
-          "X": 82,
-          "Y": 1201
+          "X": 221,
+          "Y": 535
         },
         {
-          "X": 252,
-          "Y": 1201
+          "X": 275,
+          "Y": 535
         },
         {
-          "X": 252,
-          "Y": 1230
+          "X": 275,
+          "Y": 562
         },
         {
-          "X": 82,
-          "Y": 1230
+          "X": 221,
+          "Y": 562
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":16}}"
+    },
+    {
+      "DetectedText": "评卷人",
+      "Confidence": 84,
+      "Polygon": [
+        {
+          "X": 309,
+          "Y": 536
+        },
+        {
+          "X": 373,
+          "Y": 536
+        },
+        {
+          "X": 373,
+          "Y": 563
+        },
+        {
+          "X": 309,
+          "Y": 563
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":16}}"
+    },
+    {
+      "DetectedText": "一、汉语拼音知识。(10分)",
+      "Confidence": 99,
+      "Polygon": [
+        {
+          "X": 420,
+          "Y": 552
+        },
+        {
+          "X": 780,
+          "Y": 552
+        },
+        {
+          "X": 780,
+          "Y": 585
+        },
+        {
+          "X": 420,
+          "Y": 585
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":16}}"
+    },
+    {
+      "DetectedText": "一把伞遮在我的头顶,",
+      "Confidence": 99,
+      "Polygon": [
+        {
+          "X": 1251,
+          "Y": 569
+        },
+        {
+          "X": 1525,
+          "Y": 569
+        },
+        {
+          "X": 1525,
+          "Y": 601
+        },
+        {
+          "X": 1251,
+          "Y": 601
         }
       ],
       "AdvancedInfo": "{\"Parag\":{\"ParagNo\":42}}"
     },
     {
-      "DetectedText": "B. was sweeping",
-      "Confidence": 85,
+      "DetectedText": "雨水却打在妈妈身上,",
+      "Confidence": 97,
       "Polygon": [
         {
-          "X": 381,
-          "Y": 1201
+          "X": 1251,
+          "Y": 618
         },
         {
-          "X": 575,
-          "Y": 1201
+          "X": 1524,
+          "Y": 618
         },
         {
-          "X": 575,
-          "Y": 1230
+          "X": 1524,
+          "Y": 650
         },
         {
-          "X": 381,
-          "Y": 1230
+          "X": 1251,
+          "Y": 650
         }
       ],
       "AdvancedInfo": "{\"Parag\":{\"ParagNo\":43}}"
     },
     {
-      "DetectedText": "C. had swept",
-      "Confidence": 83,
+      "DetectedText": "1.看拼音，在田字格里填写词语。(4 分)",
+      "Confidence": 94,
       "Polygon": [
         {
-          "X": 674,
-          "Y": 1203
+          "X": 217,
+          "Y": 629
         },
         {
-          "X": 821,
-          "Y": 1203
+          "X": 742,
+          "Y": 629
         },
         {
-          "X": 821,
-          "Y": 1231
+          "X": 742,
+          "Y": 664
         },
         {
-          "X": 674,
-          "Y": 1231
+          "X": 217,
+          "Y": 664
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":17}}"
+    },
+    {
+      "DetectedText": "shun I心",
+      "Confidence": 71,
+      "Polygon": [
+        {
+          "X": 270,
+          "Y": 675
+        },
+        {
+          "X": 393,
+          "Y": 675
+        },
+        {
+          "X": 393,
+          "Y": 700
+        },
+        {
+          "X": 270,
+          "Y": 700
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":18}}"
+    },
+    {
+      "DetectedText": "jing zheng",
+      "Confidence": 86,
+      "Polygon": [
+        {
+          "X": 481,
+          "Y": 676
+        },
+        {
+          "X": 616,
+          "Y": 676
+        },
+        {
+          "X": 616,
+          "Y": 705
+        },
+        {
+          "X": 481,
+          "Y": 705
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":18}}"
+    },
+    {
+      "DetectedText": "pi ping",
+      "Confidence": 77,
+      "Polygon": [
+        {
+          "X": 696,
+          "Y": 680
+        },
+        {
+          "X": 835,
+          "Y": 680
+        },
+        {
+          "X": 835,
+          "Y": 707
+        },
+        {
+          "X": 696,
+          "Y": 707
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":18}}"
+    },
+    {
+      "DetectedText": "ke xue",
+      "Confidence": 82,
+      "Polygon": [
+        {
+          "X": 931,
+          "Y": 679
+        },
+        {
+          "X": 1034,
+          "Y": 679
+        },
+        {
+          "X": 1034,
+          "Y": 704
+        },
+        {
+          "X": 931,
+          "Y": 704
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":21}}"
+    },
+    {
+      "DetectedText": "啊，妈妈的爱是遮雨的伞。",
+      "Confidence": 99,
+      "Polygon": [
+        {
+          "X": 1251,
+          "Y": 665
+        },
+        {
+          "X": 1583,
+          "Y": 665
+        },
+        {
+          "X": 1583,
+          "Y": 696
+        },
+        {
+          "X": 1251,
+          "Y": 696
         }
       ],
       "AdvancedInfo": "{\"Parag\":{\"ParagNo\":44}}"
     },
     {
-      "DetectedText": "D. has Swept",
-      "Confidence": 76,
+      "DetectedText": "阅读理解",
+      "Confidence": 99,
       "Polygon": [
         {
-          "X": 954,
-          "Y": 1206
+          "X": 1194,
+          "Y": 714
         },
         {
-          "X": 1103,
-          "Y": 1206
+          "X": 1307,
+          "Y": 714
         },
         {
-          "X": 1103,
-          "Y": 1233
+          "X": 1307,
+          "Y": 742
         },
         {
-          "X": 954,
-          "Y": 1233
+          "X": 1194,
+          "Y": 742
         }
       ],
       "AdvancedInfo": "{\"Parag\":{\"ParagNo\":45}}"
     },
     {
-      "DetectedText": "7. After a short time, the bad news had",
-      "Confidence": 78,
+      "DetectedText": "45分",
+      "Confidence": 99,
       "Polygon": [
         {
-          "X": 40,
-          "Y": 1243
+          "X": 1347,
+          "Y": 712
         },
         {
-          "X": 481,
-          "Y": 1243
+          "X": 1410,
+          "Y": 712
         },
         {
-          "X": 481,
-          "Y": 1271
+          "X": 1410,
+          "Y": 741
         },
         {
-          "X": 40,
-          "Y": 1271
+          "X": 1347,
+          "Y": 741
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":45}}"
+    },
+    {
+      "DetectedText": "得分",
+      "Confidence": 99,
+      "Polygon": [
+        {
+          "X": 1205,
+          "Y": 755
+        },
+        {
+          "X": 1250,
+          "Y": 755
+        },
+        {
+          "X": 1250,
+          "Y": 783
+        },
+        {
+          "X": 1205,
+          "Y": 783
         }
       ],
       "AdvancedInfo": "{\"Parag\":{\"ParagNo\":46}}"
     },
     {
-      "DetectedText": "_all over the city and everybody knew it.",
-      "Confidence": 82,
+      "DetectedText": "评卷人",
+      "Confidence": 99,
       "Polygon": [
         {
-          "X": 574,
-          "Y": 1246
+          "X": 1284,
+          "Y": 757
         },
         {
-          "X": 1028,
-          "Y": 1246
+          "X": 1346,
+          "Y": 757
         },
         {
-          "X": 1028,
-          "Y": 1276
+          "X": 1346,
+          "Y": 782
         },
         {
-          "X": 574,
-          "Y": 1276
+          "X": 1284,
+          "Y": 782
         }
       ],
       "AdvancedInfo": "{\"Parag\":{\"ParagNo\":46}}"
     },
     {
-      "DetectedText": "A. showed",
-      "Confidence": 88,
+      "DetectedText": "三、根据对课文的阅读理解，在横线上填写答案。",
+      "Confidence": 99,
       "Polygon": [
         {
-          "X": 82,
-          "Y": 1286
+          "X": 1394,
+          "Y": 767
         },
         {
-          "X": 203,
-          "Y": 1286
+          "X": 2021,
+          "Y": 767
         },
         {
-          "X": 203,
-          "Y": 1311
+          "X": 2021,
+          "Y": 801
         },
         {
-          "X": 82,
-          "Y": 1311
+          "X": 1394,
+          "Y": 801
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":46}}"
+    },
+    {
+      "DetectedText": "2.给带点字注写正确读音。(4 分)",
+      "Confidence": 94,
+      "Polygon": [
+        {
+          "X": 213,
+          "Y": 791
+        },
+        {
+          "X": 654,
+          "Y": 791
+        },
+        {
+          "X": 654,
+          "Y": 826
+        },
+        {
+          "X": 213,
+          "Y": 826
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":22}}"
+    },
+    {
+      "DetectedText": "(16 分，每小题4分)",
+      "Confidence": 91,
+      "Polygon": [
+        {
+          "X": 1392,
+          "Y": 798
+        },
+        {
+          "X": 1723,
+          "Y": 798
+        },
+        {
+          "X": 1723,
+          "Y": 834
+        },
+        {
+          "X": 1392,
+          "Y": 834
         }
       ],
       "AdvancedInfo": "{\"Parag\":{\"ParagNo\":47}}"
     },
     {
-      "DetectedText": "B. spread",
-      "Confidence": 88,
+      "DetectedText": "赞叹_",
+      "Confidence": 92,
       "Polygon": [
         {
-          "X": 382,
-          "Y": 1287
+          "X": 250,
+          "Y": 843
         },
         {
-          "X": 492,
-          "Y": 1287
+          "X": 306,
+          "Y": 843
         },
         {
-          "X": 492,
-          "Y": 1315
+          "X": 306,
+          "Y": 877
         },
         {
-          "X": 382,
-          "Y": 1315
+          "X": 250,
+          "Y": 877
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":23}}"
+    },
+    {
+      "DetectedText": "诚恳",
+      "Confidence": 99,
+      "Polygon": [
+        {
+          "X": 447,
+          "Y": 845
+        },
+        {
+          "X": 504,
+          "Y": 845
+        },
+        {
+          "X": 504,
+          "Y": 877
+        },
+        {
+          "X": 447,
+          "Y": 877
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":24}}"
+    },
+    {
+      "DetectedText": "划船",
+      "Confidence": 99,
+      "Polygon": [
+        {
+          "X": 644,
+          "Y": 846
+        },
+        {
+          "X": 698,
+          "Y": 846
+        },
+        {
+          "X": 698,
+          "Y": 879
+        },
+        {
+          "X": 644,
+          "Y": 879
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":25}}"
+    },
+    {
+      "DetectedText": "仿佛",
+      "Confidence": 99,
+      "Polygon": [
+        {
+          "X": 847,
+          "Y": 846
+        },
+        {
+          "X": 905,
+          "Y": 846
+        },
+        {
+          "X": 905,
+          "Y": 883
+        },
+        {
+          "X": 847,
+          "Y": 883
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":26}}"
+    },
+    {
+      "DetectedText": "1.《不懂就问》这篇课文告诉我们",
+      "Confidence": 99,
+      "Polygon": [
+        {
+          "X": 1192,
+          "Y": 845
+        },
+        {
+          "X": 1624,
+          "Y": 845
+        },
+        {
+          "X": 1624,
+          "Y": 877
+        },
+        {
+          "X": 1192,
+          "Y": 877
         }
       ],
       "AdvancedInfo": "{\"Parag\":{\"ParagNo\":48}}"
     },
     {
-      "DetectedText": "C. covered",
-      "Confidence": 86,
+      "DetectedText": "3.看拼音写句子。(2 分)",
+      "Confidence": 92,
       "Polygon": [
         {
-          "X": 668,
-          "Y": 1290
+          "X": 214,
+          "Y": 898
         },
         {
-          "X": 792,
-          "Y": 1290
+          "X": 535,
+          "Y": 898
         },
         {
-          "X": 792,
-          "Y": 1316
+          "X": 535,
+          "Y": 931
         },
         {
-          "X": 668,
-          "Y": 1316
+          "X": 214,
+          "Y": 931
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":27}}"
+    },
+    {
+      "DetectedText": "2.故事《儿子们》让我明白了",
+      "Confidence": 99,
+      "Polygon": [
+        {
+          "X": 1191,
+          "Y": 894
+        },
+        {
+          "X": 1577,
+          "Y": 894
+        },
+        {
+          "X": 1577,
+          "Y": 929
+        },
+        {
+          "X": 1191,
+          "Y": 929
         }
       ],
       "AdvancedInfo": "{\"Parag\":{\"ParagNo\":49}}"
     },
     {
-      "DetectedText": "D. explored ",
-      "Confidence": 80,
+      "DetectedText": "W8 men yang cheng le liang hao de xue xi xi gudn。",
+      "Confidence": 73,
       "Polygon": [
         {
-          "X": 954,
-          "Y": 1292
+          "X": 250,
+          "Y": 954
         },
         {
-          "X": 1089,
-          "Y": 1292
+          "X": 1014,
+          "Y": 954
         },
         {
-          "X": 1089,
-          "Y": 1319
+          "X": 1014,
+          "Y": 986
         },
         {
-          "X": 954,
-          "Y": 1319
+          "X": 250,
+          "Y": 986
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":28}}"
+    },
+    {
+      "DetectedText": "3.朝辞白帝彩云间，",
+      "Confidence": 98,
+      "Polygon": [
+        {
+          "X": 1192,
+          "Y": 948
+        },
+        {
+          "X": 1442,
+          "Y": 948
+        },
+        {
+          "X": 1442,
+          "Y": 978
+        },
+        {
+          "X": 1192,
+          "Y": 978
         }
       ],
       "AdvancedInfo": "{\"Parag\":{\"ParagNo\":50}}"
     },
     {
-      "DetectedText": "8.一Mr, White. asked me to remind you of the meeting this afternoon .Don't forgetit !",
-      "Confidence": 81,
+      "DetectedText": "两岸猿声啼不住，",
+      "Confidence": 96,
       "Polygon": [
         {
-          "X": 39,
-          "Y": 1329
+          "X": 1803,
+          "Y": 946
         },
         {
-          "X": 1034,
-          "Y": 1329
+          "X": 2018,
+          "Y": 946
         },
         {
-          "X": 1034,
-          "Y": 1362
+          "X": 2018,
+          "Y": 979
         },
         {
-          "X": 39,
-          "Y": 1362
+          "X": 1803,
+          "Y": 979
         }
       ],
       "AdvancedInfo": "{\"Parag\":{\"ParagNo\":51}}"
     },
     {
-      "DetectedText": ": OK,I",
-      "Confidence": 74,
+      "DetectedText": "《早发白帝城》的作者是_",
+      "Confidence": 99,
       "Polygon": [
         {
-          "X": 101,
-          "Y": 1369
+          "X": 1524,
+          "Y": 996
         },
         {
-          "X": 172,
-          "Y": 1369
+          "X": 1834,
+          "Y": 996
         },
         {
-          "X": 172,
-          "Y": 1400
+          "X": 1834,
+          "Y": 1029
         },
         {
-          "X": 101,
-          "Y": 1400
+          "X": 1524,
+          "Y": 1029
         }
       ],
       "AdvancedInfo": "{\"Parag\":{\"ParagNo\":52}}"
     },
     {
-      "DetectedText": "A. won't.",
-      "Confidence": 85,
+      "DetectedText": "得分.",
+      "Confidence": 80,
       "Polygon": [
         {
-          "X": 69,
-          "Y": 1417
+          "X": 228,
+          "Y": 1051
         },
         {
-          "X": 174,
-          "Y": 1417
+          "X": 269,
+          "Y": 1051
         },
         {
-          "X": 174,
-          "Y": 1441
+          "X": 269,
+          "Y": 1077
         },
         {
-          "X": 69,
-          "Y": 1441
+          "X": 228,
+          "Y": 1077
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":28}}"
+    },
+    {
+      "DetectedText": "评卷人",
+      "Confidence": 99,
+      "Polygon": [
+        {
+          "X": 305,
+          "Y": 1050
+        },
+        {
+          "X": 371,
+          "Y": 1050
+        },
+        {
+          "X": 371,
+          "Y": 1076
+        },
+        {
+          "X": 305,
+          "Y": 1076
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":28}}"
+    },
+    {
+      "DetectedText": "4.我喜欢的一句讲信用名言是:",
+      "Confidence": 99,
+      "Polygon": [
+        {
+          "X": 1192,
+          "Y": 1047
+        },
+        {
+          "X": 1587,
+          "Y": 1047
+        },
+        {
+          "X": 1587,
+          "Y": 1079
+        },
+        {
+          "X": 1192,
+          "Y": 1079
         }
       ],
       "AdvancedInfo": "{\"Parag\":{\"ParagNo\":53}}"
     },
     {
-      "DetectedText": "B. don't",
-      "Confidence": 80,
+      "DetectedText": "二、字、词、句知识。(25分)",
+      "Confidence": 99,
       "Polygon": [
         {
-          "X": 383,
-          "Y": 1417
+          "X": 405,
+          "Y": 1066
         },
         {
-          "X": 478,
-          "Y": 1417
+          "X": 796,
+          "Y": 1066
         },
         {
-          "X": 478,
-          "Y": 1446
+          "X": 796,
+          "Y": 1097
         },
         {
-          "X": 383,
-          "Y": 1446
+          "X": 405,
+          "Y": 1097
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":28}}"
+    },
+    {
+      "DetectedText": "得分",
+      "Confidence": 99,
+      "Polygon": [
+        {
+          "X": 1200,
+          "Y": 1088
+        },
+        {
+          "X": 1247,
+          "Y": 1088
+        },
+        {
+          "X": 1247,
+          "Y": 1117
+        },
+        {
+          "X": 1200,
+          "Y": 1117
         }
       ],
       "AdvancedInfo": "{\"Parag\":{\"ParagNo\":54}}"
     },
     {
-      "DetectedText": "C. will",
-      "Confidence": 83,
+      "DetectedText": "评卷人",
+      "Confidence": 99,
       "Polygon": [
         {
-          "X": 671,
-          "Y": 1422
+          "X": 1285,
+          "Y": 1089
         },
         {
-          "X": 744,
-          "Y": 1422
+          "X": 1346,
+          "Y": 1089
         },
         {
-          "X": 744,
-          "Y": 1447
+          "X": 1346,
+          "Y": 1117
         },
         {
-          "X": 671,
-          "Y": 1447
+          "X": 1285,
+          "Y": 1117
         }
       ],
-      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":55}}"
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":54}}"
     },
     {
-      "DetectedText": "D, do",
-      "Confidence": 76,
+      "DetectedText": "四、阅读课文《植树的季节》选段，完成练习。(17 分)",
+      "Confidence": 93,
       "Polygon": [
         {
-          "X": 955,
-          "Y": 1424
+          "X": 1387,
+          "Y": 1111
         },
         {
-          "X": 1017,
-          "Y": 1424
+          "X": 2025,
+          "Y": 1111
         },
         {
-          "X": 1017,
-          "Y": 1449
+          "X": 2025,
+          "Y": 1143
         },
         {
-          "X": 955,
-          "Y": 1449
+          "X": 1387,
+          "Y": 1143
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":54}}"
+    },
+    {
+      "DetectedText": "1.给下面的字各组两个词。(8 分)",
+      "Confidence": 92,
+      "Polygon": [
+        {
+          "X": 215,
+          "Y": 1132
+        },
+        {
+          "X": 649,
+          "Y": 1132
+        },
+        {
+          "X": 649,
+          "Y": 1164
+        },
+        {
+          "X": 215,
+          "Y": 1164
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":29}}"
+    },
+    {
+      "DetectedText": "①我们扛来小树苗，把它们裁到郊外。浇上清凉凉的水，培上",
+      "Confidence": 98,
+      "Polygon": [
+        {
+          "X": 1250,
+          "Y": 1166
+        },
+        {
+          "X": 2042,
+          "Y": 1166
+        },
+        {
+          "X": 2042,
+          "Y": 1197
+        },
+        {
+          "X": 1250,
+          "Y": 1197
         }
       ],
       "AdvancedInfo": "{\"Parag\":{\"ParagNo\":56}}"
     },
     {
-      "DetectedText": "9. Chaiperson Xi calls on us to do what we can",
-      "Confidence": 77,
+      "DetectedText": "垂",
+      "Confidence": 99,
       "Polygon": [
         {
-          "X": 40,
-          "Y": 1459
+          "X": 232,
+          "Y": 1182
         },
         {
-          "X": 586,
-          "Y": 1459
+          "X": 262,
+          "Y": 1182
         },
         {
-          "X": 586,
-          "Y": 1490
+          "X": 262,
+          "Y": 1210
         },
         {
-          "X": 40,
-          "Y": 1490
+          "X": 232,
+          "Y": 1210
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":30}}"
+    },
+    {
+      "DetectedText": "参",
+      "Confidence": 78,
+      "Polygon": [
+        {
+          "X": 665,
+          "Y": 1185
+        },
+        {
+          "X": 695,
+          "Y": 1185
+        },
+        {
+          "X": 695,
+          "Y": 1215
+        },
+        {
+          "X": 665,
+          "Y": 1215
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":55}}"
+    },
+    {
+      "DetectedText": "湿润的土。风吹着我们的红领巾，像树上开放了一朵朵红花。",
+      "Confidence": 99,
+      "Polygon": [
+        {
+          "X": 1192,
+          "Y": 1201
+        },
+        {
+          "X": 1961,
+          "Y": 1201
+        },
+        {
+          "X": 1961,
+          "Y": 1230
+        },
+        {
+          "X": 1192,
+          "Y": 1230
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":56}}"
+    },
+    {
+      "DetectedText": "创",
+      "Confidence": 68,
+      "Polygon": [
+        {
+          "X": 232,
+          "Y": 1233
+        },
+        {
+          "X": 262,
+          "Y": 1233
+        },
+        {
+          "X": 262,
+          "Y": 1263
+        },
+        {
+          "X": 232,
+          "Y": 1263
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":30}}"
+    },
+    {
+      "DetectedText": "恿_",
+      "Confidence": 82,
+      "Polygon": [
+        {
+          "X": 664,
+          "Y": 1238
+        },
+        {
+          "X": 695,
+          "Y": 1238
+        },
+        {
+          "X": 695,
+          "Y": 1268
+        },
+        {
+          "X": 664,
+          "Y": 1268
         }
       ],
       "AdvancedInfo": "{\"Parag\":{\"ParagNo\":57}}"
     },
     {
-      "DetectedText": "as much as possible.",
-      "Confidence": 83,
+      "DetectedText": "②擦擦头.上的汗，抖抖鞋上的土，让和暖的春风轻轻地吹拂，",
+      "Confidence": 97,
       "Polygon": [
         {
-          "X": 701,
-          "Y": 1468
+          "X": 1249,
+          "Y": 1237
         },
         {
-          "X": 933,
-          "Y": 1468
+          "X": 2024,
+          "Y": 1237
         },
         {
-          "X": 933,
-          "Y": 1493
+          "X": 2024,
+          "Y": 1269
         },
         {
-          "X": 701,
-          "Y": 1493
-        }
-      ],
-      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":58}}"
-    },
-    {
-      "DetectedText": "A. save",
-      "Confidence": 84,
-      "Polygon": [
-        {
-          "X": 68,
-          "Y": 1505
-        },
-        {
-          "X": 153,
-          "Y": 1505
-        },
-        {
-          "X": 153,
-          "Y": 1529
-        },
-        {
-          "X": 68,
-          "Y": 1529
-        }
-      ],
-      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":59}}"
-    },
-    {
-      "DetectedText": "B. to save",
-      "Confidence": 79,
-      "Polygon": [
-        {
-          "X": 382,
-          "Y": 1504
-        },
-        {
-          "X": 499,
-          "Y": 1504
-        },
-        {
-          "X": 499,
-          "Y": 1532
-        },
-        {
-          "X": 382,
-          "Y": 1532
+          "X": 1249,
+          "Y": 1269
         }
       ],
       "AdvancedInfo": "{\"Parag\":{\"ParagNo\":60}}"
     },
     {
-      "DetectedText": "C. saved",
-      "Confidence": 82,
+      "DetectedText": "2.在( )里填写合适的词语。(6分)",
+      "Confidence": 94,
       "Polygon": [
         {
-          "X": 668,
-          "Y": 1507
+          "X": 209,
+          "Y": 1272
         },
         {
-          "X": 766,
-          "Y": 1507
+          "X": 765,
+          "Y": 1272
         },
         {
-          "X": 766,
-          "Y": 1535
+          "X": 765,
+          "Y": 1307
         },
         {
-          "X": 668,
-          "Y": 1535
+          "X": 209,
+          "Y": 1307
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":58}}"
+    },
+    {
+      "DetectedText": "当年，爷爷奶奶在山。上植树，如今大山已披上绿色的外衣。后来，",
+      "Confidence": 98,
+      "Polygon": [
+        {
+          "X": 1193,
+          "Y": 1272
+        },
+        {
+          "X": 2026,
+          "Y": 1272
+        },
+        {
+          "X": 2026,
+          "Y": 1302
+        },
+        {
+          "X": 1193,
+          "Y": 1302
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":60}}"
+    },
+    {
+      "DetectedText": "整洁愉快流利沉甸甸专心",
+      "Confidence": 99,
+      "Polygon": [
+        {
+          "X": 406,
+          "Y": 1318
+        },
+        {
+          "X": 868,
+          "Y": 1318
+        },
+        {
+          "X": 868,
+          "Y": 1350
+        },
+        {
+          "X": 406,
+          "Y": 1350
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":59}}"
+    },
+    {
+      "DetectedText": "爸爸妈妈在路旁植树，如今大路已为行人撑起了遮阴的伞。今天，",
+      "Confidence": 99,
+      "Polygon": [
+        {
+          "X": 1193,
+          "Y": 1309
+        },
+        {
+          "X": 2024,
+          "Y": 1309
+        },
+        {
+          "X": 2024,
+          "Y": 1340
+        },
+        {
+          "X": 1193,
+          "Y": 1340
+        }
+      ],
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":60}}"
+    },
+    {
+      "DetectedText": "小学二年级语文第1页(共4页)",
+      "Confidence": 99,
+      "Polygon": [
+        {
+          "X": 472,
+          "Y": 1359
+        },
+        {
+          "X": 791,
+          "Y": 1359
+        },
+        {
+          "X": 791,
+          "Y": 1387
+        },
+        {
+          "X": 472,
+          "Y": 1387
         }
       ],
       "AdvancedInfo": "{\"Parag\":{\"ParagNo\":61}}"
     },
     {
-      "DetectedText": "D. saving",
-      "Confidence": 86,
-      "Polygon": [
-        {
-          "X": 954,
-          "Y": 1510
-        },
-        {
-          "X": 1065,
-          "Y": 1510
-        },
-        {
-          "X": 1065,
-          "Y": 1538
-        },
-        {
-          "X": 954,
-          "Y": 1538
-        }
-      ],
-      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":62}}"
-    },
-    {
-      "DetectedText": "10. How can we help the children in the mountain vllge?",
-      "Confidence": 79,
-      "Polygon": [
-        {
-          "X": 44,
-          "Y": 1546
-        },
-        {
-          "X": 741,
-          "Y": 1546
-        },
-        {
-          "X": 741,
-          "Y": 1580
-        },
-        {
-          "X": 44,
-          "Y": 1580
-        }
-      ],
-      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":63}}"
-    },
-    {
-      "DetectedText": "We can",
-      "Confidence": 78,
-      "Polygon": [
-        {
-          "X": 67,
-          "Y": 1591
-        },
-        {
-          "X": 187,
-          "Y": 1591
-        },
-        {
-          "X": 187,
-          "Y": 1618
-        },
-        {
-          "X": 67,
-          "Y": 1618
-        }
-      ],
-      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":64}}"
-    },
-    {
-      "DetectedText": "leaflets to ask people to donate money.",
-      "Confidence": 83,
-      "Polygon": [
-        {
-          "X": 338,
-          "Y": 1594
-        },
-        {
-          "X": 777,
-          "Y": 1594
-        },
-        {
-          "X": 777,
-          "Y": 1623
-        },
-        {
-          "X": 338,
-          "Y": 1623
-        }
-      ],
-      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":65}}"
-    },
-    {
-      "DetectedText": "A. give ia",
-      "Confidence": 69,
-      "Polygon": [
-        {
-          "X": 69,
-          "Y": 1634
-        },
-        {
-          "X": 186,
-          "Y": 1634
-        },
-        {
-          "X": 186,
-          "Y": 1663
-        },
-        {
-          "X": 69,
-          "Y": 1663
-        }
-      ],
-      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":66}}"
-    },
-    {
-      "DetectedText": "B. give of",
-      "Confidence": 79,
-      "Polygon": [
-        {
-          "X": 382,
-          "Y": 1634
-        },
-        {
-          "X": 507,
-          "Y": 1634
-        },
-        {
-          "X": 507,
-          "Y": 1666
-        },
-        {
-          "X": 382,
-          "Y": 1666
-        }
-      ],
-      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":67}}"
-    },
-    {
-      "DetectedText": "C. give up",
-      "Confidence": 77,
-      "Polygon": [
-        {
-          "X": 669,
-          "Y": 1639
-        },
-        {
-          "X": 788,
-          "Y": 1639
-        },
-        {
-          "X": 788,
-          "Y": 1671
-        },
-        {
-          "X": 669,
-          "Y": 1671
-        }
-      ],
-      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":68}}"
-    },
-    {
-      "DetectedText": ".D. give out ",
-      "Confidence": 75,
-      "Polygon": [
-        {
-          "X": 953,
-          "Y": 1642
-        },
-        {
-          "X": 1083,
-          "Y": 1642
-        },
-        {
-          "X": 1083,
-          "Y": 1671
-        },
-        {
-          "X": 953,
-          "Y": 1671
-        }
-      ],
-      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":69}}"
-    },
-    {
-      "DetectedText": "11. - Could you tell me_",
-      "Confidence": 74,
-      "Polygon": [
-        {
-          "X": 42,
-          "Y": 1676
-        },
-        {
-          "X": 322,
-          "Y": 1676
-        },
-        {
-          "X": 322,
-          "Y": 1705
-        },
-        {
-          "X": 42,
-          "Y": 1705
-        }
-      ],
-      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":70}}"
-    },
-    {
-      "DetectedText": "一Untilt tomorrow afternoon.",
-      "Confidence": 85,
-      "Polygon": [
-        {
-          "X": 82,
-          "Y": 1720
-        },
-        {
-          "X": 418,
-          "Y": 1720
-        },
-        {
-          "X": 418,
-          "Y": 1751
-        },
-        {
-          "X": 82,
-          "Y": 1751
-        }
-      ],
-      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":71}}"
-    },
-    {
-      "DetectedText": "第1页共8页",
+      "DetectedText": "小学二年级语文第2页(共4页)",
       "Confidence": 99,
       "Polygon": [
         {
-          "X": 549,
-          "Y": 1791
+          "X": 1453,
+          "Y": 1357
         },
         {
-          "X": 720,
-          "Y": 1791
+          "X": 1771,
+          "Y": 1357
         },
         {
-          "X": 720,
-          "Y": 1819
+          "X": 1771,
+          "Y": 1383
         },
         {
-          "X": 549,
-          "Y": 1819
+          "X": 1453,
+          "Y": 1383
         }
       ],
-      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":72}}"
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":62}}"
     }
   ],
   "Language": "zh",
-  "RequestId": "87028e1d-a666-42cd-8526-a497a5fe565b"
-}
+  "RequestId": "179ad04f-275c-42cf-adc7-567f93b60234"
 }

@@ -1,5 +1,4 @@
 {
-  "result": {
     "TextDetections": [
       {
         "DetectedText": "10、 作业现场的生产条件、 安全设施、作业机具和安全工器具等应符合国家或行",
@@ -1200,5 +1199,4 @@
     ],
     "Language": "zh",
     "RequestId": "10efa528-ca3d-4013-a9fb-3a90b0f20f75"
-  }
 }

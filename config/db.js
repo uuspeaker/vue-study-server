@@ -19,15 +19,12 @@ const config = {
  cos: {
    secretId: 'AKIDNZXUCrbYXHnbZLwBGAp33oHWXlmaeZhc',
    secretKey: 'rcHjwymfM9nFSRAi28zdKm8FveQkfR4W',
-   bucket : 'vue-study-1255824916',
-   region : 'ap-shenzhen-fsi',
+   bucket : 'vue-1255824916',
+   region : 'ap-guangzhou',
    maxKeys : 5
  },
  upload: {
-   destination: 'upload',
-   secretKey: 'rcHjwymfM9nFSRAi28zdKm8FveQkfR4W',
-   bucket : 'vue-study-1255824916',
-   region : 'ap-shenzhen-fsi'
+   destination: 'upload'
  },
  ocr: {
    secretId: 'AKIDNZXUCrbYXHnbZLwBGAp33oHWXlmaeZhc',

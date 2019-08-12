@@ -8,7 +8,7 @@ class TestPaper{
       //原始图片地址
       this.sourceUrl = sourceUrl;
       //原始数据
-      this.sourceData = sourceData.result.TextDetections;
+      this.sourceData = sourceData.TextDetections;
       //以数字开头的数据
       this.possibleSubjects = []
       //以数字开头的,X坐标对齐且数值正常的数据
@@ -44,7 +44,10 @@ class TestPaper{
     getMaxX(){return this.paperPolygon.maxX}
     getMinY(){return this.paperPolygon.minY}
     getMaxY(){return this.paperPolygon.maxY}
+    getSubjects(){return this.constructedSubjects}
+    getLine(lineNo){return this.sourceData[lineNo]}
     getSubjectCount(){return this.validSubjects.length}
+    getDataCount(){return this.sourceData.length}
     getSubjectPolygons(){return this.subjectPolygons}
     getSubjectContentss(){return this.subjectContents}
     getPaperPolygon(){return this.paperPolygon}
@@ -131,7 +134,7 @@ class TestPaper{
         for (var j = 0; j < length; j++) {
           //log.debug("开始剔除不对齐数据")
           var offset = item['Polygon'][0]['X'] - this.possibleSubjects[j]['Polygon'][0]['X']
-          if(Math.abs(offset) < (this.paperPolygon.maxX/20)) likeNum++
+          if(Math.abs(offset) < (this.paperPolygon.maxX/100)) likeNum++
         }
         if(likeNum <= 3) {
           log.debug("剔除X偏离数据",item)
@@ -141,15 +144,6 @@ class TestPaper{
       }
       this.validSubjects = result
       log.debug(`提取结束（规则：X坐标对齐的），共${result.length}条，数据详情：validSubjects`,result)
-    }
-
-    constructSubjects(){
-      log.debug("开始组装题目数据")
-      var length = this.validSubjects.length
-      for (var i = 0; i < length; i++) {
-        var subject = new Subject(this.validSubjects[i], this)
-        this.constructedSubjects.push(subject)
-      }
     }
 
     //计算题目最大长度
@@ -182,8 +176,12 @@ class TestPaper{
     //根据题号排序(升序)
     sortSubjects(){
       log.debug("开始给题目排序")
+      var length = this.validSubjects.length
+      for (var i = 0; i < length; i++) {
+        this.validSubjects[i].rankValue = this.validSubjects[i].Polygon[0].X * 2 +  this.validSubjects[i].Polygon[0].Y
+      }
       var sortedData = this.validSubjects.sort((a,b) => {
-        return a.subjectNo - b.subjectNo
+        return a.rankValue -  b.rankValue
       })
       for (var i = 0; i < sortedData.length; i++) {
         sortedData[i].sortNo = i + 1
@@ -193,10 +191,25 @@ class TestPaper{
       return sortedData
     }
 
+    constructSubjects(){
+      log.debug("开始组装题目数据")
+      var length = this.validSubjects.length
+      for (var i = 0; i < length; i++) {
+        var subject = new Subject(this.validSubjects[i], this)
+        this.constructedSubjects.push(subject)
+      }
+    }
+
     drawSubjects(targetDir){
       var length = this.constructedSubjects.length
       for (var i = 0; i < length; i++) {
         this.constructedSubjects[i].draw(targetDir)
+      }
+    }
+    printSubjects(){
+      var length = this.constructedSubjects.length
+      for (var i = 0; i < length; i++) {
+        this.constructedSubjects[i].print()
       }
     }
 

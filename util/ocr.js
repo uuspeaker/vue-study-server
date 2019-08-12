@@ -34,9 +34,9 @@ module.exports.scanImageUrl =  (imageUrl) => {
   let params = {ImageUrl:imageUrl}
   req.from_json_string(JSON.stringify(params));
   return new Promise(( resolve, reject ) => {
-    client.GeneralBasicOCR(req, function(errMsg, response) {
-        if (errMsg) {
-            log.error(errMsg);
+    client.GeneralBasicOCR(req, function(err, response) {
+        if (err) {
+            log.error(`ocr图片识别失败`,err);
             reject(err)
         }else{
           log.debug(`ocr图片识别结束, data`,response)

@@ -1,5 +1,4 @@
 {
-  "result": {
   "TextDetections": [
     {
       "DetectedText": "扬州中学教育集团树人学校九年级第二次模拟考试",
@@ -1798,5 +1797,4 @@
   ],
   "Language": "zh",
   "RequestId": "87028e1d-a666-42cd-8526-a497a5fe565b"
-}
 }

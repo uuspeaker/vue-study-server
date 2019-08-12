@@ -7,6 +7,8 @@ const config = require('../config/db');
 const data = require('../config/data');
 const cos = require('../util/cos');
 const mongo = require('../util/mongo');
+const ocr = require('../util/ocr.js');
+const TestPaper = require('../service/studyAnalyse/TestPaper');
 
 let storage = multer.diskStorage({
     destination: path.resolve(config.upload.destination),
@@ -33,14 +35,15 @@ router.post('/upload', upload.single('file'), async (ctx, next) => {
   var result =1
   if (file){
     var result = await cos.putObject(file.path)
+    var ocrResult = await ocr.scanImageUrl("https://" + result.Location)
+    log.debug("文件ocr扫描结果为",ocrResult)
+    var testPaper = new TestPaper(result.Location,ocrResult)
+    testPaper.printSubjects()
+    ctx.body.result = testPaper.getSubjects()
 
     var data = {userId: 11,fileName:file.filename, location: result.Location, createDate: new Date(), status: 1}
-    ctx.body.result = result
-    mongo.insertOne("exercise", data)
+    //mongo.insertOne("exercise", data)
 
-    ctx.body = {
-      result: result
-    }
   } else {
       ctx.body = 'upload error';
   }

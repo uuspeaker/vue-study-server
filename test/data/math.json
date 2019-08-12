@@ -1,5 +1,4 @@
 {
-  "result": {
   "TextDetections": [
     {
       "DetectedText": "D.61和∠2是内错角",
@@ -2028,5 +2027,4 @@
   ],
   "Language": "zh",
   "RequestId": "3aefdf83-3d74-443f-af05-629dc72e185f"
-}
 }
