@@ -47,7 +47,7 @@ class TestPaper{
       var targetDir = path.resolve(`./test/tmp/${uuid.v1()}`);
       this.targetDir = targetDir
       log.error('创建目录',targetDir)
-      await fs.mkdirSync(targetDir,(err,result)=>{
+      await fs.mkdirSync(targetDir,{recursive:true},(err,result)=>{
         if(err){
           log.error('创建目录失败',err)
           return
