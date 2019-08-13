@@ -1,12 +1,13 @@
 const log = require('../../util/log').getLogger("TestPaper");
 const path = require('path')
 const uuid = require('uuid')
+const fs = require('fs');
 const Subject = require('./Subject')
 
 class TestPaper{
     constructor(sourceUrl,sourceData){
       //log.debug("试卷原始数据",sourceData)
-      this.paperName = uuid.v1()
+      this.targetDir = ''
       //原始图片地址
       this.sourceUrl = sourceUrl;
       //原始数据
@@ -38,10 +39,26 @@ class TestPaper{
       this.extractValidSubject()
       this.initMaxSubjectLength()
       this.sortSubjects()
+      await this.mkdir()
       await this.constructSubjects()
     }
 
-    getName(){return this.paperName}
+    async mkdir(){
+      var targetDir = path.resolve(`./test/tmp/${uuid.v1()}`);
+      this.targetDir = targetDir
+      log.error('创建目录',targetDir)
+      await fs.mkdirSync(targetDir,(err,result)=>{
+        if(err){
+          log.error('创建目录失败',err)
+          return
+        }else{
+          log.info('创建目录成功',result)
+        }
+
+      })
+    }
+
+    getTargetDir(){return this.targetDir}
     getSourceUrl(){return this.sourceUrl}
     getMinX(){return this.paperPolygon.minX}
     getMaxX(){return this.paperPolygon.maxX}

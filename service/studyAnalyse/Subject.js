@@ -1,5 +1,4 @@
 const log = require('../../util/log').getLogger("Subject");
-const fs = require('fs');
 const cos = require('../../util/cos.js')
 const path = require('path');
 const graphic = require('../../util/graphic')
@@ -17,7 +16,6 @@ class Subject{
     this.area = []
     //this.content = []
     this.content = []
-    this.targetDir = `./test/tmp/${myTestPaper.getName()}`
   }
 
   getMinX(){return this.subjectData.Polygon[0].X}
@@ -142,20 +140,10 @@ class Subject{
     log.info('切图完成',this.subjectData.sortNo)
   }
 
-  mkdir(){
-    fs.mkdir(this.targetDir,(result,err)=>{
-      if(err){
-        log.error('创建目录失败',this.targetDir,err)
-      }
-      log.error('创建目录成功',result)
-    })
-  }
-
   async drawNormal(){
-    this.mkdir()
     var sourceUrl = this.getTestPaper().getSourceUrl()
     var extname = path.extname(sourceUrl)
-    var targetUrl = `${this.targetDir}/${this.subjectData.sortNo}${extname}`
+    var targetUrl = `${this.getTestPaper().getTargetDir()}/${this.subjectData.sortNo}${extname}`
     //log.debug(`绘制题目`,targetUrl,this.area)
     await graphic.cut(sourceUrl, targetUrl, this.area[0].width + leftMargin + rightMargin, this.area[0].height, this.area[0].X - leftMargin, this.area[0].Y)
     var cosObject = await cos.putObject(targetUrl)
@@ -163,13 +151,12 @@ class Subject{
   }
 
   async drawFlipOver(){
-    this.mkdir()
     var sourceUrl = this.getTestPaper().getSourceUrl()
     var extname = path.extname(sourceUrl)
-    var targetUrl = `${this.targetDir}/${this.subjectData.sortNo}${extname}`
+    var targetUrl = `${this.getTestPaper().getTargetDir()}/${this.subjectData.sortNo}${extname}`
     var tmpUrls = []
     for (var i = 0; i < this.area.length; i++) {
-      var tmpTargetUrl = `${this.targetDir}/${this.subjectData.sortNo}-${i}${extname}`
+      var tmpTargetUrl = `${this.getTestPaper().getTargetDir()}/${this.subjectData.sortNo}-${i}${extname}`
       tmpUrls.push(tmpTargetUrl)
       //log.debug(`绘制题目`,tmpTargetUrl,this.area[i])
       await graphic.cut(sourceUrl, tmpTargetUrl, this.area[i].width + leftMargin + rightMargin, this.area[i].height, this.area[i].X - leftMargin, this.area[i].Y)
