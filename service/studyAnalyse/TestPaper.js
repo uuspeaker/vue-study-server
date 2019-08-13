@@ -59,14 +59,13 @@ class TestPaper{
       if(sortNo && sortNo >= 1 && sortNo <= this.validSubjects.length){
         return this.validSubjects[sortNo-1]
       }else{
-        log.error(`编号输入错误，请输入1-${this.validSubjects.length}范围内的编号，实际输入${sortNo}`)
+        log.info(`编号输入错误，请输入1-${this.validSubjects.length}范围内的编号，实际输入${sortNo}`)
       }
     }
 
     //计算试卷结构数据，包括坐标
     calculatePaperStructure(){
       var length = this.sourceData.length
-      log.debug("计算试卷起始坐标")
       for (var i = 0; i < length; i++) {
         //获取最大的X坐标
         if(this.paperPolygon.minX > this.sourceData[i]['Polygon'][0]['X']){
@@ -82,14 +81,13 @@ class TestPaper{
           this.paperPolygon.maxY = this.sourceData[i]['Polygon'][2]['Y']
         }
       }
-      log.debug("试卷起始坐标计算完成", this.paperPolygon)
+      log.info("获取试卷坐标", this.paperPolygon)
     }
 
     //将可能的题目提取出来（规则：数字打头的）
     extractPosibleSubject(){
       var result = []
       var length = this.sourceData.length
-      log.debug("开始提取题目（规则：数字打头的），数据总条数",length)
       for (var i = 0; i < length; i++) {
         var item = this.sourceData[i].DetectedText
         //log.debug("开始解析",item)
@@ -103,7 +101,7 @@ class TestPaper{
         }
       }
       this.possibleSubjects = result
-      log.debug(`提取结束（规则：数字打头的），共${result.length}条，数据详情：possibleSubjects`,result)
+      log.info(`数字打头的题目共${result.length}条：possibleSubjects`,result)
     }
 
     /*
@@ -114,7 +112,6 @@ class TestPaper{
     extractValidSubject(){
       var result = []
       var length = this.possibleSubjects.length
-      log.debug("开始提取题目（规则：X坐标对齐的），数据总条数",length)
       for (var i = 0; i < length; i++) {
         var item = this.possibleSubjects[i]
         //log.debug("开始解析",item)
@@ -137,12 +134,11 @@ class TestPaper{
         result.push(this.possibleSubjects[i])
       }
       this.validSubjects = result
-      log.debug(`提取结束（规则：X坐标对齐的），共${result.length}条，数据详情：validSubjects`,result)
+      log.info(`有效题目共${result.length}条：`,result)
     }
 
     //计算题目最大长度
     initMaxSubjectLength(){
-      log.debug("开始计算最大题目长度")
       var itemLengths = []
       var totalLength = 0
       var itemMinX = 1000000
@@ -164,12 +160,11 @@ class TestPaper{
        }
       // var testPaperLength = itemMaxX - itemMinX
       this.maxSubjectWidth = validMaxLength
-      log.debug("计算最大题目长度结束，最大长度为:maxSubjectWidth",validMaxLength)
+      log.debug("题目宽度为:",validMaxLength)
     }
 
     //根据题号排序(升序)
     sortSubjects(){
-      log.debug("开始给题目排序")
       var length = this.validSubjects.length
       for (var i = 0; i < length; i++) {
         this.validSubjects[i].rankValue = this.validSubjects[i].Polygon[0].X * 2 +  this.validSubjects[i].Polygon[0].Y
@@ -180,19 +175,19 @@ class TestPaper{
       for (var i = 0; i < sortedData.length; i++) {
         sortedData[i].sortNo = i + 1
       }
-      log.debug("排序结束",sortedData)
+      log.debug("题目排序完成",sortedData)
       this.validSubjects = sortedData
       return sortedData
     }
 
     async constructSubjects(){
-      log.debug("开始组装题目数据")
       var length = this.validSubjects.length
       for (var i = 0; i < length; i++) {
         var subject = new Subject(this.validSubjects[i], this)
         await subject.init()
         this.subjectInfos.push(subject.getInfo())
       }
+      log.debug("题目组装完成")
     }
 
 }

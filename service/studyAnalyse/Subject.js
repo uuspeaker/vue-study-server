@@ -48,8 +48,8 @@ class Subject{
 
   //获取下一个题目对象
   getNextSubject(){
+    //如果是最后一个题目
     if(this.isLastSubject()){
-      log.error('已经是最后一个题目，无法获取下一条')
       return undefined
     }
     var nextNo = this.subjectData.sortNo + 1
@@ -87,9 +87,9 @@ class Subject{
     }else if(areaType == 3){//最后一题
       this.calculateLastArea()
     }else{
-      log.error('未知的题目区域类型，无法计算',areaType)
+      throw '未知的题目类型，无法计算'
     }
-    log.debug("计算题目坐标区域完成")
+    log.debug("计算题目坐标完成")
   }
 
   //计算正常题目坐标
@@ -131,7 +131,6 @@ class Subject{
   }
 
   async cutImage(){
-    log.debug("开始切图")
     var areaType = this.getAreaType()
     if(areaType == 1){//正常区域
       await this.drawNormal()
@@ -140,6 +139,7 @@ class Subject{
     }else if(areaType == 3){//最后一题
       await this.drawLast()
     }
+    log.info('切图完成',this.subjectData.sortNo)
   }
 
   mkdir(){
@@ -147,6 +147,7 @@ class Subject{
       if(err){
         log.error('创建目录失败',this.targetDir,err)
       }
+      log.error('创建目录成功',result)
     })
   }
 
@@ -155,7 +156,7 @@ class Subject{
     var sourceUrl = this.getTestPaper().getSourceUrl()
     var extname = path.extname(sourceUrl)
     var targetUrl = `${this.targetDir}/${this.subjectData.sortNo}${extname}`
-    log.debug(`绘制题目`,targetUrl,this.area)
+    //log.debug(`绘制题目`,targetUrl,this.area)
     await graphic.cut(sourceUrl, targetUrl, this.area[0].width + leftMargin + rightMargin, this.area[0].height, this.area[0].X - leftMargin, this.area[0].Y)
     var cosObject = await cos.putObject(targetUrl)
     this.imageUrl = cosObject.Location
@@ -170,7 +171,7 @@ class Subject{
     for (var i = 0; i < this.area.length; i++) {
       var tmpTargetUrl = `${this.targetDir}/${this.subjectData.sortNo}-${i}${extname}`
       tmpUrls.push(tmpTargetUrl)
-      log.debug(`绘制题目`,tmpTargetUrl,this.area[i])
+      //log.debug(`绘制题目`,tmpTargetUrl,this.area[i])
       await graphic.cut(sourceUrl, tmpTargetUrl, this.area[i].width + leftMargin + rightMargin, this.area[i].height, this.area[i].X - leftMargin, this.area[i].Y)
     }
     //合并图片，并将原来多余的图片删除
@@ -189,7 +190,7 @@ class Subject{
 
   calculateContent(){
     this.calculateArea()
-    log.debug(`开始提取sortNo${this.subjectData.sortNo}的内容`)
+
     for (var i = 0; i < this.area.length; i++) {
       var testPaperLength = this.getTestPaper().getDataCount()
       for (var j = 0; j < testPaperLength; j++) {
@@ -206,6 +207,7 @@ class Subject{
         }
       }
     }
+    log.debug(`sortNo${this.subjectData.sortNo}内容提取完成`)
   }
 
 }
