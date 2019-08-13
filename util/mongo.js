@@ -45,12 +45,12 @@ module.exports.find = async (collection, condition) => {
     db.collection(collection).find(condition).toArray(function (err, result) {
       if (err) {
         log.error("mongo query fail",err)
-        db.close()
         reject(err)
+        db.close()
       }
       log.info("mongo query result",result)
-      db.close()
       resolve(result)
+      db.close()
     })
   })
   })

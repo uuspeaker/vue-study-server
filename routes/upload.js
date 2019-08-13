@@ -57,31 +57,11 @@ router.get('/upload', async (ctx, next) => {
   ctx.body.result = result
 });
 
-router.get('/upload2', async (ctx, next) => {
-  log.debug("处理开始")
-
-  await cos1.getBucket({
-    Bucket: config.cos.bucket,
-    Region: config.cos.region,
-    Prefix: '', // 这里传入列出的文件前缀
-    MaxKeys: config.cos.maxKeys,
-  }, (err, data) => {
-    if (err) {
-      log.error("查询文件异常",err)
-      throw err
-    }
-    log.debug("处理结束,data", data);
-    ctx.body = {
-      'result': data.Contents
-    }
-  });
-});
 
 router.get('/testPaper', async (ctx, next) => {
-  var data = {}
-  ctx.body = await mongo.find("TestPaper",{})
-
-  //ctx.body = 'exercise query success';
+  var data = await mongo.find("TestPaper",{})
+  ctx.body = data
+  log.info('testPaper query complete')
 });
 
 router.get('/data', async (ctx, next) => {
