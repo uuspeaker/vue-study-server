@@ -19,9 +19,23 @@ class Subject{
   }
 
   getMinX(){return this.subjectData.Polygon[0].X}
-  getMinY(){return this.subjectData.Polygon[0].Y}
+  getMinY(){return this.subjectData.Polygon[0].Y - this.getTestPaper().getMargin()}
   getTitle(){return this.subjectData.DetectedText}
   getTestPaper(){return this.testPaper}
+
+  getWidth(){
+    var maxWidth = this.getTestPaper().getMaxSubjectWidth()
+    var validSubjects = this.getTestPaper().getValidSubjects()
+    for (let index = 0; index < validSubjects.length; index++) {
+      const element = validSubjects[index];
+      var isNeighbor = Math.abs(element.Polygon[0].Y - this.getMinY() < this.getTestPaper().getMargin() * 5)
+      if(isNeighbor && element.Polygon[0].X - this.getMinX() > maxWidth){
+        maxWidth = element.Polygon[0].X　- this.getMinX()
+      }
+      
+    }
+    return maxWidth * 0.95
+  }
 
   async init(){
     this.calculateArea()
@@ -95,7 +109,7 @@ class Subject{
     this.area = [{
         X: this.getMinX(),
         Y: this.getMinY(),
-        width: this.getTestPaper().getMaxSubjectWidth(),
+        width: this.getWidth(),
         height: this.getNextSubject().getMinY() - this.getMinY()
       }
     ]
@@ -111,7 +125,7 @@ class Subject{
       },{//题目下半部分坐标
         X: this.getNextSubject().getMinX(),
         Y: this.getTestPaper().getMinY(),
-        width: this.getTestPaper().getMaxSubjectWidth(),
+        width: this.getWidth(),
         height: this.getNextSubject().getMinY() - this.getTestPaper().getMinY()
       }
     ]
@@ -122,7 +136,7 @@ class Subject{
     this.area = [{
       X: this.getMinX(),
       Y: this.getMinY(),
-      width: this.getTestPaper().getMaxSubjectWidth(),
+      width: this.getWidth(),
       height: this.getTestPaper().getMaxY() - this.getMinY()
       }
     ]

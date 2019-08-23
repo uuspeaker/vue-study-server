@@ -12,6 +12,8 @@ class TestPaper{
       this.sourceUrl = sourceUrl;
       //原始数据
       this.sourceData = sourceData.TextDetections;
+      //每一行的高度
+      this.lineHeight = 0
       //以数字开头的数据
       this.possibleSubjects = []
       //以数字开头的,X坐标对齐且数值正常的数据
@@ -20,6 +22,10 @@ class TestPaper{
       this.subjectPolygons = []
       //每道题完整内容
       this.subjectInfos = []
+      //Ｘ轴匹配偏差（用于判断编号是否和其他编号匹配）
+      this.xOffset = 0.02
+      //最小匹配个数（达到这个值才判定为题目编号）
+      this.matchAmount = 2
       //试卷的起始坐标
       this.paperPolygon = {
         minX:999999,
@@ -64,9 +70,11 @@ class TestPaper{
     getMaxX(){return this.paperPolygon.maxX}
     getMinY(){return this.paperPolygon.minY}
     getMaxY(){return this.paperPolygon.maxY}
+    getMargin(){return this.lineHeight * 0.6}
     getLine(lineNo){return this.sourceData[lineNo]}
     getSubjectCount(){return this.validSubjects.length}
     getDataCount(){return this.sourceData.length}
+    getValidSubjects(){return this.validSubjects}
     getSubjectPolygons(){return this.subjectPolygons}
     getSubjectInfos(){return this.subjectInfos}
     getPaperPolygon(){return this.paperPolygon}
@@ -84,6 +92,9 @@ class TestPaper{
     calculatePaperStructure(){
       var length = this.sourceData.length
       for (var i = 0; i < length; i++) {
+        if(i == 0){
+          this.lineHeight = this.sourceData[0]['Polygon'][3]['Y'] - this.sourceData[0]['Polygon'][0]['Y']
+        }
         //获取最大的X坐标
         if(this.paperPolygon.minX > this.sourceData[i]['Polygon'][0]['X']){
           this.paperPolygon.minX = this.sourceData[i]['Polygon'][0]['X']
@@ -103,55 +114,105 @@ class TestPaper{
 
     //将可能的题目提取出来（规则：数字打头的）
     extractPosibleSubject(){
+      //var regExp = /^\d+/;
+      var regExp = this.getPrefix()
       var result = []
       var length = this.sourceData.length
       for (var i = 0; i < length; i++) {
+        if(this.sourceData[i].Confidence < 60)continue
         var item = this.sourceData[i].DetectedText
+        if(item.length < 5)continue
         //log.debug("开始解析",item)
-        var regExp = /^\d+/;
+        
     		var mathResult = item.match(regExp);
     		if(mathResult) {
-    			this.sourceData[i].subjectNo = mathResult[0]*1
+    			this.sourceData[i].subjectNo = mathResult[0]
           result.push(this.sourceData[i])
     		}else{
 
         }
       }
       this.possibleSubjects = result
-      log.info(`数字打头的题目共${result.length}条：possibleSubjects`,result)
+      log.info(`数字打头的题目共${result.length}条`)
+    }
+
+    //分析题目前缀
+    getPrefix(){
+      var　regExpArr = []
+      
+      regExpArr.push(/^\d{1,2}\D+/)//小写数字
+      regExpArr.push(/^\(|（\d{1,2}\(|（/) //带括号小写数字
+      regExpArr.push(/^\[一二三四五六七八九十]{1,2}/)//大写数字
+      regExpArr.push(/^\(|（[一二三四五六七八九十]{1,2}\(|（/)//带括号大写数字
+      regExpArr.push(/^\[a-z]{1,2}/)//小写字母
+      regExpArr.push(/^\(|（\[a-z]{1,2}\(|（/) //带括号小写字母
+      regExpArr.push(/^\[ⅠⅡⅢⅤ]{1,2}/)//希腊字母
+      regExpArr.push(/^\(|（\[ⅠⅡⅢⅤ]{1,2}\(|（/) //带括号希腊字母
+      regExpArr.push(/^\[①②③④⑤⑥⑦⑧⑨⑩⑪⑫⑬⑭⑮⑯⑰⑱⑲⑳❶❷❸❹❺❻❼❽❾❿]{1,2}/)//带圈数字
+      var regIndex = 0
+      var maxMatchTime = 0
+      for (var i = 0; i < regExpArr.length; i++) {
+        var matchTime = 0
+        var length = this.sourceData.length
+        for (var j = 0; j < length; j++) {
+          if(this.sourceData[j].Confidence < 60)continue
+          var item = this.sourceData[j].DetectedText
+          if(item.length < 5)continue
+          //log.debug("开始解析",item)
+          var regExp = regExpArr[i];
+          var mathResult = item.match(regExp);
+          if(mathResult) {
+            log.info("匹配",regExp,item)
+            matchTime++
+          }else{
+          }
+        }
+        if(matchTime > maxMatchTime){
+          regIndex = i
+          maxMatchTime = matchTime
+        }
+        log.info("规则", regExpArr[i],"匹配",matchTime,"次")
+      }
+      log.info("匹配规则是", regExpArr[regIndex])
+      return regExpArr[regIndex]
     }
 
     /*
     将有效的题目提取出来
-    规则1（坐标对齐）：至少和其它两题对齐，X坐标偏移不超过试卷宽度的5%
-    规则2（编号正常）：题目编号-当前题目总数 < 10 (若部分题目未识别出来，则可能导致编号大于题目总数)
+    规则1（坐标对齐）：至少和其它两题对齐，X坐标偏移不超过试卷宽度的偏移值
     */
     extractValidSubject(){
       var result = []
       var length = this.possibleSubjects.length
+      //若数目较少，则不做任何剔除
+      if(length <= 5){
+        this.validSubjects = this.possibleSubjects
+        return
+      }
+
       for (var i = 0; i < length; i++) {
         var item = this.possibleSubjects[i]
         //log.debug("开始解析",item)
         //去掉题目编号大于总长度的
-        if(item.subjectNo > length+10 || item.subjectNo == 0) {
-          log.debug("剔除编号异常数据",item)
-          continue
-        }
+        // if(item.subjectNo > length+10 || item.subjectNo == 0) {
+        //   log.debug("剔除编号异常数据",item)
+        //   continue
+        // }
         //去掉坐标明显不对齐的
         var likeNum = 0  //记录有多少数据的X坐标和自己对齐
         for (var j = 0; j < length; j++) {
           //log.debug("开始剔除不对齐数据")
           var offset = item['Polygon'][0]['X'] - this.possibleSubjects[j]['Polygon'][0]['X']
-          if(Math.abs(offset) < (this.paperPolygon.maxX/100)) likeNum++
+          if(Math.abs(offset) < (this.paperPolygon.maxX * this.xOffset)) likeNum++
         }
-        if(likeNum <= 3) {
+        if(likeNum < this.matchAmount + 1) {
           log.debug("剔除X偏离数据",item)
           continue
         }
         result.push(this.possibleSubjects[i])
       }
       this.validSubjects = result
-      log.info(`有效题目共${result.length}条：`,result)
+      log.info(`有效题目共${result.length}条：`, result)
     }
 
     //计算题目最大长度
