@@ -66,12 +66,12 @@ module.exports.update = function (collection, query, data) {
   }
   return new Promise(( resolve, reject ) => {
     connectDB(function (db) {
-      db.collection(collection).update(qurey, data, function (err, result) {
+      db.collection(collection).update(query, data, function (err, result) {
         if (err) {
-          log.error(`mongo insert fail ${err}`)
+          log.error(`mongo update fail ${err}`)
           reject(err)
         }else{
-          log.info(`mongo insertOne success, resutl is ${result}`)
+          log.info(`mongo update success, resutl is ${result}`)
           resolve(result)
           db.close()
         }

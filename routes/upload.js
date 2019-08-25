@@ -66,6 +66,7 @@ router.get('/testPaper', async (ctx, next) => {
   log.info('testPaper query complete')
 });
 router.put('/testPaper', async (ctx, next) => {
+  log.debug(ctx.request.body)
   var id = ctx.request.body.id
   var name = ctx.request.body.name
   var data = await mongo.update("TestPaper",{'_id': id},{'name': name})
