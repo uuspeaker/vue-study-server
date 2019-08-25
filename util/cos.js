@@ -11,6 +11,7 @@ var cos = new COS({
     SecretKey: config.cos.secretKey
 });
 cos.getBucketPromisify = util.promisify(cos.getBucket);
+cos.getObjectPromisify = util.promisify(cos.getObject);
 
 module.exports.getObjectUrl = (key) => {
     var url = cos.getObjectUrl({
@@ -52,6 +53,18 @@ module.exports.putObject = (location) => {
       resolve(data)
     });
   })
+}
+
+module.exports.getObject = async (key, path) => {
+  log.debug("查询文件开始,conditon",  key, path);
+  const data = await cos.getObjectPromisify({
+    Bucket: config.cos.bucket,
+    Region: config.cos.region,
+    Key: key,
+    Output: fs.createWriteStream(path),
+  });
+  log.debug("查询文件结束");
+  return data
 }
 
 module.exports.getObjectList = async (conditon) => {

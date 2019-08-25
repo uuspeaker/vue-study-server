@@ -29,3 +29,11 @@ module.exports.combine = (url1, url2, targetUrl) => {
    });
  });
 }
+
+module.exports.orient = (oldPath, newPath) => {
+  return new Promise(( resolve, reject ) => {
+    gm(oldPath).noProfile().write(newPath, function (err) {
+     if (!err) console.log('done');
+  });
+ });
+}

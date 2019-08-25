@@ -7,6 +7,7 @@ const config = require('../config/db');
 const data = require('../config/data');
 const cos = require('../util/cos');
 const mongo = require('../util/mongo');
+const graphic = require('../util/graphic');
 const ocr = require('../util/ocr.js');
 const TestPaper = require('../service/studyAnalyse/TestPaper');
 
@@ -31,9 +32,16 @@ let upload = multer({ storage: storage, fileFilter: fileFilter });
 router.post('/upload', upload.single('file'), async (ctx, next) => {
   var file = ctx.req.file
   if (file){
-    var result = await cos.putObject(file.path)
-    var fileName = path.basename(file.path)
     log.debug("上传文件开始，临时文件保存在：file.path",file.path)
+    var result = await cos.putObject(file.path)
+    var dirName = path.dirname(file.path);
+    var extname = path.extname(file.path);
+    var fileName = path.basename(file.path, extname);
+    var cosFilePath = dirName +'\\'+ fileName + '-cos' + extname
+
+    //graphic.orient(file.path,cosFilePath)
+
+    log.debug('cosFile',cosFilePath)
     var ocrResult = await ocr.scanImageUrl("https://" + result.Location)
     log.debug("文件ocr扫描结果为",ocrResult)
     var testPaper = new TestPaper(file.path,ocrResult)

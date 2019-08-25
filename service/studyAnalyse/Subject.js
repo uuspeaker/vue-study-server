@@ -20,6 +20,7 @@ class Subject{
 
   getMinX(){return this.subjectData.Polygon[0].X}
   getMinY(){return this.subjectData.Polygon[0].Y}
+  getMinYWithMargin(){return this.subjectData.Polygon[0].Y - this.getTestPaper().getLineHeight()*0.2}
   getTitle(){return this.subjectData.DetectedText}
   getTestPaper(){return this.testPaper}
 
@@ -73,9 +74,12 @@ class Subject{
     if(this.isLastSubject()){
       return 3
     }
-    var nextNo = this.subjectData.sortNo + 1
-    var nextSubjectData = this.getTestPaper().getSubjectData(nextNo)
-    //若吓一跳数据的Y坐标更大表示在同一页，返回1
+    //log.debug(this.getNextSubject().getMinY(),this.getTestPaper().getMinY())
+    if(this.getNextSubject().getMinY() == this.getTestPaper().getMinY()){
+      return 3
+    }
+
+    //若下一条数据的Y坐标更大表示在同一页，返回1
     if(this.getMinY() < this.getNextSubject().getMinY()){
       return 1
     }else{
@@ -90,6 +94,7 @@ class Subject{
       return
     }
     var areaType = this.getAreaType()
+    //log.info('areaType',areaType)
     if(areaType == 1){//正常区域
       this.calculateNormalArea()
     }else if(areaType == 2){//翻页题目
@@ -106,9 +111,9 @@ class Subject{
   calculateNormalArea(){
     this.area = [{
         X: this.getMinX(),
-        Y: this.getMinY(),
+        Y: this.getMinYWithMargin(),
         width: this.getWidth(),
-        height: this.getNextSubject().getMinY() - this.getMinY()
+        height: this.getNextSubject().getMinY() - this.getMinYWithMargin()
       }
     ]
   }
@@ -117,9 +122,9 @@ class Subject{
   calculateFlipOverArea(){
     this.area = [{//题目上半部分坐标
       X: this.getMinX(),
-      Y: this.getMinY(),
+      Y: this.getMinYWithMargin(),
       width: this.getTestPaper().getMaxSubjectWidth(),
-      height: this.getTestPaper().getMaxY() - this.getMinY()
+      height: this.getTestPaper().getMaxY() - this.getMinYWithMargin()
       },{//题目下半部分坐标
         X: this.getNextSubject().getMinX(),
         Y: this.getTestPaper().getMinY(),
@@ -133,9 +138,9 @@ class Subject{
   calculateLastArea(){
     this.area = [{
       X: this.getMinX(),
-      Y: this.getMinY(),
+      Y: this.getMinYWithMargin(),
       width: this.getWidth(),
-      height: this.getTestPaper().getMaxY() - this.getMinY()
+      height: this.getTestPaper().getMaxY() - this.getMinYWithMargin()
       }
     ]
   }
