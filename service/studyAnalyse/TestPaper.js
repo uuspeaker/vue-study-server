@@ -26,6 +26,8 @@ class TestPaper{
       this.xOffset = 0.02
       //最小匹配个数（达到这个值才判定为题目编号）
       this.matchAmount = 2
+      //页数
+      this.pageCount = 1
       //试卷的起始坐标
       this.paperPolygon = {
         minX:999999,
@@ -43,8 +45,9 @@ class TestPaper{
       this.calculatePaperStructure()
       this.extractPosibleSubject()
       this.extractValidSubject()
-      this.initMaxSubjectLength()
       this.sortSubjects()
+      this.calculatePages()
+      this.initMaxSubjectLength()
       await this.mkdir()
       await this.constructSubjects()
     }
@@ -123,7 +126,7 @@ class TestPaper{
         var item = this.sourceData[i].DetectedText
         if(item.length < 5)continue
         //log.debug("开始解析",item)
-        
+
     		var mathResult = item.match(regExp);
     		if(mathResult) {
     			this.sourceData[i].subjectNo = mathResult[0]
@@ -139,7 +142,7 @@ class TestPaper{
     //分析题目前缀
     getPrefix(){
       var　regExpArr = []
-      
+
       regExpArr.push(/^\d{1,2}\D+/)//小写数字
       regExpArr.push(/^\(|（\d{1,2}\(|（/) //带括号小写数字
       regExpArr.push(/^\[一二三四五六七八九十]{1,2}/)//大写数字
@@ -237,7 +240,12 @@ class TestPaper{
          }
        }
       // var testPaperLength = itemMaxX - itemMinX
-      this.maxSubjectWidth = validMaxLength
+      if(this.getMaxX()*0.9/this.pageCount > validMaxLength){
+        this.maxSubjectWidth = this.getMaxX()*0.9/this.pageCount
+      }else{
+        this.maxSubjectWidth = validMaxLength
+      }
+
       log.debug("题目宽度为:",validMaxLength)
     }
 
@@ -256,6 +264,17 @@ class TestPaper{
       log.debug("题目排序完成",sortedData)
       this.validSubjects = sortedData
       return sortedData
+    }
+    //根据题号排序(升序)
+    calculatePages(){
+      var length = this.validSubjects.length
+      for (var i = 0; i < length-1; i++) {
+        var neighborDistance = this.validSubjects[i+1].Polygon[0].X - this.validSubjects[i].Polygon[0].X
+        if(neighborDistance > this.getMaxX()/5){
+          this.pageCount++
+        }
+      }
+      log.debug("一共",this.pageCount, "页")
     }
 
     async constructSubjects(){

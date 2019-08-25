@@ -19,22 +19,20 @@ class Subject{
   }
 
   getMinX(){return this.subjectData.Polygon[0].X}
-  getMinY(){return this.subjectData.Polygon[0].Y - this.getTestPaper().getMargin()}
+  getMinY(){return this.subjectData.Polygon[0].Y}
   getTitle(){return this.subjectData.DetectedText}
   getTestPaper(){return this.testPaper}
 
   getWidth(){
-    var maxWidth = this.getTestPaper().getMaxSubjectWidth()
+    var maxWidth = this.getTestPaper().getMaxX() - this.getTestPaper().getMinX()
     var validSubjects = this.getTestPaper().getValidSubjects()
-    for (let index = 0; index < validSubjects.length; index++) {
-      const element = validSubjects[index];
-      var isNeighbor = Math.abs(element.Polygon[0].Y - this.getMinY() < this.getTestPaper().getMargin() * 5)
-      if(isNeighbor && element.Polygon[0].X - this.getMinX() > maxWidth){
-        maxWidth = element.Polygon[0].X　- this.getMinX()
-      }
-      
+
+    if(validSubjects.length <= 5){
+      return maxWidth
+    }else{
+      return this.getTestPaper().getMaxSubjectWidth()
     }
-    return maxWidth * 0.95
+
   }
 
   async init(){
@@ -181,17 +179,11 @@ class Subject{
     this.imageUrl = cosObject.Location
   }
 
-  savePicture(targetUrl){
-
-  }
-
-  drawLast(){
-    this.drawNormal()
+  async drawLast(){
+    await this.drawNormal()
   }
 
   calculateContent(){
-    this.calculateArea()
-
     for (var i = 0; i < this.area.length; i++) {
       var testPaperLength = this.getTestPaper().getDataCount()
       for (var j = 0; j < testPaperLength; j++) {

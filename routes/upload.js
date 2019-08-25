@@ -32,6 +32,7 @@ router.post('/upload', upload.single('file'), async (ctx, next) => {
   var file = ctx.req.file
   if (file){
     var result = await cos.putObject(file.path)
+    var fileName = path.basename(file.path)
     log.debug("上传文件开始，临时文件保存在：file.path",file.path)
     var ocrResult = await ocr.scanImageUrl("https://" + result.Location)
     log.debug("文件ocr扫描结果为",ocrResult)
@@ -39,6 +40,8 @@ router.post('/upload', upload.single('file'), async (ctx, next) => {
     await testPaper.init()
     var testPaperInfo = {
       userId: 123,
+      paperName: fileName,
+      paperUrl: "https://" + result.Location,
       subjects: testPaper.getSubjectInfos()
     }
     mongo.insertOne("TestPaper", testPaperInfo)
@@ -49,24 +52,24 @@ router.post('/upload', upload.single('file'), async (ctx, next) => {
   }
 });
 
-router.get('/upload', async (ctx, next) => {
-  log.debug("处理开始")
-  ctx.body = {"result": 1};
-  var result = await cos.getObjectList('')
-  log.debug("处理结束");
-  ctx.body.result = result
-});
-
-
 router.get('/testPaper', async (ctx, next) => {
   var data = await mongo.find("TestPaper",{})
   ctx.body = data
   log.info('testPaper query complete')
 });
-
-router.get('/data', async (ctx, next) => {
-  ctx.body = data.result
-  //ctx.body = 'exercise query success';
+router.put('/testPaper', async (ctx, next) => {
+  var id = ctx.request.body.id
+  var name = ctx.request.body.name
+  var data = await mongo.update("TestPaper",{'_id': id},{'name': name})
+  ctx.body = data
+  log.info('testPaper query complete')
 });
+router.delete('/testPaper', async (ctx, next) => {
+  var id = ctx.request.body.id
+  var data = await mongo.remove("TestPaper",{_id: id})
+  ctx.body = data
+  log.info('testPaper query complete')
+});
+
 
 module.exports = router

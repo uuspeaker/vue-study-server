@@ -18,11 +18,55 @@ const connectDB = async (callback) => {
 }
 
 // 插入一个文档数据
-module.exports.insertOne = function (collection, data, callback) {
+module.exports.insertOne = function (collection, data) {
   log.info(`mongo.insertOne: collecton is ${collection}, data is ${JSON.stringify(data)}`)
   return new Promise(( resolve, reject ) => {
     connectDB(function (db) {
       db.collection(collection).insertOne(data, function (err, result) {
+        if (err) {
+          log.error(`mongo insert fail ${err}`)
+          reject(err)
+        }else{
+          log.info(`mongo insertOne success, resutl is ${result}`)
+          resolve(result)
+          db.close()
+        }
+
+      })
+    })
+  })
+}
+// 插入一个文档数据
+module.exports.remove = function (collection, query) {
+  log.info(`mongo.remove: collecton is ${collection}, query is ${JSON.stringify(query)}`)
+  if(query._id){
+    query._id = mongoose.Types.ObjectId(query._id)
+  }
+  return new Promise(( resolve, reject ) => {
+    connectDB(function (db) {
+      db.collection(collection).deleteOne(query, function (err, result) {
+        if (err) {
+          log.error(`mongo insert fail ${err}`)
+          reject(err)
+        }else{
+          log.info(`mongo insertOne success, resutl is ${result}`)
+          resolve(result)
+          db.close()
+        }
+
+      })
+    })
+  })
+}
+// 插入一个文档数据
+module.exports.update = function (collection, query, data) {
+  log.info(`mongo.update: collecton is ${collection}, data is ${JSON.stringify(data)}`)
+  if(query._id){
+    query._id = mongoose.Types.ObjectId(query._id)
+  }
+  return new Promise(( resolve, reject ) => {
+    connectDB(function (db) {
+      db.collection(collection).update(qurey, data, function (err, result) {
         if (err) {
           log.error(`mongo insert fail ${err}`)
           reject(err)
