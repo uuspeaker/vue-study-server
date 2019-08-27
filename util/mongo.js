@@ -94,7 +94,6 @@ module.exports.find = async (collection, condition, limit) => {
       if (err) {
         log.error("mongo query fail",err)
         reject(err)
-        db.close()
       }
       log.info("mongo query result",result)
       resolve(result)
