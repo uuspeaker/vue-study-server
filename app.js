@@ -9,10 +9,8 @@ const logger = require('koa-logger')
 const log = require('./util/log.js').getLogger("app.js");
 
 const index = require('./routes/index')
-const users = require('./routes/users')
-const test = require('./routes/test')
 const upload = require('./routes/upload')
-const data = require('./routes/data')
+const subjectPool = require('./routes/SubjectPool')
 //const cors = require('koa2-cors');
 
 // error handler
@@ -40,14 +38,10 @@ app.use(async (ctx, next) => {
   log.info(`${ctx.method} ${ctx.url} - ${ms}ms`)
 })
 
-
-
 // routes
 app.use(index.routes(), index.allowedMethods())
-app.use(users.routes(), users.allowedMethods())
-app.use(test.routes(), users.allowedMethods())
 app.use(upload.routes(), upload.allowedMethods())
-app.use(data.routes(), data.allowedMethods())
+app.use(subjectPool.routes(), subjectPool.allowedMethods())
 
 // error-handling
 app.on('error', (err, ctx) => {
