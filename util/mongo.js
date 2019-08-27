@@ -83,7 +83,6 @@ module.exports.update = function (collection, query, data) {
 
 // 查询数据，condition为{}时可以查询该集合下的所有文档
 module.exports.find = async (collection, condition, limit) => {
-  var limit = 10
   if(!limit){
     limit = 10000
   }
