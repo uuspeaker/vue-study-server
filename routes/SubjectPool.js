@@ -16,7 +16,6 @@ router.get('/knowledgeChildren', async (ctx, next) => {
 })
 
 router.get('/subjectList', async (ctx, next) => {
-  log.debug('ctx.query',ctx.query)
   var finder = new SubjectFinder()
   var data = await finder.querySubjects(ctx.request.query.knowledgeId)
   ctx.body = data
