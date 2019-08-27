@@ -6,7 +6,8 @@ class KnowledgeTree{
 
     //将可能的题目提取出来（规则：数字打头的）
     async getAll(){
-      data = await mongo.find("KnowledgeTree",{})
+      var data = await mongo.find("KnowledgeTree",{})
+      log.debug('getAll',data)
       return data
     }
 

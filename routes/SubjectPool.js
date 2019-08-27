@@ -3,7 +3,7 @@ const log = require('../util/log.js').getLogger("SubjectPool");
 const KnowledgeTree = require('../service/subjectPool/KnowledgeTree');
 const SubjectFinder = require('../service/subjectPool/SubjectFinder');
 
-router.get('/categoryTree', async (ctx, next) => {
+router.get('/knowledgeTree', async (ctx, next) => {
   var tree = new KnowledgeTree()
   var data = await tree.getAll()
   ctx.body = data
