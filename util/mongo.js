@@ -99,18 +99,3 @@ module.exports.find = async (collection, condition) => {
   })
   })
 }
-module.exports.find2 = async (collection, condition) => {
-  log.info(`开始查询: collecton is ${collection}, condition is`, condition)
-  await connectDB(function (db) {
-    db.collection(collection).find(condition).toArray(function (err, result) {
-      if (err) {
-        log.error("mongo query fail",err)
-        db.close()
-        throw err
-      }
-      log.info("mongo query result",result)
-      callback(result)
-      db.close()
-    })
-  })
-}
