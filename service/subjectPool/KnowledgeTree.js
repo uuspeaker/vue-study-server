@@ -1,4 +1,4 @@
-const log = require('../../util/log').getLogger("SubjectAnalyser");
+const log = require('../../util/log').getLogger("KnowledgeTree");
 const mongo = require('../../util/mongo');
 
 class KnowledgeTree{

@@ -11,13 +11,13 @@ router.get('/knowledgeTree', async (ctx, next) => {
 
 router.get('/knowledgeChildren', async (ctx, next) => {
   var tree = new KnowledgeTree()
-  var data = await tree.getChildren(ctx.query.knowledgeId)
+  var data = await tree.getChildren(ctx.request.knowledgeId)
   ctx.body = data
 })
 
 router.get('/subjectList', async (ctx, next) => {
   var finder = new SubjectFinder()
-  var data = await finder.querySubjects(ctx.query.knowledgeId)
+  var data = await finder.querySubjects(ctx.request.knowledgeId)
   ctx.body = data
 })
 
