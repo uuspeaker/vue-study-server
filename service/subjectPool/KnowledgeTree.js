@@ -11,6 +11,12 @@ class KnowledgeTree{
       return data
     }
 
+    async getChildren(knowledgeId){
+      var data = await mongo.find("KnowledgeTree",{'knowledgeId': knowledgeId})
+      log.debug('getChildren',knowledgeId, data)
+      return data
+    }
+
 }
 
 module.exports = KnowledgeTree
