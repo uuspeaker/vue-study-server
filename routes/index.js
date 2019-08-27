@@ -13,51 +13,5 @@ router.get('/', async (ctx, next) => {
   })
 })
 
-router.get('/mysql', async (ctx, next) => {
-  let sql = "select * from user";
-  let data = {};
-  var result = {}
-  var result = await mysql.execute(sql,data)
-  ctx.body = {
-    "result": result
-  }
-})
-
-router.get('/mongo', async (ctx, next) => {
-  var myobj = { name: "菜鸟教程4", url: "www.runoob",date: new Date() };
-  var result = await mongo.insertOne("study",myobj)
-  ctx.body = {
-    title: result
-  }
-})
-
-router.get('/kafka', async (ctx, next) => {
-  await kafka.send("study","I will study", function(res) {
-  })
-  ctx.body = {
-    title: `Hello kafka`
-  }
-})
-
-router.get('/cos', async (ctx, next) => {
-  await cos.putObject("config.js", function(res) {
-  })
-  ctx.body = {
-    title: `Hello cos`
-  }
-})
-
-router.get('/ocr', async (ctx, next) => {
-  var result = await ocr.scanImageUrl("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1565072083218&di=ed2f5d1953192575bf938babeb2a7e03&imgtype=0&src=http%3A%2F%2Ftxt6.book118.com%2F2017%2F0104%2Fbook79189%2F79188616.png")
-  ctx.body = {
-    result: result
-  }
-})
-
-router.get('/json', async (ctx, next) => {
-  ctx.body = {
-    title: 'koa2 json'
-  }
-})
 
 module.exports = router

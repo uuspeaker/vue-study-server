@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "auto": "supervisor bin/www",
-    "start": "node bin/www",
+    "start": "supervisor bin/www",
+    "normal": "node bin/www",
     "dev": "./node_modules/ bin/www",
     "test": "mocha ./test/service/studyAnalyse/*.js",
     "prd": "pm2 start bin/www"
