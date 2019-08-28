@@ -12,7 +12,7 @@ class TestPaper{
       //原始图片地址
       this.sourceUrl = sourceUrl;
       //原始数据
-      this.sourceData = sourceData.TextDetections;
+      this.sourceData = sourceData.items;
       //每一行的高度
       this.lineHeight = 0
       //以数字开头的数据
@@ -110,22 +110,22 @@ class TestPaper{
       var length = this.sourceData.length
       for (var i = 0; i < length; i++) {
         if(i == 0){
-          this.lineHeight = this.sourceData[0]['Polygon'][3]['Y'] - this.sourceData[0]['Polygon'][0]['Y']
+          this.lineHeight = this.sourceData[0]['itemcoord']['height']
           log.debug("lineHeight", this.lineHeight)
         }
         //获取最大的X坐标
-        if(this.paperPolygon.minX > this.sourceData[i]['Polygon'][0]['X']){
-          this.paperPolygon.minX = this.sourceData[i]['Polygon'][0]['X']
+        if(this.paperPolygon.minX > this.sourceData[i]['itemcoord']['x']){
+          this.paperPolygon.minX = this.sourceData[i]['itemcoord']['x']
         }
-        if(this.paperPolygon.maxX < this.sourceData[i]['Polygon'][2]['X']){
-          this.paperPolygon.maxX = this.sourceData[i]['Polygon'][2]['X']
+        if(this.paperPolygon.maxX < this.sourceData[i]['itemcoord']['x'] + this.sourceData[i]['itemcoord']['length']){
+          this.paperPolygon.maxX = this.sourceData[i]['itemcoord']['x'] + this.sourceData[i]['itemcoord']['length']
         }
-        if(this.paperPolygon.minY > this.sourceData[i]['Polygon'][0]['Y']){
-          this.paperPolygon.minY = this.sourceData[i]['Polygon'][0]['Y']
+        if(this.paperPolygon.minY > this.sourceData[i]['itemcoord']['y']){
+          this.paperPolygon.minY = this.sourceData[i]['itemcoord']['y']
         }
         //var regExp = /^*第\d{1,2}页*共\d{1,2}页/;
-        if(this.paperPolygon.maxY < this.sourceData[i]['Polygon'][2]['Y']){
-          this.paperPolygon.maxY = this.sourceData[i]['Polygon'][2]['Y']
+        if(this.paperPolygon.maxY < this.sourceData[i]['itemcoord']['y'] + this.sourceData[i]['itemcoord']['heigth']){
+          this.paperPolygon.maxY = this.sourceData[i]['itemcoord']['y' + this.sourceData[i]['itemcoord']['heigth']]
         }
       }
       log.info("获取试卷坐标", this.paperPolygon)
@@ -172,7 +172,7 @@ class TestPaper{
       var length = this.validSubjects.length
       for (var i = 0; i < length; i++) {
         //log.debug(`解析第${i+1}条数据`,this.validSubjects[i])
-        let itemLength = this.validSubjects[i]['Polygon'][1]['X'] - this.validSubjects[i]['Polygon'][0]['X']
+        let itemLength = this.validSubjects[i]['itemcoord']['width']
         itemLengths.push(itemLength)
         totalLength += itemLength
       }
@@ -198,7 +198,7 @@ class TestPaper{
     sortSubjects(){
       var length = this.validSubjects.length
       for (var i = 0; i < length; i++) {
-        this.validSubjects[i].rankValue = this.validSubjects[i].Polygon[0].X * 2 +  this.validSubjects[i].Polygon[0].Y
+        this.validSubjects[i].rankValue = this.validSubjects[i]['itemcoord']['x'] * 2 +  this.validSubjects[i]['itemcoord']['y']
       }
       var sortedData = this.validSubjects.sort((a,b) => {
         return a.rankValue -  b.rankValue
@@ -214,7 +214,7 @@ class TestPaper{
     calculatePages(){
       var length = this.validSubjects.length
       for (var i = 0; i < length-1; i++) {
-        var neighborDistance = this.validSubjects[i+1].Polygon[0].X - this.validSubjects[i].Polygon[0].X
+        var neighborDistance = this.validSubjects[i+1]['itemcoord']['x'] - this.validSubjects[i]['itemcoord']['x']
         if(neighborDistance > this.getMaxX()/3){
           this.pageCount++
         }

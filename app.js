@@ -9,7 +9,7 @@ const logger = require('koa-logger')
 const log = require('./util/log.js').getLogger("app.js");
 
 const index = require('./routes/index')
-const upload = require('./routes/upload')
+const studyAnalyse = require('./routes/studyAnalyse')
 const subjectPool = require('./routes/SubjectPool')
 //const cors = require('koa2-cors');
 
@@ -40,7 +40,7 @@ app.use(async (ctx, next) => {
 
 // routes
 app.use(index.routes(), index.allowedMethods())
-app.use(upload.routes(), upload.allowedMethods())
+app.use(studyAnalyse.routes(), studyAnalyse.allowedMethods())
 app.use(subjectPool.routes(), subjectPool.allowedMethods())
 
 // error-handling

@@ -1,5 +1,5 @@
 var assert = require('assert');
-var TestPaper = require('../../../service/studyAnalyse/TestPaper');
+var TestPaper = require('../../../service/studyAnalyse2/TestPaper');
 
 describe('math检查试卷分析结果',async () => {
   var paperData = require('../../data/tmp.json');
