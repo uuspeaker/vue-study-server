@@ -27,6 +27,7 @@ const config = {
    destination: 'upload'
  },
  ocr: {
+   appId: '1255824916',
    secretId: 'AKIDNZXUCrbYXHnbZLwBGAp33oHWXlmaeZhc',
    secretKey: 'rcHjwymfM9nFSRAi28zdKm8FveQkfR4W',
    //host: "ocr.tencentcloudapi.com",

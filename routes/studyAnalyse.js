@@ -9,7 +9,7 @@ const cos = require('../util/cos');
 const mongo = require('../util/mongo');
 const graphic = require('../util/graphic');
 const ocr = require('../util/ocr.js');
-const TestPaper = require('../service/studyAnalyse2/TestPaper');
+const TestPaper = require('../service/studyAnalyse/TestPaper');
 
 let storage = multer.diskStorage({
     destination: path.resolve(config.upload.destination),
