@@ -31,7 +31,7 @@ const config = {
    secretId: 'AKIDNZXUCrbYXHnbZLwBGAp33oHWXlmaeZhc',
    secretKey: 'rcHjwymfM9nFSRAi28zdKm8FveQkfR4W',
    host: "ocr.tencentcloudapi.com",
-   //hostOld: "recognition.image.myqcloud.com",
+   hostOld: "recognition.image.myqcloud.com",
    zone: "ap-guangzhou"
  },
  mongodb: {

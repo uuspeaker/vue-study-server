@@ -8,8 +8,8 @@ const data = require('../config/data');
 const cos = require('../util/cos');
 const mongo = require('../util/mongo');
 const graphic = require('../util/graphic');
-const ocr = require('../util/ocr.js');
-const TestPaper = require('../service/studyAnalyse/TestPaper');
+const ocr = require('../util/ocrOld');
+const TestPaper = require('../service/studyAnalyse2/TestPaper');
 
 let storage = multer.diskStorage({
     destination: path.resolve(config.upload.destination),
@@ -44,7 +44,7 @@ router.post('/upload', upload.single('file'), async (ctx, next) => {
     log.debug('cosFile',cosFilePath)
     var ocrResult = await ocr.scanImageUrl("https://" + result.Location)
     log.debug("文件ocr扫描结果为",ocrResult)
-    var testPaper = new TestPaper(file.path,ocrResult)
+    var testPaper = new TestPaper(file.path, JSON.parse(ocrResult).data.items)
     await testPaper.init()
     var testPaperInfo = {
       userId: 123,

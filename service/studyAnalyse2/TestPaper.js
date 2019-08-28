@@ -12,7 +12,7 @@ class TestPaper{
       //原始图片地址
       this.sourceUrl = sourceUrl;
       //原始数据
-      this.sourceData = sourceData.items;
+      this.sourceData = sourceData;
       //每一行的高度
       this.lineHeight = 0
       //以数字开头的数据
@@ -93,10 +93,10 @@ class TestPaper{
       for (var i = length -1; i > 0; i--) {
         var regExp = /共\d{1,2}页/;
         var regExp2 = /第\d{1,2}页/;
-        var item = this.sourceData[i].DetectedText
+        var item = this.sourceData[i].itemstring
         var mathResult = item.match(regExp) || item.match(regExp2);
         if(mathResult){
-          log.info(`清理掉${this.sourceData[i].DetectedText}`)
+          log.info(`清理掉${this.sourceData[i].itemstring}`)
           this.sourceData.pop()
           hasDeleteLast = true
         }else{
