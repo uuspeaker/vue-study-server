@@ -30,8 +30,8 @@ const config = {
    appId: '1255824916',
    secretId: 'AKIDNZXUCrbYXHnbZLwBGAp33oHWXlmaeZhc',
    secretKey: 'rcHjwymfM9nFSRAi28zdKm8FveQkfR4W',
-   //host: "ocr.tencentcloudapi.com",
-   host: "recognition.image.myqcloud.com",
+   host: "ocr.tencentcloudapi.com",
+   //hostOld: "recognition.image.myqcloud.com",
    zone: "ap-guangzhou"
  },
  mongodb: {
