@@ -217,10 +217,6 @@ class TestPaper{
     //根据题号排序(升序)
     calculatePages(){
       var length = this.validSubjects.length
-      if(length <= 10){
-        this.pageCount = 1
-        return
-      }
       for (var i = 0; i < length-1; i++) {
         var neighborDistance = this.validSubjects[i+1]['itemcoord']['x'] - this.validSubjects[i]['itemcoord']['x']
         if(neighborDistance > this.getMaxX()/3){

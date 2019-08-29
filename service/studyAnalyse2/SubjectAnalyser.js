@@ -18,7 +18,7 @@ class SubjectAnalyser{
       //Ｘ轴匹配偏差（用于判断编号是否和其他编号匹配）
       this.xOffset = 0.02
       //最小匹配个数（达到这个值才判定为题目编号）
-      this.matchAmount = 2
+      this.matchAmount = 1
     }
 
     execute(){
@@ -38,6 +38,8 @@ class SubjectAnalyser{
         var item = this.sourceData[i].itemstring
         //若长度小于5，不当做题目
         if(item.length < 5)continue
+        //若全部是数字，不当做题目
+        if(item.match(/^\d+$/))continue
 
     		var mathResult = item.match(this.regExp);
     		if(mathResult) {
