@@ -58,11 +58,6 @@ class SubjectAnalyser{
     extractValidSubject(){
       var result = []
       var length = this.possibleSubjects.length
-      //若数目较少，则不做任何剔除
-      if(length <= 5){
-        this.validSubjects = this.possibleSubjects
-        return
-      }
 
       for (var i = 0; i < length; i++) {
         var item = this.possibleSubjects[i]
