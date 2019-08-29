@@ -1,4 +1,7 @@
 const config = {
+ BODY : 'BODY',
+ FOOT : 'FOOT',
+ FILPOVER : 'FILPOVER',
  //启动端口
  port: 8080,
  //数据库配置
