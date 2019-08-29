@@ -20,7 +20,7 @@ class Subject{
 
   getMinX(){return this.subjectData['itemcoord']['x']}
   getMinY(){return this.subjectData['itemcoord']['y']}
-  getMinYWithMargin(){return this.getMaxY() - this.getTestPaper().getLineHeight()*0.2}
+  getMinYWithMargin(){return this.getMinY() - this.getTestPaper().getLineHeight()*0.2}
   getTitle(){return this.subjectData.itemstring}
   getTestPaper(){return this.testPaper}
 

@@ -38,7 +38,7 @@ class TestPaper{
 
     async init(){
       this.deleteHeadAndFoot()
-      this.calculatePaperStructure()
+      this.initPaperStructure()
       this.initValidSubjects()
       this.sortSubjects()
       this.calculatePages()
@@ -88,6 +88,7 @@ class TestPaper{
 
     //计算试卷结构数据，包括坐标
     deleteHeadAndFoot(){
+      log.debug('sourceData',this.sourceData)
       var length = this.sourceData.length
       var hasDeleteLast = false
       for (var i = length -1; i > 0; i--) {
@@ -106,9 +107,12 @@ class TestPaper{
     }
 
     //计算试卷结构数据，包括坐标
-    calculatePaperStructure(){
+    initPaperStructure(){
       var length = this.sourceData.length
+      log.debug('length',length)
       for (var i = 0; i < length; i++) {
+        delete this.sourceData[i]['words']
+        delete this.sourceData[i]['candword']
         if(i == 0){
           this.lineHeight = this.sourceData[0]['itemcoord']['height']
           log.debug("lineHeight", this.lineHeight)
@@ -117,15 +121,15 @@ class TestPaper{
         if(this.paperPolygon.minX > this.sourceData[i]['itemcoord']['x']){
           this.paperPolygon.minX = this.sourceData[i]['itemcoord']['x']
         }
-        if(this.paperPolygon.maxX < this.sourceData[i]['itemcoord']['x'] + this.sourceData[i]['itemcoord']['length']){
-          this.paperPolygon.maxX = this.sourceData[i]['itemcoord']['x'] + this.sourceData[i]['itemcoord']['length']
+        if(this.paperPolygon.maxX < this.sourceData[i]['itemcoord']['x'] + this.sourceData[i]['itemcoord']['width']){
+          this.paperPolygon.maxX = this.sourceData[i]['itemcoord']['x'] + this.sourceData[i]['itemcoord']['width']
         }
         if(this.paperPolygon.minY > this.sourceData[i]['itemcoord']['y']){
           this.paperPolygon.minY = this.sourceData[i]['itemcoord']['y']
         }
         //var regExp = /^*第\d{1,2}页*共\d{1,2}页/;
-        if(this.paperPolygon.maxY < this.sourceData[i]['itemcoord']['y'] + this.sourceData[i]['itemcoord']['heigth']){
-          this.paperPolygon.maxY = this.sourceData[i]['itemcoord']['y' + this.sourceData[i]['itemcoord']['heigth']]
+        if(this.paperPolygon.maxY < this.sourceData[i]['itemcoord']['y'] + this.sourceData[i]['itemcoord']['height']){
+          this.paperPolygon.maxY = this.sourceData[i]['itemcoord']['y'] + this.sourceData[i]['itemcoord']['height']
         }
       }
       log.info("获取试卷坐标", this.paperPolygon)

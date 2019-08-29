@@ -68,7 +68,7 @@ class SubjectAnalyser{
         var likeNum = 0  //记录有多少数据的X坐标和自己对齐
         for (var j = 0; j < length; j++) {
           //log.debug("开始剔除不对齐数据")
-          var offset = item['itemcoord'][0]['x'] - this.possibleSubjects[j]['itemcoord'][0]['x']
+          var offset = item['itemcoord']['x'] - this.possibleSubjects[j]['itemcoord']['x']
           if(Math.abs(offset) < (this.testPaper.getMaxX() * this.xOffset)) likeNum++
         }
         if(likeNum < this.matchAmount + 1) {
