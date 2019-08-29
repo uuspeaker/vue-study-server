@@ -46,7 +46,6 @@ class HeadAnalyser{
 
     		var mathResult = item.match(this.regExp);
     		if(mathResult) {
-    			this.allItems[i].setSubjectNo(mathResult[0])
           result.push(this.allItems[i])
     		}
       }
@@ -72,11 +71,13 @@ class HeadAnalyser{
         result.push(this.possibleSubjects[i])
       }
       this.possibleSubjects = result
+      log.info(`有效题目是`,this.possibleSubjects)
 
     }
 
     //将题目分到不同的组
     groupByX(){
+      var offset = this.testPaper.getMaxX() * this.xOffsetRate
       var resultGroups = []
       var tmpGroup = []
       var length = this.possibleSubjects.length
@@ -92,14 +93,41 @@ class HeadAnalyser{
         }
         //若未找到相似的组，则另起一组
         if(!isMatch){
-          var offset = this.testPaper.getMaxX() * this.xOffsetRate
-          var group = new ItemGroup(this.offset)
+          var group = new ItemGroup(offset)
           group.addItem(item)
           resultGroups.push(group)
         }
       }
 
-      log.debug('分组信息是',resultGroups)
+      log.debug(`将X坐标对齐的文本分成${resultGroups.length}组`,resultGroups)
+
+      this.extractValidGroups(resultGroups)
+
+    }
+
+    //将题目分到不同的组
+    groupByXBak(){
+      var offset = this.testPaper.getMaxX() * this.xOffsetRate
+      var resultGroups = []
+      for (var index in this.possibleSubjects) {
+        var group = new ItemGroup(offset)
+        group.addItem(possibleSubjects[i])
+        resultGroups.push(group)
+      }
+      var tmpGroup = []
+      var length = this.possibleSubjects.length
+      //把具有类似X偏移量的item放到一组
+      for (var i = 0; i < length; i++) {
+        for (var j = 0; j < length; j++) {
+          if(i == j)continue
+          if(resultGroups[j].isInGroup())continue
+          if (resultGroups[i].match(resultGroups[j])) {
+            resultGroups[i].combine(resultGroups[j])
+          }
+        }
+      }
+
+      log.debug('将内容重合的分组合并',resultGroups)
 
       this.extractValidGroups(resultGroups)
 
@@ -116,12 +144,13 @@ class HeadAnalyser{
           var itemGroup2 = resultGroups[groupIndex2]
           if (itemGroup.getItemAmount() < this.minItemAmount) continue
           if(itemGroup.contain(itemGroup2)){
-            itemGroup.conbine(itemGroup2)
+            itemGroup.combine(itemGroup2)
             validGroups.push(itemGroup)
           }
         }
       }
       this.pgae = validGroups.length
+      log.debug('将内容重合的分组合并',validGroups)
       this.sortAndDecorateHeads(validGroups)
     }
 
@@ -132,11 +161,10 @@ class HeadAnalyser{
       var sortNo = 1
       for (var i = 0; i < sortedGroups.length; i++) {
         var items = sortedGroups[i].getItems()
-        for (var index in items) {
-          var sortedItems = this.items.sort((a,b) => {
-            return a.getY() -  b.getY()
-          })
-        }
+        var sortedItems = items.sort((a,b) => {
+          return a.getY() -  b.getY()
+        })
+
         var page = i+1
         for (var index in sortedItems) {
 

@@ -6,11 +6,12 @@ const fs = require('fs');
 class ItemGroup{
     constructor(offset){
       //每个item相同的X
-      this.X = 0
+      this.X = '未初始化'
       //原始数据
       this.items = [];
       //以数字开头的数据
       this.xOffset = offset
+      this.maxWidth = '未初始化'
     }
 
     getX(){return this.X}
@@ -37,23 +38,23 @@ class ItemGroup{
     match(targetItem){
       if(this.items.length == 0) return true
       var offset = targetItem.getX() - this.getX()
-      if(Math.abs(offset) < (this.xOffset)){
+      log.debug('targetItem.getX() - this.getX()',targetItem.getX() ,this.getX())
+      if(Math.abs(offset) <= this.xOffset){
         return true
       }
       return false
     }
 
-    addItem(targetItem){
-      this.items.push[targetItem]
+    addItem(targetItem){    
       if(this.items.length == 0){
         this.X = targetItem.getX()
         this.maxWidth = targetItem.getWidth()
       }else{
-        this.items.push[targetItem]
         if(this.maxWidth < targetItem.getWidth()){
           this.maxWidth = targetItem.getWidth()
         }
       }
+      this.items.push(targetItem)
     }
 
 }

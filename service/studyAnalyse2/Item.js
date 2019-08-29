@@ -12,20 +12,22 @@ class Item{
       this.subjectNo = ''
       this.sortNo = '未排序'
       this.page = '未分页'
+      this.isInGroup = false
     }
 
     getText(){return this.item.itemstring}
-    getX(){return this.item.itemcoord.X}
-    getY(){return this.item.itemcoord.Y}
+    getX(){return this.item.itemcoord.x}
+    getY(){return this.item.itemcoord.y}
     getWidth(){return this.item.itemcoord.width}
     getHeight(){return this.item.itemcoord.height}
-    getSubjectNo(){return this.subjectNo}
     getSortNo(){return this.sortNo}
     getPage(){return this.page}
 
-    setSubjectNo(subjectNo){this.subjectNo = subjectNo}
     setSortNo(sortNo){this.sortNo = sortNo}
-    setSortNo(page){this.page = page}
+    setPage(page){this.page = page}
+    setType(type){this.type = type}
+    joinGroup(){this.isInGroup = true}
+    isInGroup(){return this.isInGroup}
 
 }
 

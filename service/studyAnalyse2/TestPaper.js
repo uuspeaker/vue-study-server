@@ -81,7 +81,7 @@ class TestPaper{
     getPaperPolygon(){return this.paperPolygon}
     getMaxSubjectWidth(){return this.maxSubjectWidth}
 
-    getSubjectData(sortNo){
+    getItem(sortNo){
       if(sortNo && sortNo >= 1 && sortNo <= this.validSubjects.length){
         return this.validSubjects[sortNo-1]
       }else{
@@ -91,7 +91,6 @@ class TestPaper{
 
     //计算试卷结构数据，包括坐标
     deleteHeadAndFoot(){
-      log.debug('allItems',this.allItems)
       var length = this.allItems.length
       var hasDeleteLast = false
       for (var i = length -1; i > 0; i--) {
@@ -111,6 +110,8 @@ class TestPaper{
 
     initItems(){
       for (var index in this.sourceData) {
+        delete this.sourceData[index]['words']
+        delete this.sourceData[index]['candword']
         this.allItems.push(new Item(this.sourceData[index]))
       }
     }
@@ -138,7 +139,7 @@ class TestPaper{
         }
         //var regExp = /^*第\d{1,2}页*共\d{1,2}页/;
         if(this.paperPolygon.maxY < this.allItems[i].getY() + this.allItems[i].getHeight()){
-          this.paperPolygon.maxY = this.allItems[i].getY() + this.sourceData[i].getHeight()
+          this.paperPolygon.maxY = this.allItems[i].getY() + this.allItems[i].getHeight()
         }
       }
       log.info("获取试卷坐标", this.paperPolygon)
@@ -166,7 +167,7 @@ class TestPaper{
         headAnalyser.execute()
         if(headAnalyser.getSubjectAmount() > maxMatchTime){
           regIndex = i
-          maxMatchTime = headAnalyser.getAmount()
+          maxMatchTime = headAnalyser.getSubjectAmount()
           this.validSubjects = headAnalyser.getSubjectHeads()
         }
         //若规则已经找出10条以上，为提升性能，跳过其他规则
