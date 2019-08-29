@@ -12,12 +12,15 @@ class ItemGroup{
       //以数字开头的数据
       this.xOffset = offset
       this.maxWidth = '未初始化'
+      this.isGroupValid = true
     }
 
     getX(){return this.X}
     getMaxWidth(){return this.maxWidth}
     getItemAmount(){return this.items.length}
     getItems(){return this.items}
+    isValid(){return this.isGroupValid}
+    invalid(){this.isGroupValid = false}
 
     contain(targetItemGroup){
       if(targetItemGroup.getX() > this.X && targetItemGroup.getX() < this.X + this.getMaxWidth()){
@@ -45,7 +48,7 @@ class ItemGroup{
       return false
     }
 
-    addItem(targetItem){    
+    addItem(targetItem){
       if(this.items.length == 0){
         this.X = targetItem.getX()
         this.maxWidth = targetItem.getWidth()

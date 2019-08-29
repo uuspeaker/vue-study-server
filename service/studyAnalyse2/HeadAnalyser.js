@@ -100,37 +100,7 @@ class HeadAnalyser{
       }
 
       log.debug(`将X坐标对齐的文本分成${resultGroups.length}组`,resultGroups)
-
       this.extractValidGroups(resultGroups)
-
-    }
-
-    //将题目分到不同的组
-    groupByXBak(){
-      var offset = this.testPaper.getMaxX() * this.xOffsetRate
-      var resultGroups = []
-      for (var index in this.possibleSubjects) {
-        var group = new ItemGroup(offset)
-        group.addItem(possibleSubjects[i])
-        resultGroups.push(group)
-      }
-      var tmpGroup = []
-      var length = this.possibleSubjects.length
-      //把具有类似X偏移量的item放到一组
-      for (var i = 0; i < length; i++) {
-        for (var j = 0; j < length; j++) {
-          if(i == j)continue
-          if(resultGroups[j].isInGroup())continue
-          if (resultGroups[i].match(resultGroups[j])) {
-            resultGroups[i].combine(resultGroups[j])
-          }
-        }
-      }
-
-      log.debug('将内容重合的分组合并',resultGroups)
-
-      this.extractValidGroups(resultGroups)
-
     }
 
     //若一个分组的X坐标被另一个分组覆盖，则将两个组合并
@@ -139,15 +109,21 @@ class HeadAnalyser{
       for (var groupIndex in resultGroups) {
         var itemGroup = resultGroups[groupIndex]
         if (itemGroup.getItemAmount() < this.minItemAmount) continue
+        log.debug(`剔除数量过少分组`,itemGroup)
         for (var groupIndex2 in resultGroups) {
           if(groupIndex == groupIndex2) continue
           var itemGroup2 = resultGroups[groupIndex2]
-          if (itemGroup.getItemAmount() < this.minItemAmount) continue
+          if (itemGroup2.getItemAmount() < this.minItemAmount) continue
+          log.debug(`剔除数量过少分组`,itemGroup2)
           if(itemGroup.contain(itemGroup2)){
             itemGroup.combine(itemGroup2)
-            validGroups.push(itemGroup)
+            itemGroup2.invalid()
           }
         }
+        if(itemGroup.isValid()){
+          validGroups.push(itemGroup)
+        }
+
       }
       this.pgae = validGroups.length
       log.debug('将内容重合的分组合并',validGroups)
