@@ -183,7 +183,7 @@ class SubjectAnalyser{
           if(sortedItems[nextIndex]){
             var nextItem = sortedItems[nextIndex]
             //若在同一组内，题目后面还有其他题目，则取这个题目的X轴作为右边界
-            if(!this.isSimilarHeight(item.getY(), nextItem.getY())){
+            if(this.isSimilarHeight(item.getY(), nextItem.getY())){
               item.setRightX(nextItem.getX())
             }else{//取下一组题的X轴作为右边界
               item.setRightX(rightX)
