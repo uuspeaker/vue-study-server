@@ -31,8 +31,8 @@ class Subject{
 
   async init(){
     this.calculateArea()
-    await this.cutImage()
     this.calculateContent()
+    await this.cutImage()
   }
 
   getInfo(){
@@ -72,7 +72,7 @@ class Subject{
     }else{
       throw '未知的题目类型，无法计算'
     }
-    log.debug("计算题目坐标完成")
+    log.debug("计算题目坐标完成",this.area)
   }
 
   //计算正常题目坐标
@@ -100,6 +100,7 @@ class Subject{
         height: this.getNextSubject().getY() - this.getTestPaper().getMinY()
       }
     ]
+
   }
 
   //计算最后一题坐标
