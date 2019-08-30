@@ -43,13 +43,8 @@ router.post('/upload', upload.single('file'), async (ctx, next) => {
 
     log.debug('cosFile',cosFilePath)
     var ocrResult = await ocr.scanImageUrl("https://" + result.Location)
-    var ocrData = JSON.parse(ocrResult).data.items
-    for (var index in ocrData) {
-      delete this.ocrData[index]['words']
-      delete this.ocrData[index]['candword']
-    }
-    log.debug("文件ocr扫描结果为",ocrData)
-    var testPaper = new TestPaper(file.path, ocrData)
+    log.debug("文件ocr扫描结果为",ocrResult)
+    var testPaper = new TestPaper(file.path, JSON.parse(ocrResult).data.items)
     await testPaper.init()
     var testPaperInfo = {
       userId: 123,
