@@ -34,7 +34,7 @@ class SubjectAnalyser{
       this.groupByX()
       this.removeMinorGroups()
       this.combineGroups()
-      this.sortGroups()
+      this.sortSubjects()
       //this.buildSubject()
     }
 
@@ -141,79 +141,96 @@ class SubjectAnalyser{
         }
       }
       this.validGroups = resultGroups
-      log.debug(`合并后剩余${this.validGroups.length}组`)
+      log.debug(`合并后剩余${this.validGroups.length}组`,this.validGroups)
     }
 
-    sortGroups(){
+    sortSubjects(){
       //对分组排序
-      var sortedGroups = this.validGroups.sort((a,b) => {
-        return a.getX() -  b.getX()
-      })
+      var sortedGroups = this.sortGroups(this.validGroups)
       var sortNo = 1
-      for (var i = 0; i < sortedGroups.length; i++) {
-        var items = sortedGroups[i].getItems()
+      for (var groupIndex = 0; groupIndex < sortedGroups.length; groupIndex++) {
+        var pageNo = groupIndex+1
         //对每个分组下的item排序
-        var sortedItems = items.sort((a,b) => {
-          var hasSimilarHeight = Math.abs(a.getY() - b.getY()) < this.testPaper.getLineHeight()/2
-          //从从左到右，上到下排序
-          if(hasSimilarHeight){
-            return a.getX() -  b.getX()
-          }else{
-            return a.getY() -  b.getY()
-          }
-
-        })
-        //计算右边界X坐标，最终用于计算题目宽度
-        if(sortedGroups[i+1]){
-          var rightX = sortedGroups[i+1].getX()
-        }else{
-          var rightX = this.testPaper.getMaxX()
-
-        }
-        var pageBottomY = sortedGroups[i].getBottomY()
+        var sortedItems = this.sortItems(sortedGroups[groupIndex].getItems())
         //给每个item添加页码和序号
-        for (var index = 0; index < sortedGroups.length; index++) {
-          var nextIndex = index + 1
-          var item = sortedItems[index]
-          item.setPage(i+1)
+        for (var itemIndex = 0; itemIndex < sortedItems.length; itemIndex++) {
+          var item = sortedItems[itemIndex]
+          item.setPage(pageNo)
           item.setSortNo(sortNo)
           sortNo++
-
-          //计算题目的右边界
-          if(sortedItems[nextIndex]){
-            var nextItem = sortedItems[nextIndex]
-            //若在同一组内，题目后面还有其他题目，则取这个题目的X轴作为右边界
-            if(this.isSimilarHeight(item.getY(), nextItem.getY())){
-              item.setRightX(nextItem.getX())
-            }else{//取下一组题的X轴作为右边界
-              item.setRightX(rightX)
-            }
-          }else{
-            item.setRightX(rightX)
-          }
-          var isBottom = this.isSimilarHeight(pageBottomY,item.getY())
-          var isLastPage = (i == this.validGroups.length - 1)
-
-          if(isBottom && isLastPage){
-            item.setType(config.BOTTOM)
-          }else if(isBottom && !isLastPage){
-            var nextItem = sortedGroups[i+1].getItems()[0]
-
-            if(nextItem.getY() == this.testPaper.getMinY()){
-              //如果下一题上面没有内容，则不需要翻页
-              item.setType(config.BOTTOM)
-            }else{
-              item.setType(config.FLIPOVER)
-              item.setNext(nextItem)
-            }
-          }else{
-            item.setType(config.NORMAL)
-            item.setNext(sortedItems[nextIndex])
-          }
+          //计算右边界
+          var rightX = this.calculateRightX(sortedGroups,groupIndex,sortedItems,itemIndex,item)
+          item.setRightX(rightX)
+          item = this.fillItem(item,sortedGroups,groupIndex,sortedItems,itemIndex)
           this.subjectHeads.push(item)
         }
       }
       log.debug("题目排序完成",this.subjectHeads)
+    }
+
+    fillItem(item,sortedGroups,groupIndex,sortedItems,itemIndex){
+      var pageBottomY = sortedGroups[groupIndex].getBottomY()
+      var isBottom = this.isSimilarHeight(pageBottomY,item.getY())
+      var isLastPage = (groupIndex == this.validGroups.length - 1)
+
+      if(isBottom && isLastPage){
+        item.setType(config.BOTTOM)
+      }else if(isBottom && !isLastPage){
+        var nextItem = sortedGroups[groupIndex+1].getItems()[0]
+
+        if(nextItem.getY() == this.testPaper.getMinY()){
+          //如果下一题上面没有内容，则不需要翻页
+          item.setType(config.BOTTOM)
+        }else{
+          item.setType(config.FLIPOVER)
+          item.setNext(nextItem)
+        }
+      }else{
+        item.setType(config.NORMAL)
+        item.setNext(sortedItems[itemIndex+1])
+      }
+      return item
+    }
+
+    calculateRightX(sortedGroups,groupIndex,sortedItems,itemIndex,item){
+      //计算右边界X坐标，最终用于计算题目宽度
+      if(sortedGroups[groupIndex+1]){
+        var rightX = sortedGroups[groupIndex+1].getX()
+      }else{
+        var rightX = this.testPaper.getMaxX()
+      }
+      //计算题目的右边界
+      if(sortedItems[itemIndex+1]){
+        var nextItem = sortedItems[itemIndex+1]
+        //若在同一组内，题目后面还有其他题目，则取这个题目的X轴作为右边界
+        if(this.isSimilarHeight(item.getY(), nextItem.getY())){
+          return nextItem.getX()
+        }else{//取下一组题的X轴作为右边界
+          return rightX
+        }
+      }else{
+        return rightX
+      }
+    }
+
+    sortGroups(groups){
+      groups.sort((a,b) => {
+        return a.getX() -  b.getX()
+      })
+      return groups
+    }
+
+    sortItems(items){
+      items.sort((a,b) => {
+        var hasSimilarHeight = Math.abs(a.getY() - b.getY()) < this.testPaper.getLineHeight()/2
+        //从从左到右，上到下排序
+        if(hasSimilarHeight){
+          return a.getX() -  b.getX()
+        }else{
+          return a.getY() -  b.getY()
+        }
+      })
+      return items
     }
 
     isSimilarHeight(a,b){

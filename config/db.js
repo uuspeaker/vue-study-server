@@ -1,7 +1,7 @@
 const config = {
  NORMAL : 'NORMAL',
  BOTTOM : 'BOTTOM',
- FILPOVER : 'FILPOVER',
+ FLIPOVER : 'FLIPOVER',
  //启动端口
  port: 8080,
  //数据库配置
