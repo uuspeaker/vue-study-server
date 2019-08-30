@@ -13,6 +13,7 @@ class Item{
       this.sortNo = '未排序'
       this.page = '未分页'
       this.canUse = true
+      this.rightX = '未初始化'
     }
 
     getText(){return this.item.itemstring}
@@ -22,10 +23,12 @@ class Item{
     getHeight(){return this.item.itemcoord.height}
     getSortNo(){return this.sortNo}
     getPage(){return this.page}
+    getRightX(){return this.rightX}
 
     setSortNo(sortNo){this.sortNo = sortNo}
     setPage(page){this.page = page}
     setType(type){this.type = type}
+    setRightX(rightX){this.rightX = rightX}
     joinGroup(){this.canUse = false}
     isValid(){return this.canUse}
 

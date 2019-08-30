@@ -25,15 +25,7 @@ class Subject{
   getTestPaper(){return this.testPaper}
 
   getWidth(){
-    var maxWidth = this.getTestPaper().getMaxX() - this.getTestPaper().getMinX()
-    var validSubjects = this.getTestPaper().getValidSubjects()
-
-    if(validSubjects.length <= 5){
-      return maxWidth
-    }else{
-      return this.getTestPaper().getMaxSubjectWidth()
-    }
-
+    return this.item.getRightX() - this.item.getX()
   }
 
   async init(){

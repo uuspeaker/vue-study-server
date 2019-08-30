@@ -155,6 +155,7 @@ class SubjectAnalyser{
         //对每个分组下的item排序
         var sortedItems = items.sort((a,b) => {
           var hasSimilarHeight = Math.abs(a.getY() - b.getY()) < this.testPaper.getLineHeight()
+          //从从左到右，上到下排序
           if(hasSimilarHeight){
             return a.getX() -  b.getX()
           }else{
@@ -162,12 +163,30 @@ class SubjectAnalyser{
           }
 
         })
+        //计算右边界X坐标，最终用于计算题目宽度
+        if(i == sortedGroups.length - 1){
+          var rightX = this.testPaper.getMaxX()
+        }else{
+          var rightX = sortedGroups[i].getX()
+        }
         //给每个item添加页码和序号
         for (var index in sortedItems) {
+
           var item = sortedItems[index]
+          log.debug('sortedItems',index,item)
           item.setPage(i+1)
           item.setSortNo(sortNo)
           sortNo++
+
+          if(sortedItems[index+1]){
+            var nextItem = sortedItems[index+1]
+            var hasSimilarHeight = Math.abs(item.getY() - nextItem.getY()) < this.testPaper.getLineHeight()
+            if(hasSimilarHeight){
+              item.setRightX(nextItem.getX())
+            }
+          }else{
+            item.setRightX(rightX)
+          }
           if(index == sortedItems.length - 1 && i == this.validGroups.length - 1){
             item.setType(config.FOOT)
           }else if(index == sortedItems.length - 1 && i != this.validGroups.length - 1){
@@ -181,27 +200,7 @@ class SubjectAnalyser{
       log.debug("题目排序完成",this.subjectHeads)
     }
 
-    buildSubject(){
-      var sortNo = 1
-      for (var i = 0; i < this.validGroups.length; i++) {
-        var sortedItems = this.validGroups[i].getItems()
-        for (var index in sortedItems) {
-          var item = sortedItems[index]
-          item.setPage(i+1)
-          item.setSortNo(sortNo)
-          if(index == sortedItems.length - 1 && i == this.validGroups.length - 1){
-            item.setType(config.FOOT)
-          }else if(index == sortedItems.length - 1 && i != this.validGroups.length - 1){
-            item.setType(config.FLIPOVER)
-          }else{
-            item.setType(config.BODY)
-          }
-          sortNo++
-          this.subjectHeads.push(item)
-        }
-      }
-      log.debug("题目整理完成",this.subjectHeads)
-    }
+
 }
 
 module.exports = SubjectAnalyser
