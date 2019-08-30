@@ -68,6 +68,16 @@ class ItemGroup{
       this.items.push(targetItem)
     }
 
+    getBottomY(){
+      var maxY = 0
+      for (var index in this.items) {
+        if(maxY < this.items[index].getY()){
+          maxY = this.items[index].getY()
+        }
+      }
+      return maxY
+    }
+
 }
 
 module.exports = ItemGroup

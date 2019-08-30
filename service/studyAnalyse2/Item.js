@@ -9,11 +9,11 @@ class Item{
     constructor(item){
       //每个item相同的X
       this.item = item
-      this.subjectNo = ''
-      this.sortNo = '未排序'
-      this.page = '未分页'
+      this.sortNo
+      this.page
       this.canUse = true
-      this.rightX = '未初始化'
+      this.rightX
+      this.nextItem
     }
 
     getText(){return this.item.itemstring}
@@ -23,12 +23,15 @@ class Item{
     getHeight(){return this.item.itemcoord.height}
     getSortNo(){return this.sortNo}
     getPage(){return this.page}
+    getType(){return this.type}
     getRightX(){return this.rightX}
+    getNext(){return this.nextItem}
 
     setSortNo(sortNo){this.sortNo = sortNo}
     setPage(page){this.page = page}
     setType(type){this.type = type}
     setRightX(rightX){this.rightX = rightX}
+    setNext(nextItem){this.nextItem = nextItem}
     joinGroup(){this.canUse = false}
     isValid(){return this.canUse}
 

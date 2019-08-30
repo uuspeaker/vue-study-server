@@ -173,7 +173,7 @@ class TestPaper{
         //若规则已经找出10条以上，为提升性能，跳过其他规则
         if(subjectAnalyser.getSubjectAmount() >= 10)break
       }
-      log.info("匹配规则是", regExpArr[regIndex],this.validSubjects)
+      log.info("匹配规则是", regExpArr[regIndex])
       return regExpArr[regIndex]
     }
 

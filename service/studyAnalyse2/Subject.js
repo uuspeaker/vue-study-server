@@ -2,6 +2,7 @@ const log = require('../../util/log').getLogger("Subject");
 const cos = require('../../util/cos.js')
 const path = require('path');
 const graphic = require('../../util/graphic')
+const config = require('../../config/db')
 
 //绘图时的坐偏移
 const leftMargin = 10
@@ -25,7 +26,7 @@ class Subject{
   getTestPaper(){return this.testPaper}
 
   getWidth(){
-    return (this.item.getRightX() - this.item.getX()) * 0.9
+    return (this.item.getRightX() - this.item.getX())
   }
 
   async init(){
@@ -51,47 +52,22 @@ class Subject{
 
   //获取下一个题目对象
   getNextSubject(){
-    //如果是最后一个题目
-    if(this.isLastSubject()){
-      return undefined
-    }
-    var nextNo = this.item.getSortNo() + 1
-    var nextItem = this.getTestPaper().getItem(nextNo)
-    return new Subject(nextItem, this.getTestPaper())
+    return this.item.getNext()
   }
 
   //获取题目截图区域类型（1、和下一题在同一页；2，翻页；3，最后一题）
   getAreaType(){
-    //若是最后一条数据则返回3
-    if(this.isLastSubject()){
-      return 3
-    }
-    //log.debug(this.getNextSubject().getY(),this.getTestPaper().getMinY())
-    if(this.getNextSubject().getY() == this.getTestPaper().getMinY()){
-      return 3
-    }
-
-    //若下一条数据的Y坐标更大表示在同一页，返回1
-    if(this.getY() < this.getNextSubject().getY()){
-      return 1
-    }else{
-      return 2
-    }
-
+    return this.item.getType()
   }
 
   calculateArea(){
-    if(this.area.length > 0){
-      //log.info('已经计算过题目区域，不再重复计算')
-      return
-    }
     var areaType = this.getAreaType()
     //log.info('areaType',areaType)
-    if(areaType == 1){//正常区域
+    if(areaType == config.NORMAL){//正常区域
       this.calculateNormalArea()
-    }else if(areaType == 2){//翻页题目
+    }else if(areaType == config.FLIPOVER){//翻页题目
       this.calculateFlipOverArea()
-    }else if(areaType == 3){//最后一题
+    }else if(areaType == config.BOTTOM){//最后一题
       this.calculateLastArea()
     }else{
       throw '未知的题目类型，无法计算'
@@ -139,11 +115,11 @@ class Subject{
 
   async cutImage(){
     var areaType = this.getAreaType()
-    if(areaType == 1){//正常区域
+    if(areaType == config.NORMAL){//正常区域
       await this.drawNormal()
-    }else if(areaType == 2){//翻页题目
+    }else if(areaType == config.FLIPOVER){//翻页题目
       await this.drawFlipOver()
-    }else if(areaType == 3){//最后一题
+    }else if(areaType == config.BOTTOM){//最后一题
       await this.drawLast()
     }
     log.info('切图完成',this.item.getSortNo())

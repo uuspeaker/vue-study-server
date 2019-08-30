@@ -170,36 +170,50 @@ class SubjectAnalyser{
           var rightX = this.testPaper.getMaxX()
 
         }
+        var pageBottomY = sortedGroups[i].getBottomY()
         //给每个item添加页码和序号
-        for (var index in sortedItems) {
-
+        for (var index = 0; index < sortedGroups.length; index++) {
+          var nextIndex = index + 1
           var item = sortedItems[index]
-          //log.debug('sortedItems',index,item)
           item.setPage(i+1)
           item.setSortNo(sortNo)
           sortNo++
 
-          if(sortedItems[index+1]){
-            var nextItem = sortedItems[index+1]
-            log.debug('================',item.getY(),nextItem.getY(),this.testPaper.getLineHeight())
-            var hasSimilarHeight = Math.abs(item.getY() - nextItem.getY()) < this.testPaper.getLineHeight()
-            if(hasSimilarHeight){
+          if(sortedItems[nextIndex]){
+            var nextItem = sortedItems[nextIndex]
+            if(this.isSimilarHeight(item.getY(), nextItem.getY())){
               item.setRightX(nextItem.getX())
             }
           }else{
             item.setRightX(rightX)
           }
-          if(index == sortedItems.length - 1 && i == this.validGroups.length - 1){
-            item.setType(config.FOOT)
-          }else if(index == sortedItems.length - 1 && i != this.validGroups.length - 1){
-            item.setType(config.FLIPOVER)
+          var isBottom = this.isSimilarHeight(pageBottomY,item.getY())
+          var isLastPage = (i == this.validGroups.length - 1)
+
+          if(isBottom && isLastPage){
+            item.setType(config.BOTTOM)
+          }else if(isBottom && !isLastPage){
+            var nextItem = sortedGroups[i+1].getItems()[0]
+
+            if(nextItem.getY() == this.testPaper.getMinY()){
+              //如果下一题上面没有内容，则不需要翻页
+              item.setType(config.BOTTOM)
+            }else{
+              item.setType(config.FLIPOVER)
+              item.setNext(nextItem)
+            }
           }else{
-            item.setType(config.BODY)
+            item.setType(config.NORMAL)
+            item.setNext(sortedItems[nextIndex])
           }
           this.subjectHeads.push(item)
         }
       }
       log.debug("题目排序完成",this.subjectHeads)
+    }
+
+    isSimilarHeight(a,b){
+      return Math.abs(a - b) < this.testPaper.getLineHeight()/2
     }
 
 

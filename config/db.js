@@ -1,6 +1,6 @@
 const config = {
- BODY : 'BODY',
- FOOT : 'FOOT',
+ NORMAL : 'NORMAL',
+ BOTTOM : 'BOTTOM',
  FILPOVER : 'FILPOVER',
  //启动端口
  port: 8080,
