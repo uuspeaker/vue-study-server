@@ -48,21 +48,6 @@ class TestPaper{
       await this.constructSubjects()
     }
 
-    async mkdir(){
-      var targetDir = path.resolve(`./test/tmp/${uuid.v1()}`);
-      this.targetDir = targetDir
-      log.info('创建目录',targetDir)
-      await fs.mkdirSync(targetDir,{recursive:true},(err,result)=>{
-        if(err){
-          log.error('创建目录失败',err)
-          return
-        }else{
-          log.info('创建目录成功',result)
-        }
-
-      })
-    }
-
     getTargetDir(){return this.targetDir}
     getSourceUrl(){return this.sourceUrl}
     getSourceData(){return this.sourceData}
@@ -146,16 +131,16 @@ class TestPaper{
 
     //分析题目
     initValidSubjects(){
-      var　regExpArr = []
-      regExpArr.push(/^\d{1,2}\D+/)//小写数字
-      // regExpArr.push(/^\(|（\d{1,2}\(|（/) //带括号小写数字
-      // regExpArr.push(/^\[一二三四五六七八九十]{1,2}/)//大写数字
-      // regExpArr.push(/^\(|（[一二三四五六七八九十]{1,2}\(|（/)//带括号大写数字
-      // regExpArr.push(/^\[a-z]{1,2}/)//小写字母
-      // regExpArr.push(/^\(|（\[a-z]{1,2}\(|（/) //带括号小写字母
-      // regExpArr.push(/^\[ⅠⅡⅢⅤ]{1,2}/)//希腊字母
-      // regExpArr.push(/^\(|（\[ⅠⅡⅢⅤ]{1,2}\(|（/) //带括号希腊字母
-      // regExpArr.push(/^\[①②③④⑤⑥⑦⑧⑨⑩⑪⑫⑬⑭⑮⑯⑰⑱⑲⑳❶❷❸❹❺❻❼❽❾❿]{1,2}/)//带圈数字
+      var regExpArr = []
+      regExpArr.push(/^\.{0,1}\d{1,2}\D+/)//小写数字
+      regExpArr.push(/^\.{0,1}\(|（\d{1,2}\(|（/) //带括号小写数字
+      regExpArr.push(/^\.{0,1}\[一二三四五六七八九十]{1,2}/)//大写数字
+      regExpArr.push(/^\.{0,1}\(|（[一二三四五六七八九十]{1,2}\(|（/)//带括号大写数字
+      regExpArr.push(/^\.{0,1}\[a-z]{1,2}/)//小写字母
+      regExpArr.push(/^\.{0,1}\(|（\[a-z]{1,2}\(|（/) //带括号小写字母
+      regExpArr.push(/^\.{0,1}\[ⅠⅡⅢⅤ]{1,2}/)//希腊字母
+      regExpArr.push(/^\.{0,1}\(|（\[ⅠⅡⅢⅤ]{1,2}\(|（/) //带括号希腊字母
+      regExpArr.push(/^\.{0,1}\[①②③④⑤⑥⑦⑧⑨⑩⑪⑫⑬⑭⑮⑯⑰⑱⑲⑳❶❷❸❹❺❻❼❽❾❿]{1,2}/)//带圈数字
       var regIndex = 0
       var maxMatchTime = 0
       for (var i = 0; i < regExpArr.length; i++) {
@@ -174,6 +159,21 @@ class TestPaper{
       }
       log.info("匹配规则是", regExpArr[regIndex])
       return regExpArr[regIndex]
+    }
+
+    async mkdir(){
+      var targetDir = path.resolve(`./test/tmp/${uuid.v1()}`);
+      this.targetDir = targetDir
+      log.info('创建目录',targetDir)
+      await fs.mkdirSync(targetDir,{recursive:true},(err,result)=>{
+        if(err){
+          log.error('创建目录失败',err)
+          return
+        }else{
+          log.info('创建目录成功',result)
+        }
+
+      })
     }
 
     async constructSubjects(){
