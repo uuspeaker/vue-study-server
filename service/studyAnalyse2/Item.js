@@ -12,7 +12,7 @@ class Item{
       this.subjectNo = ''
       this.sortNo = '未排序'
       this.page = '未分页'
-      this.isInGroup = false
+      this.canUse = true
     }
 
     getText(){return this.item.itemstring}
@@ -26,8 +26,8 @@ class Item{
     setSortNo(sortNo){this.sortNo = sortNo}
     setPage(page){this.page = page}
     setType(type){this.type = type}
-    joinGroup(){this.isInGroup = true}
-    isInGroup(){return this.isInGroup}
+    joinGroup(){this.canUse = false}
+    isValid(){return this.canUse}
 
 }
 

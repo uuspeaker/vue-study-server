@@ -3,7 +3,7 @@ const path = require('path')
 const uuid = require('uuid')
 const fs = require('fs');
 const Subject = require('./Subject')
-const HeadAnalyser = require('./HeadAnalyser')
+const SubjectAnalyser = require('./SubjectAnalyser')
 const Item = require('./Item')
 
 class TestPaper{
@@ -149,29 +149,29 @@ class TestPaper{
     initValidSubjects(){
       var　regExpArr = []
       regExpArr.push(/^\d{1,2}\D+/)//小写数字
-      regExpArr.push(/^\(|（\d{1,2}\(|（/) //带括号小写数字
-      regExpArr.push(/^\[一二三四五六七八九十]{1,2}/)//大写数字
-      regExpArr.push(/^\(|（[一二三四五六七八九十]{1,2}\(|（/)//带括号大写数字
-      regExpArr.push(/^\[a-z]{1,2}/)//小写字母
-      regExpArr.push(/^\(|（\[a-z]{1,2}\(|（/) //带括号小写字母
-      regExpArr.push(/^\[ⅠⅡⅢⅤ]{1,2}/)//希腊字母
-      regExpArr.push(/^\(|（\[ⅠⅡⅢⅤ]{1,2}\(|（/) //带括号希腊字母
-      regExpArr.push(/^\[①②③④⑤⑥⑦⑧⑨⑩⑪⑫⑬⑭⑮⑯⑰⑱⑲⑳❶❷❸❹❺❻❼❽❾❿]{1,2}/)//带圈数字
+      // regExpArr.push(/^\(|（\d{1,2}\(|（/) //带括号小写数字
+      // regExpArr.push(/^\[一二三四五六七八九十]{1,2}/)//大写数字
+      // regExpArr.push(/^\(|（[一二三四五六七八九十]{1,2}\(|（/)//带括号大写数字
+      // regExpArr.push(/^\[a-z]{1,2}/)//小写字母
+      // regExpArr.push(/^\(|（\[a-z]{1,2}\(|（/) //带括号小写字母
+      // regExpArr.push(/^\[ⅠⅡⅢⅤ]{1,2}/)//希腊字母
+      // regExpArr.push(/^\(|（\[ⅠⅡⅢⅤ]{1,2}\(|（/) //带括号希腊字母
+      // regExpArr.push(/^\[①②③④⑤⑥⑦⑧⑨⑩⑪⑫⑬⑭⑮⑯⑰⑱⑲⑳❶❷❸❹❺❻❼❽❾❿]{1,2}/)//带圈数字
       var regIndex = 0
       var maxMatchTime = 0
       for (var i = 0; i < regExpArr.length; i++) {
         log.debug('regExpArr[i]',regExpArr[i])
         var matchTime = 0
-        var headAnalyser = new HeadAnalyser(this, regExpArr[i])
+        var subjectAnalyser = new SubjectAnalyser(this, regExpArr[i])
 
-        headAnalyser.execute()
-        if(headAnalyser.getSubjectAmount() > maxMatchTime){
+        subjectAnalyser.execute()
+        if(subjectAnalyser.getSubjectAmount() > maxMatchTime){
           regIndex = i
-          maxMatchTime = headAnalyser.getSubjectAmount()
-          this.validSubjects = headAnalyser.getSubjectHeads()
+          maxMatchTime = subjectAnalyser.getSubjectAmount()
+          this.validSubjects = subjectAnalyser.getSubjectHeads()
         }
         //若规则已经找出10条以上，为提升性能，跳过其他规则
-        if(headAnalyser.getSubjectAmount() >= 10)break
+        if(subjectAnalyser.getSubjectAmount() >= 10)break
       }
       log.info("匹配规则是", regExpArr[regIndex],this.validSubjects)
       return regExpArr[regIndex]

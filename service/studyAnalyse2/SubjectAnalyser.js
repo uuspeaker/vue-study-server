@@ -1,11 +1,11 @@
-const log = require('../../util/log').getLogger("HeadAnalyser");
+const log = require('../../util/log').getLogger("SubjectAnalyser");
 const config = require('../../config/db')
 const path = require('path')
 const uuid = require('uuid')
 const fs = require('fs');
 const ItemGroup = require('./ItemGroup')
 
-class HeadAnalyser{
+class SubjectAnalyser{
     constructor(testPaper, regExp){
       //要匹配的正则表达式
       this.regExp = regExp
@@ -25,12 +25,17 @@ class HeadAnalyser{
       this.xOffsetRate = 0.02
       //页数
       this.page = 0
+      this.validGroups = []
     }
 
     execute(){
       this.extractByRegExp()
-      this.clearInvalid()
+      this.removeInvalidItems()
       this.groupByX()
+      this.removeMinorGroups()
+      this.combineGroups()
+      this.sortGroups()
+      //this.buildSubject()
     }
 
     getSubjectHeads(){return this.subjectHeads}
@@ -53,7 +58,7 @@ class HeadAnalyser{
       log.info(`和正则表达式${this.regExp}匹配的题目共${result.length}条`)
     }
 
-    clearInvalid(){
+    removeInvalidItems(){
       var result = []
       var length = this.possibleSubjects.length
       for (var i = 0; i < length; i++) {
@@ -78,78 +83,115 @@ class HeadAnalyser{
     //将题目分到不同的组
     groupByX(){
       var offset = this.testPaper.getMaxX() * this.xOffsetRate
-      var resultGroups = []
-      var tmpGroup = []
       var length = this.possibleSubjects.length
       //把具有类似X偏移量的item放到一组
       for (var i = 0; i < length; i++) {
         var item = this.possibleSubjects[i]
+        if(!item.isValid())continue
         var isMatch = false
-        for (var index in resultGroups) {
-          if (resultGroups[index].match(item)) {
+        for (var index in this.validGroups) {
+          if (this.validGroups[index].match(item)) {
             isMatch = true
-            resultGroups[index].addItem(item)
+            this.validGroups[index].addItem(item)
+            item.joinGroup()
           }
         }
         //若未找到相似的组，则另起一组
         if(!isMatch){
           var group = new ItemGroup(offset)
           group.addItem(item)
-          resultGroups.push(group)
+          item.joinGroup()
+          this.validGroups.push(group)
+          this.groupByX()
+          return
         }
       }
+    }
 
-      log.debug(`将X坐标对齐的文本分成${resultGroups.length}组`,resultGroups)
-      this.extractValidGroups(resultGroups)
+    removeMinorGroups(){
+      log.debug(`groupByX后分组`,this.validGroups)
+      var resultGroups = []
+      for (var index in this.validGroups) {
+        if (this.validGroups[index].getItemAmount() >= this.minItemAmount){
+          resultGroups.push(this.validGroups[index])
+        }else{
+          log.debug(`剔除数量过少分组`,itemGroup)
+          continue
+        }
+      }
+      this.validGroups = resultGroups
     }
 
     //若一个分组的X坐标被另一个分组覆盖，则将两个组合并
-    extractValidGroups(resultGroups){
-      var validGroups = []
-      for (var groupIndex in resultGroups) {
-        var itemGroup = resultGroups[groupIndex]
-        if (itemGroup.getItemAmount() < this.minItemAmount) continue
-        log.debug(`剔除数量过少分组`,itemGroup)
-        for (var groupIndex2 in resultGroups) {
-          if(groupIndex == groupIndex2) continue
-          var itemGroup2 = resultGroups[groupIndex2]
-          if (itemGroup2.getItemAmount() < this.minItemAmount) continue
-          log.debug(`剔除数量过少分组`,itemGroup2)
-          if(itemGroup.contain(itemGroup2)){
-            itemGroup.combine(itemGroup2)
-            itemGroup2.invalid()
+    combineGroups(){
+      for (var index1 in this.validGroups) {
+        if(!this.validGroups[index1].isValid())continue
+        for (var index2 in this.validGroups) {
+          if(index1 == index2) continue
+          if(!this.validGroups[index2].isValid())continue
+          if(this.validGroups[index1].cover(this.validGroups[index2])){
+            this.validGroups[index1].combine(this.validGroups[index2])
           }
         }
-        if(itemGroup.isValid()){
-          validGroups.push(itemGroup)
-        }
-
       }
-      this.pgae = validGroups.length
-      log.debug('将内容重合的分组合并',validGroups)
-      this.sortAndDecorateHeads(validGroups)
+      var resultGroups = []
+      for (var index in this.validGroups) {
+        if (this.validGroups[index].isValid()) {
+          resultGroups.push(this.validGroups[index])
+        }
+      }
+      this.validGroups = resultGroups
+      log.debug(`合并后剩余${this.validGroups.length}组`)
     }
 
-    sortAndDecorateHeads(validGroups){
-      var sortedGroups = validGroups.sort((a,b) => {
+    sortGroups(){
+      //对分组排序
+      var sortedGroups = this.validGroups.sort((a,b) => {
         return a.getX() -  b.getX()
       })
       var sortNo = 1
       for (var i = 0; i < sortedGroups.length; i++) {
         var items = sortedGroups[i].getItems()
+        //对每个分组下的item排序
         var sortedItems = items.sort((a,b) => {
-          return a.getY() -  b.getY()
+          var hasSimilarHeight = Math.abs(a.getY() - b.getY()) < this.testPaper.getLineHeight()
+          if(hasSimilarHeight){
+            return a.getX() -  b.getX()
+          }else{
+            return a.getY() -  b.getY()
+          }
+
         })
-
-        var page = i+1
+        //给每个item添加页码和序号
         for (var index in sortedItems) {
-
           var item = sortedItems[index]
-          item.setPage(page)
+          item.setPage(i+1)
           item.setSortNo(sortNo)
-          if(index == sortedItems.length - 1 && i == sortedGroups.length - 1){
+          sortNo++
+          if(index == sortedItems.length - 1 && i == this.validGroups.length - 1){
             item.setType(config.FOOT)
-          }else if(index == sortedItems.length - 1 && i != sortedGroups.length - 1){
+          }else if(index == sortedItems.length - 1 && i != this.validGroups.length - 1){
+            item.setType(config.FLIPOVER)
+          }else{
+            item.setType(config.BODY)
+          }
+          this.subjectHeads.push(item)
+        }
+      }
+      log.debug("题目排序完成",this.subjectHeads)
+    }
+
+    buildSubject(){
+      var sortNo = 1
+      for (var i = 0; i < this.validGroups.length; i++) {
+        var sortedItems = this.validGroups[i].getItems()
+        for (var index in sortedItems) {
+          var item = sortedItems[index]
+          item.setPage(i+1)
+          item.setSortNo(sortNo)
+          if(index == sortedItems.length - 1 && i == this.validGroups.length - 1){
+            item.setType(config.FOOT)
+          }else if(index == sortedItems.length - 1 && i != this.validGroups.length - 1){
             item.setType(config.FLIPOVER)
           }else{
             item.setType(config.BODY)
@@ -158,8 +200,8 @@ class HeadAnalyser{
           this.subjectHeads.push(item)
         }
       }
-      log.debug("题目排序完成",this.subjectHeads)
+      log.debug("题目整理完成",this.subjectHeads)
     }
 }
 
-module.exports = HeadAnalyser
+module.exports = SubjectAnalyser
