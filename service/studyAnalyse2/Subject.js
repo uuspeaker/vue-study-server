@@ -91,7 +91,7 @@ class Subject{
     this.area = [{//题目上半部分坐标
       X: this.getX(),
       Y: this.getYWithMargin(),
-      width: this.getTestPaper().getMaxSubjectWidth(),
+      width: this.getWidth(),
       height: this.getTestPaper().getMaxY() - this.getYWithMargin()
       },{//题目下半部分坐标
         X: this.getNextSubject().getX(),

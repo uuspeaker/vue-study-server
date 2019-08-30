@@ -44,7 +44,6 @@ class TestPaper{
       this.deleteHeadAndFoot()
       this.initPaperStructure()
       this.initValidSubjects()
-      this.initMaxSubjectLength()
       await this.mkdir()
       await this.constructSubjects()
     }
@@ -175,37 +174,6 @@ class TestPaper{
       }
       log.info("匹配规则是", regExpArr[regIndex])
       return regExpArr[regIndex]
-    }
-
-    //计算题目最大长度
-    initMaxSubjectLength(){
-      var itemLengths = []
-      var totalLength = 0
-      var itemMinX = 1000000
-      var itemMaxX = 0
-      var length = this.validSubjects.length
-      for (var i = 0; i < length; i++) {
-        //log.debug(`解析第${i+1}条数据`,this.validSubjects[i])
-        let itemLength = this.validSubjects[i].getWidth()
-        itemLengths.push(itemLength)
-        totalLength += itemLength
-      }
-      var validMaxLength = 0
-       var itemAvgLength = totalLength/(length+1)
-       var checkMaxLength = itemAvgLength * 2
-       for (var i = 0; i < itemLengths.length; i++) {
-         if(itemLengths[i] > validMaxLength && itemLengths[i] < checkMaxLength){
-           validMaxLength = itemLengths[i]
-         }
-       }
-      // var testPaperLength = itemMaxX - itemMinX
-      if(this.getMaxX()*0.9/this.pageCount > validMaxLength){
-        this.maxSubjectWidth = this.getMaxX()*0.9/this.pageCount
-      }else{
-        this.maxSubjectWidth = validMaxLength
-      }
-
-      log.debug("题目宽度为:",validMaxLength)
     }
 
     async constructSubjects(){
