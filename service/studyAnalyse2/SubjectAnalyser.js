@@ -115,7 +115,7 @@ class SubjectAnalyser{
         if (this.validGroups[index].getItemAmount() >= this.minItemAmount){
           resultGroups.push(this.validGroups[index])
         }else{
-          log.debug(`剔除数量过少分组`,itemGroup)
+          log.debug(`剔除数量过少分组`,this.validGroups[index])
           continue
         }
       }
