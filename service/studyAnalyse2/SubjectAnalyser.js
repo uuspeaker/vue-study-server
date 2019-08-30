@@ -154,7 +154,7 @@ class SubjectAnalyser{
         var items = sortedGroups[i].getItems()
         //对每个分组下的item排序
         var sortedItems = items.sort((a,b) => {
-          var hasSimilarHeight = Math.abs(a.getY() - b.getY()) < this.testPaper.getLineHeight()
+          var hasSimilarHeight = Math.abs(a.getY() - b.getY()) < this.testPaper.getLineHeight()/2
           //从从左到右，上到下排序
           if(hasSimilarHeight){
             return a.getX() -  b.getX()
@@ -164,22 +164,24 @@ class SubjectAnalyser{
 
         })
         //计算右边界X坐标，最终用于计算题目宽度
-        if(i == sortedGroups.length - 1){
-          var rightX = this.testPaper.getMaxX()
+        if(sortedGroups[i+1]){
+          var rightX = sortedGroups[i+1].getX()
         }else{
-          var rightX = sortedGroups[i].getX()
+          var rightX = this.testPaper.getMaxX()
+
         }
         //给每个item添加页码和序号
         for (var index in sortedItems) {
 
           var item = sortedItems[index]
-          log.debug('sortedItems',index,item)
+          //log.debug('sortedItems',index,item)
           item.setPage(i+1)
           item.setSortNo(sortNo)
           sortNo++
 
           if(sortedItems[index+1]){
             var nextItem = sortedItems[index+1]
+            log.debug('================',item.getY(),nextItem.getY(),this.testPaper.getLineHeight())
             var hasSimilarHeight = Math.abs(item.getY() - nextItem.getY()) < this.testPaper.getLineHeight()
             if(hasSimilarHeight){
               item.setRightX(nextItem.getX())

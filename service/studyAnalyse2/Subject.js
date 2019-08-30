@@ -25,7 +25,7 @@ class Subject{
   getTestPaper(){return this.testPaper}
 
   getWidth(){
-    return this.item.getRightX() - this.item.getX()
+    return (this.item.getRightX() - this.item.getX()) * 0.9
   }
 
   async init(){
