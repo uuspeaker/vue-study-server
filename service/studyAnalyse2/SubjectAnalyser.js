@@ -179,13 +179,11 @@ class SubjectAnalyser{
           item.setSortNo(sortNo)
           sortNo++
 
-          if(sortedItems[nextIndex]){
-            var nextItem = sortedItems[nextIndex]
-            if(this.isSimilarHeight(item.getY(), nextItem.getY())){
-              item.setRightX(nextItem.getX())
-            }
-          }else{
-            item.setRightX(rightX)
+          //取下一组题的X轴作为右边界
+          item.setRightX(rightX)
+          //若在同一组内，题目后面还有其他题目，则取这个题目的X轴作为右边界
+          if(sortedItems[nextIndex] && this.isSimilarHeight(item.getY(), sortedItems[nextIndex].getY())){
+            item.setRightX(sortedItems[nextIndex].getX())
           }
           var isBottom = this.isSimilarHeight(pageBottomY,item.getY())
           var isLastPage = (i == this.validGroups.length - 1)
@@ -193,14 +191,14 @@ class SubjectAnalyser{
           if(isBottom && isLastPage){
             item.setType(config.BOTTOM)
           }else if(isBottom && !isLastPage){
-            var nextItem = sortedGroups[i+1].getItems()[0]
+            var nextGroupItem = sortedGroups[i+1].getItems()[0]
 
-            if(nextItem.getY() == this.testPaper.getMinY()){
+            if(nextGroupItem.getY() == this.testPaper.getMinY()){
               //如果下一题上面没有内容，则不需要翻页
               item.setType(config.BOTTOM)
             }else{
               item.setType(config.FLIPOVER)
-              item.setNext(nextItem)
+              item.setNext(nextGroupItem)
             }
           }else{
             item.setType(config.NORMAL)

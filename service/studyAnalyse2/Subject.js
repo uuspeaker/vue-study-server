@@ -129,7 +129,7 @@ class Subject{
     var sourceUrl = this.getTestPaper().getSourceUrl()
     var extname = path.extname(sourceUrl)
     var targetUrl = `${this.getTestPaper().getTargetDir()}/${this.item.getSortNo()}${extname}`
-    //log.debug(`绘制题目`,targetUrl,this.area)
+    log.debug(`绘制题目`,targetUrl,this.area)
     await graphic.cut(sourceUrl, targetUrl, this.area[0].width + leftMargin + rightMargin, this.area[0].height, this.area[0].X - leftMargin, this.area[0].Y)
     var cosObject = await cos.putObject(targetUrl)
     this.imageUrl = cosObject.Location
