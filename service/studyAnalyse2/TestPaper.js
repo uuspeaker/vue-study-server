@@ -98,6 +98,7 @@ class TestPaper{
         delete this.sourceData[index]['candword']
         this.allItems.push(new Item(this.sourceData[index]))
       }
+      log.debug('this.allItems',this.allItems)
     }
 
     //计算试卷结构数据，包括坐标
