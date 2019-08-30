@@ -49,7 +49,7 @@ module.exports.putObject = (location) => {
         log.error("上传文件异常",err)
         reject(err)
       }
-      log.debug("上传文件结束,data", data);
+      log.debug("上传文件结束", data.Location);
       resolve(data)
     });
   })

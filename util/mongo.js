@@ -27,7 +27,7 @@ module.exports.insertOne = function (collection, data) {
           log.error(`mongo insert fail ${err}`)
           reject(err)
         }else{
-          log.info(`mongo insertOne success, resutl is ${result}`)
+          log.info(`mongo insertOne success`)
           resolve(result)
           db.close()
         }
@@ -49,7 +49,7 @@ module.exports.remove = function (collection, query) {
           log.error(`mongo insert fail ${err}`)
           reject(err)
         }else{
-          log.info(`mongo insertOne success, resutl is ${result}`)
+          log.info(`mongo insertOne success`)
           resolve(result)
           db.close()
         }
@@ -94,7 +94,7 @@ module.exports.find = async (collection, condition, limit) => {
         log.error("mongo query fail",err)
         reject(err)
       }
-      log.info("mongo query result",result)
+      log.info("mongo query success")
       resolve(result)
       db.close()
     })
