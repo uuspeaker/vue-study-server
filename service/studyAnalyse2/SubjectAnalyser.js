@@ -33,6 +33,7 @@ class SubjectAnalyser{
       this.removeInvalidItems()
       this.groupByX()
       this.removeMinorGroups()
+      this.calvulateGroupArea()
       this.combineGroups()
       this.sortSubjects()
       //this.buildSubject()
@@ -93,7 +94,6 @@ class SubjectAnalyser{
           if (this.validGroups[index].match(item)) {
             isMatch = true
             this.validGroups[index].addItem(item)
-            item.joinGroup()
           }
         }
         //若未找到相似的组，则另起一组
@@ -122,6 +122,12 @@ class SubjectAnalyser{
       this.validGroups = resultGroups
     }
 
+    calvulateGroupArea(){
+      for (var index in this.validGroups) {
+        this.validGroups[index].calculate()
+      }
+    }
+
     //若一个分组的X坐标被另一个分组覆盖，则将两个组合并
     combineGroups(){
       for (var index1 in this.validGroups) {
@@ -130,6 +136,7 @@ class SubjectAnalyser{
           if(index1 == index2) continue
           if(!this.validGroups[index2].isValid())continue
           if(this.validGroups[index1].cover(this.validGroups[index2])){
+            log.debug('合并重合的题目',this.validGroups[index1],this.validGroups[index2])
             this.validGroups[index1].combine(this.validGroups[index2])
           }
         }
@@ -165,7 +172,7 @@ class SubjectAnalyser{
           this.subjectHeads.push(item)
         }
       }
-      log.debug("题目排序完成",this.subjectHeads)
+      log.debug("题目排序完成")
     }
 
     fillItem(item,sortedGroups,groupIndex,sortedItems,itemIndex){
