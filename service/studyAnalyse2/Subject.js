@@ -136,7 +136,7 @@ class Subject{
     var extname = path.extname(sourceUrl)
     var targetUrl = `${this.getTestPaper().getTargetDir()}/${this.item.getSortNo()}${extname}`
     log.debug(`绘制题目`,targetUrl,this.area)
-    await graphic.cut(sourceUrl, targetUrl, this.ggetGraphicWidth() + leftMargin + rightMargin, this.area[0].height, this.area[0].X - leftMargin, this.area[0].Y)
+    await graphic.cut(sourceUrl, targetUrl, this.getGraphicWidth() + leftMargin + rightMargin, this.area[0].height, this.area[0].X - leftMargin, this.area[0].Y)
     var cosObject = await cos.putObject(targetUrl)
     this.imageUrl = cosObject.Location
   }
@@ -150,7 +150,7 @@ class Subject{
       var tmpTargetUrl = `${this.getTestPaper().getTargetDir()}/${this.item.getSortNo()}-${i}${extname}`
       tmpUrls.push(tmpTargetUrl)
       //log.debug(`绘制题目`,tmpTargetUrl,this.area[i])
-      await graphic.cut(sourceUrl, tmpTargetUrl, this.ggetGraphicWidth() + leftMargin + rightMargin, this.area[i].height, this.area[i].X - leftMargin, this.area[i].Y)
+      await graphic.cut(sourceUrl, tmpTargetUrl, this.getGraphicWidth() + leftMargin + rightMargin, this.area[i].height, this.area[i].X - leftMargin, this.area[i].Y)
     }
     //合并图片，并将原来多余的图片删除
     await graphic.combine(tmpUrls[0], tmpUrls[1], targetUrl)
