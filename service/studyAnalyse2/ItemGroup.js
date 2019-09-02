@@ -91,7 +91,7 @@ class ItemGroup{
     }
 
     calculateWidth(targetItem){
-      log.debug(this.groupId,'before',this.getX(),this.getX()+this.getWidth(),targetItem.getX(),targetItem.getX()+targetItem.getWidth())
+      //log.debug(this.groupId,'before',this.getX(),this.getX()+this.getWidth(),targetItem.getX(),targetItem.getX()+targetItem.getWidth())
       if(this.hasCalculate){
         log.debug(this.groupId,'开始计算区域')
         this.width = targetItem.getWidth()
@@ -102,7 +102,7 @@ class ItemGroup{
           this.width = rightX - this.getX()
         }
       }
-      log.debug(this.groupId,'after',this.getX(),this.getX()+this.getWidth())
+      //log.debug(this.groupId,'after',this.getX(),this.getX()+this.getWidth())
     }
 
     getBottomY(){

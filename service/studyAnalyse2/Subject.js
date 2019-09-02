@@ -166,7 +166,7 @@ class Subject{
         //允许题目稍稍超出题目坐标范围
         var promisedOffsetRate = 1.1
         var offsetLeftXInArea = (lineData.getX() - this.area[i].X + this.area[i].width * promisedOffsetRate >= 0)
-        var offsetRightXInArea = lineData.getX() + lineData.getWidth() > this.area[i].X
+        var offsetRightXInArea = lineData.getX() + lineData.getWidth() > this.area[i].X && lineData.getX() + lineData.getWidth() < this.area[i].X + this.area[i].width
         var inX = (offsetLeftXInArea && offsetRightXInArea)
         var offsetY = lineData.getY() - this.area[i].Y
         var inY = (offsetY >= 0 && offsetY < this.area[i].height)
