@@ -11,9 +11,9 @@ class ItemGroup{
       this.items = [];
       //以数字开头的数据
       this.xOffset = offset
-      this.width
+      this.width = '未初始化'
       this.isGroupValid = true
-      this.validWdithRate = 1.5
+      this.validWidthRate = 1.5
       this.hasCalculate = false
       this.groupId = uuid.v1()
     }
@@ -27,8 +27,8 @@ class ItemGroup{
     reset(){this.hasCalculate = false}
 
     cover(targetItemGroup){
-      var leftCover = this.getX() >= targetItemGroup.getX() &&  this.getX() <= targetItemGroup.getX() + targetItemGroup.getWidth()
-      var rightCover = this.getX() + this.getWidth() >= targetItemGroup.getX() &&  this.getX() + this.getWidth() <= targetItemGroup.getX() + targetItemGroup.getWidth()
+      var leftCover = (this.getX() >= targetItemGroup.getX()) &&  (this.getX() <= targetItemGroup.getX() + targetItemGroup.getWidth())
+      var rightCover = (this.getX() + this.getWidth() >= targetItemGroup.getX()) &&  (this.getX() + this.getWidth() <= targetItemGroup.getX() + targetItemGroup.getWidth())
       if(leftCover || rightCover){
         return true
       }else{
@@ -69,6 +69,7 @@ class ItemGroup{
     calculate(){
       this.reset()
       var validItems = this.getValidItems()
+      //log.debug('=============',validItems)
       for (var index in validItems) {
         this.calculateWidth(validItems[index])
       }
@@ -80,19 +81,21 @@ class ItemGroup{
         wotalWidth = wotalWidth + this.items[index].getWidth()
       }
       var avgWidth = wotalWidth / this.items.length
-      var validWidth = avgWidth * this.validWdithRate
+      var validWidth = avgWidth * this.validWidthRate
       var validItems = []
       for (var index in this.items) {
         if(this.items[index].getWidth() <= validWidth){
           validItems.push(this.items[index])
+        }else{
+          log.info('剔除长度不符数据',this.items[index].getWidth(),validWidth,this.items[index])
         }
       }
       return validItems
     }
 
     calculateWidth(targetItem){
-      //log.debug(this.groupId,'before',this.getX(),this.getX()+this.getWidth(),targetItem.getX(),targetItem.getX()+targetItem.getWidth())
-      if(this.hasCalculate){
+      log.debug(this.groupId,'before',this.getX(),this.getX()+this.getWidth(),targetItem.getX(),targetItem.getX()+targetItem.getWidth())
+      if(!this.hasCalculate){
         log.debug(this.groupId,'开始计算区域')
         this.width = targetItem.getWidth()
       }else{
@@ -102,7 +105,7 @@ class ItemGroup{
           this.width = rightX - this.getX()
         }
       }
-      //log.debug(this.groupId,'after',this.getX(),this.getX()+this.getWidth())
+      log.debug(this.groupId,'after',this.getX(),this.getX()+this.getWidth())
     }
 
     getBottomY(){

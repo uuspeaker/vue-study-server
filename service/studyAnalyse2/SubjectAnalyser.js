@@ -125,6 +125,7 @@ class SubjectAnalyser{
       for (var index in this.validGroups) {
         this.validGroups[index].calculate()
       }
+      log.debug(`分组范围计算完毕`,this.validGroups)
     }
 
     //若一个分组的X坐标被另一个分组覆盖，则将两个组合并
