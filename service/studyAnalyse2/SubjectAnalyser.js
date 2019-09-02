@@ -162,7 +162,7 @@ class SubjectAnalyser{
         for (var itemIndex = 0; itemIndex < sortedItems.length; itemIndex++) {
           var item = sortedItems[itemIndex]
           item.setPage(pageNo)
-          item.setMaxPage(sortedItems.length)
+          item.setMaxPage(sortedGroups.length)
           item.setSortNo(sortNo)
           sortNo++
           //计算右边界
@@ -170,6 +170,7 @@ class SubjectAnalyser{
           item.setRightX(rightX)
           item = this.fillItem(item,sortedGroups,groupIndex,sortedItems,itemIndex)
           this.subjectHeads.push(item)
+          //log.debug('page===============',item.getPage(),item.getMaxPage())
         }
       }
       log.debug("题目排序完成")
