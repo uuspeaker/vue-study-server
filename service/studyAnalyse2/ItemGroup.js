@@ -96,14 +96,16 @@ class ItemGroup{
     calculateWidth(targetItem){
       log.debug(this.groupId,'before',this.getX(),this.getX()+this.getWidth(),targetItem.getX(),targetItem.getX()+targetItem.getWidth())
       if(!this.hasCalculate){
-        log.debug(this.groupId,'开始计算区域')
         this.width = targetItem.getWidth()
+        log.debug(this.groupId,'开始计算this.width',this.width)
       }else{
+        var oldRight = this.getX() + this.getWidth()
         var rightX = this.getX() + this.getWidth()
         if(rightX < targetItem.getX() + targetItem.getWidth()){
           rightX = targetItem.getX() + targetItem.getWidth()
           this.width = rightX - this.getX()
         }
+        log.debug('oldRight========newRight',oldWidth,rightX)
       }
       log.debug(this.groupId,'after',this.getX(),this.getX()+this.getWidth())
     }
