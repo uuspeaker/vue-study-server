@@ -11,6 +11,7 @@ class Item{
       this.item = item
       this.sortNo
       this.page
+      this.maxPage
       this.canUse = true
       this.rightX
       this.nextItem
@@ -23,12 +24,14 @@ class Item{
     getHeight(){return this.item.itemcoord.height}
     getSortNo(){return this.sortNo}
     getPage(){return this.page}
+    getMaxPage(){return this.maxPage}
     getType(){return this.type}
     getRightX(){return this.rightX}
     getNext(){return this.nextItem}
 
     setSortNo(sortNo){this.sortNo = sortNo}
     setPage(page){this.page = page}
+    setMaxPage(maxPage){this.maxPage = maxPage}
     setType(type){this.type = type}
     setRightX(rightX){this.rightX = rightX}
     setNext(nextItem){this.nextItem = nextItem}

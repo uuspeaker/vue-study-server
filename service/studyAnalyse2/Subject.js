@@ -11,12 +11,17 @@ const rightMargin = 10
 
 class Subject{
   constructor(item, myTestPaper){
+    //题目第一行的数据
     this.item = item
     this.testPaper = myTestPaper
+    //原始图片路径
     this.imageUrl = ''
+    //题目坐标区域
     this.area = []
-    //this.content = []
+    //题目完整内容
     this.content = []
+    //切图缩进
+    this.graphicWidthRate = 0.95
   }
 
   getX(){return this.item.getX()}
@@ -131,7 +136,7 @@ class Subject{
     var extname = path.extname(sourceUrl)
     var targetUrl = `${this.getTestPaper().getTargetDir()}/${this.item.getSortNo()}${extname}`
     log.debug(`绘制题目`,targetUrl,this.area)
-    await graphic.cut(sourceUrl, targetUrl, this.area[0].width + leftMargin + rightMargin, this.area[0].height, this.area[0].X - leftMargin, this.area[0].Y)
+    await graphic.cut(sourceUrl, targetUrl, this.ggetGraphicWidth() + leftMargin + rightMargin, this.area[0].height, this.area[0].X - leftMargin, this.area[0].Y)
     var cosObject = await cos.putObject(targetUrl)
     this.imageUrl = cosObject.Location
   }
@@ -145,12 +150,22 @@ class Subject{
       var tmpTargetUrl = `${this.getTestPaper().getTargetDir()}/${this.item.getSortNo()}-${i}${extname}`
       tmpUrls.push(tmpTargetUrl)
       //log.debug(`绘制题目`,tmpTargetUrl,this.area[i])
-      await graphic.cut(sourceUrl, tmpTargetUrl, this.area[i].width + leftMargin + rightMargin, this.area[i].height, this.area[i].X - leftMargin, this.area[i].Y)
+      await graphic.cut(sourceUrl, tmpTargetUrl, this.ggetGraphicWidth() + leftMargin + rightMargin, this.area[i].height, this.area[i].X - leftMargin, this.area[i].Y)
     }
     //合并图片，并将原来多余的图片删除
     await graphic.combine(tmpUrls[0], tmpUrls[1], targetUrl)
     var cosObject = await cos.putObject(targetUrl)
     this.imageUrl = cosObject.Location
+  }
+
+  //如果是最后一页前面的，
+  getGraphicWidth(width){
+    //如果是最后一页，切图时按计算出来的宽度
+    if(this.item.getMaxPage() == 1 || this.item.getMaxPage == this.item.getPage()){
+      return this.item.getWidth()
+    }else{//若不是，为避免切到无关的内容，缩进少许
+      return this.item.getWidth() * this.graphicWidthRate
+    }
   }
 
   async drawLast(){

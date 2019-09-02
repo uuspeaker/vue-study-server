@@ -100,7 +100,6 @@ class SubjectAnalyser{
         if(!isMatch){
           var group = new ItemGroup(offset)
           group.addItem(item)
-          item.joinGroup()
           this.validGroups.push(group)
           this.groupByX()
           return
@@ -163,6 +162,7 @@ class SubjectAnalyser{
         for (var itemIndex = 0; itemIndex < sortedItems.length; itemIndex++) {
           var item = sortedItems[itemIndex]
           item.setPage(pageNo)
+          item.setMaxPage(sortedItems.length)
           item.setSortNo(sortNo)
           sortNo++
           //计算右边界
