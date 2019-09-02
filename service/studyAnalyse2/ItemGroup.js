@@ -13,7 +13,7 @@ class ItemGroup{
       this.xOffset = offset
       this.width = '未初始化'
       this.isGroupValid = true
-      this.validWidthRate = 2
+      this.validWidthRate = 1.8
       this.hasCalculate = false
       this.groupId = uuid.v1()
     }
@@ -42,6 +42,7 @@ class ItemGroup{
         this.addItem(targetItems[index])
       }
       targetItemGroup.destroy()
+      this.calculate()
     }
 
     //将可能的题目提取出来
@@ -87,7 +88,7 @@ class ItemGroup{
         if(this.items[index].getWidth() <= validWidth){
           validItems.push(this.items[index])
         }else{
-          log.info('剔除长度不符数据',this.items[index].getWidth(),validWidth,this.items[index])
+          log.info('剔除过长数据',this.items[index].getWidth(),validWidth,this.items[index])
         }
       }
       return validItems
