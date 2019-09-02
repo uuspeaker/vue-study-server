@@ -106,7 +106,7 @@ class ItemGroup{
           rightX = targetItem.getX() + targetItem.getWidth()
           this.width = rightX - this.getX()
         }
-        log.debug('oldRight========newRight',oldWidth,rightX)
+        log.debug('oldRight========newRight',oldRight,rightX)
       }
       log.debug(this.groupId,'after',this.getX(),this.getX()+this.getWidth())
     }
