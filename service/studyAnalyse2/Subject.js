@@ -159,18 +159,20 @@ class Subject{
 
   calculateContent(){
     for (var i = 0; i < this.area.length; i++) {
-      var testPaperLength = this.getTestPaper().getDataCount()
-      for (var j = 0; j < testPaperLength; j++) {
+      var testPaperCount = this.getTestPaper().getDataCount()
+      //若内容起点X坐标在itmu范围之内,在放到这个题目下面
+      for (var j = 0; j < testPaperCount; j++) {
         var lineData = this.getTestPaper().getLine(j)
-        var lineObject = new Subject(lineData, this.getTestPaper())
-        var offsetX = lineObject.getX() - this.area[i].X
-        var inX = (offsetX >= 0 && offsetX <= this.area[i].width)
-        var offsetY = lineObject.getY() - this.area[i].Y
+        //允许题目稍稍超出题目坐标范围
+        var promisedOffsetRate = 1.1
+        var offsetLeftXInArea = (lineData.getX() - this.area[i].X + this.area[i].width * promisedOffsetRate >= 0)
+        var offsetRightXInArea = lineData.getX() + lineData.getWidth() > this.area[i].X
+        var inX = (offsetLeftXInArea && offsetRightXInArea)
+        var offsetY = lineData.getY() - this.area[i].Y
         var inY = (offsetY >= 0 && offsetY < this.area[i].height)
-        //log.debug('比较lineData',lineData, 'inX', inX, 'inY', inY)
         if(inX && inY){
           //this.content.push(lineObject)
-          this.content.push(lineObject.getText())
+          this.content.push(lineData.getText())
         }
       }
     }
