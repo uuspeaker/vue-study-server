@@ -98,6 +98,7 @@ class ItemGroup{
       if(!this.hasCalculate){
         this.width = targetItem.getWidth()
         log.debug(this.groupId,'开始计算this.width',this.width)
+        this.hasCalculate = true
       }else{
         var oldRight = this.getX() + this.getWidth()
         var rightX = this.getX() + this.getWidth()
