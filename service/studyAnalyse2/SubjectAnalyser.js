@@ -136,7 +136,7 @@ class SubjectAnalyser{
           log.debug(`剔除数量过少分组`,this.validGroups[index])
           continue
         }else if(this.validGroups[index].getWidth() < possibleWidth){
-          log.debug(`剔除宽度异常分组`,this.validGroups[index])
+          log.debug(`剔除宽度异常分组`,this.validGroups[index].getWidth(),possibleWidth,this.validGroups[index])
           continue
         }else{
           resultGroups.push(this.validGroups[index])

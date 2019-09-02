@@ -13,7 +13,7 @@ class ItemGroup{
       this.xOffset = offset
       this.width = '未初始化'
       this.isGroupValid = true
-      this.validWidthRate = 1.5
+      this.validWidthRate = 2
       this.hasCalculate = false
       this.groupId = uuid.v1()
     }
