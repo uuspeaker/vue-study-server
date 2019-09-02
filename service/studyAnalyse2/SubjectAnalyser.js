@@ -23,7 +23,7 @@ class SubjectAnalyser{
       this.minLength = 5
       //X坐标偏差率
       this.xOffsetRate = 0.02
-      //题目宽度比率
+      //题目宽度比率，若某个分组的最大宽度小于这个值，则剔除
       this.widthRate = 0.5
       //页数
       this.page = 0

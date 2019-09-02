@@ -13,7 +13,8 @@ class ItemGroup{
       this.xOffset = offset
       this.width = '未初始化'
       this.isGroupValid = true
-      this.validWidthRate = 1.8
+      //最大宽度比率，若某一行的宽度过大（则认定是ocr把不相干的行识别到了一起），剔除掉，以免导致分组合并时将不同的页合到一起
+      this.validWidthRate = 1.5
       this.hasCalculate = false
       this.groupId = uuid.v1()
     }
