@@ -160,9 +160,9 @@ class Subject{
 
   //如果是最后一页前面的，
   getGraphicWidth(width){
-    //如果是最后一页，切图时按计算出来的宽度
+    //如果是最后一页，切图时按计算出来的宽度再补充一个字的长度（一个字的宽度约等于高度）
     if(this.item.getMaxPage() == 1 || this.item.getMaxPage == this.item.getPage()){
-      return this.getWidth()
+      return this.getWidth() + this.getTestPaper().getLineHeight()
     }else{//若不是，为避免切到无关的内容，缩进少许
       return this.getWidth() * this.graphicWidthRate
     }
