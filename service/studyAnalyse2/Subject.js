@@ -21,7 +21,7 @@ class Subject{
     //题目完整内容
     this.content = []
     //切图缩进
-    this.graphicWidthRate = 0.95
+    this.graphicWidthRate = 0.98
   }
 
   getX(){return this.item.getX()}
@@ -162,9 +162,9 @@ class Subject{
   getGraphicWidth(width){
     //如果是最后一页，切图时按计算出来的宽度
     if(this.item.getMaxPage() == 1 || this.item.getMaxPage == this.item.getPage()){
-      return this.item.getWidth()
+      return this.getWidth()
     }else{//若不是，为避免切到无关的内容，缩进少许
-      return this.item.getWidth() * this.graphicWidthRate
+      return this.getWidth() * this.graphicWidthRate
     }
   }
 
