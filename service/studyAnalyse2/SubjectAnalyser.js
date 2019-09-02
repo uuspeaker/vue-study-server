@@ -18,11 +18,13 @@ class SubjectAnalyser{
       //以数字开头的,X坐标对齐且数值正常的数据
       this.subjectHeads = []
       //Ｘ轴匹配偏差（用于判断编号是否和其他编号匹配）
-      this.minItemAmount = 2
+      this.minSubjectAmount = 2
       //题目最小长度
       this.minLength = 5
       //X坐标偏差率
       this.xOffsetRate = 0.02
+      //题目宽度比率
+      this.widthRate = 0.5
       //页数
       this.page = 0
       this.validGroups = []
@@ -31,9 +33,10 @@ class SubjectAnalyser{
     execute(){
       this.extractByRegExp()
       this.removeInvalidItems()
+      this.initMinSubjectAmount()
       this.groupByX()
-      this.removeMinorGroups()
       this.calvulateGroupArea()
+      this.removeMinorGroups()
       this.combineGroups()
       this.sortSubjects()
       //this.buildSubject()
@@ -78,7 +81,17 @@ class SubjectAnalyser{
       }
       this.possibleSubjects = result
       log.info(`有效题目是`,this.possibleSubjects)
+    }
 
+    initMinSubjectAmount(){
+      var length = this.possibleSubjects.length
+      if(length <= 5){
+        this.minSubjectAmount = 2
+      }else if(length > 5 && length <=10){
+        this.minSubjectAmount = 3
+      }else{
+        this.minSubjectAmount = 4
+      }
     }
 
     //将题目分到不同的组
@@ -107,25 +120,29 @@ class SubjectAnalyser{
       }
     }
 
-    removeMinorGroups(){
-      log.debug(`groupByX后分组`,this.validGroups)
-      var resultGroups = []
-      for (var index in this.validGroups) {
-        if (this.validGroups[index].getItemAmount() >= this.minItemAmount){
-          resultGroups.push(this.validGroups[index])
-        }else{
-          log.debug(`剔除数量过少分组`,this.validGroups[index])
-          continue
-        }
-      }
-      this.validGroups = resultGroups
-    }
-
     calvulateGroupArea(){
+      log.debug(`groupByX后分组`,this.validGroups)
       for (var index in this.validGroups) {
         this.validGroups[index].calculate()
       }
       log.debug(`分组范围计算完毕`,this.validGroups)
+    }
+
+    removeMinorGroups(){
+      var resultGroups = []
+      var possibleWidth = (this.testPaper.getMaxX() - this.testPaper.getMinX()) * this.widthRate / this.validGroups.length
+      for (var index in this.validGroups) {
+        if (this.validGroups[index].getItemAmount() < this.minSubjectAmount){
+          log.debug(`剔除数量过少分组`,this.validGroups[index])
+          continue
+        }else if(this.validGroups[index].getWidth() < possibleWidth){
+          log.debug(`剔除宽度异常分组`,this.validGroups[index])
+          continue
+        }else{
+          resultGroups.push(this.validGroups[index])
+        }
+      }
+      this.validGroups = resultGroups
     }
 
     //若一个分组的X坐标被另一个分组覆盖，则将两个组合并
