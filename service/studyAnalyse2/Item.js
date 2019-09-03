@@ -38,6 +38,16 @@ class Item{
     joinGroup(){this.canUse = false}
     isValid(){return this.canUse}
 
+    cover(targetItem){
+      var leftCover = (this.getX() >= targetItem.getX()) &&  (this.getX() <= targetItem.getX() + targetItem.getWidth())
+      var rightCover = (this.getX() + this.getWidth() >= targetItem.getX()) &&  (this.getX() + this.getWidth() <= targetItem.getX() + targetItem.getWidth())
+      if(leftCover || rightCover){
+        return true
+      }else{
+        return false
+      }
+    }
+
 }
 
 module.exports = Item

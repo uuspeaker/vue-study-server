@@ -35,7 +35,6 @@ class SubjectAnalyser{
       this.removeInvalidItems()
       this.initMinSubjectAmount()
       this.groupByX()
-      this.calvulateGroupArea()
       this.removeMinorGroups()
       this.combineGroups()
       this.sortSubjects()
@@ -120,15 +119,9 @@ class SubjectAnalyser{
       }
     }
 
-    calvulateGroupArea(){
+    removeMinorGroups(){
       log.debug(`groupByX后分组`,this.validGroups)
       for (var index in this.validGroups) {
-        this.validGroups[index].calculate()
-      }
-      log.debug(`分组范围计算完毕`,this.validGroups)
-    }
-
-    removeMinorGroups(){
       var resultGroups = []
       var possibleWidth = (this.testPaper.getMaxX() - this.testPaper.getMinX()) * this.widthRate / this.validGroups.length
       for (var index in this.validGroups) {
@@ -143,6 +136,7 @@ class SubjectAnalyser{
         }
       }
       this.validGroups = resultGroups
+      }
     }
 
     //若一个分组的X坐标被另一个分组覆盖，则将两个组合并
