@@ -32,7 +32,7 @@ class SubjectAnalyser{
 
     execute(){
       this.extractByRegExp()
-      //this.removeInvalidItems()
+      this.removeInvalidItems()
       this.initMinSubjectAmount()
       this.groupByX()
       this.removeMinorGroups()
@@ -129,9 +129,9 @@ class SubjectAnalyser{
         if (this.validGroups[index].getItemAmount() < this.minSubjectAmount){
           log.info(`剔除数量过少分组`,this.validGroups[index].getItems())
           continue
-        // }else if(this.validGroups[index].getWidth() < possibleWidth){
-        //   log.info(`剔除宽度异常分组`,this.validGroups[index].getWidth(),possibleWidth,this.validGroups[index].getItems())
-        //   continue
+        }else if(this.validGroups[index].getWidth() < possibleWidth){
+          log.info(`剔除宽度异常分组`,this.validGroups[index].getWidth(),possibleWidth,this.validGroups[index].getItems())
+          continue
         }else{
           resultGroups.push(this.validGroups[index])
         }
