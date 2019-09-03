@@ -159,17 +159,17 @@ class TestPaper{
         //若规则已经找出10条以上，为提升性能，跳过其他规则
         if(subjectAnalyser.getSubjectAmount() >= 10)break
         //如果没有找到任何题目,则将所有内容当作一个题目
-        if(subjectAnalyser.getSubjectAmount() == 0){
-          var item = this.getLine(0)
-          log.info('有找到任何题目,则将所有内容当作一个题目',item)
-          item.item.itemcoord.x = this.getMinX()
-          item.setSortNo(1)
-          item.setPage(1)
-          item.setMaxPage(1)
-          item.setType(config.BOTTOM)
-          item.setRightX(this.getMaxX())
-          this.validSubjects = [item]
-        }
+      }
+      if(subjectAnalyser.getSubjectAmount() == 0){
+        var item = this.getLine(0)
+        log.info('有找到任何题目,则将所有内容当作一个题目',item)
+        item.item.itemcoord.x = this.getMinX()
+        item.setSortNo(1)
+        item.setPage(1)
+        item.setMaxPage(1)
+        item.setType(config.BOTTOM)
+        item.setRightX(this.getMaxX())
+        this.validSubjects = [item]
       }
       log.info("匹配规则是", regExpArr[regIndex])
       return regExpArr[regIndex]

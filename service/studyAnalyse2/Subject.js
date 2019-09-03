@@ -16,7 +16,7 @@ class Subject{
     //题目完整内容
     this.content = []
     //绘图时的坐偏移
-    this.leftMargin = myTestPaper.getLineHeight()*0.5
+    this.leftMargin = myTestPaper.getLineHeight()
     //绘图时的右偏移移
     this.rightMargin = 0
   }
