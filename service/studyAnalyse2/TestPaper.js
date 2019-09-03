@@ -160,9 +160,9 @@ class TestPaper{
         if(subjectAnalyser.getSubjectAmount() >= 10)break
         //如果没有找到任何题目,则将所有内容当作一个题目
       }
-      if(subjectAnalyser.getSubjectAmount() == 0){
+      if(this.getSubjectCount() == 0){
         var item = this.getLine(0)
-        log.info('有找到任何题目,则将所有内容当作一个题目',item)
+        log.info('没有找到任何题目,则将所有内容当作一个题目',item)
         item.item.itemcoord.x = this.getMinX()
         item.setSortNo(1)
         item.setPage(1)
