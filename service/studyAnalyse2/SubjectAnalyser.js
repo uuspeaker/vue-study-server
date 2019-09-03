@@ -121,16 +121,16 @@ class SubjectAnalyser{
     }
 
     removeMinorGroups(){
-      log.debug(`groupByX后分组`,this.validGroups)
+      log.info(`groupByX后分组`,this.validGroups)
       for (var index in this.validGroups) {
       var resultGroups = []
       var possibleWidth = (this.testPaper.getMaxX() - this.testPaper.getMinX()) * this.widthRate / this.validGroups.length
       for (var index in this.validGroups) {
         if (this.validGroups[index].getItemAmount() < this.minSubjectAmount){
-          log.debug(`剔除数量过少分组`,this.validGroups[index].getItems())
+          log.info(`剔除数量过少分组`,this.validGroups[index].getItems())
           continue
         }else if(this.validGroups[index].getWidth() < possibleWidth){
-          log.debug(`剔除宽度异常分组`,this.validGroups[index].getWidth(),possibleWidth,this.validGroups[index].getItems())
+          log.info(`剔除宽度异常分组`,this.validGroups[index].getWidth(),possibleWidth,this.validGroups[index].getItems())
           continue
         }else{
           resultGroups.push(this.validGroups[index])
@@ -148,9 +148,9 @@ class SubjectAnalyser{
           if(index1 == index2) continue
           if(!this.validGroups[index2].isValid())continue
           if(this.validGroups[index1].cover(this.validGroups[index2])){
-            log.debug('合并重合的题目',this.validGroups[index1].getItems(),this.validGroups[index2].getItems())
+            log.info('合并重合的题目',this.validGroups[index1].getItems(),this.validGroups[index2].getItems())
             this.validGroups[index1].combine(this.validGroups[index2])
-            log.debug('合并后结果',this.validGroups[index1].getItems())
+            log.info('合并后结果',this.validGroups[index1].getItems())
           }
         }
       }
@@ -161,7 +161,7 @@ class SubjectAnalyser{
         }
       }
       this.validGroups = resultGroups
-      log.debug(`合并后剩余${this.validGroups.length}组`,this.validGroups)
+      log.info(`合并后剩余${this.validGroups.length}组`,this.validGroups)
     }
 
     sortSubjects(){
@@ -170,7 +170,7 @@ class SubjectAnalyser{
       var sortNo = 1
       for (var groupIndex = 0; groupIndex < sortedGroups.length; groupIndex++) {
         var pageNo = groupIndex+1
-        log.debug('排序处理前',sortedGroups[groupIndex].getItems())
+        log.info('排序处理前',sortedGroups[groupIndex].getItems())
         //对每个分组下的item排序
         var sortedItems = this.sortItems(sortedGroups[groupIndex].getItems())
         //给每个item添加页码和序号
@@ -186,11 +186,12 @@ class SubjectAnalyser{
           item = this.fillItem(item,sortedGroups,groupIndex,sortedItems,itemIndex)
           this.subjectHeads.push(item)
           //log.debug('page===============',item.getPage(),item.getMaxPage())
-          log.debug('排序处理后',item)
+
         }
+        log.info('排序处理后',sortedItems)
 
       }
-      log.debug("题目排序完成")
+      log.info("题目排序完成")
     }
 
     fillItem(item,sortedGroups,groupIndex,sortedItems,itemIndex){
