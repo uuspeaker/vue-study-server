@@ -4,11 +4,6 @@ const path = require('path');
 const graphic = require('../../util/graphic')
 const config = require('../../config/db')
 
-//绘图时的坐偏移
-const leftMargin = 10
-//绘图时的右偏移移
-const rightMargin = 10
-
 class Subject{
   constructor(item, myTestPaper){
     //题目第一行的数据
@@ -20,8 +15,10 @@ class Subject{
     this.area = []
     //题目完整内容
     this.content = []
-    //切图缩进
-    this.graphicWidthRate = 0.98
+    //绘图时的坐偏移
+    this.leftMargin = myTestPaper.getLineHeight()*0.5
+    //绘图时的右偏移移
+    this.rightMargin = 0
   }
 
   getX(){return this.item.getX()}
@@ -136,7 +133,7 @@ class Subject{
     var extname = path.extname(sourceUrl)
     var targetUrl = `${this.getTestPaper().getTargetDir()}/${this.item.getSortNo()}${extname}`
     log.debug(`绘制题目`,targetUrl,this.area)
-    await graphic.cut(sourceUrl, targetUrl, this.getGraphicWidth() + leftMargin + rightMargin, this.area[0].height, this.area[0].X - leftMargin, this.area[0].Y)
+    await graphic.cut(sourceUrl, targetUrl, this.getGraphicWidth() + this.leftMargin + this.rightMargin, this.area[0].height, this.area[0].X - this.leftMargin, this.area[0].Y)
     var cosObject = await cos.putObject(targetUrl)
     this.imageUrl = cosObject.Location
   }
@@ -150,7 +147,7 @@ class Subject{
       var tmpTargetUrl = `${this.getTestPaper().getTargetDir()}/${this.item.getSortNo()}-${i}${extname}`
       tmpUrls.push(tmpTargetUrl)
       //log.debug(`绘制题目`,tmpTargetUrl,this.area[i])
-      await graphic.cut(sourceUrl, tmpTargetUrl, this.getGraphicWidth() + leftMargin + rightMargin, this.area[i].height, this.area[i].X - leftMargin, this.area[i].Y)
+      await graphic.cut(sourceUrl, tmpTargetUrl, this.getGraphicWidth() + this.leftMargin + this.rightMargin, this.area[i].height, this.area[i].X - this.leftMargin, this.area[i].Y)
     }
     //合并图片，并将原来多余的图片删除
     await graphic.combine(tmpUrls[0], tmpUrls[1], targetUrl)
