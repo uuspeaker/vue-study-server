@@ -127,10 +127,10 @@ class SubjectAnalyser{
       var possibleWidth = (this.testPaper.getMaxX() - this.testPaper.getMinX()) * this.widthRate / this.validGroups.length
       for (var index in this.validGroups) {
         if (this.validGroups[index].getItemAmount() < this.minSubjectAmount){
-          log.debug(`剔除数量过少分组`,this.validGroups[index])
+          log.debug(`剔除数量过少分组`,this.validGroups[index].getItems())
           continue
         }else if(this.validGroups[index].getWidth() < possibleWidth){
-          log.debug(`剔除宽度异常分组`,this.validGroups[index].getWidth(),possibleWidth,this.validGroups[index])
+          log.debug(`剔除宽度异常分组`,this.validGroups[index].getWidth(),possibleWidth,this.validGroups[index].getItems())
           continue
         }else{
           resultGroups.push(this.validGroups[index])
@@ -148,8 +148,9 @@ class SubjectAnalyser{
           if(index1 == index2) continue
           if(!this.validGroups[index2].isValid())continue
           if(this.validGroups[index1].cover(this.validGroups[index2])){
-            log.debug('合并重合的题目',this.validGroups[index1],this.validGroups[index2])
+            log.debug('合并重合的题目',this.validGroups[index1].getItems(),this.validGroups[index2].getItems())
             this.validGroups[index1].combine(this.validGroups[index2])
+            log.debug('合并后结果',this.validGroups[index1].getItems())
           }
         }
       }
