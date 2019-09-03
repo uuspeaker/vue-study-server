@@ -34,6 +34,7 @@ class ItemGroup{
         }
       }
       var coverRate = coverCount / (this.getItemAmount() * targetItemGroup.getItems().length)
+      log.debug('重合率',coverRate)
       if(coverRate > this.minCoverRate){
         return true
       }else{
@@ -47,7 +48,6 @@ class ItemGroup{
         this.addItem(targetItems[index])
       }
       targetItemGroup.destroy()
-      this.calculate()
     }
 
     //将可能的题目提取出来
