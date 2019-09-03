@@ -106,6 +106,7 @@ class SubjectAnalyser{
           if (this.validGroups[index].match(item)) {
             isMatch = true
             this.validGroups[index].addItem(item)
+            break
           }
         }
         //若未找到相似的组，则另起一组
