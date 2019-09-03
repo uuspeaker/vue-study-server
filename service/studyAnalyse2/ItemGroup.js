@@ -33,7 +33,7 @@ class ItemGroup{
       var coverCount = 0
       for (var index1 in this.items) {
         for (var index2 in targetItemGroup) {
-          if(this.items[index].cover(targetItemGroup[index2])){
+          if(this.items[index1].cover(targetItemGroup[index2])){
             coverCount++
           }
         }
