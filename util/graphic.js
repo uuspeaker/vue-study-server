@@ -4,7 +4,7 @@ const log = require('../util/log.js').getLogger("graphic.js");
 
 module.exports.cut = function (imageUrl, targetUrl, width, height, X, Y) {
   return new Promise(( resolve, reject ) => {
-    gm(imageUrl).crop(width, height, X, Y).write(targetUrl,function(err, result){
+    gm(imageUrl).rotate('white',90).crop(width, height, X, Y).write(targetUrl,function(err, result){
       if(err){
         log.error("切图失败",err)
         reject(err)

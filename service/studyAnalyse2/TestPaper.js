@@ -97,9 +97,10 @@ class TestPaper{
       for (var index in this.sourceData) {
         delete this.sourceData[index]['words']
         delete this.sourceData[index]['candword']
-        this.allItems.push(new Item(this.sourceData[index]))
+        var item = new Item(this.sourceData[index])
+        this.allItems.push(item)
+        log.debug('初始化数据',item)
       }
-      log.debug('this.allItems',this.allItems)
     }
 
     //计算试卷结构数据，包括坐标
