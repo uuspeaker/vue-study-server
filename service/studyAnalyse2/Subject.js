@@ -19,6 +19,8 @@ class Subject{
     this.leftMargin = myTestPaper.getLineHeight()
     //绘图时的右偏移移
     this.rightMargin = 0
+    //X轴偏差率低于此值得当作题目的内容
+    this.promisedOffsetRate = 0.2
   }
 
   getX(){return this.item.getX()}
@@ -170,21 +172,25 @@ class Subject{
   }
 
   calculateContent(){
+    var leftMargin = 0
     for (var i = 0; i < this.area.length; i++) {
       var testPaperCount = this.getTestPaper().getDataCount()
       //若内容起点X坐标在itmu范围之内,在放到这个题目下面
       for (var j = 0; j < testPaperCount; j++) {
         var lineData = this.getTestPaper().getLine(j)
-        //允许题目稍稍超出题目坐标范围
-        var promisedOffsetRate = 1.1
-        var offsetLeftXInArea = (lineData.getX() - this.area[i].X + this.area[i].width * promisedOffsetRate >= 0)
-        var offsetRightXInArea = lineData.getX() + lineData.getWidth() > this.area[i].X && lineData.getX() + lineData.getWidth() < this.area[i].X + this.area[i].width
-        var inX = (offsetLeftXInArea && offsetRightXInArea)
+        //允许内容稍稍超出题目坐标范围
+        var leftXInArea = ((lineData.getX() - this.area[i].X + this.area[i].width * this.promisedOffsetRate) >= 0)
+        var rightXInArea = lineData.getX() + lineData.getWidth() > this.area[i].X && lineData.getX() + lineData.getWidth() < this.area[i].X + this.area[i].width
+        var inX = (leftXInArea && rightXInArea)
         var offsetY = lineData.getY() - this.area[i].Y
         var inY = (offsetY >= 0 && offsetY < this.area[i].height)
         if(inX && inY){
           //this.content.push(lineObject)
           this.content.push(lineData.getText())
+          var leftMargin = this.area[i].X - lineData.getX()
+          if(this.leftMargin < (this.area[i].X - lineData.getX())){
+            this.leftMargin = this.area[i].X - lineData.getX()
+          }
         }
       }
     }
