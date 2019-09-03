@@ -9,13 +9,9 @@ class ItemGroup{
       this.X
       //原始数据
       this.items = [];
-      //以数字开头的数据
+      //X坐标偏移量
       this.xOffset = offset
-      this.width = '未初始化'
       this.isGroupValid = true
-      //最大宽度比率，若某一行的宽度过大（则认定是ocr把不相干的行识别到了一起），剔除掉，以免导致分组合并时将不同的页合到一起
-      this.validWidthRate = 1.5
-      this.hasCalculate = false
       //最小覆盖率
       this.minCoverRate = 0.3
       this.groupId = uuid.v1()
@@ -27,13 +23,12 @@ class ItemGroup{
     getItemAmount(){return this.items.length}
     isValid(){return this.isGroupValid}
     destroy(){this.isGroupValid = false}
-    reset(){this.hasCalculate = false}
 
     cover(targetItemGroup){
       var coverCount = 0
       for (var index1 in this.items) {
-        for (var index2 in targetItemGroup) {
-          if(this.items[index1].cover(targetItemGroup[index2])){
+        for (var index2 in targetItemGroup.getItems()) {
+          if(this.items[index1].cover(targetItemGroup.getItems()[index2])){
             coverCount++
           }
         }

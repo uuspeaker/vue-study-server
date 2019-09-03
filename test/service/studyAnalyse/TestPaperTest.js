@@ -2,7 +2,7 @@ var assert = require('assert');
 var TestPaper = require('../../../service/studyAnalyse2/TestPaper');
 
 describe('math检查试卷分析结果',async () => {
-  var paperData = require('../../data/tmp2.json');
+  var paperData = require('../../data/tmp.json');
   var testPaper = new TestPaper('./test/image/tmp.jpg',paperData.data.items)
   await testPaper.init()
   it('总共3题，识别出的题目不少于2题',function(){
