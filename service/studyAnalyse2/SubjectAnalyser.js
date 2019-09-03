@@ -170,6 +170,7 @@ class SubjectAnalyser{
       var sortNo = 1
       for (var groupIndex = 0; groupIndex < sortedGroups.length; groupIndex++) {
         var pageNo = groupIndex+1
+        log.debug('排序处理前',sortedGroups[groupIndex].getItems())
         //对每个分组下的item排序
         var sortedItems = this.sortItems(sortedGroups[groupIndex].getItems())
         //给每个item添加页码和序号
@@ -185,7 +186,9 @@ class SubjectAnalyser{
           item = this.fillItem(item,sortedGroups,groupIndex,sortedItems,itemIndex)
           this.subjectHeads.push(item)
           //log.debug('page===============',item.getPage(),item.getMaxPage())
+          log.debug('排序处理后',item)
         }
+
       }
       log.debug("题目排序完成")
     }
