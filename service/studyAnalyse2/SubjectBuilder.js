@@ -1,10 +1,19 @@
-const log = require('../../util/log').getLogger("Subject");
+const log = require('../../util/log').getLogger("SubjectBuilder");
 const cos = require('../../util/cos.js')
 const path = require('path');
 const graphic = require('../../util/graphic')
 const config = require('../../config/db')
+const AnswerAnalyser = require('./AnswerAnalyser')
 
 class Subject{
+  constructor(url, content, answer){
+    this.imageUrl = url
+    this.content = content
+    this.answer = answer
+  }
+}
+
+class SubjectBuilder{
   constructor(item, myTestPaper){
     //题目第一行的数据
     this.item = item
@@ -15,6 +24,8 @@ class Subject{
     this.area = []
     //题目完整内容
     this.content = []
+    //题目答案
+    this.answer = []
     //绘图时的坐偏移
     this.leftMargin = myTestPaper.getLineHeight()
     //绘图时的右偏移移
@@ -33,17 +44,12 @@ class Subject{
     return (this.item.getRightX() - this.item.getX())
   }
 
-  async init(){
+  async getSubject(){
     this.calculateArea()
     this.calculateContent()
+    this.extractAnswer()
     await this.cutImage()
-  }
-
-  getInfo(){
-    return {
-      imageUrl: this.imageUrl,
-      content: this.content
-    }
+    return new Subject(this.imageUrl,this.content,this.answer)
   }
 
   isLastSubject(){
@@ -76,7 +82,7 @@ class Subject{
     }else{
       throw '未知的题目类型，无法计算'
     }
-    log.debug("计算题目坐标完成",this.area)
+    log.debug(`sortNo${this.item.getSortNo()}坐标计算完成`,this.area)
   }
 
   //计算正常题目坐标
@@ -127,7 +133,7 @@ class Subject{
     }else if(areaType == config.BOTTOM){//最后一题
       await this.drawLast()
     }
-    log.info('切图完成',this.item.getSortNo())
+    log.info(`sortNo${this.item.getSortNo()}切图完成`,this.item.getSortNo())
   }
 
   async drawNormal(){
@@ -194,9 +200,15 @@ class Subject{
         }
       }
     }
-    log.debug(`sortNo${this.item.getSortNo()}内容提取完成`)
+    log.info(`sortNo${this.item.getSortNo()}内容提取完成`,this.content)
+  }
+
+  extractAnswer(){
+    var analyser = new AnswerAnalyser(this.content)
+    this.answer = analyser.getAnswer()
+    log.info(`sortNo${this.item.getSortNo()}答案提取完成`,this.answer)
   }
 
 }
 
-module.exports = Subject
+module.exports = SubjectBuilder

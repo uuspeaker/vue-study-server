@@ -2,7 +2,7 @@ const log = require('../../util/log').getLogger("TestPaper");
 const path = require('path')
 const uuid = require('uuid')
 const fs = require('fs');
-const Subject = require('./Subject')
+const SubjectBuilder = require('./SubjectBuilder')
 const SubjectAnalyser = require('./SubjectAnalyser')
 const Item = require('./Item')
 const config = require('../../config/db')
@@ -194,9 +194,8 @@ class TestPaper{
     async constructSubjects(){
       var length = this.validSubjects.length
       for (var i = 0; i < length; i++) {
-        var subject = new Subject(this.validSubjects[i], this)
-        await subject.init()
-        this.subjectInfos.push(subject.getInfo())
+        var builder = new SubjectBuilder(this.validSubjects[i], this)
+        this.subjectInfos.push(await builder.getSubject())
       }
       log.debug("题目组装完成")
     }

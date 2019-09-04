@@ -8,7 +8,8 @@ const fs = require('fs');
 class Item{
     constructor(item){
       //每个item相同的X
-      this.item = item
+      this.itemstring = item.itemstring
+      this.itemcoord = item.itemcoord
       this.sortNo
       this.page
       this.maxPage
@@ -17,11 +18,11 @@ class Item{
       this.nextItem
     }
 
-    getText(){return this.item.itemstring}
-    getX(){return this.item.itemcoord.x}
-    getY(){return this.item.itemcoord.y}
-    getWidth(){return this.item.itemcoord.width}
-    getHeight(){return this.item.itemcoord.height}
+    getText(){return this.itemstring}
+    getX(){return this.itemcoord.x}
+    getY(){return this.itemcoord.y}
+    getWidth(){return this.itemcoord.width}
+    getHeight(){return this.itemcoord.height}
     getSortNo(){return this.sortNo}
     getPage(){return this.page}
     getMaxPage(){return this.maxPage}
