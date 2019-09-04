@@ -11,9 +11,11 @@ class ItemGroup{
       this.items = [];
       //X坐标偏移量
       this.xOffset = offset
+      //是否可用，若已经被归到某个组则不可用
       this.isGroupValid = true
       //最小覆盖率
       this.minCoverRate = 0.3
+      //分组id
       this.groupId = uuid.v1()
     }
 
@@ -24,6 +26,7 @@ class ItemGroup{
     isValid(){return this.isGroupValid}
     destroy(){this.isGroupValid = false}
 
+    //计算是否覆盖某个分组
     cover(targetItemGroup){
       var coverCount = 0
       for (var index1 in this.items) {
@@ -34,7 +37,7 @@ class ItemGroup{
         }
       }
       var coverRate = coverCount / (this.getItemAmount() * targetItemGroup.getItems().length)
-      log.debug('重合率',coverRate)
+      log.info('覆盖率',coverRate)
       if(coverRate > this.minCoverRate){
         return true
       }else{
@@ -42,6 +45,7 @@ class ItemGroup{
       }
     }
 
+    //将两个分组合并
     combine(targetItemGroup){
       var targetItems = targetItemGroup.getItems()
       for (var index in targetItems) {
@@ -50,7 +54,7 @@ class ItemGroup{
       targetItemGroup.destroy()
     }
 
-    //将可能的题目提取出来
+    //计算X坐标是否重合，用于将X坐标靠近的题目分到一组
     match(targetItem){
       if(this.items.length == 0) return true
       var offset = targetItem.getX() - this.getX()

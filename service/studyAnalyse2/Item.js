@@ -7,14 +7,21 @@ const fs = require('fs');
 
 class Item{
     constructor(item){
-      //每个item相同的X
+      //内容
       this.itemstring = item.itemstring
+      //坐标（X，Y，width，height）
       this.itemcoord = item.itemcoord
+      //题目编号
       this.sortNo
+      //题目所在页码
       this.page
+      //所属试卷最大页码
       this.maxPage
+      //是否可用（若已经分到某个组则不可用）
       this.canUse = true
+      //右上角X坐标
       this.rightX
+      //下一题
       this.nextItem
     }
 
@@ -39,6 +46,7 @@ class Item{
     joinGroup(){this.canUse = false}
     isValid(){return this.canUse}
 
+    //计算两个题目是否重合
     cover(targetItem){
       var leftCover = (this.getX() >= targetItem.getX()) &&  (this.getX() <= targetItem.getX() + targetItem.getWidth())
       var rightCover = (this.getX() + this.getWidth() >= targetItem.getX()) &&  (this.getX() + this.getWidth() <= targetItem.getX() + targetItem.getWidth())

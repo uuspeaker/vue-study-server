@@ -82,6 +82,7 @@ class SubjectAnalyser{
       log.info(`有效题目是`,this.possibleSubjects)
     }
 
+    //计算每个分组最小的题目数量
     initMinSubjectAmount(){
       var length = this.possibleSubjects.length
       if(length <= 5){
@@ -120,6 +121,7 @@ class SubjectAnalyser{
       }
     }
 
+    //将题目数量小于规定植的分组剔除
     removeMinorGroups(){
       log.info(`groupByX后分组`,this.validGroups)
       for (var index in this.validGroups) {
