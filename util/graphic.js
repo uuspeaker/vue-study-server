@@ -52,7 +52,7 @@ rotate = async (imageUrl) => {
     new ExifImage({ image :imageUrl }, function (err, exifData) {
      if (err){
        log.error("读取图片exif信息失败",err)
-       reject(err)
+       resolve(0)
      }else{
        log.info("读取图片exif信息",exifData)
        var orientation = exifData.image.Orientation
