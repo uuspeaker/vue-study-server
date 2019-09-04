@@ -40,10 +40,10 @@ router.post('/upload', upload.single('file'), async (ctx, next) => {
     var cosFilePath = dirName +'\\'+ fileName + '-cos' + extname
     await graphic.saveOrient(file.path,cosFilePath)
     log.debug("将图片调整成正确方向并保存",cosFilePath)
-    var result = await cos.putObject(cosFilePath)
+    var result = await cos.putObject(file.path)
 
     log.debug('cosFile',cosFilePath)
-    var ocrResult = await ocr.scanImageUrl(file.path)
+    var ocrResult = await ocr.scanImageUrl("https://" + result.Location)
     log.debug("文件ocr扫描结果为",ocrResult)
     var testPaper = new TestPaper(cosFilePath, JSON.parse(ocrResult).data.items)
     await testPaper.init()
