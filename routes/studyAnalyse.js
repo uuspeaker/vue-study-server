@@ -32,19 +32,20 @@ let upload = multer({ storage: storage, fileFilter: fileFilter });
 router.post('/upload', upload.single('file'), async (ctx, next) => {
   var file = ctx.req.file
   if (file){
+
     log.debug("上传文件开始，临时文件保存在：file.path",file.path)
-    var result = await cos.putObject(file.path)
     var dirName = path.dirname(file.path);
     var extname = path.extname(file.path);
     var fileName = path.basename(file.path, extname);
     var cosFilePath = dirName +'\\'+ fileName + '-cos' + extname
-
-    //graphic.orient(file.path,cosFilePath)
+    await graphic.saveOrient(file.path,cosFilePath)
+    log.debug("将图片调整成正确方向并保存",cosFilePath)
+    var result = await cos.putObject(file.path)
 
     log.debug('cosFile',cosFilePath)
     var ocrResult = await ocr.scanImageUrl("https://" + result.Location)
     log.debug("文件ocr扫描结果为",ocrResult)
-    var testPaper = new TestPaper(file.path, JSON.parse(ocrResult).data.items)
+    var testPaper = new TestPaper(cosFilePath, JSON.parse(ocrResult).data.items)
     await testPaper.init()
     var testPaperInfo = {
       userId: 123,
