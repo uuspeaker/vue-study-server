@@ -61,7 +61,7 @@ class AnswerAnalyser{
       var regEx = /[\(（\[【](A|AB|AC|AD|ABC|ABD|ACD|ABCD|B|BC|BD|BCD|C|CD|D)[]\)）\]|】]$/
       for (var index in this.contentArr) {
         var matchArr = regEx.exec(this.contentArr[index])
-        if(matchArr.length > 0){
+        if(matchArr && matchArr.length > 0){
           return matchArr[matchArr.length - 1]
         }
       }
@@ -83,7 +83,7 @@ class AnswerAnalyser{
       var regEx = /[\(（\[【][XxjJ][\)）\]】]$/
       for (var index in this.contentArr) {
         var matchArr = regEx.exec(this.contentArr[index])
-        if(matchArr.length > 0){
+        if(matchArr && matchArr.length > 0){
           return matchArr[matchArr.length - 1]
         }
       }
