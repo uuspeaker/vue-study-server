@@ -37,10 +37,10 @@ class AnswerAnalyser{
 
     isChoiceQuestion(){
       var regExpArr = []
-      regExpArr.push(/[Aa]./)
-      regExpArr.push(/[Bb]./)
-      regExpArr.push(/[Cc]./)
-      regExpArr.push(/[Dd]./)
+      regExpArr.push(/[Aa]\./)
+      regExpArr.push(/[Bb]\./)
+      regExpArr.push(/[Cc]\./)
+      regExpArr.push(/[Dd]\./)
       var matchTimes = 0
       for (var i = 0; i < regExpArr.length; i++) {
         for (var index in this.contentArr) {
@@ -58,9 +58,14 @@ class AnswerAnalyser{
     }
 
     getAnswerOfChoiceQuestion(){
-      var regEx = /[\(（\[【](A|AB|AC|AD|ABC|ABD|ACD|ABCD|B|BC|BD|BCD|C|CD|D)[]\)）\]|】]$/
+      var regExAfter = /(A|AB|AC|AD|ABC|ABD|ACD|ABCD|B|BC|BD|BCD|C|CD|D)\s*[\)）\]|】]?$/
+      var regExBefore = /^[\(（\[【]\s*(A|AB|AC|AD|ABC|ABD|ACD|ABCD|B|BC|BD|BCD|C|CD|D)/
       for (var index in this.contentArr) {
-        var matchArr = regEx.exec(this.contentArr[index])
+        var matchArr = regExAfter.exec(this.contentArr[index])
+        if(matchArr && matchArr.length > 0){
+          return matchArr[matchArr.length - 1]
+        }
+        matchArr = regExBefore.exec(this.contentArr[index])
         if(matchArr && matchArr.length > 0){
           return matchArr[matchArr.length - 1]
         }
@@ -69,10 +74,10 @@ class AnswerAnalyser{
     }
 
     isTrueOrFalseQuestion(){
-      var regEx = /(\(|（|\[|【)(X|x|j|J)(\)|）|\]|】)$/
+      var regExBefore = /(X|x|j|J)\s*[\)）\]|】]$/
+      var regExAfter = /^[\(（\[【]\s*(X|x|j|J)/
       for (var index in this.contentArr) {
-        var matchArr = regEx.exec(this.contentArr[index])
-        if(this.contentArr[index].match(regEx)){
+        if(this.contentArr[index].match(regExBefore)){
           return true
         }
       }
@@ -80,9 +85,14 @@ class AnswerAnalyser{
     }
 
     getAnswerOfTrueOrFalseQuestion(){
-      var regEx = /[\(（\[【][XxjJ][\)）\]】]$/
+      var regExAfter = /[XxjJ]\s*[\)）\]】]$/
+      var regExBefore = /^[\(（\[【]\s*[XxjJ]/
       for (var index in this.contentArr) {
-        var matchArr = regEx.exec(this.contentArr[index])
+        var matchArr = regExAfter.exec(this.contentArr[index])
+        if(matchArr && matchArr.length > 0){
+          return matchArr[matchArr.length - 1]
+        }
+        matchArr = regExBefore.exec(this.contentArr[index])
         if(matchArr && matchArr.length > 0){
           return matchArr[matchArr.length - 1]
         }
