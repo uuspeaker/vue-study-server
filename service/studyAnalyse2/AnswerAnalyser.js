@@ -29,7 +29,7 @@ class AnswerAnalyser{
       }
 
       if(this.isTrueOrFalseQuestion()){
-        this.type = 2
+        type = 2
         answer = this.getAnswerOfTrueOrFalseQuestion()
       }
       return new Answer(type, answer)
@@ -60,23 +60,27 @@ class AnswerAnalyser{
     getAnswerOfChoiceQuestion(){
       var regExAfter = /(A|AB|AC|AD|ABC|ABD|ACD|ABCD|B|BC|BD|BCD|C|CD|D)\s*[\)）\]|】]?$/
       var regExBefore = /^[\(（\[【]\s*(A|AB|AC|AD|ABC|ABD|ACD|ABCD|B|BC|BD|BCD|C|CD|D)/
+      var regResult = /[ABCD]+/
       for (var index in this.contentArr) {
         var matchArr = regExAfter.exec(this.contentArr[index])
         if(matchArr && matchArr.length > 0){
-          return matchArr[matchArr.length - 1]
+          return regResult.exec(matchArr[matchArr.length - 1])[0]
         }
         matchArr = regExBefore.exec(this.contentArr[index])
         if(matchArr && matchArr.length > 0){
-          return matchArr[matchArr.length - 1]
+          return regResult.exec(matchArr[matchArr.length - 1])[0]
         }
       }
       return null
     }
 
     isTrueOrFalseQuestion(){
-      var regExBefore = /(X|x|j|J)\s*[\)）\]|】]$/
-      var regExAfter = /^[\(（\[【]\s*(X|x|j|J)/
+      var regExBefore = /[VvXxJ]\s*[\)）\]|】]$/
+      var regExAfter = /^[\(（\[【]\s*[VvXxJ]/
       for (var index in this.contentArr) {
+        if(this.contentArr[index].match(regExAfter)){
+          return true
+        }
         if(this.contentArr[index].match(regExBefore)){
           return true
         }
@@ -85,20 +89,35 @@ class AnswerAnalyser{
     }
 
     getAnswerOfTrueOrFalseQuestion(){
-      var regExAfter = /[XxjJ]\s*[\)）\]】]$/
-      var regExBefore = /^[\(（\[【]\s*[XxjJ]/
+      var regExAfter = /[VvXxJ]\s*[\)）\]】]$/
+      var regExBefore = /^[\(（\[【]\s*[VvXxJ]/
+      var regRight = /[VvJ]/
+      var regWrong = /[Xx]/
       for (var index in this.contentArr) {
         var matchArr = regExAfter.exec(this.contentArr[index])
         if(matchArr && matchArr.length > 0){
-          return matchArr[matchArr.length - 1]
+          var matchResult = matchArr[matchArr.length - 1]
+          if(matchResult.match(regRight)){
+            return 1
+          }else {
+            return 0
+          }
         }
         matchArr = regExBefore.exec(this.contentArr[index])
         if(matchArr && matchArr.length > 0){
-          return matchArr[matchArr.length - 1]
+          if(matchArr && matchArr.length > 0){
+            var matchResult = matchArr[matchArr.length - 1]
+            if(matchResult.match(regWrong)){
+              return 1
+            }else {
+              return 0
+            }
+          }
         }
       }
       return null
     }
+
 }
 
 module.exports = AnswerAnalyser
