@@ -1,9 +1,14 @@
 const config = {
- NORMAL : 'NORMAL',
- BOTTOM : 'BOTTOM',
- FLIPOVER : 'FLIPOVER',
- //启动端口
- port: 8080,
+  //题目区域类型
+  item:{
+    normal : 'NORMAL',
+    bottom : 'BOTTOM',
+    flipover : 'FLIPOVER',
+  },
+ //数据库配置
+ es: {
+   host: '129.211.21.250:9200'
+ },
  //数据库配置
  mysql: {
    database: 'vue-study',

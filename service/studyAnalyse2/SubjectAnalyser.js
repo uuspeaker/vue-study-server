@@ -202,19 +202,19 @@ class SubjectAnalyser{
       var isLastPage = (groupIndex == this.validGroups.length - 1)
 
       if(isBottom && isLastPage){
-        item.setType(config.BOTTOM)
+        item.setType(config.item.bottom)
       }else if(isBottom && !isLastPage){
         var nextItem = sortedGroups[groupIndex+1].getItems()[0]
 
         if(nextItem.getY() == this.testPaper.getMinY()){
           //如果下一题上面没有内容，则不需要翻页
-          item.setType(config.BOTTOM)
+          item.setType(config.item.bottom)
         }else{
-          item.setType(config.FLIPOVER)
+          item.setType(config.item.flipover)
           item.setNext(nextItem)
         }
       }else{
-        item.setType(config.NORMAL)
+        item.setType(config.item.normal)
         item.setNext(sortedItems[itemIndex+1])
       }
       return item

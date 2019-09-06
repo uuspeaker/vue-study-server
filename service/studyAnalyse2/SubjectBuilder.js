@@ -73,11 +73,11 @@ class SubjectBuilder{
   calculateArea(){
     var areaType = this.getAreaType()
     //log.info('areaType',areaType)
-    if(areaType == config.NORMAL){//正常区域
+    if(areaType == config.item.normal){//正常区域
       this.calculateNormalArea()
-    }else if(areaType == config.FLIPOVER){//翻页题目
+    }else if(areaType == config.item.flipover){//翻页题目
       this.calculateFlipOverArea()
-    }else if(areaType == config.BOTTOM){//最后一题
+    }else if(areaType == config.item.bottom){//最后一题
       this.calculateLastArea()
     }else{
       throw '未知的题目类型，无法计算'
@@ -126,11 +126,11 @@ class SubjectBuilder{
 
   async cutImage(){
     var areaType = this.getAreaType()
-    if(areaType == config.NORMAL){//正常区域
+    if(areaType == config.item.normal){//正常区域
       await this.drawNormal()
-    }else if(areaType == config.FLIPOVER){//翻页题目
+    }else if(areaType == config.item.flipover){//翻页题目
       await this.drawFlipOver()
-    }else if(areaType == config.BOTTOM){//最后一题
+    }else if(areaType == config.item.bottom){//最后一题
       await this.drawLast()
     }
     log.info(`sortNo${this.item.getSortNo()}切图完成`,this.item.getSortNo())
