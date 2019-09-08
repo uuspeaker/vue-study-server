@@ -82,14 +82,17 @@ module.exports.update = function (collection, query, data) {
 }
 
 // 查询数据，condition为{}时可以查询该集合下的所有文档
-module.exports.find = async (collection, condition, limit) => {
+module.exports.find = async (collection, condition, limit, skip) => {
   if(!limit){
     limit = 10000
+  }
+  if(!skip){
+    skip = 0
   }
   log.info(`mongo.find: collecton is ${collection}, condition is`, condition)
   return new Promise(( resolve, reject ) => {
   connectDB(function (db) {
-    db.collection(collection).find(condition).limit(limit).toArray(function (err, result) {
+    db.collection(collection).find(condition).limit(limit).skip(skip).toArray(function (err, result) {
       if (err) {
         log.error("mongo query fail",err)
         reject(err)
