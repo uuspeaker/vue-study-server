@@ -7,7 +7,10 @@ const config = {
   },
  //数据库配置
  es: {
-   host: '129.211.21.250:9200'
+   host: 'http://129.211.21.250:80/es',
+   maxRetries: 5,
+   requestTimeout: 60000,
+   sniffOnStart: true
  },
  //数据库配置
  mysql: {

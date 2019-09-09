@@ -1,7 +1,5 @@
-const log = require('../../util/log').getLogger("AnswerAnalyser");
-const path = require('path')
-const uuid = require('uuid')
-const fs = require('fs');
+const log = require('../../util/log').getLogger("SubjectAnswer");
+const mongo = require('../../util/mongo');
 
 class Answer{
   constructor(type, answer){
@@ -12,7 +10,7 @@ class Answer{
 }
 
 
-class AnswerAnalyser{
+class SubjectAnswer{
     constructor(contentArr){
       //题目内容
       this.contentArr = contentArr
@@ -33,6 +31,10 @@ class AnswerAnalyser{
         answer = this.getAnswerOfTrueOrFalseQuestion()
       }
       return new Answer(type, answer)
+    }
+
+    getCorrectAnswer(){
+
     }
 
     isChoiceQuestion(){
@@ -120,4 +122,4 @@ class AnswerAnalyser{
 
 }
 
-module.exports = AnswerAnalyser
+module.exports = SubjectAnswer

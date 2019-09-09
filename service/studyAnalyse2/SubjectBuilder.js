@@ -3,7 +3,7 @@ const cos = require('../../util/cos.js')
 const path = require('path');
 const graphic = require('../../util/graphic')
 const config = require('../../config/db')
-const AnswerAnalyser = require('./AnswerAnalyser')
+const SubjectAnswer = require('./SubjectAnswer')
 
 class Subject{
   constructor(url, content, answer){
@@ -204,7 +204,7 @@ class SubjectBuilder{
   }
 
   extractAnswer(){
-    var analyser = new AnswerAnalyser(this.content)
+    var analyser = new SubjectAnswer(this.content)
     this.answer = analyser.getAnswer()
     log.info(`sortNo${this.item.getSortNo()}答案提取完成`,this.answer)
   }

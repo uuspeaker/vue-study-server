@@ -23,10 +23,9 @@ module.exports.load = async () => {
         var id = uuid.v1()
         delete subjectData[index]['_id']
         var data = {
-          index: 'subject_data',
+          index: 'subject_data_test',
           type: 'xkw_subject',
-          id: id,
-          body: {name:'43242'}
+          body: subjectData[index]
         }
         await elastic.create(data)
         // dataArr.push(data)
