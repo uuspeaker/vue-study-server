@@ -10,7 +10,7 @@ const log = require('./util/log.js').getLogger("app.js");
 
 const index = require('./routes/index')
 const studyAnalyse = require('./routes/studyAnalyse')
-const subjectPool = require('./routes/SubjectPool')
+const subjectPool = require('./routes/subjectPool')
 //const cors = require('koa2-cors');
 
 // error handler

@@ -1,9 +1,7 @@
 const log = require('../../util/log').getLogger("SubjectLoader");
 const elastic = require('../../util/elastic')
 const mongo = require('../../util/mongo')
-const path = require('path');
 const uuid = require('uuid');
-const graphic = require('../../util/graphic')
 
 class SubjectLoader{
   constructor(){}
