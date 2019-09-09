@@ -2,7 +2,7 @@ const router = require('koa-router')()
 const log = require('../util/log.js').getLogger("SubjectPool");
 const KnowledgeTree = require('../service/subjectPool/KnowledgeTree');
 const SubjectFinder = require('../service/subjectPool/SubjectFinder');
-// const SubjectLoader = require('../service/subjectPool/SubjectLoader');
+const SubjectLoader = require('../service/subjectPool/SubjectLoader');
 
 router.get('/knowledgeTree', async (ctx, next) => {
   var tree = new KnowledgeTree()
@@ -22,17 +22,17 @@ router.get('/subjectList', async (ctx, next) => {
   ctx.body = data
 })
 
-// router.get('/loadSubject', async (ctx, next) => {
-//   var loader = new SubjectLoader()
-//   var data = await loader.load()
-//   ctx.body = data
-// })
-//
-// router.get('/deleteAllSubject', async (ctx, next) => {
-//   var loader = new SubjectLoader()
-//   var data = await loader.deleteAll()
-//   ctx.body = data
-// })
+router.get('/loadSubject', async (ctx, next) => {
+  var loader = new SubjectLoader()
+  var data = await loader.load()
+  ctx.body = data
+})
+
+router.get('/deleteAllSubject', async (ctx, next) => {
+  var loader = new SubjectLoader()
+  var data = await loader.deleteAll()
+  ctx.body = data
+})
 
 
 module.exports = router
