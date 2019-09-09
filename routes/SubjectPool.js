@@ -28,5 +28,11 @@ router.get('/subjectLoad', async (ctx, next) => {
   ctx.body = data
 })
 
+router.get('/deleteAllSubject', async (ctx, next) => {
+  var loader = new SubjectLoader()
+  var data = await loader.deleteAll()
+  ctx.body = data
+})
+
 
 module.exports = router
