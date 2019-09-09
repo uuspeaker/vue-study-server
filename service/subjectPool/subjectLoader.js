@@ -7,7 +7,7 @@ const graphic = require('../../util/graphic')
 
 class SubjectLoader{
   constructor(){}
-  
+
   async load(){
     log.info('开始导入数据')
     var collection = 'XkwSubject'
@@ -27,7 +27,7 @@ class SubjectLoader{
           var id = uuid.v1()
           delete subjectData[index]['_id']
           var data = {
-            index: 'subject_data_test',
+            index: 'subject_data',
             type: 'xkw_subject',
             body: subjectData[index]
           }
