@@ -36,7 +36,7 @@ class SubjectAnswer{
     }
 
     async getCorrectAnswer(type, answer){
-      var queryStr = this.contentArr[0].substring(2,this.contentArr[0].length-5)
+      var queryStr = this.contentArr[0].substring(2)
       queryStr.replace("'","\'")
       queryStr.replace('"','\"')
       queryStr.replace("\\","\\\\")
