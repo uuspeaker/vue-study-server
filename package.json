@@ -6,7 +6,7 @@
     "start": "supervisor bin/www",
     "normal": "node bin/www",
     "dev": "./node_modules/ bin/www",
-    "test": "mocha ./test/service/studyAnalyse/*.js",
+    "test": "mocha ./test/service/*/*.js",
     "prd": "pm2 start bin/www"
   },
   "dependencies": {
