@@ -52,10 +52,10 @@ class SubjectAnswer{
       queryStr = queryStr.replace("$","\$")
       queryStr = queryStr.replace("?","\?")
       queryStr = queryStr.replace("|","\|")
-      var queryReg = new RegExp(queryStr, 'i')
+      var queryReg = new RegExp(queryStr)
 
-      var condition = {'questionContent': {$regex : queryReg}}
-      var data = await mongo.find('XkwSubject', condition, 3, 0)
+      var condition = {'questionContent':  queryReg}
+      var data = await mongo.find('XkwSubject', condition, 3)
       log.debug('查询出对应的题目是',data)
       var status = 9
       if(data.length == 0){
