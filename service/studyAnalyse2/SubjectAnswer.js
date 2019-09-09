@@ -55,7 +55,8 @@ class SubjectAnswer{
       var queryReg = new RegExp(queryStr, 'i')
 
       var condition = {'questionContent': queryReg}
-      var data = await mongo.find('XkwSubject', condition, 5, 0)
+      var data = await mongo.find('XkwSubject', condition, 3, 0)
+      log.debug('查询出对应的题目是',condition,data)
       var status = 9
       if(data.length == 0){
         status = 9
