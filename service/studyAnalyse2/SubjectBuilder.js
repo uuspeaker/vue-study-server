@@ -48,7 +48,7 @@ class SubjectBuilder{
     this.calculateArea()
     this.calculateContent()
     await this.extractAnswer()
-    //await this.cutImage()
+    await this.cutImage()
     return new Subject(this.imageUrl,this.content,this.answer)
   }
 
