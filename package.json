@@ -6,10 +6,11 @@
     "start": "supervisor bin/www",
     "normal": "node bin/www",
     "dev": "./node_modules/ bin/www",
-    "test": "mocha ./test/service/*/*.js",
+    "test": "mocha ./test/service/*/*.js ./test/util/*.js",
     "prd": "pm2 start bin/www"
   },
   "dependencies": {
+    "@elastic/elasticsearch": "^7.3.0",
     "cos-nodejs-sdk-v5": "^2.5.9",
     "debug": "^4.1.1",
     "exif": "^0.6.0",

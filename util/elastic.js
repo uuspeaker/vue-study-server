@@ -1,8 +1,7 @@
 const log = require('../util/log').getLogger("elastic");
-const { Client, ConnectionPool} = require('@elastic/elasticsearch')
+const { Client} = require('@elastic/elasticsearch')
 const config = require('../config/db')
 
-ConnectionPool
 const client = new Client({ node: config.es.host })
 
 // 查询数据，condition为{}时可以查询该集合下的所有文档

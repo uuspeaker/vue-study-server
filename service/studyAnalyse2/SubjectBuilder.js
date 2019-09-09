@@ -47,7 +47,7 @@ class SubjectBuilder{
   async getSubject(){
     this.calculateArea()
     this.calculateContent()
-    this.extractAnswer()
+    await this.extractAnswer()
     //await this.cutImage()
     return new Subject(this.imageUrl,this.content,this.answer)
   }
@@ -203,9 +203,9 @@ class SubjectBuilder{
     log.info(`sortNo${this.item.getSortNo()}内容提取完成`,this.content)
   }
 
-  extractAnswer(){
+  async extractAnswer(){
     var analyser = new SubjectAnswer(this.content)
-    this.answer = analyser.getAnswer()
+    this.answer = await analyser.getAnswer()
     log.info(`sortNo${this.item.getSortNo()}答案提取完成`,this.answer)
   }
 

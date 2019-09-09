@@ -2,10 +2,11 @@ const log = require('../../util/log').getLogger("SubjectAnswer");
 const mongo = require('../../util/mongo');
 
 class Answer{
-  constructor(type, answer){
+  constructor(type, answer, status){
     //题目类型(1-选择题 2-判断题 9-未知)
     this.type = type
     this.answer = answer
+    this.status = status
   }
 }
 
@@ -18,7 +19,7 @@ class SubjectAnswer{
       this.minMatchTimes = 3
     }
 
-    getAnswer(){
+    async getAnswer(){
       var type = 9
       var answer = null
       if(this.isChoiceQuestion()){
@@ -30,11 +31,32 @@ class SubjectAnswer{
         type = 2
         answer = this.getAnswerOfTrueOrFalseQuestion()
       }
-      return new Answer(type, answer)
+      var status = await this.getCorrectAnswer(type, answer)
+      return new Answer(type, answer, status)
     }
 
-    getCorrectAnswer(){
+    async getCorrectAnswer(type, answer){
+      var queryStr = this.contentArr[0].substring(2,this.contentArr[0].length-5)
 
+      var queryReg = new RegExp(queryStr, 'i')
+
+      var condition = {'questionContent': queryReg}
+      var data = await mongo.find('XkwSubject', condition, 5, 0)
+      var status = 9
+      if(data.length == 0){
+        status = 9
+      }else{
+        var questionType = data[0]['questionType']
+        var rightAnswer = data[0]['answer']
+        if(questionType == type){
+          if(answer == questionType){
+            status = 1
+          }else{
+            status = 0
+          }
+        }
+      }
+      return status
     }
 
     isChoiceQuestion(){
