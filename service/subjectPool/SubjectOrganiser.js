@@ -71,7 +71,12 @@ class SubjectOrganiser{
         'userId': userId,
         'subjectIds': subjectIds
       }
-      await mongo.update(this.collection, query, data)
+      if(subjectIds.length == 0){
+        await mongo.remove(this.collection, query)
+      }else{
+        await mongo.update(this.collection, query, data)
+      }
+
       return 1
 
     }
