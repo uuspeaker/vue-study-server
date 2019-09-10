@@ -38,6 +38,7 @@ router.get('/deleteAllSubject', async (ctx, next) => {
 router.post('/organisePaper', async (ctx, next) => {
   var organiser = new SubjectOrganiser()
   var userId = '123'
+  log.debug('organisePaper',ctx.request.body)
   var subjectId = ctx.request.body.subjectId
   var data = await organiser.add(userId, subjectId)
   ctx.body = data

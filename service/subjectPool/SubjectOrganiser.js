@@ -7,11 +7,12 @@ class SubjectOrganiser{
   constructor(){}
 
   async add(userId, subjectId){
+    log.info('input param {userId, subjectId} ',userId,subjectId)
     var collection = 'subject_group'
     var query = {
       'userId': userId
     }
-    var subjectData = await mongo.find(collection,{},1)
+    var subjectData = await mongo.find(collection,query,1)
     if(subjectData && subjectData.length > 0 ){
       var subjectIds = subjectData[0].subjectIds
       subjectIds.push(subjectId)
@@ -19,7 +20,7 @@ class SubjectOrganiser{
         'userId': userId,
         'subjectIds': subjectIds
       }
-      mongo.insertOne(collection, query, data)
+      mongo.update(collection, query, data)
     }else{
       var data = {
         'userId': userId,

@@ -19,15 +19,15 @@ const connectDB = async (callback) => {
 
 // 插入一个文档数据
 module.exports.insertOne = function (collection, data) {
-  log.info(`mongo.insertOne: collecton is ${collection}, data is ${JSON.stringify(data)}`)
+  log.info(`insertOne: param is {collection,data}}`, collecton, data)
   return new Promise(( resolve, reject ) => {
     connectDB(function (db) {
       db.collection(collection).insertOne(data, function (err, result) {
         if (err) {
-          log.error(`mongo insert fail ${err}`)
+          log.error(`insertOne fail ${err}`)
           reject(err)
         }else{
-          log.info(`mongo insertOne success`)
+          log.info(`insertOne success`)
           resolve(result)
           db.close()
         }
@@ -38,7 +38,7 @@ module.exports.insertOne = function (collection, data) {
 }
 // 插入一个文档数据
 module.exports.remove = function (collection, query) {
-  log.info(`mongo.remove: collecton is ${collection}, query is ${JSON.stringify(query)}`)
+  log.info(`remove: param is {collection,query}}`, collecton, query)
   if(query._id){
     query._id = mongoose.Types.ObjectId(query._id)
   }
@@ -60,7 +60,7 @@ module.exports.remove = function (collection, query) {
 }
 // 插入一个文档数据
 module.exports.update = function (collection, query, data) {
-  log.info(`mongo.update: collecton is ${collection}, data is ${JSON.stringify(data)}`)
+  log.info(`update: param is {collection,query,data}}`, collecton,query, data)
   if(query._id){
     query._id = mongoose.Types.ObjectId(query._id)
   }
@@ -83,6 +83,7 @@ module.exports.update = function (collection, query, data) {
 
 // 查询数据，condition为{}时可以查询该集合下的所有文档
 module.exports.find = async (collection, condition, limit, skip) => {
+  log.info(`find: param is {collection,condition,limit,skip}`, collection, condition, limit, skip)
   if(!limit){
     limit = 10000
   }
