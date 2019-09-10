@@ -5,7 +5,7 @@ const uuid = require('uuid');
 
 class SubjectOrganiser{
   constructor(){
-    this.collection = 'subject_basket'
+    this.collection = 'SubjectBasket'
   }
 
   async add(userId, subjectId){
@@ -53,7 +53,7 @@ class SubjectOrganiser{
     var query = {
       'subjectId': {$in:subjectIds}
     }
-    var subjectData = await mongo.find(this.collection,query,1)
+    var subjectData = await mongo.find('XkwSubject',query)
     if(subjectData && subjectData.length > 0 ){
       return subjectData[0].subjectIds
     }else{
