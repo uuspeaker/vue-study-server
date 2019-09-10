@@ -51,7 +51,7 @@ class SubjectOrganiser{
     log.info('getSubjects: param is {userId} ',userId)
     var subjectIds = await this.getIds(userId)
     var query = {
-      'subjectId': {$in:subjectIds}
+      'id': {$in:subjectIds}
     }
     var subjectData = await mongo.find('XkwSubject',query)
     if(subjectData && subjectData.length > 0 ){
