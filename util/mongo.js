@@ -19,7 +19,7 @@ const connectDB = async (callback) => {
 
 // 插入一个文档数据
 module.exports.insertOne = function (collection, data) {
-  log.info(`insertOne: param is {collection,data}}`, collecton, data)
+  log.info(`insertOne: param is {collection,data}}`, collection, data)
   return new Promise(( resolve, reject ) => {
     connectDB(function (db) {
       db.collection(collection).insertOne(data, function (err, result) {

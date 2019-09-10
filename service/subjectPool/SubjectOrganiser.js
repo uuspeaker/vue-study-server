@@ -16,18 +16,22 @@ class SubjectOrganiser{
     var subjectData = await this.get(userId)
     if(subjectData && subjectData.length > 0 ){
       var subjectIds = subjectData[0].subjectIds
+      var index = subjectData.indexOf(subjectId);
+      if (index <> -1) return 0
       subjectIds.push(subjectId)
       var data = {
         'userId': userId,
         'subjectIds': subjectIds
       }
-      mongo.update(this.collection, query, data)
+      await mongo.update(this.collection, query, data)
+      return 1
     }else{
       var data = {
         'userId': userId,
         'subjectIds': [subjectId]
       }
-      mongo.insertOne(this.collection, data)
+      await mongo.insertOne(this.collection, data)
+      return 1
     }
   }
 
@@ -49,6 +53,7 @@ class SubjectOrganiser{
     var subjectData = await this.get(userId)
     if(subjectData && subjectData.length > 0 ){
       var index = subjectData.indexOf(subjectId);
+      if (index == -1) return 0
       var resultSubject = subjectData.splice(index,1)[0];
       var query = {
         'userId': userId
@@ -57,7 +62,9 @@ class SubjectOrganiser{
         'userId': userId,
         'subjectIds': resultSubject
       }
-      mongo.update(this.collection, query, data)
+      await mongo.update(this.collection, query, data)
+      return 1
+
     }
   }
 
