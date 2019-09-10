@@ -27,7 +27,7 @@ class SubjectOrganiser{
     }else{
       var data = {
         'userId': userId,
-        'subjectIds': [subjectId]
+        'subjectIds': [].push(subjectId)
       }
       await mongo.insertOne(this.collection, data)
       return 1
@@ -63,13 +63,13 @@ class SubjectOrganiser{
     if(subjectIds && subjectIds.length > 0 ){
       var index = subjectIds.indexOf(subjectId);
       if (index == -1) return 0
-      var resultSubject = subjectIds.splice(index,1)[0];
+      subjectIds.splice(index,1)[0];
       var query = {
         'userId': userId
       }
       var data = {
         'userId': userId,
-        'subjectIds': resultSubject
+        'subjectIds': subjectIds
       }
       await mongo.update(this.collection, query, data)
       return 1
