@@ -17,7 +17,7 @@ class SubjectOrganiser{
     if(subjectData && subjectData.length > 0 ){
       var subjectIds = subjectData[0].subjectIds
       var index = subjectData.indexOf(subjectId);
-      if (index <> -1) return 0
+      if (index > -1) return 0
       subjectIds.push(subjectId)
       var data = {
         'userId': userId,
