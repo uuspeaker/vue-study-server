@@ -38,7 +38,7 @@ module.exports.insertOne = function (collection, data) {
 }
 // 插入一个文档数据
 module.exports.remove = function (collection, query) {
-  log.info(`remove: param is {collection,query}}`, collecton, query)
+  log.info(`remove: param is {collection,query}}`, collection, query)
   if(query._id){
     query._id = mongoose.Types.ObjectId(query._id)
   }
