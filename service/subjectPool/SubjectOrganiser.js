@@ -27,7 +27,7 @@ class SubjectOrganiser{
     }else{
       var data = {
         'userId': userId,
-        'subjectIds': [].push(subjectId)
+        'subjectIds': [subjectId]
       }
       await mongo.insertOne(this.collection, data)
       return 1
