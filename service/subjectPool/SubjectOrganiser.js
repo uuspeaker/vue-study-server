@@ -13,7 +13,7 @@ class SubjectOrganiser{
     var query = {
       'userId': userId
     }
-    var subjectIds = await this.get(userId)
+    var subjectIds = await this.getIds(userId)
     if(subjectIds && subjectIds.length > 0 ){
       var index = subjectIds.indexOf(subjectId);
       if (index > -1) return 0
@@ -34,8 +34,8 @@ class SubjectOrganiser{
     }
   }
 
-  async get(userId){
-    log.info('get: param is {userId} ',userId)
+  async getIds(userId){
+    log.info('getIds: param is {userId} ',userId)
     var query = {
       'userId': userId
     }
@@ -47,9 +47,24 @@ class SubjectOrganiser{
     }
   }
 
+  async getSubjects(userId){
+    log.info('getSubjects: param is {userId} ',userId)
+    var subjectIds = await this.getIds(userId)
+    var query = {
+      'subjectId': {$in:subjectIds}
+    }
+    var subjectData = await mongo.find(this.collection,query,1)
+    if(subjectData && subjectData.length > 0 ){
+      return subjectData[0].subjectIds
+    }else{
+      return []
+    }
+  }
+
+
   async remove(userId,subjectId){
     log.info('get: param is {userId, subjectId} ',userId, subjectId)
-    var subjectIds = await this.get(userId)
+    var subjectIds = await this.getIds(userId)
     if(subjectIds && subjectIds.length > 0 ){
       var index = subjectIds.indexOf(subjectId);
       if (index == -1) return 0

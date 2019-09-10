@@ -45,7 +45,7 @@ router.post('/subjectBasket', async (ctx, next) => {
 router.get('/subjectBasket', async (ctx, next) => {
   var organiser = new SubjectOrganiser()
   var userId = '123'
-  var data = await organiser.get(userId)
+  var data = await organiser.getSubjects(userId)
   ctx.body = data
 })
 router.put('/subjectBasket', async (ctx, next) => {
