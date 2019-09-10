@@ -7,7 +7,7 @@ class SubjectOrganiser{
   constructor(){}
 
   async add(userId, subjectId){
-    log.info('input param {userId, subjectId} ',userId,subjectId)
+    log.info('add: param is {userId, subjectId} ',userId,subjectId)
     var collection = 'subject_group'
     var query = {
       'userId': userId

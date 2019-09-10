@@ -60,7 +60,7 @@ module.exports.remove = function (collection, query) {
 }
 // 插入一个文档数据
 module.exports.update = function (collection, query, data) {
-  log.info(`update: param is {collection,query,data}}`, collecton,query, data)
+  log.info(`update: param is {collection,query,data}}`, collection,query, data)
   if(query._id){
     query._id = mongoose.Types.ObjectId(query._id)
   }
