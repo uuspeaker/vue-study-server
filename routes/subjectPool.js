@@ -3,6 +3,7 @@ const log = require('../util/log.js').getLogger("SubjectPool");
 const KnowledgeTree = require('../service/subjectPool/KnowledgeTree');
 const SubjectFinder = require('../service/subjectPool/SubjectFinder');
 const SubjectLoader = require('../service/subjectPool/SubjectLoader');
+const SubjectOrganiser = require('../service/subjectPool/SubjectOrganiser');
 
 router.get('/knowledgeTree', async (ctx, next) => {
   var tree = new KnowledgeTree()
@@ -31,6 +32,14 @@ router.get('/loadSubject', async (ctx, next) => {
 router.get('/deleteAllSubject', async (ctx, next) => {
   var loader = new SubjectLoader()
   var data = await loader.deleteAll()
+  ctx.body = data
+})
+
+router.post('/organisePaper', async (ctx, next) => {
+  var organiser = new SubjectOrganiser()
+  var userId = '123'
+  var subjectId = ctx.request.body.subjectId
+  var data = await organiser.add(userId, subjectId)
   ctx.body = data
 })
 
