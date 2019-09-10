@@ -35,12 +35,24 @@ router.get('/deleteAllSubject', async (ctx, next) => {
   ctx.body = data
 })
 
-router.post('/organisePaper', async (ctx, next) => {
+router.post('/subjectBasket', async (ctx, next) => {
   var organiser = new SubjectOrganiser()
   var userId = '123'
-  log.debug('organisePaper',ctx.request.body)
   var subjectId = ctx.request.body.subjectId
   var data = await organiser.add(userId, subjectId)
+  ctx.body = data
+})
+router.get('/subjectBasket', async (ctx, next) => {
+  var organiser = new SubjectOrganiser()
+  var userId = '123'
+  var data = await organiser.get(userId)
+  ctx.body = data
+})
+router.put('/subjectBasket', async (ctx, next) => {
+  var organiser = new SubjectOrganiser()
+  var userId = '123'
+  var subjectId = ctx.request.body.subjectId
+  var data = await organiser.remove(userId, subjectId)
   ctx.body = data
 })
 
