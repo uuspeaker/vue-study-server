@@ -13,10 +13,9 @@ class SubjectOrganiser{
     var query = {
       'userId': userId
     }
-    var subjectData = await this.get(userId)
-    if(subjectData && subjectData.length > 0 ){
-      var subjectIds = subjectData[0].subjectIds
-      var index = subjectData.indexOf(subjectId);
+    var subjectIds = await this.get(userId)
+    if(subjectIds && subjectIds.length > 0 ){
+      var index = subjectIds.indexOf(subjectId);
       if (index > -1) return 0
       subjectIds.push(subjectId)
       var data = {
@@ -50,11 +49,11 @@ class SubjectOrganiser{
 
   async remove(userId,subjectId){
     log.info('get: param is {userId, subjectId} ',userId, subjectId)
-    var subjectData = await this.get(userId)
-    if(subjectData && subjectData.length > 0 ){
-      var index = subjectData.indexOf(subjectId);
+    var subjectIds = await this.get(userId)
+    if(subjectIds && subjectIds.length > 0 ){
+      var index = subjectIds.indexOf(subjectId);
       if (index == -1) return 0
-      var resultSubject = subjectData.splice(index,1)[0];
+      var resultSubject = subjectIds.splice(index,1)[0];
       var query = {
         'userId': userId
       }
