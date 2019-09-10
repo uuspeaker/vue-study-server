@@ -53,12 +53,7 @@ class SubjectOrganiser{
     var query = {
       'id': {$in:subjectIds}
     }
-    var subjectData = await mongo.find('XkwSubject',query)
-    if(subjectData && subjectData.length > 0 ){
-      return subjectData[0].subjectIds
-    }else{
-      return []
-    }
+    return await mongo.find('XkwSubject',query)
   }
 
 
