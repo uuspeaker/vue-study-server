@@ -75,7 +75,7 @@ class SubjectAnswer{
       return status
     }
 
-    public escapeExprSpecialWord(keyword) {
+    escapeExprSpecialWord(keyword) {
       var fbsArr = { "\\", "$", "(", ")", "*", "+", ".", "[", "]", "?", "^", "{", "}", "|" };
       for (var index in fbsArr) {
         keyword.replace(fbsArr[index],"\\" + fbsArr[index])
