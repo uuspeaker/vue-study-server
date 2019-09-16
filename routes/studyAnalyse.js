@@ -51,7 +51,8 @@ router.post('/upload', upload.single('file'), async (ctx, next) => {
       userId: 123,
       paperName: fileName,
       paperUrl: "https://" + result.Location,
-      subjects: testPaper.getSubjectInfos()
+      subjects: testPaper.getSubjectInfos(),
+      createData: new Date()
     }
     mongo.insertOne("TestPaper", testPaperInfo)
     ctx.body = testPaperInfo

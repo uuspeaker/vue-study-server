@@ -139,7 +139,7 @@ class SubjectBuilder{
   async drawNormal(){
     var sourceUrl = this.getTestPaper().getSourceUrl()
     var extname = path.extname(sourceUrl)
-    var targetUrl = `${this.getTestPaper().getTargetDir()}/${this.item.getSortNo()}${extname}`
+    var targetUrl = `https://${this.getTestPaper().getTargetDir()}/${this.item.getSortNo()}${extname}`
     log.debug(`绘制题目`,targetUrl,this.area)
     await graphic.cut(sourceUrl, targetUrl, this.getGraphicWidth() + this.leftMargin + this.rightMargin, this.area[0].height, this.area[0].X - this.leftMargin, this.area[0].Y)
     var cosObject = await cos.putObject(targetUrl)
@@ -149,7 +149,7 @@ class SubjectBuilder{
   async drawFlipOver(){
     var sourceUrl = this.getTestPaper().getSourceUrl()
     var extname = path.extname(sourceUrl)
-    var targetUrl = `${this.getTestPaper().getTargetDir()}/${this.item.getSortNo()}${extname}`
+    var targetUrl = `https://${this.getTestPaper().getTargetDir()}/${this.item.getSortNo()}${extname}`
     var tmpUrls = []
     for (var i = 0; i < this.area.length; i++) {
       var tmpTargetUrl = `${this.getTestPaper().getTargetDir()}/${this.item.getSortNo()}-${i}${extname}`
