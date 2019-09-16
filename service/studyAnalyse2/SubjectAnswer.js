@@ -37,21 +37,22 @@ class SubjectAnswer{
 
     async getCorrectAnswer(type, answer){
       var queryStr = this.contentArr[0].substring(5)
-      queryStr = queryStr.replace("'","\'")
-      queryStr = queryStr.replace('"','\"')
-      queryStr = queryStr.replace("\\","\\\\")
-      queryStr = queryStr.replace("[","\[")
-      queryStr = queryStr.replace("]","\]")
-      queryStr = queryStr.replace("(","\(")
-      queryStr = queryStr.replace(")","\)")
-      queryStr = queryStr.replace("{","\{")
-      queryStr = queryStr.replace("}","\}")
-      queryStr = queryStr.replace(".","\.")
-      queryStr = queryStr.replace("+","\+")
-      queryStr = queryStr.replace("^","\^")
-      queryStr = queryStr.replace("$","\$")
-      queryStr = queryStr.replace("?","\?")
-      queryStr = queryStr.replace("|","\|")
+      // queryStr = queryStr.replace("'","\'")
+      // queryStr = queryStr.replace('"','\"')
+      // queryStr = queryStr.replace("\\","\\\\")
+      // queryStr = queryStr.replace("[","\[")
+      // queryStr = queryStr.replace("]","\]")
+      // queryStr = queryStr.replace("(","\(")
+      // queryStr = queryStr.replace(")","\)")
+      // queryStr = queryStr.replace("{","\{")
+      // queryStr = queryStr.replace("}","\}")
+      // queryStr = queryStr.replace(".","\.")
+      // queryStr = queryStr.replace("+","\+")
+      // queryStr = queryStr.replace("^","\^")
+      // queryStr = queryStr.replace("$","\$")
+      // queryStr = queryStr.replace("?","\?")
+      // queryStr = queryStr.replace("|","\|")
+      queryStr = this.escapeExprSpecialWord(queryStr)
       var queryReg = new RegExp(queryStr)
 
       var condition = {'questionContent':  queryReg}
@@ -72,6 +73,16 @@ class SubjectAnswer{
         }
       }
       return status
+    }
+
+    public static String escapeExprSpecialWord(String keyword) {
+      String[] fbsArr = { "\\", "$", "(", ")", "*", "+", ".", "[", "]", "?", "^", "{", "}", "|" };
+      for (String key : fbsArr) {
+          if (keyword.contains(key)) {
+              keyword = keyword.replace(key, "\\" + key);
+          }
+      }
+      return keyword;
     }
 
     isChoiceQuestion(){
