@@ -75,12 +75,10 @@ class SubjectAnswer{
       return status
     }
 
-    public static String escapeExprSpecialWord(String keyword) {
-      String[] fbsArr = { "\\", "$", "(", ")", "*", "+", ".", "[", "]", "?", "^", "{", "}", "|" };
-      for (String key : fbsArr) {
-          if (keyword.contains(key)) {
-              keyword = keyword.replace(key, "\\" + key);
-          }
+    public escapeExprSpecialWord(keyword) {
+      var fbsArr = { "\\", "$", "(", ")", "*", "+", ".", "[", "]", "?", "^", "{", "}", "|" };
+      for (var index in fbsArr) {
+        keyword.replace(fbsArr[index],"\\" + fbsArr[index])
       }
       return keyword;
     }
