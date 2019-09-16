@@ -5,7 +5,7 @@ class SubjectManage{
     constructor(){}
 
     async getSubjectsOfPaper(paperId){
-      var data = await mongo.find("TestPaper",{_id: paperId})
+      var data = await mongo.find("TestPaper",{'_id': paperId})
       return data
     }
 
