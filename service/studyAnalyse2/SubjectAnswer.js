@@ -53,6 +53,7 @@ class SubjectAnswer{
       // queryStr = queryStr.replace("?","\?")
       // queryStr = queryStr.replace("|","\|")
       queryStr = this.escapeExprSpecialWord(queryStr)
+      log.debug('转化后正则表达式',queryStr)
       var queryReg = new RegExp(queryStr)
 
       var condition = {'questionContent':  queryReg}
@@ -78,7 +79,7 @@ class SubjectAnswer{
     escapeExprSpecialWord(keyword) {
       var fbsArr = ["\\", "$", "(", ")", "*", "+", ".", "[", "]", "?", "^", "{", "}", "|" ];
       for (var index in fbsArr) {
-        keyword.replace(fbsArr[index],"\\" + fbsArr[index])
+        keyword = keyword.replace(fbsArr[index],"\\" + fbsArr[index])
       }
       return keyword;
     }
