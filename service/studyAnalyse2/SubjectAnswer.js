@@ -76,7 +76,7 @@ class SubjectAnswer{
     }
 
     escapeExprSpecialWord(keyword) {
-      var fbsArr = { "\\", "$", "(", ")", "*", "+", ".", "[", "]", "?", "^", "{", "}", "|" };
+      var fbsArr = ["\\", "$", "(", ")", "*", "+", ".", "[", "]", "?", "^", "{", "}", "|" ];
       for (var index in fbsArr) {
         keyword.replace(fbsArr[index],"\\" + fbsArr[index])
       }
