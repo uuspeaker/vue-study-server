@@ -11,6 +11,7 @@ const log = require('./util/log.js').getLogger("app.js");
 const index = require('./routes/index')
 const studyAnalyse = require('./routes/studyAnalyse')
 const subjectPool = require('./routes/subjectPool')
+const subjectRoute = require('./routes/subjectRoute')
 //const cors = require('koa2-cors');
 
 // error handler
@@ -42,6 +43,7 @@ app.use(async (ctx, next) => {
 app.use(index.routes(), index.allowedMethods())
 app.use(studyAnalyse.routes(), studyAnalyse.allowedMethods())
 app.use(subjectPool.routes(), subjectPool.allowedMethods())
+app.use(subjectRoute.routes(), subjectRoute.allowedMethods())
 
 // error-handling
 app.on('error', (err, ctx) => {
