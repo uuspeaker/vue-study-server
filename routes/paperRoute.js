@@ -36,7 +36,6 @@ router.delete('/paperInfo', async (ctx, next) => {
 });
 
 router.post('/commentSubject', async (ctx, next) => {
-  var result = await cos.putObject(file.path)
   var paperId = ctx.request.body.paperId
   var subjectId = ctx.request.body.subjectId
   var commentText = ctx.request.body.commentText
