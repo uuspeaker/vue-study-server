@@ -4,6 +4,11 @@ const mongo = require('../../util/mongo');
 class SubjectManage{
     constructor(){}
 
+    async getSubjectList(paperId){
+      var data = await mongo.find("TestPaper",{'_id': paperId})
+      return data
+    }
+
     async getSubjectInfo(paperId, subjectId){
       var data = await mongo.find("TestPaper",{'_id': paperId})
       if(data.length > 0){
