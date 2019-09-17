@@ -59,14 +59,14 @@ module.exports.remove = function (collection, query) {
   })
 }
 // 插入一个文档数据
-module.exports.update = function (collection, query, data) {
+module.exports.updateOne = function (collection, query, data) {
   log.info(`update: param is {collection,query,data}}`, collection,query, data)
   if(query._id){
     query._id = mongoose.Types.ObjectId(query._id)
   }
   return new Promise(( resolve, reject ) => {
     connectDB(function (db) {
-      db.collection(collection).update(query, data, function (err, result) {
+      db.collection(collection).updateOne(query, data, function (err, result) {
         if (err) {
           log.error(`mongo update fail ${err}`)
           reject(err)
