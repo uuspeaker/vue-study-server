@@ -43,7 +43,7 @@ class PaperManage{
       var data = await mongo.updateOne(
         this.collection,
         {'_id': paperId, 'subjects.subjectId': subjectId},
-        {"$set":{"commentText":commentText: "commentAudioUrl":commentAudioUrl}})
+        {"$set":{"commentText":commentText, "commentAudioUrl":commentAudioUrl}})
       return data
     }
 
