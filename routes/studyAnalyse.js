@@ -10,6 +10,7 @@ const mongo = require('../util/mongo');
 const graphic = require('../util/graphic');
 const ocr = require('../util/ocrOld');
 const TestPaper = require('../service/studyAnalyse2/TestPaper');
+const PaperManage = require('../service/paper/PaperManage');
 
 let storage = multer.diskStorage({
     destination: path.resolve(config.upload.destination),
@@ -57,6 +58,21 @@ router.post('/upload', upload.single('file'), async (ctx, next) => {
     mongo.insertOne("TestPaper", testPaperInfo)
     ctx.body = testPaperInfo
 
+  } else {
+      ctx.body = 'upload error';
+  }
+});
+
+router.post('/commentSubject', upload.single('file'), async (ctx, next) => {
+  var paperManage = new PaperManage()
+  var file = ctx.req.file
+  if (file){
+    log.debug("上传文件开始，临时文件保存在：file.path",file.path)
+    var result = await cos.putObject(file.path)
+    var paperId = ctx.request.body.paperId
+    var subjectId = ctx.request.body.subjectId
+    var comment = ctx.request.body.comment
+    paperManage.commentSubject(paperId, subjectId, comment, result.Location)
   } else {
       ctx.body = 'upload error';
   }

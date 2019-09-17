@@ -35,12 +35,16 @@ class PaperManage{
     }
 
     async checkSubject(paperId, subjectId, answer){
-      var data = await mongo.find(this.collection,{'_id': paperId})
-      if(data.length == 0) return {}
-
       var data = await mongo.updateOne(this.collection,{'_id': paperId, 'subjects.subjectId': subjectId},{"$set":{"subjects.$.answer.status":answer}})
       return data
+    }
 
+    async commentSubject(paperId, subjectId, commentText, commentAudioUrl){
+      var data = await mongo.updateOne(
+        this.collection,
+        {'_id': paperId, 'subjects.subjectId': subjectId},
+        {"$set":{"commentText":commentText, "commentAudioUrl",commentAudioUrl}})
+      return data
     }
 
 }
