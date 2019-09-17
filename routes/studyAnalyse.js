@@ -64,12 +64,10 @@ router.post('/upload', upload.single('file'), async (ctx, next) => {
 });
 
 router.post('/uploadFile', upload.single('file'), async (ctx, next) => {
-  var paperManage = new PaperManage()
   var file = ctx.req.file
   if (file){
     log.debug("上传文件开始，临时文件保存在：file.path",file.path)
     var result = await cos.putObject(file.path)
-    paperManage.commentSubject(paperId, subjectId, comment, result.Location)
     ctx.body = result.Location;
   } else {
       ctx.body = 'upload error';
