@@ -3,7 +3,6 @@ const log = require('../util/log.js').getLogger("SubjectPool");
 const PaperManage = require('../service/paper/PaperManage');
 
 router.get('/paperList', async (ctx, next) => {
-  var data = await mongo.find("TestPaper",{})
   var userId = '123'
   var data = await paperManage.getPaperList(userId)
   ctx.body = data
