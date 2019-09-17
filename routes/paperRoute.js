@@ -23,8 +23,16 @@ router.get('/subjectInfo', async (ctx, next) => {
   var data = await paperManage.getSubjectInfo(paperId,subjectId)
   ctx.body = data
 })
+router.put('/checkSubject', async (ctx, next) => {
+  var paperManage = new PaperManage()
+  var paperId = ctx.request.body.paperId
+  var subjectId = ctx.request.body.subjectId
+  var answer = ctx.request.body.answer
+  var data = await paperManage.checkSubject(paperId,subjectId,answer)
+  ctx.body = data
+})
 
-router.delete('/testPaper', async (ctx, next) => {
+router.delete('/paperInfo', async (ctx, next) => {
   var paperManage = new PaperManage()
   var id = ctx.request.body.id
   var data = await paperManage.deletePaper(id)
