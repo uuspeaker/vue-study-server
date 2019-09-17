@@ -8,7 +8,7 @@ const SubjectAnswer = require('./SubjectAnswer')
 
 class Subject{
   constructor(url, content, answer){
-    this.imageUrl = 'https://' + url
+    this.imageUrl = url
     this.content = content
     this.answer = answer
     this.subjectId = uuid.v1()

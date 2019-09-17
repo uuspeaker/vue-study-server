@@ -52,11 +52,11 @@ class SubjectAnswer{
       // queryStr = queryStr.replace("$","\$")
       // queryStr = queryStr.replace("?","\?")
       // queryStr = queryStr.replace("|","\|")
-      queryStr = this.escapeExprSpecialWord(queryStr)
+      //queryStr = this.escapeExprSpecialWord(queryStr)
       log.debug('转化后正则表达式',queryStr)
-      var queryReg = new RegExp(queryStr)
+      //var queryReg = new RegExp(queryStr)
 
-      var condition = {'questionContent':  queryReg}
+      var condition = {'questionContent':  queryStr}
       var data = await mongo.find('XkwSubject', condition, 5)
       log.debug('查询出对应的题目是',data)
       var status = 9

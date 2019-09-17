@@ -50,6 +50,7 @@ module.exports.putObject = (location) => {
         reject(err)
       }
       log.debug("上传文件结束", data.Location);
+      data.Location = "https://" + data.Location
       resolve(data)
     });
   })

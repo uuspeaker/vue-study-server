@@ -44,14 +44,14 @@ router.post('/upload', upload.single('file'), async (ctx, next) => {
     var result = await cos.putObject(file.path)
 
     log.debug('cosFile',cosFilePath)
-    var ocrResult = await ocr.scanImageUrl("https://" + result.Location)
+    var ocrResult = await ocr.scanImageUrl(result.Location)
     log.debug("文件ocr扫描结果为",ocrResult)
     var testPaper = new TestPaper(cosFilePath, JSON.parse(ocrResult).data.items)
     await testPaper.init()
     var testPaperInfo = {
       userId: 123,
       paperName: fileName,
-      paperUrl: "https://" + result.Location,
+      paperUrl: result.Location,
       subjects: testPaper.getSubjectInfos(),
       createData: new Date()
     }

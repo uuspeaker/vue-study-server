@@ -53,6 +53,7 @@ class TestPaper{
     getSourceUrl(){return this.sourceUrl}
     getSourceData(){return this.sourceData}
     getItems(){return this.allItems}
+    getItemAmount(){return this.allItems.length}
     getMinX(){return this.paperPolygon.minX}
     getMaxX(){return this.paperPolygon.maxX}
     getMinY(){return this.paperPolygon.minY}
