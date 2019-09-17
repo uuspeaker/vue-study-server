@@ -38,7 +38,7 @@ class PaperManage{
       var data = await mongo.find(this.collection,{'_id': paperId})
       if(data.length == 0) return {}
 
-      var data = await mongo.updateOne(this.collection,{'paperId': paperId, 'subjects.subjectId': subjectId},{"subjects.$.answer.status":answer})
+      var data = await mongo.updateOne(this.collection,{'_id': paperId, 'subjects.subjectId': subjectId},{"$set":{"subjects.$.answer.status":answer}})
       return data
 
     }
