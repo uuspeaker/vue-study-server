@@ -5,7 +5,7 @@ class PaperManage{
     constructor(){}
 
     async getPaperList(userId){
-      var data = await mongo.find("TestPaper",{'userId': userId})
+      var data = await mongo.find("TestPaper",{})
       return data
     }
 
