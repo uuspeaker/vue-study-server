@@ -12,7 +12,7 @@ router.get('/paperList', async (ctx, next) => {
 router.get('/paperInfo', async (ctx, next) => {
   var paperManage = new PaperManage()
   var paperId = ctx.request.query.paperId
-  var data = await paperManage.getSubjectList(paperId)
+  var data = await paperManage.getPaperInfo(paperId)
   ctx.body = data
 })
 
