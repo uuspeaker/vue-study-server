@@ -5,7 +5,8 @@ const SubjectManage = require('../service/paper/SubjectManage');
 router.get('/subjectInfo', async (ctx, next) => {
   var subjectManage = new SubjectManage()
   var paperId = ctx.request.query.paperId
-  var data = await subjectManage.getSubjectsOfPaper(paperId)
+  var subjectId = ctx.request.query.subjectId
+  var data = await subjectManage.getSubjectInfo(paperId,subjectId)
   ctx.body = data
 })
 

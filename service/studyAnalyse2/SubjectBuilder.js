@@ -1,6 +1,7 @@
 const log = require('../../util/log').getLogger("SubjectBuilder");
 const cos = require('../../util/cos.js')
 const path = require('path');
+const uuid = require('uuid');
 const graphic = require('../../util/graphic')
 const config = require('../../config/db')
 const SubjectAnswer = require('./SubjectAnswer')
@@ -10,6 +11,7 @@ class Subject{
     this.imageUrl = 'https://' + url
     this.content = content
     this.answer = answer
+    this.subjectId = uuid.v1()
   }
 }
 
