@@ -62,25 +62,7 @@ router.post('/upload', upload.single('file'), async (ctx, next) => {
   }
 });
 
-router.get('/testPaper', async (ctx, next) => {
-  var data = await mongo.find("TestPaper",{})
-  ctx.body = data
-  log.info('testPaper query complete')
-});
-router.put('/testPaper', async (ctx, next) => {
-  log.debug(ctx.request.body)
-  var id = ctx.request.body.id
-  var name = ctx.request.body.name
-  var data = await mongo.update("TestPaper",{'_id': id},{'name': name})
-  ctx.body = data
-  log.info('testPaper query complete')
-});
-router.delete('/testPaper', async (ctx, next) => {
-  var id = ctx.request.body.id
-  var data = await mongo.remove("TestPaper",{_id: id})
-  ctx.body = data
-  log.info('testPaper query complete')
-});
+
 
 
 module.exports = router

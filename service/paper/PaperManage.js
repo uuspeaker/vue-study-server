@@ -1,11 +1,21 @@
-const log = require('../../util/log').getLogger("SubjectManage");
+const log = require('../../util/log').getLogger("PaperManage");
 const mongo = require('../../util/mongo');
 
-class SubjectManage{
+class PaperManage{
     constructor(){}
 
-    async getSubjectList(paperId){
+    async getPaperList(userId){
+      var data = await mongo.find("TestPaper",{'userId': userId})
+      return data
+    }
+
+    async getPaperInfo(paperId){
       var data = await mongo.find("TestPaper",{'_id': paperId})
+      return data
+    }
+
+    async deletePaper(paperId){
+      var data = await mongo.remove("TestPaper",{_id: paperId})
       return data
     }
 
@@ -25,4 +35,4 @@ class SubjectManage{
 
 }
 
-module.exports = SubjectManage
+module.exports = PaperManage
