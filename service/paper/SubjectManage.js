@@ -6,46 +6,30 @@ class SubjectManage{
       this.collection = 'SubjectInfo'
     }
 
-    async getSubjectInfo(paperId, subjectId){
-      var data = await mongo.find(this.collection,{'_id': paperId})
-      if(data.length == 0) return {}
-
-      var subjects = data[0].subjects
-      for (var index in subjects) {
-        if (subjects[index]['subjectId'] == subjectId) {
-          return subjects[index]
-        }
-      }
+    async getSubjectInfo(subjectId){
+      var data = await mongo.find(this.collection,{'_id': subjectId})
     }
 
-    async getSubjectWrong(){
-      var data = await mongo.find(this.collection,{'_id': paperId})
-      if(data.length == 0) return {}
-
-      var subjects = data[0].subjects
-      for (var index in subjects) {
-        if (subjects[index]['subjectId'] == subjectId) {
-          return subjects[index]
-        }
-      }
+    async getSubjectWrong(userId){
+      var data = await mongo.find(this.collection,{'answerStatus': 0})
     }
 
-    async checkSubject(paperId, subjectId, answer){
+    async checkSubject(subjectId, answerStatus){
       var data = await mongo.updateOne(
         this.collection,
-        {'_id': paperId, 'subjects.subjectId': subjectId},
-        {"$set":{"subjects.$.answer.status":answer,"subjects.$.isChecked":1}})
+        {'_id': subjectId},
+        {"$set":{"answerStatus":answerStatus}})
       return data
     }
 
-    async commentSubject(paperId, subjectId, commentText, commentAudioUrl,knowledge){
+    async commentSubject(subjectId, commentText, commentAudioUrl,knowledge){
       var data = await mongo.updateOne(
         this.collection,
-        {'_id': paperId, 'subjects.subjectId': subjectId},
+        {'_id': subjectId},
         {"$set":{
-          "subjects.$.commentText":commentText,
-          "subjects.$.knowledge":knowledge,
-          "subjects.$.commentAudioUrl":commentAudioUrl
+          "commentText":commentText,
+          "knowledge":knowledge,
+          "commentAudioUrl":commentAudioUrl
         }})
       return data
     }
