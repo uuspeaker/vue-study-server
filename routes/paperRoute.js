@@ -40,7 +40,8 @@ router.post('/commentSubject', async (ctx, next) => {
   var subjectId = ctx.request.body.subjectId
   var commentText = ctx.request.body.commentText
   var commentAudioUrl = ctx.request.body.commentAudioUrl
-  var data = paperManage.commentSubject(paperId, subjectId, commentText, commentAudioUrl)
+  var knowledge = ctx.request.body.knowledge
+  var data = paperManage.commentSubject(paperId, subjectId, commentText, commentAudioUrl,knowledge)
   ctx.body = data
 });
 

@@ -5,18 +5,6 @@ const SubjectFinder = require('../service/subjectPool/SubjectFinder');
 const SubjectLoader = require('../service/subjectPool/SubjectLoader');
 const SubjectOrganiser = require('../service/subjectPool/SubjectOrganiser');
 
-router.get('/knowledgeTree', async (ctx, next) => {
-  var tree = new KnowledgeTree()
-  var data = await tree.getAll()
-  ctx.body = data
-})
-
-router.get('/knowledgeChildren', async (ctx, next) => {
-  var tree = new KnowledgeTree()
-  var data = await tree.getChildren(ctx.request.query.knowledgeId)
-  ctx.body = data
-})
-
 router.get('/subjectList', async (ctx, next) => {
   var finder = new SubjectFinder()
   var data = await finder.querySubjects(ctx.request.query.knowledgeId)

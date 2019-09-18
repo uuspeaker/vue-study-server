@@ -39,11 +39,15 @@ class PaperManage{
       return data
     }
 
-    async commentSubject(paperId, subjectId, commentText, commentAudioUrl){
+    async commentSubject(paperId, subjectId, commentText, commentAudioUrl,knowledge){
       var data = await mongo.updateOne(
         this.collection,
         {'_id': paperId, 'subjects.subjectId': subjectId},
-        {"$set":{"subjects.$.commentText":commentText, "subjects.$.commentAudioUrl":commentAudioUrl}})
+        {"$set":{
+          "subjects.$.commentText":commentText,
+          "subjects.$.knowledge":knowledge, 
+          "subjects.$.commentAudioUrl":commentAudioUrl
+        }})
       return data
     }
 
