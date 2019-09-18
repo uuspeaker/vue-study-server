@@ -29,7 +29,25 @@ module.exports.insertOne = function (collection, data) {
         }else{
           log.info(`insertOne success`)
           resolve(result)
-          db.close()
+          //db.close()
+        }
+
+      })
+    })
+  })
+}
+module.exports.insertMany = function (collection, dataArr) {
+  log.info(`insertOne: param is {collection,dataArr}}`, collection, dataArr)
+  return new Promise(( resolve, reject ) => {
+    connectDB(function (db) {
+      db.collection(collection).insertMany(dataArr, function (err, result) {
+        if (err) {
+          log.error(`insertMany fail ${err}`)
+          reject(err)
+        }else{
+          log.info(`insertMany success`)
+          resolve(result)
+          //db.close()
         }
 
       })
@@ -51,7 +69,7 @@ module.exports.remove = function (collection, query) {
         }else{
           log.info(`mongo insertOne success`)
           resolve(result)
-          db.close()
+          //db.close()
         }
 
       })
@@ -73,7 +91,7 @@ module.exports.updateOne = function (collection, query, data) {
         }else{
           log.info(`mongo update success, resutl is ${result}`)
           resolve(result)
-          db.close()
+          //db.close()
         }
 
       })
@@ -103,7 +121,7 @@ module.exports.find = async (collection, query, limit, skip) => {
       }
       log.debug("mongo query success",result)
       resolve(result)
-      db.close()
+      //db.close()
     })
   })
   })

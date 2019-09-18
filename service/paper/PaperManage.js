@@ -3,7 +3,7 @@ const mongo = require('../../util/mongo');
 
 class PaperManage{
     constructor(){
-      this.collection = 'TestPaper'
+      this.collection = 'PaperInfo'
     }
 
     async getPaperList(userId){
@@ -31,11 +31,25 @@ class PaperManage{
           return subjects[index]
         }
       }
+    }
 
+    async getSubjectWrong(){
+      var data = await mongo.find(this.collection,{'_id': paperId})
+      if(data.length == 0) return {}
+
+      var subjects = data[0].subjects
+      for (var index in subjects) {
+        if (subjects[index]['subjectId'] == subjectId) {
+          return subjects[index]
+        }
+      }
     }
 
     async checkSubject(paperId, subjectId, answer){
-      var data = await mongo.updateOne(this.collection,{'_id': paperId, 'subjects.subjectId': subjectId},{"$set":{"subjects.$.answer.status":answer}})
+      var data = await mongo.updateOne(
+        this.collection,
+        {'_id': paperId, 'subjects.subjectId': subjectId},
+        {"$set":{"subjects.$.answer.status":answer,"subjects.$.isChecked":1}})
       return data
     }
 
@@ -45,7 +59,7 @@ class PaperManage{
         {'_id': paperId, 'subjects.subjectId': subjectId},
         {"$set":{
           "subjects.$.commentText":commentText,
-          "subjects.$.knowledge":knowledge, 
+          "subjects.$.knowledge":knowledge,
           "subjects.$.commentAudioUrl":commentAudioUrl
         }})
       return data

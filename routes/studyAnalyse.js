@@ -55,7 +55,8 @@ router.post('/upload', upload.single('file'), async (ctx, next) => {
       subjects: testPaper.getSubjectInfos(),
       createData: new Date()
     }
-    mongo.insertOne("TestPaper", testPaperInfo)
+    mongo.insertOne("PaperInfo", testPaperInfo)
+    mongo.insertMany("SubjectInfo", testPaperInfo.getSubjects())
     ctx.body = testPaperInfo
 
   } else {
