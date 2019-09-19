@@ -26,7 +26,7 @@ class SubjectManage{
     }
 
     async checkSubject(subjectId, isRight){
-      var subjectInfo = await getSubjectInfo(subjectId)
+      var subjectInfo = await this.getSubjectInfo(subjectId)
       if(!subjectInfo[0].checkStatus){
         var paperManage = new PaperManage()
         paperManage.increaseCheckAmount(subjectInfo[0].paperId)
