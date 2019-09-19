@@ -60,7 +60,7 @@ class TestPaper{
     getMaxY(){return this.paperPolygon.maxY}
     getLineHeight(){return this.lineHeight}
     getLine(lineNo){return this.allItems[lineNo]}
-    getSubjectCount(){return this.validSubjects.length}
+    getSubjectAmount(){return this.validSubjects.length}
     getDataCount(){return this.allItems.length}
     getValidSubjects(){return this.validSubjects}
     getSubjectInfos(){return this.subjectInfos}
@@ -162,7 +162,7 @@ class TestPaper{
         if(subjectAnalyser.getSubjectAmount() >= 10)break
         //如果没有找到任何题目,则将所有内容当作一个题目
       }
-      if(this.getSubjectCount() == 0 && this.getItemAmount() > 0){
+      if(this.getSubjectAmount() == 0 && this.getItemAmount() > 0){
         var item = this.getLine(0)
         log.info('没有找到任何题目,则将所有内容当作一个题目',item)
         item.itemcoord.x = this.getMinX()
