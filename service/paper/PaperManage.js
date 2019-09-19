@@ -71,10 +71,14 @@ class PaperManage{
 
     async increaseCheckAmount(paperId){
       var paperInfo = await this.getPaperInfo(paperId)
+      var oldAmount = paperInfo[0].checkAmount
+      if(!oldAmount) {
+        oldAmount = 0
+      }
       var data = await mongo.updateOne(
         this.collection,
         {'paperId': paperId},
-        {"$set":{"checkAmount":1 + paperInfo[0].checkAmount}})
+        {"$set":{"checkAmount":1 + oldAmount}})
       return data
     }
 
