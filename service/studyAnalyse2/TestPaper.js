@@ -9,6 +9,7 @@ const config = require('../../config/db')
 
 class TestPaper{
     constructor(sourceUrl,sourceData){
+      this.paperId = uuid.v1()
       //log.debug("试卷原始数据",sourceData)
       this.targetDir = ''
       //原始图片地址
@@ -49,6 +50,7 @@ class TestPaper{
       await this.constructSubjects()
     }
 
+    getPaperId(){return this.paperId}
     getTargetDir(){return this.targetDir}
     getSourceUrl(){return this.sourceUrl}
     getSourceData(){return this.sourceData}
