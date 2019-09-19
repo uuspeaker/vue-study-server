@@ -33,7 +33,7 @@ class PaperManage{
     }
 
     async saveSubjects(subjects){
-      mongo.insertMany(this.collection, subjects)
+      mongo.insertMany('SubjectInfo', subjects)
     }
 
     getFileName(file){
