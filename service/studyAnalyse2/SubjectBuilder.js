@@ -12,6 +12,7 @@ class Subject{
     this.content = content
     this.answer = answer
     this.subjectId = uuid.v1()
+    this.paperId = paperId
   }
 }
 
@@ -51,7 +52,7 @@ class SubjectBuilder{
     this.calculateContent()
     await this.extractAnswer()
     await this.cutImage()
-    return new Subject(this.imageUrl,this.content,this.answer)
+    return new Subject(this.getTestPaper().getPaperId(),this.imageUrl,this.content,this.answer)
   }
 
   isLastSubject(){

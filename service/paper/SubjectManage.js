@@ -15,7 +15,7 @@ class SubjectManage{
     }
 
     async getSubjectInfo(subjectId){
-      var data = await mongo.find(this.collection,{'_id': subjectId})
+      var data = await mongo.find(this.collection,{'subjectId': subjectId})
     }
 
     async getSubjectWrong(userId){
@@ -25,7 +25,7 @@ class SubjectManage{
     async checkSubject(subjectId, answerStatus){
       var data = await mongo.updateOne(
         this.collection,
-        {'_id': subjectId},
+        {'subjectId': subjectId},
         {"$set":{"answerStatus":answerStatus}})
       return data
     }
@@ -33,7 +33,7 @@ class SubjectManage{
     async commentSubject(subjectId, commentText, commentAudioUrl,knowledge){
       var data = await mongo.updateOne(
         this.collection,
-        {'_id': subjectId},
+        {'subjectId': subjectId},
         {"$set":{
           "commentText":commentText,
           "knowledge":knowledge,

@@ -21,6 +21,7 @@ class PaperManage{
       var testPaper = new TestPaper(adjuectedFilePath, JSON.parse(ocrResult).data.items)
       await testPaper.parse()
       var testPaperInfo = {
+        paperId: testPaper.getPaperId(),
         userId: userId,
         paperName: this.getFileName(file),
         subjectAmount: testPaper.getSubjectAmount(),
@@ -56,17 +57,17 @@ class PaperManage{
     }
 
     async getPaperInfo(paperId){
-      var data = await mongo.find(this.collection,{'_id': paperId})
+      var data = await mongo.find(this.collection,{'paperId': paperId})
       return data
     }
 
     async deletePaper(paperId){
-      var data = await mongo.remove(this.collection,{_id: paperId})
+      var data = await mongo.remove(this.collection,{'paperId': paperId})
       return data
     }
 
     async getSubjectInfo(paperId, subjectId){
-      var data = await mongo.find(this.collection,{'_id': paperId})
+      var data = await mongo.find(this.collection,{'paperId': paperId})
       if(data.length == 0) return {}
 
       var subjects = data[0].subjects
@@ -78,7 +79,7 @@ class PaperManage{
     }
 
     async getSubjectWrong(){
-      var data = await mongo.find(this.collection,{'_id': paperId})
+      var data = await mongo.find(this.collection,{'paperId': paperId})
       if(data.length == 0) return {}
 
       var subjects = data[0].subjects
