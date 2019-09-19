@@ -1,6 +1,6 @@
 const log = require('../../util/log').getLogger("PaperManage");
 const mongo = require('../../util/mongo');
-const ocr = require('../../util/ocr');
+const ocr = require('../../util/ocrOld');
 const graphic = require('../../util/graphic');
 const cos = require('../../util/cos');
 const TestPaper = require('../../service/studyAnalyse2/TestPaper');

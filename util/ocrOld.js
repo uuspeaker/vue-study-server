@@ -1,6 +1,6 @@
 const {ImageClient} = require('image-node-sdk');
 const config = require('../config/db.js');
-const log = require('../util/log.js').getLogger("ocr.js");
+const log = require('../util/log.js').getLogger("ocrOld.js");
 const util = require('util');
 
 let AppId = config.ocr.appId; // 腾讯云 AppId
