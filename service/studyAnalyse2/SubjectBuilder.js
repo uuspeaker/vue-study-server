@@ -7,7 +7,7 @@ const config = require('../../config/db')
 const SubjectAnswer = require('./SubjectAnswer')
 
 class Subject{
-  constructor(url, content, answer){
+  constructor(paperId, url, content, answer){
     this.imageUrl = url
     this.content = content
     this.answer = answer
