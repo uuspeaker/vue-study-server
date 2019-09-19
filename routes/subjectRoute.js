@@ -2,6 +2,8 @@ const router = require('koa-router')()
 const log = require('../util/log.js').getLogger("SubjectPool");
 const SubjectManage = require('../service/paper/SubjectManage');
 const subjectManage = new SubjectManage()
+const PaperManage = require('../service/paper/PaperManage');
+const paperManage = new PaperManage()
 
 router.get('/subjectList', async (ctx, next) => {
   var paperId = ctx.request.query.paperId
@@ -33,6 +35,16 @@ router.post('/commentSubject', async (ctx, next) => {
   var knowledge = ctx.request.body.knowledge
   var data = subjectManage.commentSubject(subjectId, commentText, commentAudioUrl,knowledge)
   ctx.body = data
+});
+
+router.post('/subjectReport', async (ctx, next) => {
+  var userId = '123'
+  var subjectReport = await subjectManage.getReport(userId)
+  var paperReport = await paperManage.getReport(userId)
+  ctx.body = {
+    paperReport: paperReport,
+    subjectReport: subjectReport
+  }
 });
 
 module.exports = router

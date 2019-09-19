@@ -12,6 +12,11 @@ class SubjectManage{
       mongo.insertMany(this.collection, subjects)
     }
 
+    async getAllMySubject(userId){
+      var data = await mongo.find(this.collection,{})
+      return data
+    }
+
     async getSubjectList(paperId){
       var data = await mongo.find(this.collection,{'paperId': paperId})
       return data
@@ -50,6 +55,27 @@ class SubjectManage{
           "checkStatus":2
         }})
       return data
+    }
+    async getReport(userId){
+      var subjectList = await this.getAllMySubject(userId)
+      var wrongSubjectAmount = 0
+      var wrongSubjectKnowledge = []
+      for (var index in subjectList) {
+        if(subjectList[index].isRight == 0){
+          wrongSubjectAmount = wrongSubjectAmount + 1
+          var hasWrongKnowledge = 0
+          for (var index2 in wrongSubjectKnowledge) {
+            if (wrongSubjectKnowledge[index2][knowledge] == subjectList[index][knowledge]) {
+              wrongSubjectKnowledge[index2][amount] = wrongSubjectKnowledge[index2][amount] + 1
+              hasWrongKnowledge = 1
+            }
+          }
+          if(hasWrongKnowledge == 0){
+            wrongSubjectKnowledge.push({'knowledge':subjectList[index][knowledge],'amount':1})
+          }
+        }
+      }
+      return {wrongSubjectAmount:wrongSubjectAmount, wrongSubjectKnowledge: wrongSubjectKnowledge}
     }
 
 }

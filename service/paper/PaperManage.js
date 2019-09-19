@@ -82,6 +82,16 @@ class PaperManage{
       return data
     }
 
+    async getReport(userId){
+      var paperList = await paperManage.getPaperList(userId)
+      var paperAmount = paperList.length
+      var totalSubjectAmount = 0
+      for (var index in paperList) {
+        totalSubjectAmount = totalSubjectAmount + paperList[index].subjectAmount
+      }
+      return {paperAmount,totalSubjectAmount}
+    }
+
     // async getSubjectInfo(paperId, subjectId){
     //   var data = await mongo.find(this.collection,{'paperId': paperId})
     //   if(data.length == 0) return {}
