@@ -16,8 +16,8 @@ router.get('/subjectInfo', async (ctx, next) => {
 })
 router.put('/checkSubject', async (ctx, next) => {
   var subjectId = ctx.request.body.subjectId
-  var answer = ctx.request.body.answer
-  var data = await subjectManage.checkSubject(subjectId,answer)
+  var isRight = ctx.request.body.isRight
+  var data = await subjectManage.checkSubject(subjectId,isRight)
   ctx.body = data
 })
 

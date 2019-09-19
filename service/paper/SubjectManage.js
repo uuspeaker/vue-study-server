@@ -21,15 +21,20 @@ class SubjectManage{
     }
 
     async getSubjectWrong(userId){
-      var data = await mongo.find(this.collection,{'answerStatus': 0})
+      var data = await mongo.find(this.collection,{'isRight': 0})
       return data
     }
 
-    async checkSubject(subjectId, answerStatus){
+    async checkSubject(subjectId, isRight){
+      var subjectInfo = await getSubjectInfo(subjectId)
+      if(!subjectInfo[0].checkStatus){
+        var paperManage = new PaperManage()
+        paperManage.increaseCheckAmount(subjectInfo[0].paperId)
+      }
       var data = await mongo.updateOne(
         this.collection,
         {'subjectId': subjectId},
-        {"$set":{"answerStatus":answerStatus}})
+        {"$set":{"isRight":isRight,"checkStatus":1}})
       return data
     }
 
@@ -40,7 +45,8 @@ class SubjectManage{
         {"$set":{
           "commentText":commentText,
           "knowledge":knowledge,
-          "commentAudioUrl":commentAudioUrl
+          "commentAudioUrl":commentAudioUrl,
+          "checkStatus":2
         }})
       return data
     }
