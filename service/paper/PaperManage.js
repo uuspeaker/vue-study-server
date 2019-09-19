@@ -20,10 +20,9 @@ class PaperManage{
       log.debug("文件ocr扫描结果为",ocrResult)
       var testPaper = new TestPaper(adjuectedFilePath, JSON.parse(ocrResult).data.items)
       await testPaper.parse()
-      var fileName = path.basename(file.path, extname);
       var testPaperInfo = {
         userId: userId,
-        paperName: fileName,
+        paperName: this.getFileName(file),
         subjectAmount: testPaper.getSubjectAmount(),
         paperUrl: result.Location,
         createData: new Date()
@@ -31,6 +30,13 @@ class PaperManage{
       mongo.insertOne(this.collection, testPaperInfo)
       subjectManage.saveSubjects(testPaperInfo.getSubjectInfos())
       return testPaperInfo
+    }
+
+    getFileName(file){
+      var dirName = path.dirname(file.path);
+      var extname = path.extname(file.path);
+      var fileName = path.basename(file.path, extname);
+      return fileName
     }
 
     async getAdjustedFile(file){
