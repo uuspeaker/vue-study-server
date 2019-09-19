@@ -4,7 +4,7 @@ const ocr = require('../../util/ocr');
 const graphic = require('../../util/graphic');
 const cos = require('../../util/cos');
 const TestPaper = require('../../service/studyAnalyse2/TestPaper');
-const SubjectManage = require('SubjectManage');
+const SubjectManage = require('/SubjectManage');
 const subjectManage  = new SubjectManage()
 
 class PaperManage{
