@@ -22,7 +22,7 @@ class PaperManage{
       var testPaperInfo = {
         userId: userId,
         paperName: fileName,
-        subjectAmount: testPaper.getSubjectAmount()
+        subjectAmount: testPaper.getSubjectAmount(),
         paperUrl: result.Location,
         createData: new Date()
       }
