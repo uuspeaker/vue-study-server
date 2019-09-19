@@ -27,7 +27,7 @@ router.post('/paperInfo', upload.single('file'), async (ctx, next) => {
   var userId = '123'
   var paperInfo = await paperManage.analysePaper(userId, file)
   ctx.body = paperInfo
-}
+});
 
 router.get('/paperList', async (ctx, next) => {
   var userId = '123'
@@ -39,7 +39,7 @@ router.get('/paperInfo', async (ctx, next) => {
   var paperId = ctx.request.query.paperId
   var data = await paperManage.getPaperInfo(paperId)
   ctx.body = data
-})
+});
 
 router.delete('/paperInfo', async (ctx, next) => {
   var id = ctx.request.body.id
