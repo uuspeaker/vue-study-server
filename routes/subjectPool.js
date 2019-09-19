@@ -5,19 +5,19 @@ const SubjectFinder = require('../service/subjectPool/SubjectFinder');
 const SubjectLoader = require('../service/subjectPool/SubjectLoader');
 const SubjectOrganiser = require('../service/subjectPool/SubjectOrganiser');
 
-router.get('/subjectList', async (ctx, next) => {
+router.get('/subjectOfKnowledge', async (ctx, next) => {
   var finder = new SubjectFinder()
   var data = await finder.querySubjects(ctx.request.query.knowledgeId)
   ctx.body = data
 })
 
-router.get('/loadSubject', async (ctx, next) => {
+router.get('/loadSystemSubject', async (ctx, next) => {
   var loader = new SubjectLoader()
   var data = await loader.load()
   ctx.body = data
 })
 
-router.get('/deleteAllSubject', async (ctx, next) => {
+router.get('/deleteSystemSubject', async (ctx, next) => {
   var loader = new SubjectLoader()
   var data = await loader.deleteAll()
   ctx.body = data
