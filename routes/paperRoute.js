@@ -41,12 +41,6 @@ router.get('/paperInfo', async (ctx, next) => {
   ctx.body = data
 })
 
-router.post('/paperInfo', async (ctx, next) => {
-  var paperId = ctx.request.query.paperId
-  var data = await paperManage.getPaperInfo(paperId)
-  ctx.body = data
-})
-
 router.delete('/paperInfo', async (ctx, next) => {
   var id = ctx.request.body.id
   var data = await paperManage.deletePaper(id)
