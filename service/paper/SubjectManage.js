@@ -61,17 +61,17 @@ class SubjectManage{
       var wrongSubjectAmount = 0
       var wrongSubjectKnowledge = []
       for (var index in subjectList) {
-        if(subjectList[index].isRight == 0){
+        if(subjectList[index].isRight == 0 && subjectList[index]['knowledge']){
           wrongSubjectAmount = wrongSubjectAmount + 1
           var hasWrongKnowledge = 0
           for (var index2 in wrongSubjectKnowledge) {
-            if (wrongSubjectKnowledge[index2][knowledge] == subjectList[index][knowledge]) {
-              wrongSubjectKnowledge[index2][amount] = wrongSubjectKnowledge[index2][amount] + 1
+            if (wrongSubjectKnowledge[index2]['knowledge'] == subjectList[index]['knowledge']) {
+              wrongSubjectKnowledge[index2]['amount'] = wrongSubjectKnowledge[index2]['amount'] + 1
               hasWrongKnowledge = 1
             }
           }
           if(hasWrongKnowledge == 0){
-            wrongSubjectKnowledge.push({'knowledge':subjectList[index][knowledge],'amount':1})
+            wrongSubjectKnowledge.push({'knowledge':subjectList[index]['knowledge'],'amount':1})
           }
         }
       }
