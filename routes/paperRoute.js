@@ -1,9 +1,10 @@
 const router = require('koa-router')()
-const log = require('../util/log.js').getLogger("SubjectPool");
+const log = require('../util/log.js').getLogger("paperRoute");
 const PaperManage = require('../service/paper/PaperManage');
 const paperManage = new PaperManage()
 const multer = require('koa-multer');
 const path = require('path');
+const config = require('../config/db');
 
 let storage = multer.diskStorage({
     destination: path.resolve(config.upload.destination),
