@@ -1,9 +1,45 @@
 const log = require('../../util/log').getLogger("PaperManage");
 const mongo = require('../../util/mongo');
+const ocr = require('../../util/ocr');
+const cos = require('cos');
+const TestPaper = require('../../service/studyAnalyse2/TestPaper');
+const SubjectManage = require('SubjectManage');
+const subjectManage  = new SubjectManage()
 
 class PaperManage{
     constructor(){
       this.collection = 'PaperInfo'
+    }
+
+    async analysePaper(userId, file){
+      var result = await cos.putObject(file.path)
+      var adjuectedFilePath = this.getAdjustedFile(file)
+      var ocrResult = await ocr.scanImageUrl(result.Location)
+      log.debug("文件ocr扫描结果为",ocrResult)
+      var testPaper = new TestPaper(adjuectedFilePath, JSON.parse(ocrResult).data.items)
+      await testPaper.parse()
+      var fileName = path.basename(file.path, extname);
+      var testPaperInfo = {
+        userId: userId,
+        paperName: fileName,
+        subjectAmount: testPaper.getSubjectAmount()
+        paperUrl: result.Location,
+        createData: new Date()
+      }
+      mongo.insertOne(this.collection, testPaperInfo)
+      subjectManage.saveSubjects(testPaperInfo.getSubjectInfos())
+      return testPaperInfo
+    }
+
+    getAdjustedFile(file){
+      var dirName = path.dirname(file.path);
+      var extname = path.extname(file.path);
+      var fileName = path.basename(file.path, extname);
+
+      var cosFilePath = dirName +'\\'+ fileName + '-cos' + extname
+      await graphic.saveOrient(file.path,cosFilePath)
+      log.debug("将图片调整成正确方向并保存",cosFilePath)
+      return cosFilePath
     }
 
     async getPaperList(userId){

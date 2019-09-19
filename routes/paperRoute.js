@@ -2,6 +2,32 @@ const router = require('koa-router')()
 const log = require('../util/log.js').getLogger("SubjectPool");
 const PaperManage = require('../service/paper/PaperManage');
 const paperManage = new PaperManage()
+const multer = require('koa-multer');
+
+let storage = multer.diskStorage({
+    destination: path.resolve(config.upload.destination),
+    filename: (ctx, file, cb)=>{
+        cb(null, file.originalname);
+    }
+});
+
+let fileFilter = (ctx, file ,cb)=>{
+//过滤上传的后缀为txt的文件
+    if (file.originalname.split('.').splice(-1) == 'txt'){
+        cb(null, false);
+    }else {
+        cb(null, true);
+    }
+}
+
+let upload = multer({ storage: storage, fileFilter: fileFilter });
+
+router.post('/paperInfo', upload.single('file'), async (ctx, next) => {
+  var file = ctx.req.file
+  var userId = '123'
+  var paperInfo = await paperManage.analysePaper(userId, file)
+  ctx.body = paperInfo
+}
 
 router.get('/paperList', async (ctx, next) => {
   var userId = '123'
@@ -15,17 +41,9 @@ router.get('/paperInfo', async (ctx, next) => {
   ctx.body = data
 })
 
-router.get('/subjectInfo', async (ctx, next) => {
+router.post('/paperInfo', async (ctx, next) => {
   var paperId = ctx.request.query.paperId
-  var subjectId = ctx.request.query.subjectId
-  var data = await paperManage.getSubjectInfo(paperId,subjectId)
-  ctx.body = data
-})
-router.put('/checkSubject', async (ctx, next) => {
-  var paperId = ctx.request.body.paperId
-  var subjectId = ctx.request.body.subjectId
-  var answer = ctx.request.body.answer
-  var data = await paperManage.checkSubject(paperId,subjectId,answer)
+  var data = await paperManage.getPaperInfo(paperId)
   ctx.body = data
 })
 
@@ -35,14 +53,5 @@ router.delete('/paperInfo', async (ctx, next) => {
   ctx.body = data
 });
 
-router.post('/commentSubject', async (ctx, next) => {
-  var paperId = ctx.request.body.paperId
-  var subjectId = ctx.request.body.subjectId
-  var commentText = ctx.request.body.commentText
-  var commentAudioUrl = ctx.request.body.commentAudioUrl
-  var knowledge = ctx.request.body.knowledge
-  var data = paperManage.commentSubject(paperId, subjectId, commentText, commentAudioUrl,knowledge)
-  ctx.body = data
-});
 
 module.exports = router

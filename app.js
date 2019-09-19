@@ -13,6 +13,7 @@ const studyAnalyse = require('./routes/studyAnalyse')
 const subjectPool = require('./routes/subjectPool')
 const paperRoute = require('./routes/paperRoute')
 const knowledgeRoute = require('./routes/knowledgeRoute')
+const subjectRoute = require('./routes/subjectRoute')
 //const cors = require('koa2-cors');
 
 // error handler
@@ -46,6 +47,7 @@ app.use(studyAnalyse.routes(), studyAnalyse.allowedMethods())
 app.use(subjectPool.routes(), subjectPool.allowedMethods())
 app.use(paperRoute.routes(), paperRoute.allowedMethods())
 app.use(knowledgeRoute.routes(), knowledgeRoute.allowedMethods())
+app.use(subjectRoute.routes(), subjectRoute.allowedMethods())
 
 // error-handling
 app.on('error', (err, ctx) => {

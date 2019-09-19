@@ -6,6 +6,14 @@ class SubjectManage{
       this.collection = 'SubjectInfo'
     }
 
+    async saveSubjects(subjects){
+      mongo.insertMany(this.collection, subjects)
+    }
+
+    async getSubjectList(paperId){
+      var data = await mongo.find(this.collection,{'paperId': paperId})
+    }
+
     async getSubjectInfo(subjectId){
       var data = await mongo.find(this.collection,{'_id': subjectId})
     }

@@ -40,7 +40,7 @@ class TestPaper{
 
     }
 
-    async init(){
+    async parse(){
       this.initItems()
       this.deleteHeadAndFoot()
       this.initPaperStructure()
