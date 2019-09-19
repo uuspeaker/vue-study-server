@@ -83,7 +83,7 @@ class PaperManage{
     }
 
     async getReport(userId){
-      var paperList = await paperManage.getPaperList(userId)
+      var paperList = await this.getPaperList(userId)
       var paperAmount = paperList.length
       var totalSubjectAmount = 0
       for (var index in paperList) {
