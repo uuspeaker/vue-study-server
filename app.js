@@ -9,7 +9,7 @@ const logger = require('koa-logger')
 const log = require('./util/log.js').getLogger("app.js");
 
 const index = require('./routes/index')
-const studyAnalyse = require('./routes/studyAnalyse')
+const fileRoute = require('./routes/fileRoute')
 const systemSubjectRoute = require('./routes/systemSubjectRoute')
 const paperRoute = require('./routes/paperRoute')
 const knowledgeRoute = require('./routes/knowledgeRoute')
