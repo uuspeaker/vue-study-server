@@ -8,6 +8,11 @@ router.get('/subjectList', async (ctx, next) => {
   var data = await subjectManage.getSubjectList(paperId)
   ctx.body = data
 })
+router.get('/wrongSubjectList', async (ctx, next) => {
+  var paperId = ctx.request.query.paperId
+  var data = await subjectManage.getWrongSubjectList(paperId)
+  ctx.body = data
+})
 
 router.get('/subjectInfo', async (ctx, next) => {
   var subjectId = ctx.request.query.subjectId

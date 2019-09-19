@@ -22,7 +22,7 @@ class SubjectManage{
       return data
     }
 
-    async getSubjectWrong(userId){
+    async getWrongSubjectList(userId){
       var data = await mongo.find(this.collection,{'isRight': 0})
       return data
     }
