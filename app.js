@@ -10,7 +10,7 @@ const log = require('./util/log.js').getLogger("app.js");
 
 const index = require('./routes/index')
 const studyAnalyse = require('./routes/studyAnalyse')
-const subjectPool = require('./routes/subjectPool')
+const systemSubjectRoute = require('./routes/systemSubjectRoute')
 const paperRoute = require('./routes/paperRoute')
 const knowledgeRoute = require('./routes/knowledgeRoute')
 const subjectRoute = require('./routes/subjectRoute')
@@ -43,8 +43,8 @@ app.use(async (ctx, next) => {
 
 // routes
 app.use(index.routes(), index.allowedMethods())
-app.use(studyAnalyse.routes(), studyAnalyse.allowedMethods())
-app.use(subjectPool.routes(), subjectPool.allowedMethods())
+app.use(fileRoute.routes(), fileRoute.allowedMethods())
+app.use(systemSubjectRoute.routes(), systemSubjectRoute.allowedMethods())
 app.use(paperRoute.routes(), paperRoute.allowedMethods())
 app.use(knowledgeRoute.routes(), knowledgeRoute.allowedMethods())
 app.use(subjectRoute.routes(), subjectRoute.allowedMethods())
