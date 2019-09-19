@@ -37,7 +37,7 @@ router.post('/commentSubject', async (ctx, next) => {
   ctx.body = data
 });
 
-router.post('/subjectReport', async (ctx, next) => {
+router.get('/subjectReport', async (ctx, next) => {
   var userId = '123'
   var subjectReport = await subjectManage.getReport(userId)
   var paperReport = await paperManage.getReport(userId)
