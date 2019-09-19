@@ -4,9 +4,8 @@ const ocr = require('../../util/ocrOld');
 const graphic = require('../../util/graphic');
 const cos = require('../../util/cos');
 const TestPaper = require('../../service/studyAnalyse2/TestPaper');
-const SubjectManage = require('../paper/SubjectManage');
 const path = require('path');
-const subjectManage  = new SubjectManage()
+
 
 class PaperManage{
     constructor(){
@@ -29,8 +28,12 @@ class PaperManage{
         createData: new Date()
       }
       mongo.insertOne(this.collection, testPaperInfo)
-      subjectManage.saveSubjects(testPaper.getSubjectInfos())
+      this.saveSubjects(testPaper.getSubjectInfos())
       return testPaperInfo
+    }
+
+    async saveSubjects(subjects){
+      mongo.insertMany(this.collection, subjects)
     }
 
     getFileName(file){

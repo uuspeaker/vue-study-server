@@ -1,6 +1,7 @@
 const log = require('../../util/log').getLogger("SubjectManage");
 const mongo = require('../../util/mongo');
 const PaperManage = require('../paper/PaperManage');
+const paperManage = new PaperManage()
 
 class SubjectManage{
     constructor(){
@@ -29,7 +30,6 @@ class SubjectManage{
     async checkSubject(subjectId, isRight){
       var subjectInfo = await this.getSubjectInfo(subjectId)
       if(!subjectInfo[0].checkStatus){
-        var paperManage = new PaperManage()
         paperManage.increaseCheckAmount(subjectInfo[0].paperId)
       }
       var data = await mongo.updateOne(
