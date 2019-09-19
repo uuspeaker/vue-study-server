@@ -14,7 +14,7 @@ class PaperManage{
 
     async analysePaper(userId, file){
       var result = await cos.putObject(file.path)
-      var adjuectedFilePath = this.getAdjustedFile(file)
+      var adjuectedFilePath = await this.getAdjustedFile(file)
       var ocrResult = await ocr.scanImageUrl(result.Location)
       log.debug("文件ocr扫描结果为",ocrResult)
       var testPaper = new TestPaper(adjuectedFilePath, JSON.parse(ocrResult).data.items)
@@ -32,7 +32,7 @@ class PaperManage{
       return testPaperInfo
     }
 
-    getAdjustedFile(file){
+    async getAdjustedFile(file){
       var dirName = path.dirname(file.path);
       var extname = path.extname(file.path);
       var fileName = path.basename(file.path, extname);
