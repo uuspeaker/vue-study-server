@@ -12,14 +12,17 @@ class SubjectManage{
 
     async getSubjectList(paperId){
       var data = await mongo.find(this.collection,{'paperId': paperId})
+      return data
     }
 
     async getSubjectInfo(subjectId){
       var data = await mongo.find(this.collection,{'subjectId': subjectId})
+      return data
     }
 
     async getSubjectWrong(userId){
       var data = await mongo.find(this.collection,{'answerStatus': 0})
+      return data
     }
 
     async checkSubject(subjectId, answerStatus){
