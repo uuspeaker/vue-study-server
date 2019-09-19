@@ -3,6 +3,7 @@ const log = require('../util/log.js').getLogger("SubjectPool");
 const PaperManage = require('../service/paper/PaperManage');
 const paperManage = new PaperManage()
 const multer = require('koa-multer');
+const path = require('path');
 
 let storage = multer.diskStorage({
     destination: path.resolve(config.upload.destination),
