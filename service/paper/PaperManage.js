@@ -28,7 +28,7 @@ class PaperManage{
         createData: new Date()
       }
       mongo.insertOne(this.collection, testPaperInfo)
-      subjectManage.saveSubjects(testPaperInfo.getSubjectInfos())
+      subjectManage.saveSubjects(testPaper.getSubjectInfos())
       return testPaperInfo
     }
 
