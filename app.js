@@ -10,7 +10,7 @@ const log = require('./util/log.js').getLogger("app.js");
 
 const index = require('./routes/index')
 const fileRoute = require('./routes/fileRoute')
-const systemSubjectRoute = require('./routes/systemSubjectRoute')
+const sysSubjectRoute = require('./routes/sysSubjectRoute')
 const paperRoute = require('./routes/paperRoute')
 const knowledgeRoute = require('./routes/knowledgeRoute')
 const subjectRoute = require('./routes/subjectRoute')
@@ -44,7 +44,7 @@ app.use(async (ctx, next) => {
 // routes
 app.use(index.routes(), index.allowedMethods())
 app.use(fileRoute.routes(), fileRoute.allowedMethods())
-app.use(systemSubjectRoute.routes(), systemSubjectRoute.allowedMethods())
+app.use(sysSubjectRoute.routes(), sysSubjectRoute.allowedMethods())
 app.use(paperRoute.routes(), paperRoute.allowedMethods())
 app.use(knowledgeRoute.routes(), knowledgeRoute.allowedMethods())
 app.use(subjectRoute.routes(), subjectRoute.allowedMethods())
