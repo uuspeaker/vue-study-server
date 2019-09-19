@@ -1,5 +1,6 @@
 const log = require('../../util/log').getLogger("SubjectManage");
 const mongo = require('../../util/mongo');
+const PaperManage = require('../paper/PaperManage');
 
 class SubjectManage{
     constructor(){
