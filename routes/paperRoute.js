@@ -27,8 +27,13 @@ let upload = multer({ storage: storage, fileFilter: fileFilter });
 router.post('/paperInfo', upload.single('file'), async (ctx, next) => {
   var file = ctx.req.file
   var userId = '123'
-  var paperInfo = await paperManage.analysePaper(userId, file)
-  ctx.body = paperInfo
+  if(file){
+    paperManage.analysePaper(userId, file)
+    ctx.body = 'ok'
+  }else{
+    ctx.body = 'fail'
+  }
+
 });
 
 router.get('/paperList', async (ctx, next) => {
