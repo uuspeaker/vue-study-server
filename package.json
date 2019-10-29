@@ -37,7 +37,7 @@
     "path": "^0.12.7",
     "pm": "^2.2.6",
     "pug": "^2.0.3",
-    "sequelize": "^5.12.2",
+    "sequelize": "^5.15.1",
     "tencentcloud-sdk-nodejs": "^3.0.74",
     "util": "^0.12.1",
     "uuid": "^3.3.2"
